@@ -156,7 +156,6 @@ type
     procedure InitializeRights;
   public
     { Public-Deklarationen }
-    bStyle: boolean;
     bAbmelden: Boolean;
   end;
 
@@ -444,7 +443,7 @@ procedure Tfrm_PCM_Main.Abmelden;
 begin
   bAbmelden := True;
   dm_PCM.bLogin := false;
-  bStyle:= false;
+  dm_PCM.bStyle:= false;
   Hide;
   Show;
 end;
@@ -682,7 +681,7 @@ begin
         MessageDlg(rs_PCM_Sprachdatei, mtWarning, [mbOk], 0);
       end
     end;
-    if bStyle then
+    if dm_PCM.bStyle then
     begin
       NavBarClick(iDesign);
     end

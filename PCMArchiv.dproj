@@ -1170,9 +1170,6 @@
     <Target Name="Localize">
         <Exec Command="$(Program_Soluling) -lang:de build $(DCC_ExeOutput)\$(SanitizedProjectName).ntp"/>
         <Exec Command="$(Program_Soluling) -lang:en build $(DCC_ExeOutput)\$(SanitizedProjectName).ntp"/>
-        <Exec Command="$(Program_Soluling) -lang:fr build $(DCC_ExeOutput)\$(SanitizedProjectName).ntp"/>
-        <Exec Command="$(Program_Soluling) -lang:it build $(DCC_ExeOutput)\$(SanitizedProjectName).ntp"/>
-        <Exec Command="$(Program_Soluling) -lang:es build $(DCC_ExeOutput)\$(SanitizedProjectName).ntp"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Delphi.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')"/>
     <Import Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj" Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')"/>

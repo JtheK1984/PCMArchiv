@@ -162,7 +162,6 @@ type
     procedure FormActivate(Sender: TObject);
   private
     { Private-Deklarationen }
-    bButtons: boolean;
     SaveGridViewContacts: TSavedGridView;
     procedure SetGridViews(Show:boolean);
     procedure OpenData;

@@ -133,8 +133,6 @@ uses PCM.Main,
      PCM.Functions.Synch.Wait, PCM.Data, PCM.Strings;
 
 procedure Tfrm_Config.OpenData;
-var
-  iAnzahl: Integer;
 begin
   qry_Pfad.Sql.Text:= 'Select Pfad From archiv_konfiguration';
   qry_Pfad.Open;

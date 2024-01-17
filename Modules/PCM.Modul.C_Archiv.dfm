@@ -18,18 +18,20 @@ object frm_Contact: Tfrm_Contact
   TextHeight = 13
   object pnl_Design: TcxGroupBox
     Left = 0
-    Top = 63
+    Top = 58
     Align = alClient
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 4
-    Height = 723
+    ExplicitTop = 63
+    ExplicitHeight = 723
+    Height = 728
     Width = 1181
     object grd_Kontaktesuche: TcxGrid
-      Left = 3
-      Top = 151
-      Width = 1175
-      Height = 569
+      Left = 2
+      Top = 150
+      Width = 1177
+      Height = 576
       Align = alClient
       BevelInner = bvNone
       BevelOuter = bvNone
@@ -373,13 +375,13 @@ object frm_Contact: Tfrm_Contact
       end
     end
     object grpbx_KontakteSuche: TcxGroupBox
-      Left = 3
-      Top = 3
+      Left = 2
+      Top = 2
       Align = alTop
       Caption = 'Filterkriterien'
       TabOrder = 1
       Height = 109
-      Width = 1175
+      Width = 1177
       object cmbbx_KontaktSucheArt: TcxComboBox
         Left = 91
         Top = 75
@@ -642,16 +644,17 @@ object frm_Contact: Tfrm_Contact
       end
     end
     object pnl_KontakteButtons: TcxGroupBox
-      Left = 3
-      Top = 112
+      Left = 2
+      Top = 111
       Align = alTop
       PanelStyle.Active = True
       Style.BorderStyle = ebsNone
       TabOrder = 2
       ExplicitLeft = 0
       ExplicitTop = 109
+      ExplicitWidth = 1175
       Height = 39
-      Width = 1175
+      Width = 1177
       object btn_kontaktDeletefilter: TcxButton
         Left = 151
         Top = 6
@@ -727,7 +730,7 @@ object frm_Contact: Tfrm_Contact
     DockControlHeights = (
       0
       0
-      63
+      58
       0)
     object brmgrContactsBar1: TdxBar
       Caption = 'tb_Contacts'

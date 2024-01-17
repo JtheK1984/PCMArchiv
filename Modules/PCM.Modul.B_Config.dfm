@@ -25,10 +25,10 @@ object frm_Config: Tfrm_Config
     Height = 800
     Width = 1280
     object pc_Options: TcxPageControl
-      Left = 3
-      Top = 3
-      Width = 1274
-      Height = 794
+      Left = 2
+      Top = 2
+      Width = 1276
+      Height = 796
       Align = alClient
       Color = clBtnFace
       ParentBackground = False
@@ -40,25 +40,33 @@ object frm_Config: Tfrm_Config
       Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea]
       Properties.TabSlants.Kind = skCutCorner
       Properties.TabWidth = 100
-      ClientRectBottom = 788
-      ClientRectLeft = 2
-      ClientRectRight = 1268
-      ClientRectTop = 28
+      ExplicitLeft = 3
+      ExplicitTop = 3
+      ExplicitWidth = 1274
+      ExplicitHeight = 794
+      ClientRectBottom = 796
+      ClientRectRight = 1276
+      ClientRectTop = 25
       object ts_A_Archiv: TcxTabSheet
         Caption = 'Archiv'
         ImageIndex = 82
+        ExplicitLeft = 2
+        ExplicitTop = 28
+        ExplicitWidth = 1266
+        ExplicitHeight = 760
         object grpbx_FTPConfig: TcxGroupBox
           Left = 0
           Top = 174
           Align = alTop
           Caption = 'Hauptkategorien'
           TabOrder = 1
+          ExplicitWidth = 1266
           Height = 256
-          Width = 1266
+          Width = 1276
           object grd_FTPConfig: TcxGrid
-            Left = 3
-            Top = 111
-            Width = 1260
+            Left = 2
+            Top = 118
+            Width = 1272
             Height = 136
             Align = alBottom
             BorderStyle = cxcbsNone
@@ -70,6 +78,9 @@ object frm_Config: Tfrm_Config
             ParentFont = False
             TabOrder = 0
             LockedStateImageOptions.Effect = lsieDark
+            ExplicitLeft = 3
+            ExplicitTop = 111
+            ExplicitWidth = 1260
             object grdDBTblView_FTPConfig: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               FilterBox.CustomizeDialog = False
@@ -115,27 +126,29 @@ object frm_Config: Tfrm_Config
             end
           end
           object brdckctrl_FTP: TdxBarDockControl
-            Left = 3
-            Top = 15
-            Width = 1260
-            Height = 63
+            Left = 2
+            Top = 18
+            Width = 1272
+            Height = 58
             Align = dalTop
             BarManager = brmgr_Config
           end
           object cxGroupBox3: TcxGroupBox
-            Left = 3
-            Top = 78
+            Left = 2
+            Top = 76
             Align = alTop
             PanelStyle.Active = True
             StyleDisabled.BorderColor = clBtnShadow
             StyleDisabled.BorderStyle = ebsNone
             TabOrder = 2
+            ExplicitTop = 81
+            ExplicitWidth = 1262
             Height = 27
-            Width = 1260
+            Width = 1272
             object edt_CalConfigFTP_URL: TcxDBTextEdit
               AlignWithMargins = True
-              Left = 83
-              Top = 3
+              Left = 82
+              Top = 2
               Margins.Left = 0
               Margins.Top = 0
               Margins.Right = 0
@@ -153,12 +166,16 @@ object frm_Config: Tfrm_Config
               Style.IsFontAssigned = True
               TabOrder = 0
               OnExit = btn_MainKatSaveClick
-              Width = 1174
+              ExplicitLeft = 83
+              ExplicitTop = 3
+              ExplicitWidth = 1174
+              ExplicitHeight = 21
+              Width = 1188
             end
             object lbl_CalConfigFTP_URL: TcxLabel
               AlignWithMargins = True
-              Left = 8
-              Top = 5
+              Left = 7
+              Top = 4
               Margins.Left = 5
               Margins.Top = 2
               Margins.Right = 5
@@ -174,7 +191,7 @@ object frm_Config: Tfrm_Config
               Style.Font.Style = []
               Style.IsFontAssigned = True
               Transparent = True
-              Height = 17
+              Height = 19
               Width = 70
             end
           end
@@ -185,22 +202,23 @@ object frm_Config: Tfrm_Config
           Align = alTop
           Caption = 'Verzeichnis zum Archiv'
           TabOrder = 0
+          ExplicitWidth = 1266
           Height = 174
-          Width = 1266
+          Width = 1276
           object bardckctrl_Kalender: TdxBarDockControl
-            Left = 3
-            Top = 15
-            Width = 1260
-            Height = 63
+            Left = 2
+            Top = 18
+            Width = 1272
+            Height = 58
             Align = dalTop
             AllowDocking = False
             BarManager = brmgr_Config
           end
           object cxGrid2: TcxGrid
-            Left = 3
-            Top = 105
-            Width = 1260
-            Height = 60
+            Left = 2
+            Top = 103
+            Width = 1272
+            Height = 69
             Align = alClient
             BorderStyle = cxcbsNone
             Font.Charset = DEFAULT_CHARSET
@@ -211,6 +229,10 @@ object frm_Config: Tfrm_Config
             ParentFont = False
             TabOrder = 1
             LockedStateImageOptions.Effect = lsieDark
+            ExplicitLeft = 3
+            ExplicitTop = 105
+            ExplicitWidth = 1260
+            ExplicitHeight = 60
             object grdDBTblView_ArchivPfad: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               FilterBox.CustomizeDialog = False
@@ -255,19 +277,21 @@ object frm_Config: Tfrm_Config
             end
           end
           object cxGroupBox2: TcxGroupBox
-            Left = 3
-            Top = 78
+            Left = 2
+            Top = 76
             Align = alTop
             PanelStyle.Active = True
             StyleDisabled.BorderColor = clBtnShadow
             StyleDisabled.BorderStyle = ebsNone
             TabOrder = 2
+            ExplicitTop = 81
+            ExplicitWidth = 1262
             Height = 27
-            Width = 1260
+            Width = 1272
             object cxLabel2: TcxLabel
               AlignWithMargins = True
-              Left = 8
-              Top = 5
+              Left = 7
+              Top = 4
               Margins.Left = 5
               Margins.Top = 2
               Margins.Right = 5
@@ -283,13 +307,13 @@ object frm_Config: Tfrm_Config
               Style.Font.Style = []
               Style.IsFontAssigned = True
               Transparent = True
-              Height = 17
+              Height = 19
               Width = 70
             end
             object edt_Pfad: TcxDBButtonEdit
               AlignWithMargins = True
-              Left = 83
-              Top = 3
+              Left = 82
+              Top = 2
               Margins.Left = 0
               Margins.Top = 0
               Margins.Right = 0
@@ -313,7 +337,11 @@ object frm_Config: Tfrm_Config
               Style.IsFontAssigned = True
               TabOrder = 1
               OnExit = btn_CalConfigSave1Click
-              Width = 1174
+              ExplicitLeft = 83
+              ExplicitTop = 3
+              ExplicitWidth = 1174
+              ExplicitHeight = 21
+              Width = 1188
             end
           end
         end
@@ -323,13 +351,15 @@ object frm_Config: Tfrm_Config
           Align = alClient
           Caption = 'Unterkategorien'
           TabOrder = 2
-          Height = 330
-          Width = 1266
+          ExplicitWidth = 1266
+          ExplicitHeight = 330
+          Height = 341
+          Width = 1276
           object cxGrid1: TcxGrid
-            Left = 3
-            Top = 105
-            Width = 1260
-            Height = 216
+            Left = 2
+            Top = 103
+            Width = 1272
+            Height = 236
             Align = alClient
             BorderStyle = cxcbsNone
             Font.Charset = DEFAULT_CHARSET
@@ -340,6 +370,10 @@ object frm_Config: Tfrm_Config
             ParentFont = False
             TabOrder = 0
             LockedStateImageOptions.Effect = lsieDark
+            ExplicitLeft = 3
+            ExplicitTop = 105
+            ExplicitWidth = 1260
+            ExplicitHeight = 216
             object cxGridDBTableView1: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               FilterBox.CustomizeDialog = False
@@ -384,27 +418,29 @@ object frm_Config: Tfrm_Config
             end
           end
           object dxBarDockControl1: TdxBarDockControl
-            Left = 3
-            Top = 15
-            Width = 1260
-            Height = 63
+            Left = 2
+            Top = 18
+            Width = 1272
+            Height = 58
             Align = dalTop
             BarManager = brmgr_Config
           end
           object cxGroupBox4: TcxGroupBox
-            Left = 3
-            Top = 78
+            Left = 2
+            Top = 76
             Align = alTop
             PanelStyle.Active = True
             StyleDisabled.BorderColor = clBtnShadow
             StyleDisabled.BorderStyle = ebsNone
             TabOrder = 2
+            ExplicitTop = 81
+            ExplicitWidth = 1262
             Height = 27
-            Width = 1260
+            Width = 1272
             object cxDBTextEdit2: TcxDBTextEdit
               AlignWithMargins = True
-              Left = 83
-              Top = 3
+              Left = 82
+              Top = 2
               Margins.Left = 0
               Margins.Top = 0
               Margins.Right = 0
@@ -422,12 +458,16 @@ object frm_Config: Tfrm_Config
               Style.IsFontAssigned = True
               TabOrder = 0
               OnExit = btn_MainKatSaveClick
-              Width = 1174
+              ExplicitLeft = 83
+              ExplicitTop = 3
+              ExplicitWidth = 1174
+              ExplicitHeight = 21
+              Width = 1188
             end
             object cxLabel3: TcxLabel
               AlignWithMargins = True
-              Left = 8
-              Top = 5
+              Left = 7
+              Top = 4
               Margins.Left = 5
               Margins.Top = 2
               Margins.Right = 5
@@ -443,7 +483,7 @@ object frm_Config: Tfrm_Config
               Style.Font.Style = []
               Style.IsFontAssigned = True
               Transparent = True
-              Height = 17
+              Height = 19
               Width = 70
             end
           end

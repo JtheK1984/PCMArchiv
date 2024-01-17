@@ -661,8 +661,8 @@ end;
 procedure Tfrm_PCM_Main.FormShow(Sender: TObject);
 begin
   {$ifdef WIn32}
-  navbr_mainItem2.Visible:= false;
-  Sprachewechseln1.Visible:= false;
+  iSprache.Visible:= false;
+  ppmbtn_Sprache.Visible:= false;
   {$endif}
   lafCtrl_Main.NativeStyle:= false;
   trayIC_Main.Hint:= PCM_Programmname;

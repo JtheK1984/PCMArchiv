@@ -13,10 +13,6 @@ copy /y /v E:\Projekte\Windows\PCMArchiv\Win64\Release\PCMArchiv.FR "e:\Inno\Set
 copy /y /v E:\Projekte\Windows\PCMArchiv\Win64\Release\PCMArchiv.IT "e:\Inno\Setupfiles\Programme\PCMArchiv_x64"
 copy /y /v E:\Projekte\Windows\PCMArchiv\Win64\Release\PCMArchiv.ES "e:\Inno\Setupfiles\Programme\PCMArchiv_x64"
 
-copy /y /v E:\Projekte\Windows\PCMArchiv\PCMArchiv.docx "e:\Inno\Setupfiles\Programme\PCMArchiv_x64"
-copy /y /v E:\Projekte\Windows\PCMArchiv\PCMArchiv.pdf "e:\Inno\Setupfiles\Programme\PCMArchiv_x64"
-copy /y /v E:\Projekte\Windows\PCMArchiv\PCMArchiv.htm "e:\Inno\Setupfiles\Programme\PCMArchiv_x64"
-
 copy /y /v E:\Projekte\Windows\PCMArchiv\PCMArchiv.docx "e:\Inno\Setupfiles\Programme\PCMArchiv"
 copy /y /v E:\Projekte\Windows\PCMArchiv\PCMArchiv.pdf "e:\Inno\Setupfiles\Programme\PCMArchiv"
 copy /y /v E:\Projekte\Windows\PCMArchiv\PCMArchiv.htm "e:\Inno\Setupfiles\Programme\PCMArchiv"

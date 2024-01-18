@@ -598,7 +598,7 @@ var
 begin
   Application.CreateForm(Tfrm_Language,frm_Language);
   frm_Language.Position:= poScreenCenter;
-  frm_Language.ClientHeight:= 214;
+  frm_Language.ClientHeight:= 135;
   frm_Language.ShowModal;
   TNtTranslator.SetNew(dm_PCM.slocale,[],'de');
   TNtTranslator.TranslateForms;
@@ -612,6 +612,7 @@ begin
   trayic_Main.popupmenu:= ppm_Main;
   LoadSQLs;
   btnRefreshRightsClick(Self);
+  lafCtrl_Main.SkinName:= dm_PCM.sDesign;
 end;
 ////////////////////////////////////////////////////////////////////////////////
 // Formfunktionen                                                             //
@@ -768,7 +769,7 @@ begin
 end;
 procedure Tfrm_PCM_Main.ppmbtn_SpracheClick(Sender: TObject);
 begin
-  navbarclick(iSprache);
+  iSpracheClick(Self);
   WindowState:= TWindowState.wsMaximized;
   SetForegroundWindow(frm_PCM_main.Handle);
 end;

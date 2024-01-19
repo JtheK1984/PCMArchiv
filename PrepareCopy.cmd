@@ -4,9 +4,6 @@ copy /y /v Win64\Release\PCMArchiv.exe "e:\Inno\Setupfiles\Programme\PCMArchiv_x
 
 copy /y /v Win64\Release\PCMArchiv.DE "e:\Inno\Setupfiles\Programme\PCMArchiv_x64"
 copy /y /v Win64\Release\PCMArchiv.EN "e:\Inno\Setupfiles\Programme\PCMArchiv_x64"
-copy /y /v Win64\Release\PCMArchiv.FR "e:\Inno\Setupfiles\Programme\PCMArchiv_x64"
-copy /y /v Win64\Release\PCMArchiv.IT "e:\Inno\Setupfiles\Programme\PCMArchiv_x64"
-copy /y /v Win64\Release\PCMArchiv.ES "e:\Inno\Setupfiles\Programme\PCMArchiv_x64"
 
 copy /y /v PCMArchiv.docx "e:\Inno\Setupfiles\Programme\PCMArchiv"
 copy /y /v PCMArchiv.pdf "e:\Inno\Setupfiles\Programme\PCMArchiv"

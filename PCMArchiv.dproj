@@ -88,7 +88,7 @@
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <AppDPIAwarenessMode>none</AppDPIAwarenessMode>
         <VerInfo_Keys>CompanyName=PCM;FileVersion=1.6.0.2;InternalName=PCM Manager 32-Bit;LegalCopyright=Jens Henske;LegalTrademarks=;OriginalFilename=PCM Manager 32-Bit;ProductName=$(MSBuildProjectName) 32-Bit;ProductVersion=1.6;Comments=05072023;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName)</VerInfo_Keys>
-        <Icon_MainIcon>PCMManager_Icon.ico</Icon_MainIcon>
+        <Icon_MainIcon>PCMArchiv_Icon.ico</Icon_MainIcon>
         <DCC_DcuOutput>.\DCU32</DCC_DcuOutput>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win64)'!=''">
@@ -98,7 +98,7 @@
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <AppDPIAwarenessMode>none</AppDPIAwarenessMode>
         <VerInfo_Keys>CompanyName=PCM;FileVersion=1.6.0.2;InternalName=PCM Manager 64-Bit;LegalCopyright=Jens Henske;LegalTrademarks=;OriginalFilename=PCM Manager 64-Bit;ProductName=$(MSBuildProjectName) 64-Bit;ProductVersion=1.6;Comments=05072023;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName)</VerInfo_Keys>
-        <Icon_MainIcon>PCMManager_Icon.ico</Icon_MainIcon>
+        <Icon_MainIcon>PCMArchiv_Icon.ico</Icon_MainIcon>
         <DCC_DcuOutput>.\DCU64</DCC_DcuOutput>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
@@ -112,14 +112,14 @@
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
-        <Icon_MainIcon>PCMManager_Icon.ico</Icon_MainIcon>
+        <Icon_MainIcon>PCMArchiv_Icon.ico</Icon_MainIcon>
         <VerInfo_Keys>CompanyName=PCM;FileVersion=1.6.0.2;InternalName=PCM Manager 32-Bit;LegalCopyright=Jens Henske;LegalTrademarks=;OriginalFilename=PCM Manager 32-Bit;ProductName=$(MSBuildProjectName) 32-Bit;ProductVersion=1.6;Comments=05072023;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName)</VerInfo_Keys>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
         <DCC_OutputDRCFile>true</DCC_OutputDRCFile>
         <VerInfo_Keys>CompanyName=PCM;FileVersion=1.6.0.2;InternalName=PCM Manager 64-Bit;LegalCopyright=Jens Henske;LegalTrademarks=;OriginalFilename=PCM Manager 64-Bit;ProductName=$(MSBuildProjectName) 64-Bit;ProductVersion=1.6;Comments=05072023;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName)</VerInfo_Keys>
-        <Icon_MainIcon>PCMManager_Icon.ico</Icon_MainIcon>
+        <Icon_MainIcon>PCMArchiv_Icon.ico</Icon_MainIcon>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
@@ -129,12 +129,12 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
-        <Icon_MainIcon>PCMManager_Icon.ico</Icon_MainIcon>
+        <Icon_MainIcon>PCMArchiv_Icon.ico</Icon_MainIcon>
         <VerInfo_Keys>CompanyName=PCM;FileVersion=1.6.0.2;InternalName=PCM Manager 32-Bit;LegalCopyright=Jens Henske;LegalTrademarks=;OriginalFilename=PCM Manager 32-Bit;ProductName=$(MSBuildProjectName) 32-Bit;ProductVersion=1.6;Comments=05072023;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName)</VerInfo_Keys>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
-        <Icon_MainIcon>PCMManager_Icon.ico</Icon_MainIcon>
+        <Icon_MainIcon>PCMArchiv_Icon.ico</Icon_MainIcon>
         <VerInfo_Keys>CompanyName=PCM;FileVersion=1.6.0.2;InternalName=PCM Manager 64-Bit;LegalCopyright=Jens Henske;LegalTrademarks=;OriginalFilename=PCM Manager 64-Bit;ProductName=$(MSBuildProjectName) 64-Bit;ProductVersion=1.6;Comments=05072023;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName)</VerInfo_Keys>
     </PropertyGroup>
     <ItemGroup>

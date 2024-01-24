@@ -19,11 +19,11 @@ type
     FDPhysADSDriverLink1: TFDPhysADSDriverLink;
     FDPhysMSSQLDriverLink1: TFDPhysMSSQLDriverLink;
     qry_work: TFDQuery;
-    imglst_16x16: TcxImageList;
     imglst_24x24: TcxImageList;
     imglst_32x32: TcxImageList;
     qry_work1: TFDQuery;
     qry_work2: TFDQuery;
+    imglst_16x16: TcxImageList;
     procedure con_PCMBeforeConnect(Sender: TObject);
     procedure DataModuleCreate(Sender: TObject);
   private

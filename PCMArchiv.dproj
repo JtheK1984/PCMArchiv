@@ -86,9 +86,9 @@
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
         <BT_BuildType>Debug</BT_BuildType>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
-        <Icon_MainIcon>PCMManager_Icon.ico</Icon_MainIcon>
         <AppDPIAwarenessMode>none</AppDPIAwarenessMode>
         <VerInfo_Keys>CompanyName=PCM;FileVersion=1.6.0.2;InternalName=PCM Manager 32-Bit;LegalCopyright=Jens Henske;LegalTrademarks=;OriginalFilename=PCM Manager 32-Bit;ProductName=$(MSBuildProjectName) 32-Bit;ProductVersion=1.6;Comments=05072023;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName)</VerInfo_Keys>
+        <Icon_MainIcon>PCMManager_Icon.ico</Icon_MainIcon>
         <DCC_DcuOutput>.\DCU32</DCC_DcuOutput>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win64)'!=''">
@@ -96,9 +96,9 @@
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;$(DCC_Namespace)</DCC_Namespace>
         <BT_BuildType>Debug</BT_BuildType>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
-        <Icon_MainIcon>PCMManager_Icon.ico</Icon_MainIcon>
         <AppDPIAwarenessMode>none</AppDPIAwarenessMode>
         <VerInfo_Keys>CompanyName=PCM;FileVersion=1.6.0.2;InternalName=PCM Manager 64-Bit;LegalCopyright=Jens Henske;LegalTrademarks=;OriginalFilename=PCM Manager 64-Bit;ProductName=$(MSBuildProjectName) 64-Bit;ProductVersion=1.6;Comments=05072023;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName)</VerInfo_Keys>
+        <Icon_MainIcon>PCMManager_Icon.ico</Icon_MainIcon>
         <DCC_DcuOutput>.\DCU64</DCC_DcuOutput>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
@@ -117,9 +117,9 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <AppDPIAwarenessMode>PerMonitorV2</AppDPIAwarenessMode>
-        <Icon_MainIcon>PCMManager_Icon.ico</Icon_MainIcon>
         <DCC_OutputDRCFile>true</DCC_OutputDRCFile>
         <VerInfo_Keys>CompanyName=PCM;FileVersion=1.6.0.2;InternalName=PCM Manager 64-Bit;LegalCopyright=Jens Henske;LegalTrademarks=;OriginalFilename=PCM Manager 64-Bit;ProductName=$(MSBuildProjectName) 64-Bit;ProductVersion=1.6;Comments=05072023;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName)</VerInfo_Keys>
+        <Icon_MainIcon>PCMManager_Icon.ico</Icon_MainIcon>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>

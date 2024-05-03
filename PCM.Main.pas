@@ -153,7 +153,6 @@ type
     function CurrentModule: TForm;
     procedure LoadSQLs;
     procedure Abmelden;
-    procedure InitializeRights;
   public
     { Public-Deklarationen }
     bAbmelden: Boolean;
@@ -363,82 +362,6 @@ begin
     end;
   end;
 end;
-procedure Tfrm_PCM_Main.InitializeRights;
-begin
-  dm_PCM.qry_Work.SQL.Text:= ASSQL_GetAllRights[dm_PCM.iDBType];
-  dm_PCM.qry_Work.ParamByName('ID').AsInteger := dm_PCM.iIDBenutzerPCM;
-  dm_PCM.qry_Work.Open;
-  dm_PCM.iBenutzer:= dm_PCM.qry_Work.FieldByName('Benutzer').asInteger;
-  dm_PCM.iKonfiguration:= dm_PCM.qry_Work.FieldByName('Konfiguration').asInteger;
-  dm_PCM.iDesign:= dm_PCM.qry_Work.FieldByName('Design').asInteger;
-  dm_PCM.iArchiv:= dm_PCM.qry_Work.FieldByName('dm_archiv').asInteger;
-  dm_PCM.qry_Work.Close;
-  // Benutzerverwaltung / Kein Recht
-  if (dm_PCM.iBenutzer = 0) and (dm_PCM.iKonfiguration = 0) and (dm_PCM.iDesign = 0) then
-  begin
-    navbrgrp_Optionen.Visible:= false;
-    iBenutzerverwaltung.Visible:= false;
-    iKonfiguration.Visible:= false;
-    ppmbtn_Benutzer.Visible:= false;
-    ppmbtn_Konfiguration.Visible:= false;
-    ppmbtn_Design.Visible:= false;
-  end;
-  // Benutzerverwaltung / Lesen / Ändern / Vollzugriff
-  case dm_PCM.iBenutzer of
-  0:
-    begin
-      iBenutzerverwaltung.Visible:= false;
-      ppmbtn_Benutzer.Visible:= false;
-    end;
-  1,2,3:
-    begin
-      navbrgrp_Optionen.Visible:= true;
-      iBenutzerverwaltung.Visible:= true;
-      ppmbtn_Benutzer.Visible:= true;
-    end;
-  end;
-  // Optionen / Lesen / Ändern / Vollzugriff
-  case dm_PCM.iKonfiguration of
-  0:
-    begin
-      iKonfiguration.Visible:= false;
-      ppmbtn_Konfiguration.Visible:= false;
-    end;
-  1,2,3:
-    begin
-      navbrgrp_Optionen.Visible:= true;
-      iKonfiguration.Visible:= true;
-      ppmbtn_Konfiguration.Visible:= true;
-    end;
-  end;
-  // Design / Lesen / Ändern / Vollzugriff
-  case dm_PCM.iDesign of
-  0:
-    begin
-      iDesign.Visible:= false;
-      ppmbtn_Design.Visible:= false;
-    end;
-  1,2,3:
-    begin
-      navbrgrp_Optionen.Visible:= true;
-      iDesign.Visible:= true;
-      ppmbtn_Design.Visible:= true;
-    end;
-  end;
-  // Archiv / Lesen / Ändern / Vollzugriff
-  case dm_PCM.iArchiv of
-  0:
-    begin
-      navbrgrp_Kontake.Visible:= false;
-      ppmbtn_Archiv.Visible:= false;
-    end;
-  1,2,3:
-    begin
-      navbrgrp_Kontake.Visible:= true;
-      ppmbtn_Archiv.Visible:= true;
-    end;
-  end;
-end;
 procedure Tfrm_PCM_Main.Abmelden;
 begin
   bAbmelden := True;
@@ -462,6 +385,7 @@ begin
   else
     Result := nil;
 end;
+{$Region Navbarfunktionen}
 ////////////////////////////////////////////////////////////////////////////////
 // Navbarfunktionen                                                           //
 ////////////////////////////////////////////////////////////////////////////////
@@ -614,6 +538,8 @@ begin
   btnRefreshRightsClick(Self);
   lafCtrl_Main.SkinName:= dm_PCM.sDesign;
 end;
+{$EndRegion}
+{$Region Formfunktionen}
 ////////////////////////////////////////////////////////////////////////////////
 // Formfunktionen                                                             //
 ////////////////////////////////////////////////////////////////////////////////
@@ -659,6 +585,82 @@ begin
   BarResize;
 end;
 procedure Tfrm_PCM_Main.FormShow(Sender: TObject);
+  procedure InitializeRights;
+  begin
+    dm_PCM.qry_Work.SQL.Text:= ASSQL_GetAllRights[dm_PCM.iDBType];
+    dm_PCM.qry_Work.ParamByName('ID').AsInteger := dm_PCM.iIDBenutzerPCM;
+    dm_PCM.qry_Work.Open;
+    dm_PCM.iBenutzer:= dm_PCM.qry_Work.FieldByName('Benutzer').asInteger;
+    dm_PCM.iKonfiguration:= dm_PCM.qry_Work.FieldByName('Konfiguration').asInteger;
+    dm_PCM.iDesign:= dm_PCM.qry_Work.FieldByName('Design').asInteger;
+    dm_PCM.iArchiv:= dm_PCM.qry_Work.FieldByName('dm_archiv').asInteger;
+    dm_PCM.qry_Work.Close;
+    // Benutzerverwaltung / Kein Recht
+    if (dm_PCM.iBenutzer = 0) and (dm_PCM.iKonfiguration = 0) and (dm_PCM.iDesign = 0) then
+    begin
+      navbrgrp_Optionen.Visible:= false;
+      iBenutzerverwaltung.Visible:= false;
+      iKonfiguration.Visible:= false;
+      ppmbtn_Benutzer.Visible:= false;
+      ppmbtn_Konfiguration.Visible:= false;
+      ppmbtn_Design.Visible:= false;
+    end;
+    // Benutzerverwaltung / Lesen / Ändern / Vollzugriff
+    case dm_PCM.iBenutzer of
+    0:
+      begin
+        iBenutzerverwaltung.Visible:= false;
+        ppmbtn_Benutzer.Visible:= false;
+      end;
+    1,2,3:
+      begin
+        navbrgrp_Optionen.Visible:= true;
+        iBenutzerverwaltung.Visible:= true;
+        ppmbtn_Benutzer.Visible:= true;
+      end;
+    end;
+    // Optionen / Lesen / Ändern / Vollzugriff
+    case dm_PCM.iKonfiguration of
+    0:
+      begin
+        iKonfiguration.Visible:= false;
+        ppmbtn_Konfiguration.Visible:= false;
+      end;
+    1,2,3:
+      begin
+        navbrgrp_Optionen.Visible:= true;
+        iKonfiguration.Visible:= true;
+        ppmbtn_Konfiguration.Visible:= true;
+      end;
+    end;
+    // Design / Lesen / Ändern / Vollzugriff
+    case dm_PCM.iDesign of
+    0:
+      begin
+        iDesign.Visible:= false;
+        ppmbtn_Design.Visible:= false;
+      end;
+    1,2,3:
+      begin
+        navbrgrp_Optionen.Visible:= true;
+        iDesign.Visible:= true;
+        ppmbtn_Design.Visible:= true;
+      end;
+    end;
+    // Archiv / Lesen / Ändern / Vollzugriff
+    case dm_PCM.iArchiv of
+    0:
+      begin
+        navbrgrp_Kontake.Visible:= false;
+        ppmbtn_Archiv.Visible:= false;
+      end;
+    1,2,3:
+      begin
+        navbrgrp_Kontake.Visible:= true;
+        ppmbtn_Archiv.Visible:= true;
+      end;
+    end;
+  end;
 begin
   {$ifdef WIn32}
   iSprache.Visible:= false;
@@ -722,6 +724,8 @@ begin
     end;
   end;
 end;
+{$EndRegion}
+{$Region Traymenü}
 ////////////////////////////////////////////////////////////////////////////////
 // Traymenü                                                                   //
 ////////////////////////////////////////////////////////////////////////////////
@@ -781,7 +785,7 @@ procedure Tfrm_PCM_Main.ppmbtn_BeendenClick(Sender: TObject);
 begin
   Close;
 end;
-
+{$EndRegion}
 end.
 
 

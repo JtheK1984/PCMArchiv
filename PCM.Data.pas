@@ -83,7 +83,7 @@ uses PCM.Main;
 
 procedure Tdm_PCM.DataModuleCreate(Sender: TObject);
 begin
-  iScale := Screen.PrimaryMonitor.PixelsPerInch /96;
+  iScale := Screen.PrimaryMonitor.PixelsPerInch / 96;
 end;
 procedure Tdm_PCM.con_PCMBeforeConnect(Sender: TObject);
 begin

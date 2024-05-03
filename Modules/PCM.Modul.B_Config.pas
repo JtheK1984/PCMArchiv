@@ -94,6 +94,22 @@ type
     qry_Subkat: TFDQuery;
     ds_Subkat: TDataSource;
     cxGridDBTableView1Bezeichnung: TcxGridDBColumn;
+    cxGrid1DBTableView1: TcxGridDBTableView;
+    qry_Index: TFDQuery;
+    ds_index: TDataSource;
+    cxGrid1DBTableView1Bezeichnung: TcxGridDBColumn;
+    cxGrid1Level1: TcxGridLevel;
+    cxGrid1DBTableView2: TcxGridDBTableView;
+    cxGrid1DBTableView2Bezeichnung: TcxGridDBColumn;
+    btn_trenn1: TdxBarButton;
+    btn_IndexNew: TdxBarLargeButton;
+    btn_IndexDelete: TdxBarLargeButton;
+    cxGrid1DBTableView2ID: TcxGridDBColumn;
+    cxGroupBox5: TcxGroupBox;
+    edt_Index: TcxDBTextEdit;
+    cxLabel1: TcxLabel;
+    btn_IndexSave: TdxBarLargeButton;
+    btn_IndexCancel: TdxBarLargeButton;
     procedure FormShow(Sender: TObject);
     procedure btn_CalConfigSave1Click(Sender: TObject);
     procedure btn_MainKatNewClick(Sender: TObject);
@@ -109,8 +125,19 @@ type
     procedure btn_SubKatCancelClick(Sender: TObject);
     procedure qry_MainkatAfterScroll(DataSet: TDataSet);
     procedure btn_SubKatSaveClick(Sender: TObject);
+    procedure btn_IndexDeleteClick(Sender: TObject);
+    procedure cxGridDBTableView1CellClick(Sender: TcxCustomGridTableView;
+      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+      AShift: TShiftState; var AHandled: Boolean);
+    procedure cxGrid1DBTableView2CellClick(Sender: TcxCustomGridTableView;
+      ACellViewInfo: TcxGridTableDataCellViewInfo; AButton: TMouseButton;
+      AShift: TShiftState; var AHandled: Boolean);
+    procedure btn_IndexNewClick(Sender: TObject);
+    procedure btn_IndexSaveClick(Sender: TObject);
+    procedure btn_IndexCancelClick(Sender: TObject);
   private
     { Private-Deklarationen }
+    iID: integer;
     SaveGridPfad,
     SaveGridMainKat,
     SaveGridSubKat: TSavedGridView;
@@ -137,7 +164,10 @@ begin
   qry_Pfad.Sql.Text:= 'Select Pfad From archiv_konfiguration';
   qry_Pfad.Open;
   qry_Mainkat.open;
+
+  qry_Index.open;
   qry_Subkat.open;
+
 end;
 procedure Tfrm_Config.qry_MainkatAfterScroll(DataSet: TDataSet);
 begin
@@ -226,6 +256,9 @@ begin
     // Option Subkategorien
     btn_SubKatSave.Enabled := qry_Subkat.State in [dsInsert, dsEdit];
     btn_SubKatCancel.Enabled := qry_Subkat.State in [dsInsert, dsEdit];
+        // Option Subkategorien
+    btn_IndexSave.Enabled := qry_Index.State in [dsInsert, dsEdit];
+    btn_IndexCancel.Enabled := qry_Index.State in [dsInsert, dsEdit];
   end;
   if dm_PCM.iKonfiguration = 3 then
   begin
@@ -233,6 +266,7 @@ begin
     btn_MainKatDelete.enabled := (not qry_Mainkat.Eof) and not(qry_Mainkat.State in [dsInsert, dsEdit]);
     // Option Subkategorien
     btn_SubKatDelete.enabled := (not qry_Subkat.Eof) and not(qry_Subkat.State in [dsInsert, dsEdit]);
+    btn_IndexDelete.enabled := (not qry_Index.Eof) and not(qry_Index.State in [dsInsert, dsEdit]) and (iID > 0);
   end;
 end;
 procedure Tfrm_Config.btn_MainKatCancelClick(Sender: TObject);
@@ -295,6 +329,69 @@ begin
     qry_Subkat.Post;
   end;
 end;
+procedure Tfrm_Config.cxGrid1DBTableView2CellClick(
+  Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo;
+  AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
+begin
+  iID:= ACellViewInfo.GridRecord.Values[0];
+  btn_IndexDelete.Enabled:= True;
+end;
+
+procedure Tfrm_Config.cxGridDBTableView1CellClick(
+  Sender: TcxCustomGridTableView; ACellViewInfo: TcxGridTableDataCellViewInfo;
+  AButton: TMouseButton; AShift: TShiftState; var AHandled: Boolean);
+begin
+  iID:= 0;
+  btn_IndexDelete.Enabled:= False;
+end;
+
+procedure Tfrm_Config.btn_IndexNewClick(Sender: TObject);
+begin
+  if qry_index.State in [dsInsert, dsEdit] then
+    qry_index.Post;
+  qry_index.Append;
+  qry_index.Insert;
+  qry_index.FieldByName('ID_Archiv_Unterkategorien').asInteger:= qry_Subkat.FieldByName('ID').AsInteger;
+  if not edt_Index.enabled then
+  begin
+    edt_Index.enabled := true;
+  end;
+  edt_Index.SetFocus;
+end;
+
+procedure Tfrm_Config.btn_IndexSaveClick(Sender: TObject);
+begin
+  if qry_Index.State in [dsInsert, dsEdit] then
+  begin
+    edt_Index.PostEditValue;
+    qry_Index.Post;
+  end;
+end;
+
+procedure Tfrm_Config.btn_IndexCancelClick(Sender: TObject);
+begin
+  qry_Index.Cancel;
+end;
+
+procedure Tfrm_Config.btn_IndexDeleteClick(Sender: TObject);
+var
+  sProgName: String;
+begin
+  if iID > 0 then
+  begin
+    qry_Index.Locate('ID',iID,[]);
+    dm_pcm.qry_work.SQL.Text:= 'Select Bezeichnung From archiv_Index Where ID = :ID';
+    dm_pcm.qry_work.ParamByName('ID').AsInteger:= qry_Index.FieldByName('ID').AsInteger;
+    dm_pcm.qry_work.open;
+    sProgName:= dm_pcm.qry_work.FieldByName('Bezeichnung').AsString;
+    dm_pcm.qry_work.close;
+    if MessageDlg(rs_PCMArchiv_DeleteIndex1 + sProgName + rs_PCMLizenzgenerator_Loeschen3, mtConfirmation, [mbYes, mbNo], 0, mbYes) = mrYes then
+    begin
+      qry_Index.Delete;
+    end;
+  end
+end;
+
 procedure Tfrm_Config.btn_SubKatCancelClick(Sender: TObject);
 begin
   qry_subkat.cancel;

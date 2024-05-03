@@ -40,35 +40,26 @@ object frm_Config: Tfrm_Config
       Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea]
       Properties.TabSlants.Kind = skCutCorner
       Properties.TabWidth = 100
-      ExplicitLeft = 3
-      ExplicitTop = 3
-      ExplicitWidth = 1274
-      ExplicitHeight = 794
       ClientRectBottom = 796
       ClientRectRight = 1276
       ClientRectTop = 25
       object ts_A_Archiv: TcxTabSheet
         Caption = 'Archiv'
         ImageIndex = 82
-        ExplicitLeft = 2
-        ExplicitTop = 28
-        ExplicitWidth = 1266
-        ExplicitHeight = 760
         object grpbx_FTPConfig: TcxGroupBox
           Left = 0
-          Top = 174
+          Top = 150
           Align = alTop
           Caption = 'Hauptkategorien'
           TabOrder = 1
-          ExplicitWidth = 1266
-          Height = 256
+          Height = 200
           Width = 1276
           object grd_FTPConfig: TcxGrid
             Left = 2
-            Top = 118
+            Top = 103
             Width = 1272
-            Height = 136
-            Align = alBottom
+            Height = 95
+            Align = alClient
             BorderStyle = cxcbsNone
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWindowText
@@ -78,9 +69,9 @@ object frm_Config: Tfrm_Config
             ParentFont = False
             TabOrder = 0
             LockedStateImageOptions.Effect = lsieDark
-            ExplicitLeft = 3
-            ExplicitTop = 111
-            ExplicitWidth = 1260
+            ExplicitLeft = 1
+            ExplicitTop = 114
+            ExplicitHeight = 136
             object grdDBTblView_FTPConfig: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               FilterBox.CustomizeDialog = False
@@ -118,6 +109,8 @@ object frm_Config: Tfrm_Config
               object grdDBTblView_FTPConfigBezeichnung: TcxGridDBColumn
                 DataBinding.FieldName = 'Bezeichnung'
                 DataBinding.IsNullValueType = True
+                SortIndex = 0
+                SortOrder = soAscending
                 Width = 900
               end
             end
@@ -141,8 +134,6 @@ object frm_Config: Tfrm_Config
             StyleDisabled.BorderColor = clBtnShadow
             StyleDisabled.BorderStyle = ebsNone
             TabOrder = 2
-            ExplicitTop = 81
-            ExplicitWidth = 1262
             Height = 27
             Width = 1272
             object edt_CalConfigFTP_URL: TcxDBTextEdit
@@ -166,10 +157,6 @@ object frm_Config: Tfrm_Config
               Style.IsFontAssigned = True
               TabOrder = 0
               OnExit = btn_MainKatSaveClick
-              ExplicitLeft = 83
-              ExplicitTop = 3
-              ExplicitWidth = 1174
-              ExplicitHeight = 21
               Width = 1188
             end
             object lbl_CalConfigFTP_URL: TcxLabel
@@ -202,8 +189,7 @@ object frm_Config: Tfrm_Config
           Align = alTop
           Caption = 'Verzeichnis zum Archiv'
           TabOrder = 0
-          ExplicitWidth = 1266
-          Height = 174
+          Height = 150
           Width = 1276
           object bardckctrl_Kalender: TdxBarDockControl
             Left = 2
@@ -218,7 +204,7 @@ object frm_Config: Tfrm_Config
             Left = 2
             Top = 103
             Width = 1272
-            Height = 69
+            Height = 45
             Align = alClient
             BorderStyle = cxcbsNone
             Font.Charset = DEFAULT_CHARSET
@@ -229,10 +215,7 @@ object frm_Config: Tfrm_Config
             ParentFont = False
             TabOrder = 1
             LockedStateImageOptions.Effect = lsieDark
-            ExplicitLeft = 3
-            ExplicitTop = 105
-            ExplicitWidth = 1260
-            ExplicitHeight = 60
+            ExplicitHeight = 49
             object grdDBTblView_ArchivPfad: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               FilterBox.CustomizeDialog = False
@@ -284,8 +267,6 @@ object frm_Config: Tfrm_Config
             StyleDisabled.BorderColor = clBtnShadow
             StyleDisabled.BorderStyle = ebsNone
             TabOrder = 2
-            ExplicitTop = 81
-            ExplicitWidth = 1262
             Height = 27
             Width = 1272
             object cxLabel2: TcxLabel
@@ -337,29 +318,25 @@ object frm_Config: Tfrm_Config
               Style.IsFontAssigned = True
               TabOrder = 1
               OnExit = btn_CalConfigSave1Click
-              ExplicitLeft = 83
-              ExplicitTop = 3
-              ExplicitWidth = 1174
-              ExplicitHeight = 21
               Width = 1188
             end
           end
         end
         object cxGroupBox1: TcxGroupBox
           Left = 0
-          Top = 430
+          Top = 350
           Align = alClient
           Caption = 'Unterkategorien'
           TabOrder = 2
-          ExplicitWidth = 1266
-          ExplicitHeight = 330
-          Height = 341
+          ExplicitTop = 430
+          ExplicitHeight = 341
+          Height = 421
           Width = 1276
           object cxGrid1: TcxGrid
             Left = 2
-            Top = 103
+            Top = 130
             Width = 1272
-            Height = 236
+            Height = 289
             Align = alClient
             BorderStyle = cxcbsNone
             Font.Charset = DEFAULT_CHARSET
@@ -370,14 +347,13 @@ object frm_Config: Tfrm_Config
             ParentFont = False
             TabOrder = 0
             LockedStateImageOptions.Effect = lsieDark
-            ExplicitLeft = 3
-            ExplicitTop = 105
-            ExplicitWidth = 1260
-            ExplicitHeight = 216
+            ExplicitTop = 103
+            ExplicitHeight = 236
             object cxGridDBTableView1: TcxGridDBTableView
               Navigator.Buttons.CustomButtons = <>
               FilterBox.CustomizeDialog = False
               ScrollbarAnnotations.CustomAnnotations = <>
+              OnCellClick = cxGridDBTableView1CellClick
               DataController.DataSource = ds_Subkat
               DataController.Filter.PercentWildcard = '*'
               DataController.Filter.UnderscoreWildcard = '?'
@@ -405,16 +381,63 @@ object frm_Config: Tfrm_Config
               OptionsSelection.CellSelect = False
               OptionsView.CellEndEllipsis = True
               OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
+              OptionsView.ExpandButtonsForEmptyDetails = False
               OptionsView.GroupByBox = False
               OptionsView.HeaderFilterButtonShowMode = fbmButton
               OptionsView.IndicatorWidth = 14
               object cxGridDBTableView1Bezeichnung: TcxGridDBColumn
+                Caption = 'Unterkategorie'
                 DataBinding.FieldName = 'Bezeichnung'
-                Width = 900
+                SortIndex = 0
+                SortOrder = soAscending
+                Width = 1001
+              end
+            end
+            object cxGrid1DBTableView1: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              ScrollbarAnnotations.CustomAnnotations = <>
+              DataController.DataSource = ds_index
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              OptionsView.GroupByBox = False
+              object cxGrid1DBTableView1Bezeichnung: TcxGridDBColumn
+                DataBinding.FieldName = 'Bezeichnung'
+                SortIndex = 0
+                SortOrder = soAscending
+                Width = 1000
+              end
+            end
+            object cxGrid1DBTableView2: TcxGridDBTableView
+              Navigator.Buttons.CustomButtons = <>
+              ScrollbarAnnotations.CustomAnnotations = <>
+              OnCellClick = cxGrid1DBTableView2CellClick
+              DataController.DataSource = ds_index
+              DataController.DetailKeyFieldNames = 'ID_Archiv_Unterkategorien'
+              DataController.KeyFieldNames = 'ID_Archiv_Unterkategorien'
+              DataController.MasterKeyFieldNames = 'ID'
+              DataController.Summary.DefaultGroupSummaryItems = <>
+              DataController.Summary.FooterSummaryItems = <>
+              DataController.Summary.SummaryGroups = <>
+              OptionsData.Deleting = False
+              OptionsData.Editing = False
+              OptionsData.Inserting = False
+              OptionsView.GroupByBox = False
+              object cxGrid1DBTableView2ID: TcxGridDBColumn
+                DataBinding.FieldName = 'ID'
+                Visible = False
+              end
+              object cxGrid1DBTableView2Bezeichnung: TcxGridDBColumn
+                Caption = 'Index'
+                DataBinding.FieldName = 'Bezeichnung'
+                Width = 1000
               end
             end
             object cxGridLevel1: TcxGridLevel
               GridView = cxGridDBTableView1
+              object cxGrid1Level1: TcxGridLevel
+                GridView = cxGrid1DBTableView2
+              end
             end
           end
           object dxBarDockControl1: TdxBarDockControl
@@ -433,13 +456,11 @@ object frm_Config: Tfrm_Config
             StyleDisabled.BorderColor = clBtnShadow
             StyleDisabled.BorderStyle = ebsNone
             TabOrder = 2
-            ExplicitTop = 81
-            ExplicitWidth = 1262
             Height = 27
             Width = 1272
             object cxDBTextEdit2: TcxDBTextEdit
               AlignWithMargins = True
-              Left = 82
+              Left = 92
               Top = 2
               Margins.Left = 0
               Margins.Top = 0
@@ -458,11 +479,9 @@ object frm_Config: Tfrm_Config
               Style.IsFontAssigned = True
               TabOrder = 0
               OnExit = btn_MainKatSaveClick
-              ExplicitLeft = 83
-              ExplicitTop = 3
-              ExplicitWidth = 1174
-              ExplicitHeight = 21
-              Width = 1188
+              ExplicitLeft = 82
+              ExplicitWidth = 1188
+              Width = 1178
             end
             object cxLabel3: TcxLabel
               AlignWithMargins = True
@@ -474,7 +493,7 @@ object frm_Config: Tfrm_Config
               Margins.Bottom = 2
               Align = alLeft
               AutoSize = False
-              Caption = 'Bezeichnung:'
+              Caption = 'Unterkategorie:'
               ParentFont = False
               Style.Font.Charset = DEFAULT_CHARSET
               Style.Font.Color = clWindowText
@@ -484,7 +503,64 @@ object frm_Config: Tfrm_Config
               Style.IsFontAssigned = True
               Transparent = True
               Height = 19
-              Width = 70
+              Width = 80
+            end
+          end
+          object cxGroupBox5: TcxGroupBox
+            Left = 2
+            Top = 103
+            Align = alTop
+            PanelStyle.Active = True
+            StyleDisabled.BorderColor = clBtnShadow
+            StyleDisabled.BorderStyle = ebsNone
+            TabOrder = 3
+            ExplicitTop = 108
+            Height = 27
+            Width = 1272
+            object edt_Index: TcxDBTextEdit
+              AlignWithMargins = True
+              Left = 92
+              Top = 2
+              Margins.Left = 0
+              Margins.Top = 0
+              Margins.Right = 0
+              Margins.Bottom = 0
+              Align = alClient
+              DataBinding.DataField = 'Bezeichnung'
+              DataBinding.DataSource = ds_index
+              ParentFont = False
+              Style.BorderStyle = ebsFlat
+              Style.Font.Charset = DEFAULT_CHARSET
+              Style.Font.Color = clWindowText
+              Style.Font.Height = -11
+              Style.Font.Name = 'Tahoma'
+              Style.Font.Style = []
+              Style.IsFontAssigned = True
+              TabOrder = 0
+              OnExit = btn_MainKatSaveClick
+              Width = 1178
+            end
+            object cxLabel1: TcxLabel
+              AlignWithMargins = True
+              Left = 7
+              Top = 4
+              Margins.Left = 5
+              Margins.Top = 2
+              Margins.Right = 5
+              Margins.Bottom = 2
+              Align = alLeft
+              AutoSize = False
+              Caption = 'Index:'
+              ParentFont = False
+              Style.Font.Charset = DEFAULT_CHARSET
+              Style.Font.Color = clWindowText
+              Style.Font.Height = -11
+              Style.Font.Name = 'Tahoma'
+              Style.Font.Style = []
+              Style.IsFontAssigned = True
+              Transparent = True
+              Height = 19
+              Width = 80
             end
           end
         end
@@ -604,6 +680,26 @@ object frm_Config: Tfrm_Config
         item
           Visible = True
           ItemName = 'btn_SubKatDelete'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_trenn1'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_IndexNew'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_IndexSave'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_IndexCancel'
+        end
+        item
+          Visible = True
+          ItemName = 'btn_IndexDelete'
         end>
       NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
       OneOnRow = True
@@ -704,6 +800,53 @@ object frm_Config: Tfrm_Config
       LargeImageIndex = 0
       Width = 145
     end
+    object btn_trenn1: TdxBarButton
+      Caption = '        '
+      Category = 0
+      Enabled = False
+      Hint = '        '
+      Visible = ivAlways
+    end
+    object btn_IndexNew: TdxBarLargeButton
+      Caption = 'Index anlegen'
+      Category = 0
+      Hint = 'Index anlegen'
+      Visible = ivAlways
+      OnClick = btn_IndexNewClick
+      AutoGrayScale = False
+      LargeImageIndex = 27
+      Width = 145
+    end
+    object btn_IndexDelete: TdxBarLargeButton
+      Caption = 'Index l'#246'schen'
+      Category = 0
+      Hint = 'Index l'#246'schen'
+      Visible = ivAlways
+      OnClick = btn_IndexDeleteClick
+      AutoGrayScale = False
+      LargeImageIndex = 24
+      Width = 145
+    end
+    object btn_IndexSave: TdxBarLargeButton
+      Caption = 'Index speichern'
+      Category = 0
+      Hint = 'Index speichern'
+      Visible = ivAlways
+      OnClick = btn_IndexSaveClick
+      AutoGrayScale = False
+      LargeImageIndex = 12
+      Width = 145
+    end
+    object btn_IndexCancel: TdxBarLargeButton
+      Caption = 'Abbrechen'
+      Category = 0
+      Hint = 'Abbrechen'
+      Visible = ivAlways
+      OnClick = btn_IndexCancelClick
+      AutoGrayScale = False
+      LargeImageIndex = 0
+      Width = 145
+    end
   end
   object qry_Pfad: TFDQuery
     Active = True
@@ -764,5 +907,25 @@ object frm_Config: Tfrm_Config
     DataSet = qry_Subkat
     Left = 243
     Top = 175
+  end
+  object qry_Index: TFDQuery
+    Active = True
+    AfterOpen = SetButtonsEnableVisible
+    AfterInsert = SetButtonsEnableVisible
+    AfterEdit = SetButtonsEnableVisible
+    AfterPost = SetButtonsEnableVisible
+    AfterCancel = SetButtonsEnableVisible
+    AfterDelete = SetButtonsEnableVisible
+    AfterScroll = SetButtonsEnableVisible
+    Connection = dm_PCM.con_PCM
+    SQL.Strings = (
+      'SELECT * From archiv_Index')
+    Left = 187
+    Top = 231
+  end
+  object ds_index: TDataSource
+    DataSet = qry_Index
+    Left = 243
+    Top = 231
   end
 end

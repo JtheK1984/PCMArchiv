@@ -35,6 +35,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
     View = 14
     OptionsImage.SmallImages = dm_PCM.imglst_16x16
     OptionsStyle.CustomStyles.Background = navbrStyleIt_main
+    ExplicitHeight = 718
     object navbrgrp_Optionen: TdxNavBarGroup
       Caption = 'Optionen'
       SelectedLinkIndex = -1
@@ -170,6 +171,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 1
+    ExplicitWidth = 1062
+    ExplicitHeight = 718
     Height = 726
     Width = 1064
     object pcmain: TcxPageControl
@@ -190,6 +193,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
       Properties.Images = dm_PCM.imglst_16x16
       Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize, pcoSort]
       OnPageChanging = pcmainPageChanging
+      ExplicitWidth = 1056
+      ExplicitHeight = 712
       ClientRectBottom = 714
       ClientRectLeft = 2
       ClientRectRight = 1052

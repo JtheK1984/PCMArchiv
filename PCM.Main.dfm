@@ -35,7 +35,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
     View = 14
     OptionsImage.SmallImages = dm_PCM.imglst_16x16
     OptionsStyle.CustomStyles.Background = navbrStyleIt_main
-    ExplicitHeight = 718
     object navbrgrp_Optionen: TdxNavBarGroup
       Caption = 'Optionen'
       SelectedLinkIndex = -1
@@ -171,8 +170,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 1
-    ExplicitWidth = 1062
-    ExplicitHeight = 718
     Height = 726
     Width = 1064
     object pcmain: TcxPageControl
@@ -189,16 +186,19 @@ object frm_PCM_Main: Tfrm_PCM_Main
       ParentBackground = False
       ParentColor = False
       TabOrder = 0
+      Properties.ActivePage = ts_Dashboard
       Properties.CustomButtons.Buttons = <>
       Properties.Images = dm_PCM.imglst_16x16
       Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize, pcoSort]
       OnPageChanging = pcmainPageChanging
-      ExplicitWidth = 1056
-      ExplicitHeight = 712
       ClientRectBottom = 714
       ClientRectLeft = 2
       ClientRectRight = 1052
-      ClientRectTop = 2
+      ClientRectTop = 28
+      object ts_Dashboard: TcxTabSheet
+        Caption = 'Dashboard'
+        ImageIndex = 0
+      end
     end
   end
   object img_Icons: TImageList
@@ -648,9 +648,9 @@ object frm_PCM_Main: Tfrm_PCM_Main
       WholeRow = False
     end
     object barOpenModule: TdxBarStatic
-      Caption = 'Bitte Modul w'#228'hlen'
+      Caption = 'Dashboard'
       Category = 0
-      Hint = 'Bitte Modul w'#228'hlen'
+      Hint = 'Dashboard'
       Visible = ivAlways
       Width = 573
     end

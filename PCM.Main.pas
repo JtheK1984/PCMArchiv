@@ -117,6 +117,7 @@ type
     dxBarGroup1: TdxBarGroup;
     iDesign: TdxNavBarItem;
     ppmbtn_Design: TMenuItem;
+    ts_Dashboard: TcxTabSheet;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormResize(Sender: TObject);
@@ -346,19 +347,15 @@ begin
 end;
 procedure Tfrm_PCM_Main.btnCloseModulClick(Sender: TObject);
 begin
-  if pcMain.PageCount > 0 then
+  if pcMain.PageCount > 1 then
   begin
-    TForm(pcMain.ActivePage.Controls[0]).Close;
-    TForm(pcMain.ActivePage.Controls[0]).Free;
-    pcMain.ActivePage.Free;
-    if pcMain.PageCount > 0 then
+    if pcMain.PageCount = 2 then
+      barOpenModule.Caption := 'Dashboard';
+    if pcmain.ActivePage <> ts_Dashboard  then
     begin
-
-      barOpenModule.Caption := pcmain.ActivePage.Caption;
-    end
-    else
-    begin
-      barOpenModule.Caption := rs_PCM_ChooseModul;
+      TForm(pcMain.ActivePage.Controls[0]).Close;
+      TForm(pcMain.ActivePage.Controls[0]).Free;
+      pcMain.ActivePage.Free;
     end;
   end;
 end;

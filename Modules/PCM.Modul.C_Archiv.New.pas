@@ -233,6 +233,8 @@ begin
     sFile:= ExtractFileName(sPathfrom);
   end;
   sPathTo:= dm_PCM.qry_work.FieldByName('Pfad').AsString + '\' + cmbbx_Benutzer.Properties.Items[cmbbx_Benutzer.ItemIndex] + '\' + cmbbx_Mainkat.Properties.Items[cmbbx_Mainkat.ItemIndex];
+  if Pos(lowercase('Onedrive'),lowercase(sPathTo) ) > 0 then
+    sPathTo:= GetEnvironmentVariable('OneDrive') + Copy(spathto,Pos(lowercase('Onedrive'),lowercase(sPathTo))+ 8 ,Length(sPathTo));
   if cmbbx_Subkat.ItemIndex > -1 then
     sPathTo:= sPathTo + '\' + cmbbx_Subkat.Properties.Items[cmbbx_Subkat.ItemIndex]  ;
   dm_PCM.qry_work.Close;
@@ -248,7 +250,11 @@ begin
       MessageDlg('Dokument existiert schon. Wenn das Dokument geändert werden soll, klicken Sie auf Dokument bearbeiten ',mtWarning,[mbOk], 0);
       exit;
     end;
-    CopyFileEx(PChar(sPathfrom), PChar(sPathTo), nil, Pointer(Handle), nil, 0);
+    if not CopyFileEx(PChar(sPathfrom), PChar(sPathTo), nil, Pointer(Handle), nil, 0) then
+    begin
+      ShowMessage(SysErrorMessage(GetLastError));
+      exit;
+    end;
     iSelected := MessageDlg('Soll die Originaldatei gelöscht werden?',TMsgDlgType.mtConfirmation,[mbYes,mbNo,mbCancel], 0);
     if (iSelected = 6) then
     begin
@@ -256,7 +262,7 @@ begin
     end;
   end;
   if Pos(lowercase('Onedrive'),lowercase(sPathTo) ) > 0 then
-    sPathTo:= '%onedrive%' + Copy(spathto,12,Length(sPathTo));
+    sPathTo:= '%onedrive%' + Copy(spathto,Pos(lowercase('Onedrive'),lowercase(sPathTo))+ 8 ,Length(sPathTo));
   if not CheckFileExists('archiv_files','Files',sFile) then
   begin
     dm_PCM.qry_work.SQL.Text:=  'Insert into archiv_files (Files,Fullpath,Benutzer,Mainkat,Subkat) ' +

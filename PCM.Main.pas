@@ -3,6 +3,7 @@
 interface
 
 uses
+  {$Region Uses}
   SYSTEM.uitypes, Winapi.Windows, Winapi.Messages, System.SysUtils,
   System.Variants, System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
   Vcl.ImgList, Vcl.Menus, NTTranslator, Strutils, DateUtils,shellapi, Vcl.Themes,
@@ -36,13 +37,13 @@ uses
   dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
   dxSkinXmas2008Blue, dxBar, cxLocalization, cxLabel, cxGroupBox, dxNavBarStyles,inifiles;
-
+  {$EndRegion Uses}
 type
+  {$Region Type}
   TdxBarControlAccess = class(TdxBarControl);
   TdxBarAccess = class(TdxBar);
   TdxBarManagerAccess = class(TdxBarManager);
 
-type
   TMethod = procedure of object;
   TModuleType = (mtForm, mtEvent);
   TModule = class(TCollectionItem)
@@ -70,7 +71,7 @@ type
 
 type
   Tfrm_PCM_Main = class(TForm)
-    img_Icons: TImageList;
+    imglst_Icons: TImageList;
     loc_Lang: TcxLocalizer;
     lafCtrl_Main: TcxLookAndFeelController;
     navbr_main: TdxNavBar;
@@ -85,10 +86,9 @@ type
     iKonfiguration: TdxNavBarItem;
     iInfo: TdxNavBarItem;
     iAbmelden: TdxNavBarItem;
-    navbrit_ChangePW: TdxNavBarItem;
     navbrStyleIt_main: TdxNavBarStyleItem;
-    pcmain: TcxPageControl;
-    pnl_Design: TcxGroupBox;
+    pc_main: TcxPageControl;
+    grpbx_Design: TcxGroupBox;
     trayic_Main: TTrayIcon;
     ppm_Main: TPopupMenu;
     ppmbtn_Benutzer: TMenuItem;
@@ -105,16 +105,13 @@ type
     iSprache: TdxNavBarItem;
     ppmbtn_Sprache: TMenuItem;
     ppmbtn_Abmelden: TMenuItem;
-    dxBarManager1: TdxBarManager;
-    dxBarManager1Bar1: TdxBar;
-    barOpenModule: TdxBarStatic;
-    btnModulleiste: TdxBarLargeButton;
-    btnRefreshRights: TdxBarLargeButton;
-    btnCloseModul: TdxBarLargeButton;
-    barUser: TdxBarStatic;
-    dxBarButton1: TdxBarButton;
-    Menuezurueck: TdxBarButton;
-    dxBarGroup1: TdxBarGroup;
+    brmgr_Main: TdxBarManager;
+    tb_Main: TdxBar;
+    brstc_OpenModule: TdxBarStatic;
+    btn_Modulleiste: TdxBarLargeButton;
+    btn_RefreshRights: TdxBarLargeButton;
+    btn_CloseModul: TdxBarLargeButton;
+    brstc_User: TdxBarStatic;
     iDesign: TdxNavBarItem;
     ppmbtn_Design: TMenuItem;
     ts_Dashboard: TcxTabSheet;
@@ -136,29 +133,24 @@ type
     procedure ppmbtn_HandbuchClick(Sender: TObject);
     procedure ppmbtn_SpracheClick(Sender: TObject);
     procedure NavBarClick(Sender: TObject);
-    procedure pcmainPageChanging(Sender: TObject; NewPage: TcxTabSheet; var AllowChange: Boolean);
-    procedure btnModulleisteClick(Sender: TObject);
-    procedure btnRefreshRightsClick(Sender: TObject);
-    procedure btnCloseModulClick(Sender: TObject);
+    procedure pc_mainPageChanging(Sender: TObject; NewPage: TcxTabSheet; var AllowChange: Boolean);
+    procedure btn_ModulleisteClick(Sender: TObject);
+    procedure btn_RefreshRightsClick(Sender: TObject);
+    procedure btn_CloseModulClick(Sender: TObject);
     procedure iSpracheClick(Sender: TObject);
-    procedure btnCloseAllGroupsClick(Sender: TObject);
     procedure ppmbtn_DesignClick(Sender: TObject);
   private
     { Private-Deklarationen }
     Modules: TCollection;
-    procedure RegisterForm(SideBarItemName: string; FormClass: TFormClass; Instance: Pointer; Right: Integer);
-    procedure RegisterEvent(SideBarItemName: string; Event: TMethod);
-    procedure BarResize;
-    procedure RegisterNavBarItems;
-    procedure CloseModules;
     function CurrentModule: TForm;
-    procedure LoadSQLs;
     procedure Abmelden;
+    procedure CloseModules;
+    procedure LoadData;
   public
     { Public-Deklarationen }
     bAbmelden: Boolean;
   end;
-
+  {$EndRegion Type}
 var
   frm_PCM_Main: Tfrm_PCM_Main;
 
@@ -170,28 +162,30 @@ uses
       PCM.Benutzerverwaltung,
       PCM.Data,
       PCM.Design,
+      PCM.Functions,
       PCM.Functions.Appinfo,
       PCM.Functions.ChangePW,
       PCM.Functions.Languages,
+      PCM.Functions.Lizenz,
       PCM.Functions.Login,
+      PCM.Functions.Synch.Wait,
       PCM.Handbuch,
       PCM.Helper,
-      PCM.Functions,
-			PCM.Strings,
       PCM.SQL,
       PCM.Modul.B_Config,
-      PCM.Modul.C_Archiv;
+      PCM.Modul.C_Archiv,
+			PCM.Strings;
 
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
 ////////////////////////////////////////////////////////////////////////////////
-procedure TModule.SetFormClass(Value: TFormClass);
+{$Region Hilfsfunktionen }
+function Tfrm_PCM_Main.CurrentModule: TForm;
 begin
-  if Value <> FFormClass then
-  begin
-    FFormClass := Value;
-    FType := mtForm;
-  end;
+  if pc_Main.ControlCount > 0 then
+    Result := TForm(pc_Main.ActivePage.Controls[0])
+  else
+    Result := nil;
 end;
 procedure TModule.SetEvent(Value: TMethod);
 begin
@@ -201,162 +195,12 @@ begin
     FType := mtEvent;
   end;
 end;
-procedure Tfrm_PCM_Main.btnModulleisteClick(Sender: TObject);
+procedure TModule.SetFormClass(Value: TFormClass);
 begin
-  navbr_main.Visible := not navbr_main.Visible;
-  if navbr_main.Visible then
-    btnModulleiste.Caption := rs_PCM_Modulliste_verstecken
-  else
-    btnModulleiste.Caption := rs_PCM_Modulliste_anzeigen;
-end;
-procedure Tfrm_PCM_Main.BarResize;
-var
-  rRect: TRect;
-  iTemp, iUsedSpace: Integer;
-  BarControl: TdxBarControlAccess;
-begin
-  if (dxBarManager1.Bars[0] <> nil) and (dxBarManager1.Bars[0].Control <> nil) then
+  if Value <> FFormClass then
   begin
-    BarControl := TdxBarControlAccess(dxBarManager1.Bars[0].Control);
-
-    iUsedSpace := 0;
-
-    barOpenModule.Width := 0;
-
-    for iTemp := 0 to BarControl.Bar.ItemLinks.Count - 1 do
-    begin
-      if BarControl.Bar.ItemLinks.Items[iTemp].Item = btnModulleiste then
-      begin
-        Inc(iUsedSpace, 0);
-      end
-      else
-      begin
-        if BarControl.Bar.ItemLinks.Items[iTemp].Item <> barOpenModule then
-        begin
-          Inc(iUsedSpace, BarControl.Bar.ItemLinks.Items[iTemp].ItemRect.Width);
-        end;
-      end;
-    end;
-
-    if BarControl.MarkExists then
-    begin
-      rRect := BarControl.MarkRect;
-      Inc(iUsedSpace, rRect.Right - rRect.Left);
-    end;
-     dxBarManager1.BeginUpdate;
-    Try
-      barOpenModule.Width := (dxBarManager1.Bars[0].Control as TdxBarControl).Width -  iUsedSpace - btnModulleiste.Width  - 45;
-    Finally
-      dxBarManager1.EndUpdate();
-    End;
-  end;
-end;
-procedure Tfrm_PCM_Main.RegisterForm(SideBarItemName: string; FormClass: TFormClass; Instance: Pointer; Right: Integer);
-var
-  NewModule: TModule;
-  Item: TdxNavBarItem;
-begin
-  Item := navbr_main.Items.Items[navbr_main.Items.ItemByName(SideBarItemName).index];
-  if Assigned(Item) then
-  begin
-    NewModule := TModule(Modules.Add);
-    Item.Tag := NewModule.ID;
-    NewModule.FormClass := FormClass;
-    NewModule.Instance := Instance;
-    NewModule.Right := Right;
-    NewModule.ModuleName := SideBarItemName;
-    NewModule.ImageIndex := Item.SmallImageIndex;
-  end;
-end;
-procedure Tfrm_PCM_Main.RegisterNavBarItems;
-begin
-  Modules.Clear;
-  RegisterForm('iBenutzerverwaltung', Tfrm_User, @frm_User, 1);
-  RegisterForm('iKonfiguration', Tfrm_config, @frm_config, 1);
-  RegisterForm('iDesign', Tfrm_Design, @frm_Design, 1);
-  RegisterForm('iArchiv',Tfrm_Contact, @frm_Contact, 1);
-  RegisterForm('iSysteminfo',Tfrm_PCM_System, @frm_PCM_System, 1);
-  RegisterForm('iInfo',Tfrm_PCM_InfoApp, @frm_PCM_InfoApp, 1);
-  RegisterForm('iHandbuch',Tfrm_Handbuch, @frm_Handbuch, 1);
-  RegisterEvent('iAbmelden', Abmelden);
-  RegisterEvent('iBeenden', Close);
-end;
-procedure Tfrm_PCM_Main.RegisterEvent(SideBarItemName: string; Event: TMethod);
-var
-  NewModule: TModule;
-  Item: TdxNavBarItem;
-begin
-  Item := navbr_main.Items.Items[navbr_main.Items.ItemByName(SideBarItemName).index];
-  if Assigned(Item) then
-  begin
-    NewModule := TModule(Modules.Add);
-    Item.Tag := NewModule.ID;
-    NewModule.Event := Event;
-    NewModule.ModuleName := SideBarItemName;
-  end
-end;
-procedure Tfrm_PCM_Main.CloseModules;
-var
-  iPage: Integer;
-begin
-  for iPage := pcMain.PageCount - 1 downto 0 do
-  begin
-    try
-      TForm(pcMain.Pages[iPage].Controls[0]).Close;
-      TForm(pcMain.Pages[iPage].Controls[0]).Free;
-    except
-    end;
-    pcMain.Pages[iPage].Free;
-  end;
-end;
-procedure Tfrm_PCM_Main.pcmainPageChanging(Sender: TObject; NewPage: TcxTabSheet; var AllowChange: Boolean);
-begin
-  barOpenModule.Caption := NewPage.Caption;
-end;
-procedure Tfrm_PCM_Main.btnRefreshRightsClick(Sender: TObject);
-var
-  Item: TdxNavBarItem;
-  Module: TModule;
-begin
-  btnRefreshRights.Enabled := False;
-  try
-    if pcMain.PageCount > 0 then
-    begin
-      Module := TModule(Modules.FindItemID(pcMain.ActivePage.Tag));
-      if Module.Typ = mtForm then
-      begin
-        Item := navbr_main.Items.Items[navbr_main.Items.ItemByName(Module.ModuleName).index];
-        TForm(pcMain.ActivePage.Controls[0]).Close;
-        TForm(pcMain.ActivePage.Controls[0]).Free;
-        pcMain.ActivePage.Free;
-        NavBarClick(Item);
-      end;
-    end;
-  finally
-    btnRefreshRights.Enabled := True;
-  end;
-end;
-procedure Tfrm_PCM_Main.btnCloseAllGroupsClick(Sender: TObject);
-var
-  iCount: Integer;
-begin
-  for iCount := 1 to navbr_main.Groups.Count -1 do
-  begin
-    navbr_main.Groups[iCount].Expanded := False;
-  end;
-end;
-procedure Tfrm_PCM_Main.btnCloseModulClick(Sender: TObject);
-begin
-  if pcMain.PageCount > 1 then
-  begin
-    if pcMain.PageCount = 2 then
-      barOpenModule.Caption := 'Dashboard';
-    if pcmain.ActivePage <> ts_Dashboard  then
-    begin
-      TForm(pcMain.ActivePage.Controls[0]).Close;
-      TForm(pcMain.ActivePage.Controls[0]).Free;
-      pcMain.ActivePage.Free;
-    end;
+    FFormClass := Value;
+    FType := mtForm;
   end;
 end;
 procedure Tfrm_PCM_Main.Abmelden;
@@ -367,29 +211,113 @@ begin
   Hide;
   Show;
 end;
-procedure Tfrm_PCM_Main.LoadSQLs;
+procedure Tfrm_PCM_Main.CloseModules;
+var
+  iPage: Integer;
+begin
+  for iPage := pc_Main.PageCount - 1 downto 1 do
+  begin
+    try
+      TForm(pc_Main.Pages[iPage].Controls[0]).Close;
+      TForm(pc_Main.Pages[iPage].Controls[0]).Free;
+    except
+    end;
+    pc_Main.Pages[iPage].Free;
+  end;
+end;
+procedure Tfrm_PCM_Main.LoadData;
 begin
   dm_PCM.qry_Work.SQL.Text:= ASSQL_GetUsername[dm_PCM.iDBType];
   dm_PCM.qry_Work.ParamByName('ID').AsInteger:= dm_PCM.iIDBenutzerPCM;
   dm_PCM.qry_Work.Open;
-  barUser.Caption:= dm_PCM.qry_Work.FieldByName('Benutzer').AsString;
+  brstc_User.Caption:= dm_PCM.qry_Work.FieldByName('Benutzer').AsString;
   dm_PCM.qry_Work.Close;
 end;
-function Tfrm_PCM_Main.CurrentModule: TForm;
+{$EndRegion Hilfsfunktionen}
+////////////////////////////////////////////////////////////////////////////////
+// Toolbar                                                                    //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Toolbar}
+procedure Tfrm_PCM_Main.btn_CloseModulClick(Sender: TObject);
 begin
-  if pcMain.ControlCount > 0 then
-    Result := TForm(pcMain.ActivePage.Controls[0])
-  else
-    Result := nil;
+  if pc_Main.PageCount > 1 then
+  begin
+    if pc_Main.PageCount = 2 then
+      brstc_OpenModule.Caption := 'Dashboard';
+    if pc_Main.ActivePage <> ts_Dashboard  then
+    begin
+      TForm(pc_Main.ActivePage.Controls[0]).Close;
+      TForm(pc_Main.ActivePage.Controls[0]).Free;
+      pc_Main.ActivePage.Free;
+    end;
+  end;
 end;
-{$Region Navbarfunktionen}
+procedure Tfrm_PCM_Main.btn_ModulleisteClick(Sender: TObject);
+begin
+  navbr_main.Visible := not navbr_main.Visible;
+  if navbr_main.Visible then
+    btn_Modulleiste.Caption := rs_PCM_Modulliste_verstecken
+  else
+    btn_Modulleiste.Caption := rs_PCM_Modulliste_anzeigen;
+end;
+procedure Tfrm_PCM_Main.btn_RefreshRightsClick(Sender: TObject);
+var
+  navbrItm_Item: TdxNavBarItem;
+  mModule: TModule;
+begin
+  btn_RefreshRights.Enabled := False;
+  try
+    if pc_Main.PageCount > 0 then
+    begin
+      mModule := TModule(Modules.FindItemID(pc_Main.ActivePage.Tag));
+      if mModule.Typ = mtForm then
+      begin
+        navbrItm_Item := navbr_main.Items.Items[navbr_main.Items.ItemByName(mModule.ModuleName).index];
+        TForm(pc_Main.ActivePage.Controls[0]).Close;
+        TForm(pc_Main.ActivePage.Controls[0]).Free;
+        pc_Main.ActivePage.Free;
+        NavBarClick(navbrItm_Item);
+      end;
+    end;
+  finally
+    btn_RefreshRights.Enabled := True;
+  end;
+end;
+procedure Tfrm_PCM_Main.pc_mainPageChanging(Sender: TObject; NewPage: TcxTabSheet; var AllowChange: Boolean);
+begin
+  brstc_OpenModule.Caption := NewPage.Caption;
+end;
+{$EndRegion Toolbar}
 ////////////////////////////////////////////////////////////////////////////////
 // Navbarfunktionen                                                           //
 ////////////////////////////////////////////////////////////////////////////////
+{$Region Navbarfunktionen}
+procedure Tfrm_PCM_Main.iSpracheClick(Sender: TObject);
+var
+  ifINI: TIniFile;
+begin
+  Application.CreateForm(Tfrm_Language,frm_Language);
+  frm_Language.Position:= poScreenCenter;
+  frm_Language.ClientHeight:= 135;
+  frm_Language.ShowModal;
+  TNtTranslator.SetNew(dm_PCM.slocale,[],'de');
+  TNtTranslator.TranslateForms;
+  ifINI := TIniFile.Create(GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\PCM.ini');
+  try
+    ifINI.WriteString(PCM_Logname, 'Language', dm_PCm.sLocale);
+  finally
+    ifINI.Free;
+  end;
+  Caption:= PCM_Programmname;
+  trayic_Main.popupmenu:= ppm_Main;
+  LoadData;
+  btn_RefreshRightsClick(Self);
+  lafCtrl_Main.SkinName:= dm_PCM.sDesign;
+end;
 procedure Tfrm_PCM_Main.NavBarClick(Sender: TObject);
 var
-  Module: TModule;
-  fTabForm: TForm;
+  mModule: TModule;
+  frm_TabForm: TForm;
   iPageIndex: Integer;
 
   function TabExist(sTabName: String): Integer;
@@ -397,25 +325,24 @@ var
     iCount: Integer;
   begin
     Result := -1;
-    for iCount := 0 to pcMain.PageCount -1 do
+    for iCount := 0 to pc_Main.PageCount -1 do
     begin
-      if pcMain.Pages[iCount].Name = sTabName then
+      if pc_Main.Pages[iCount].Name = sTabName then
       begin
         Result := iCount;
         Break;
       end;
     end;
   end;
-
   function CreateNewTabSheet(sTabName: String): Integer;
   var
-    tshNew: TcxTabSheet;
+    ts_New: TcxTabSheet;
   begin
-    tshNew := TcxTabSheet.Create(pcMain);
-    tshNew.PageControl := pcMain;
-    tshNew.Name := sTabName;
-    pcMain.ActivePage := tshNew;
-    Result := pcMain.ActivePageIndex;
+    ts_New := TcxTabSheet.Create(pc_Main);
+    ts_New.PageControl := pc_Main;
+    ts_New.Name := sTabName;
+    pc_Main.ActivePage := ts_New;
+    Result := pc_Main.ActivePageIndex;
   end;
 var
   sModul,sModulCaption: String;
@@ -424,11 +351,11 @@ begin
   begin
     navbr_main.Enabled := False;
     TRY
-      Module := TModule(Modules.FindItemID((Sender AS TdxNavBarItem).Tag));
-      if Assigned(Module) then
+      mModule := TModule(Modules.FindItemID((Sender AS TdxNavBarItem).Tag));
+      if Assigned(mModule) then
       begin
-        sModul:= Module.ModuleName;
-        sModulCaption:= Module.ModuleName;
+        sModul:= mModule.ModuleName;
+        sModulCaption:= mModule.ModuleName;
         case AnsiIndexStr(sModul, ['iBenutzerverwaltung','iKonfiguration','iDesign','iArchiv','iSysteminfo','iInfo','iHandbuch']) of
         0:
           begin
@@ -469,42 +396,60 @@ begin
         iPageIndex := TabExist('tsh' + sModul);
         if iPageIndex > -1 then
         begin
-          pcMain.ActivePageIndex := iPageIndex;
-          fTabForm := CurrentModule;
-          if fTabForm <> nil then
-            if not fTabForm.Focused then
-              if Assigned(fTabForm.OnActivate) then
+          pc_Main.ActivePageIndex := iPageIndex;
+          frm_TabForm := CurrentModule;
+          if frm_TabForm <> nil then
+            if not frm_TabForm.Focused then
+              if Assigned(frm_TabForm.OnActivate) then
               begin
-                fTabForm.OnActivate(Sender);
-                barOpenModule.Caption := Copy(sModulCaption, 2, Length(sModulCaption));
+                frm_TabForm.OnActivate(Sender);
+                brstc_OpenModule.Caption := Copy(sModulCaption, 2, Length(sModulCaption));
               end;
           Exit;
         end;
-        if Module.Typ = mtForm then
+        if mModule.Typ = mtForm then
         begin
           Screen.Cursor := crHourglass;
           try
-            TForm(Module.Instance^) := Module.FormClass.Create(Nil);
+
+            if sModulCaption = 'i'+ rs_PCM_Konfiguration then
+            begin
+              dm_PCM.qry_Work.SQL.Text:= 'SELECT COUNT(*) + ' +
+                                         '(SELECT COUNT(*) FROM archiv_konfiguration_unterkategorien) + ' +
+                                         '(SELECT COUNT(*) FROM archiv_konfiguration_index) + ' +
+                                         '(SELECT COUNT(*) FROM archiv_konfiguration_zuweisung_hauptkategorien) as Anzahl ' +
+                                         'FROM archiv_konfiguration_hauptkategorien';
+              dm_PCM.qry_Work.Open;
+        	    ShowWaitForm(TForm(Self), PWideChar('Formular wird geladen'), dm_PCM.qry_Work.FieldByName('Anzahl').asinteger,ClientWidth, Height);
+              dm_PCM.qry_Work.Close;
+            end
+            else begin
+        	    ShowWaitForm(TForm(Self), PWideChar('Formular wird geladen'), 1,ClientWidth, Height);
+            end;
+            Application.ProcessMessages;
+            WaitFormStep;
+            TForm(mModule.Instance^) := mModule.FormClass.Create(Nil);
           finally
             Screen.Cursor := crDefault;
           end;
-          fTabForm := TForm((Module.Instance)^);
+          frm_TabForm := TForm((mModule.Instance)^);
           iPageIndex := CreateNewTabSheet('tsh' + sModul);
-          fTabForm.Parent := pcMain.Pages[iPageIndex];
-          pcMain.Pages[iPageIndex].Caption := Copy(sModulCaption, 2, Length(sModulCaption));
-          pcMain.Pages[iPageIndex].Tag := (Sender AS TdxNavBarItem).Tag;
-          pcMain.Pages[iPageIndex].ImageIndex := Module.ImageIndex;
-          pcMain.Pages[iPageIndex].InsertComponent(fTabForm);
-          fTabForm.BorderStyle := bsNone;
-          fTabForm.ALign:= AlClient;
-          fTabForm.Enabled := True;
-          fTabForm.Show;
-          barOpenModule.Caption := Copy(sModulCaption, 2, Length(sModulCaption));
+          frm_TabForm.Parent := pc_Main.Pages[iPageIndex];
+          pc_Main.Pages[iPageIndex].Caption := Copy(sModulCaption, 2, Length(sModulCaption));
+          pc_Main.Pages[iPageIndex].Tag := (Sender AS TdxNavBarItem).Tag;
+          pc_Main.Pages[iPageIndex].ImageIndex := mModule.ImageIndex;
+          pc_Main.Pages[iPageIndex].InsertComponent(frm_TabForm);
+          frm_TabForm.BorderStyle := bsNone;
+          frm_TabForm.ALign:= AlClient;
+          frm_TabForm.Enabled := True;
+          frm_TabForm.Show;
+          CloseWaitform;
+          brstc_OpenModule.Caption := Copy(sModulCaption, 2, Length(sModulCaption));
         end
         else
-          if Module.Typ = mtEvent then
+          if mModule.Typ = mtEvent then
           begin
-            Module.Event;
+            mModule.Event;
           end;
       end
     FINALLY
@@ -513,33 +458,11 @@ begin
     END;
   end;
 end;
-procedure Tfrm_PCM_Main.iSpracheClick(Sender: TObject);
-var
-  iniFile: TIniFile;
-begin
-  Application.CreateForm(Tfrm_Language,frm_Language);
-  frm_Language.Position:= poScreenCenter;
-  frm_Language.ClientHeight:= 135;
-  frm_Language.ShowModal;
-  TNtTranslator.SetNew(dm_PCM.slocale,[],'de');
-  TNtTranslator.TranslateForms;
-  iniFile := TIniFile.Create(GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\PCM.ini');
-  try
-    iniFile.WriteString(PCM_Logname, 'Language', dm_PCm.sLocale);
-  finally
-    iniFile.Free;
-  end;
-  Caption:= PCM_Programmname;
-  trayic_Main.popupmenu:= ppm_Main;
-  LoadSQLs;
-  btnRefreshRightsClick(Self);
-  lafCtrl_Main.SkinName:= dm_PCM.sDesign;
-end;
 {$EndRegion}
-{$Region Formfunktionen}
 ////////////////////////////////////////////////////////////////////////////////
 // Formfunktionen                                                             //
 ////////////////////////////////////////////////////////////////////////////////
+{$Region Formfunktionen}
 procedure Tfrm_PCM_Main.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   CloseModules;
@@ -559,29 +482,115 @@ begin
 end;
 procedure Tfrm_PCM_Main.FormKeyPress(Sender: TObject; var Key: Char);
 var
-  m: TForm;
+  frm_Form: TForm;
 begin
-  m := CurrentModule;
-  if m <> nil then
-    if not m.Focused then
-      if Assigned(m.OnKeyPress) then
-        m.OnKeyPress(Sender, Key);
+  frm_Form := CurrentModule;
+  if frm_Form <> nil then
+    if not frm_Form.Focused then
+      if Assigned(frm_Form.OnKeyPress) then
+        frm_Form.OnKeyPress(Sender, Key);
 end;
 procedure Tfrm_PCM_Main.FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
 var
-  m: TForm;
+  frm_Form: TForm;
 begin
-  m := CurrentModule;
-  if m <> nil then
-    if not m.Focused then
-      if Assigned(m.OnKeyUp) then
-        m.OnKeyUp(Sender, Key, Shift);
+  frm_Form := CurrentModule;
+  if frm_Form <> nil then
+    if not frm_Form.Focused then
+      if Assigned(frm_Form.OnKeyUp) then
+        frm_Form.OnKeyUp(Sender, Key, Shift);
 end;
 procedure Tfrm_PCM_Main.FormResize(Sender: TObject);
+  procedure BarResize;
+  var
+    rRect: TRect;
+    iTemp, iUsedSpace: Integer;
+    BarControl: TdxBarControlAccess;
+  begin
+    if (brmgr_Main.Bars[0] <> nil) and (brmgr_Main.Bars[0].Control <> nil) then
+    begin
+      BarControl := TdxBarControlAccess(brmgr_Main.Bars[0].Control);
+
+      iUsedSpace := 0;
+
+      brstc_OpenModule.Width := 0;
+
+      for iTemp := 0 to BarControl.Bar.ItemLinks.Count - 1 do
+      begin
+        if BarControl.Bar.ItemLinks.Items[iTemp].Item = btn_Modulleiste then
+        begin
+          Inc(iUsedSpace, 0);
+        end
+        else
+        begin
+          if BarControl.Bar.ItemLinks.Items[iTemp].Item <> brstc_OpenModule then
+          begin
+            Inc(iUsedSpace, BarControl.Bar.ItemLinks.Items[iTemp].ItemRect.Width);
+          end;
+        end;
+      end;
+
+      if BarControl.MarkExists then
+      begin
+        rRect := BarControl.MarkRect;
+        Inc(iUsedSpace, rRect.Right - rRect.Left);
+      end;
+       brmgr_Main.BeginUpdate;
+      Try
+        brstc_OpenModule.Width := (brmgr_Main.Bars[0].Control as TdxBarControl).Width -  iUsedSpace - btn_Modulleiste.Width  - 45;
+      Finally
+        brmgr_Main.EndUpdate();
+      End;
+    end;
+  end;
 begin
   BarResize;
 end;
 procedure Tfrm_PCM_Main.FormShow(Sender: TObject);
+  procedure RegisterForm(SideBarItemName: string; FormClass: TFormClass; Instance: Pointer; Right: Integer);
+  var
+    NewModule: TModule;
+    Item: TdxNavBarItem;
+  begin
+    Item := navbr_main.Items.Items[navbr_main.Items.ItemByName(SideBarItemName).index];
+    if Assigned(Item) then
+    begin
+      NewModule := TModule(Modules.Add);
+      Item.Tag := NewModule.ID;
+      NewModule.FormClass := FormClass;
+      NewModule.Instance := Instance;
+      NewModule.Right := Right;
+      NewModule.ModuleName := SideBarItemName;
+      NewModule.ImageIndex := Item.SmallImageIndex;
+    end;
+  end;
+  procedure RegisterEvent(SideBarItemName: string; Event: TMethod);
+  var
+    NewModule: TModule;
+    Item: TdxNavBarItem;
+  begin
+    Item := navbr_main.Items.Items[navbr_main.Items.ItemByName(SideBarItemName).index];
+    if Assigned(Item) then
+    begin
+      NewModule := TModule(Modules.Add);
+      Item.Tag := NewModule.ID;
+      NewModule.Event := Event;
+      NewModule.ModuleName := SideBarItemName;
+    end
+  end;
+  procedure RegisterNavBarItems;
+  begin
+    Modules.Clear;
+    RegisterForm('iBenutzerverwaltung', Tfrm_User, @frm_User, 1);
+    RegisterForm('iKonfiguration', Tfrm_config, @frm_config, 1);
+    RegisterForm('iDesign', Tfrm_Design, @frm_Design, 1);
+    RegisterForm('iArchiv',Tfrm_Archiv, @frm_Archiv, 1);
+    RegisterForm('iSysteminfo',Tfrm_PCM_System, @frm_PCM_System, 1);
+    RegisterForm('iInfo',Tfrm_PCM_InfoApp, @frm_PCM_InfoApp, 1);
+    RegisterForm('iHandbuch',Tfrm_Handbuch, @frm_Handbuch, 1);
+    RegisterEvent('iAbmelden', Abmelden);
+    RegisterEvent('iBeenden', Close);
+  end;
   procedure InitializeRights;
   begin
     dm_PCM.qry_Work.SQL.Text:= ASSQL_GetAllRights[dm_PCM.iDBType];
@@ -658,6 +667,52 @@ procedure Tfrm_PCM_Main.FormShow(Sender: TObject);
       end;
     end;
   end;
+  procedure LoadLanguageIni;
+  begin
+    try
+      loc_lang.LoadFromFile(GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\cxLocalLang.ini');
+      loc_lang.LanguageIndex := 1;
+    except
+      on e:Exception do
+      begin
+        MessageDlg(rs_PCM_Sprachdatei, mtWarning, [mbOk], 0);
+      end
+    end;
+  end;
+  procedure CheckClientLicence;
+  begin
+    dm_PCM.bNewLiceneCheck:= false;
+    CheckLizenzNew;
+    if dm_PCm.bNewLiceneCheck = false then
+    begin
+      CheckLizenzNew;
+      if dm_PCm.bNewLiceneCheck = false then
+        Application.Terminate;
+    end;
+  end;
+  procedure CheckLogin;
+  begin
+    if not bAbmelden then
+      dm_PCM.bLogin := Autologin
+    else
+      dm_PCM.bLogin := false;
+    if not dm_PCM.bLogin then
+    begin
+      Application.CreateForm(Tfrm_PCM_Login, frm_PCM_Login);
+      dm_PCM.bLogin := frm_pcm_login.Login_User;
+      frm_PCM_Login.Free;
+    end;
+    if not dm_PCM.bLogin then
+      Application.Terminate;
+    bAbmelden:= False;
+  end;
+  procedure SetTrayMenu;
+  begin
+    Caption:= PCM_Programmname;
+    trayIC_Main.PopupMenu:= ppm_main;
+    if dm_PCM.bDemo then
+      Caption:=PCM_Programmname + rs_PCM_Demolizenz + DateTostr(dm_PCM.dtGueltig);
+  end;
 begin
   {$ifdef WIn32}
   iSprache.Visible:= false;
@@ -671,61 +726,28 @@ begin
     Application.Terminate;
   end
   else begin
-    lafCtrl_Main.SkinName:= dm_PCM.sDesign;
-    try
-      loc_lang.LoadFromFile(GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\cxLocalLang.ini');
-      loc_lang.LanguageIndex := 1;
-    except
-      on e:Exception do
-      begin
-        MessageDlg(rs_PCM_Sprachdatei, mtWarning, [mbOk], 0);
-      end
-    end;
+  	lafCtrl_Main.SkinName:= dm_PCM.sDesign;
+    LoadLanguageIni;
     if dm_PCM.bStyle then
     begin
       NavBarClick(iDesign);
     end
     else begin
-      dm_PCM.bNewLiceneCheck:= false;
-      CheckLizenzNew;
-      if dm_PCm.bNewLiceneCheck = false then
-      begin
-        CheckLizenzNew;
-        if dm_PCm.bNewLiceneCheck = false then
-          Application.Terminate;
-      end;
-      if not bAbmelden then
-        dm_PCM.bLogin := Autologin
-      else
-        dm_PCM.bLogin := false;
-      if not dm_PCM.bLogin then
-      begin
-        Application.CreateForm(Tfrm_PCM_Login, frm_PCM_Login);
-        dm_PCM.bLogin := frm_pcm_login.Login_User;
-        frm_PCM_Login.Free;
-      end;
-      if not dm_PCM.bLogin then
-        Application.Terminate;
-      bAbmelden:= False;
+      CheckClientLicence;
+      CheckLogin;
       InitializeRights;
-      LoadSQLs;
-      FormResize(Self);
+      LoadData;
       WriteLog(PCM_Logname,rs_PCM_Start,0);
-      Caption:= PCM_Programmname;
-
-      trayIC_Main.PopupMenu:= ppm_main;
-      if dm_PCM.bDemo then
-        Caption:=PCM_Programmname + rs_PCM_Demolizenz + DateTostr(dm_PCM.dtGueltig);
-      BarResize;
+      SetTrayMenu;
       RegisterNavBarItems;
     end;
   end;
 end;
 {$EndRegion}
-{$Region Traymenü}
 ////////////////////////////////////////////////////////////////////////////////
 // Traymenü                                                                   //
 ////////////////////////////////////////////////////////////////////////////////
+{$Region Traymenü}
 procedure Tfrm_PCM_Main.ppmbtn_BenutzerClick(Sender: TObject);
 begin
   navbarclick(iBenutzerverwaltung);

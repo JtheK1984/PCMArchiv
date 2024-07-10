@@ -3,6 +3,7 @@ unit PCM.Data;
 interface
 
 uses
+  {$Region Uses}
   System.SysUtils, System.Classes,inifiles, FireDAC.Stan.Intf,
   FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf,
   FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys,
@@ -12,12 +13,12 @@ uses
   FireDAC.Phys.ODBCBase, FireDAC.Phys.MSSQL, FireDAC.Phys.ADS,
   FireDAC.Comp.DataSet,Vcl.Dialogs, System.ImageList, Vcl.ImgList, Vcl.Controls,
   cxImageList, cxGraphics, winapi.Windows,System.UITypes,Vcl.Forms;
-
+  {$endRegion Uses}
 type
+  {$Region Type}
   Tdm_PCM = class(TDataModule)
     con_PCM: TFDConnection;
-    FDPhysADSDriverLink1: TFDPhysADSDriverLink;
-    FDPhysMSSQLDriverLink1: TFDPhysMSSQLDriverLink;
+    physdvrLnk_Mysql: TFDPhysMSSQLDriverLink;
     qry_work: TFDQuery;
     imglst_24x24: TcxImageList;
     imglst_32x32: TcxImageList;
@@ -30,29 +31,31 @@ type
     { Private-Deklarationen }
   public
     { Public-Deklarationen }
-    iModulTab: integer;
-    bNewLiceneCheck: Boolean;
-    bClose: boolean;
-    blogin: boolean;
-    bStyle: boolean;
-    iIDBenutzerPCM: integer;
-    iDBType: integer;
-    sServer,sstyle,sDesign: String;
-    slocale: String;
-    bAutologin: boolean;
-    sUSerAutologin: string;
-    Firma, Nummer: string;
-    bDemo: boolean;
     bAppTerm: boolean;
-    dtGueltig,dtCurrDate: Tdate;
-    iScale: double;
-    // Rechte
-    iBenutzer: integer;
-    iKonfiguration: integer;
-    iDesign: integer;
+    bClose: boolean;
+    bDemo: boolean;
+    blogin: boolean;
+    bNewLiceneCheck: Boolean;
+    bStyle: boolean;
+    dtCurrDate: Tdate;
+    dtGueltig: Tdate;
     iArchiv: integer;
+    iBenutzer: integer;
+    iDBType: integer;
+    iDesign: integer;
+    iIDBenutzerPCM: integer;
+    iKonfiguration: integer;
+    iModulTab: integer;
+    iScale: double;
+    sDesign: String;
+    slocale: String;
+    sServer: String;
+    sstyle: String;
+    sUserAutologin: string;
+    Firma: string;
+    Nummer: string;
   end;
-
+  {$EndRegion Type}
 var
   dm_PCM: Tdm_PCM;
 
@@ -81,6 +84,10 @@ uses PCM.Main;
 
 {$R *.dfm}
 
+////////////////////////////////////////////////////////////////////////////////
+// Datamodul                                                                  //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Datamodul}
 procedure Tdm_PCM.DataModuleCreate(Sender: TObject);
 begin
   iScale := Screen.PrimaryMonitor.PixelsPerInch / 96;
@@ -118,5 +125,5 @@ begin
      end;
   end;
 end;
-
+{$EndRegion Datamodul}
 end.

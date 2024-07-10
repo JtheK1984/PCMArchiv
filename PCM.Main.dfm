@@ -83,9 +83,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
           Item = iSprache
         end
         item
-          Item = navbrit_ChangePW
-        end
-        item
           Item = iAbmelden
         end
         item
@@ -132,11 +129,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
       SmallImageIndex = 23
       OnClick = NavBarClick
     end
-    object navbrit_ChangePW: TdxNavBarItem
-      Caption = 'Passwort '#228'ndern'
-      SmallImageIndex = 23
-      Visible = False
-    end
     object iHandbuch: TdxNavBarItem
       Caption = 'Handbuch'
       SmallImageIndex = 80
@@ -163,7 +155,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
       Style.AssignedValues = [savBackColor, savBackColor2, savFont]
     end
   end
-  object pnl_Design: TcxGroupBox
+  object grpbx_Design: TcxGroupBox
     Left = 200
     Top = 35
     Align = alClient
@@ -172,7 +164,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
     TabOrder = 1
     Height = 726
     Width = 1064
-    object pcmain: TcxPageControl
+    object pc_main: TcxPageControl
       Left = 3
       Top = 3
       Width = 1058
@@ -190,18 +182,18 @@ object frm_PCM_Main: Tfrm_PCM_Main
       Properties.CustomButtons.Buttons = <>
       Properties.Images = dm_PCM.imglst_16x16
       Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize, pcoSort]
-      OnPageChanging = pcmainPageChanging
+      OnPageChanging = pc_mainPageChanging
       ClientRectBottom = 714
       ClientRectLeft = 2
       ClientRectRight = 1052
       ClientRectTop = 28
       object ts_Dashboard: TcxTabSheet
         Caption = 'Dashboard'
-        ImageIndex = 0
+        ImageIndex = 79
       end
     end
   end
-  object img_Icons: TImageList
+  object imglst_Icons: TImageList
     Left = 1368
     Top = 344
     Bitmap = {
@@ -561,7 +553,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
       OnClick = ppmbtn_BeendenClick
     end
   end
-  object dxBarManager1: TdxBarManager
+  object brmgr_Main: TdxBarManager
     AutoHideEmptyBars = True
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -579,8 +571,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
       True
       True)
     ImageOptions.ImageListBkColor = clBlack
-    ImageOptions.Images = img_Icons
-    ImageOptions.LargeImages = img_Icons
+    ImageOptions.Images = imglst_Icons
+    ImageOptions.LargeImages = imglst_Icons
     ImageOptions.StretchGlyphs = False
     LargeButtonArrowWidth = 16
     LookAndFeel.Kind = lfFlat
@@ -598,7 +590,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
       0
       35
       0)
-    object dxBarManager1Bar1: TdxBar
+    object tb_Main: TdxBar
       AllowClose = False
       AllowCustomizing = False
       AllowQuickCustomizing = False
@@ -615,26 +607,26 @@ object frm_PCM_Main: Tfrm_PCM_Main
       ItemLinks = <
         item
           Visible = True
-          ItemName = 'btnModulleiste'
+          ItemName = 'btn_Modulleiste'
         end
         item
           BeginGroup = True
           Visible = True
-          ItemName = 'barOpenModule'
+          ItemName = 'brstc_OpenModule'
         end
         item
           Visible = True
-          ItemName = 'barUser'
-        end
-        item
-          BeginGroup = True
-          Visible = True
-          ItemName = 'btnRefreshRights'
+          ItemName = 'brstc_User'
         end
         item
           BeginGroup = True
           Visible = True
-          ItemName = 'btnCloseModul'
+          ItemName = 'btn_RefreshRights'
+        end
+        item
+          BeginGroup = True
+          Visible = True
+          ItemName = 'btn_CloseModul'
         end>
       NotDocking = [dsNone, dsLeft, dsTop, dsRight, dsBottom]
       OneOnRow = True
@@ -647,40 +639,40 @@ object frm_PCM_Main: Tfrm_PCM_Main
       Visible = True
       WholeRow = False
     end
-    object barOpenModule: TdxBarStatic
+    object brstc_OpenModule: TdxBarStatic
       Caption = 'Dashboard'
       Category = 0
       Hint = 'Dashboard'
       Visible = ivAlways
       Width = 573
     end
-    object btnModulleiste: TdxBarLargeButton
+    object btn_Modulleiste: TdxBarLargeButton
       Caption = 'Modulliste verstecken'
       Category = 0
       Hint = 'Modulliste verstecken'
       Visible = ivAlways
-      OnClick = btnModulleisteClick
+      OnClick = btn_ModulleisteClick
       AutoGrayScale = False
       GlyphLayout = glLeft
       Width = 185
       SyncImageIndex = False
       ImageIndex = -1
     end
-    object btnRefreshRights: TdxBarLargeButton
+    object btn_RefreshRights: TdxBarLargeButton
       Category = 0
       Hint = 'Rechte und Modul neu laden'
       Visible = ivAlways
-      OnClick = btnRefreshRightsClick
+      OnClick = btn_RefreshRightsClick
       AutoGrayScale = False
       GlyphLayout = glLeft
       LargeImageIndex = 3
       Width = 25
     end
-    object btnCloseModul: TdxBarLargeButton
+    object btn_CloseModul: TdxBarLargeButton
       Category = 0
       Hint = 'Modul schlie'#223'en'
       Visible = ivAlways
-      OnClick = btnCloseModulClick
+      OnClick = btn_CloseModulClick
       AutoGrayScale = False
       GlyphLayout = glLeft
       LargeImageIndex = 1
@@ -688,28 +680,12 @@ object frm_PCM_Main: Tfrm_PCM_Main
       SyncImageIndex = False
       ImageIndex = 57
     end
-    object barUser: TdxBarStatic
+    object brstc_User: TdxBarStatic
       Caption = 'User'
       Category = 0
       Hint = 'User'
       Visible = ivAlways
       Width = 150
-    end
-    object dxBarButton1: TdxBarButton
-      Caption = 'Modulleiste ein-/ausblenden'
-      Category = 1
-      Hint = 'Modulleiste ein-/ausblenden'
-      Visible = ivAlways
-    end
-    object Menuezurueck: TdxBarButton
-      Caption = 'Men'#252' zur'#252'cksetzen'
-      Category = 1
-      Hint = 'Men'#252' zur'#252'cksetzen'
-      Visible = ivAlways
-    end
-    object dxBarGroup1: TdxBarGroup
-      Items = (
-        'btnModulleiste')
     end
   end
 end

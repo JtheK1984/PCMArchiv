@@ -144,9 +144,6 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="Modules\PCM.Modul.B_Config.pas">
-            <Form>frm_Config</Form>
-        </DCCReference>
         <DCCReference Include="PCM.Main.pas">
             <Form>frm_PCM_Main</Form>
         </DCCReference>
@@ -154,8 +151,14 @@
             <Form>dm_PCM</Form>
             <DesignClass>TDataModule</DesignClass>
         </DCCReference>
+        <DCCReference Include="Modules\PCM.Modul.B_Config.pas">
+            <Form>frm_Config</Form>
+        </DCCReference>
         <DCCReference Include="Modules\PCM.Modul.C_Archiv.pas">
-            <Form>frm_Contact</Form>
+            <Form>frm_Archiv</Form>
+        </DCCReference>
+        <DCCReference Include="Modules\PCM.Modul.C_Archiv.New.pas">
+            <Form>frm_NewFile</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Base">
@@ -194,6 +197,12 @@
                 <DeployFile LocalName="Win64\Debug\PCMArchiv.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win64">
                         <RemoteName>PCMArchiv.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Win64\Debug\PCMArchiv.rsm" Configuration="Debug" Class="DebugSymbols">
+                    <Platform Name="Win64">
+                        <RemoteName>PCMArchiv.rsm</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

@@ -12,17 +12,12 @@ object dm_PCM: Tdm_PCM
       'DriverID=MySQL')
     ResourceOptions.AssignedValues = [rvAutoReconnect]
     ResourceOptions.AutoReconnect = True
-    Connected = True
     LoginPrompt = False
     BeforeConnect = con_PCMBeforeConnect
     Left = 32
     Top = 8
   end
-  object FDPhysADSDriverLink1: TFDPhysADSDriverLink
-    Left = 952
-    Top = 168
-  end
-  object FDPhysMSSQLDriverLink1: TFDPhysMSSQLDriverLink
+  object physdvrLnk_Mysql: TFDPhysMSSQLDriverLink
     Left = 840
     Top = 168
   end
@@ -18520,7 +18515,7 @@ object dm_PCM: Tdm_PCM
   object imglst_16x16: TcxImageList
     SourceDPI = 96
     FormatVersion = 1
-    DesignInfo = 23069304
+    DesignInfo = 16253880
     ImageInfo = <
       item
         ImageClass = 'TBitmap'

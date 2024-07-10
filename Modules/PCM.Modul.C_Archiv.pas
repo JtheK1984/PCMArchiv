@@ -36,7 +36,7 @@ uses
   dxBar, cxGridCustomPopupMenu, cxGridPopupMenu,cxGridExportLink, System.UITypes, strutils,
   IdBaseComponent, IdCoder, IdCoder3to4, IdCoderMIME, IdCoderQuotedPrintable,Soap.EncdDecd,System.netencoding,
   Vcl.ExtCtrls, dxShellDialogs,PCM.Functions,cxSchedulerStorage, dxSkinWXI,
-  EsEdPop, EsEdCalc, Vcl.ComCtrls, dxCore, cxCalc, cxSpinEdit, cxTimeEdit;
+  Vcl.ComCtrls, dxCore, cxCalc, cxSpinEdit, cxTimeEdit;
   {$EndRegion Uses}
 type
   {$Region Type}

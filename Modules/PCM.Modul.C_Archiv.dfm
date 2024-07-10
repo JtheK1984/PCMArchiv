@@ -42,10 +42,6 @@ object frm_Archiv: Tfrm_Archiv
       TabOrder = 0
       LockedStateImageOptions.Effect = lsieDark
       LookAndFeel.ScrollbarMode = sbmDefault
-      ExplicitLeft = 3
-      ExplicitTop = 155
-      ExplicitWidth = 1175
-      ExplicitHeight = 565
       object grdDBTblView_DocSearch: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         ScrollbarAnnotations.CustomAnnotations = <>

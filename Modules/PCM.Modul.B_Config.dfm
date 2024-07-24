@@ -26,10 +26,10 @@ object frm_Config: Tfrm_Config
     Height = 800
     Width = 1280
     object pc_Options: TcxPageControl
-      Left = 2
-      Top = 2
-      Width = 1276
-      Height = 796
+      Left = 3
+      Top = 3
+      Width = 1274
+      Height = 794
       Align = alClient
       Color = clBtnFace
       ParentBackground = False
@@ -41,17 +41,18 @@ object frm_Config: Tfrm_Config
       Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea]
       Properties.TabSlants.Kind = skCutCorner
       Properties.TabWidth = 100
-      ClientRectBottom = 796
-      ClientRectRight = 1276
-      ClientRectTop = 25
+      ClientRectBottom = 788
+      ClientRectLeft = 2
+      ClientRectRight = 1268
+      ClientRectTop = 28
       object ts_A_Archiv: TcxTabSheet
         Caption = 'Archiv'
         ImageIndex = 82
         object pc_Config: TcxPageControl
           Left = 0
           Top = 0
-          Width = 1276
-          Height = 771
+          Width = 1266
+          Height = 760
           Align = alClient
           Color = clBtnFace
           ParentBackground = False
@@ -63,9 +64,10 @@ object frm_Config: Tfrm_Config
           Properties.TabSlants.Kind = skCutCorner
           Properties.TabWidth = 150
           OnClick = pc_ConfigClick
-          ClientRectBottom = 771
-          ClientRectRight = 1276
-          ClientRectTop = 24
+          ClientRectBottom = 754
+          ClientRectLeft = 2
+          ClientRectRight = 1260
+          ClientRectTop = 27
           object ts_1ArchivPfad: TcxTabSheet
             Caption = 'Pfad f'#252'r Dokumente'
             ImageIndex = 82
@@ -75,31 +77,31 @@ object frm_Config: Tfrm_Config
               Align = alClient
               Caption = 'Verzeichnis zum Archiv'
               TabOrder = 0
-              Height = 747
-              Width = 1276
+              Height = 727
+              Width = 1258
               object bardckctrl_ArchivPfad: TdxBarDockControl
-                Left = 2
-                Top = 18
-                Width = 1272
-                Height = 58
+                Left = 3
+                Top = 15
+                Width = 1252
+                Height = 63
                 Align = dalTop
                 AllowDocking = False
                 BarManager = brmgr_Config
               end
               object grpbx_PathDetail: TcxGroupBox
-                Left = 2
-                Top = 76
+                Left = 3
+                Top = 78
                 Align = alTop
                 PanelStyle.Active = True
                 StyleDisabled.BorderColor = clBtnShadow
                 StyleDisabled.BorderStyle = ebsNone
                 TabOrder = 1
                 Height = 27
-                Width = 1272
+                Width = 1252
                 object lbl_ArchivPfad: TcxLabel
                   AlignWithMargins = True
-                  Left = 7
-                  Top = 4
+                  Left = 8
+                  Top = 5
                   Margins.Left = 5
                   Margins.Top = 2
                   Margins.Right = 5
@@ -115,13 +117,13 @@ object frm_Config: Tfrm_Config
                   Style.Font.Style = []
                   Style.IsFontAssigned = True
                   Transparent = True
-                  Height = 19
+                  Height = 17
                   Width = 70
                 end
                 object edt_ArchivPfad: TcxDBButtonEdit
                   AlignWithMargins = True
-                  Left = 82
-                  Top = 2
+                  Left = 83
+                  Top = 3
                   Margins.Left = 0
                   Margins.Top = 0
                   Margins.Right = 0
@@ -145,14 +147,14 @@ object frm_Config: Tfrm_Config
                   Style.IsFontAssigned = True
                   TabOrder = 1
                   OnExit = btn_DirSaveClick
-                  Width = 1188
+                  Width = 1166
                 end
               end
               object grd_ArchivPfad: TcxGrid
-                Left = 2
-                Top = 103
-                Width = 1272
-                Height = 642
+                Left = 3
+                Top = 105
+                Width = 1252
+                Height = 613
                 Align = alClient
                 BorderStyle = cxcbsNone
                 Font.Charset = DEFAULT_CHARSET
@@ -200,7 +202,7 @@ object frm_Config: Tfrm_Config
                   object grdDBTblView_ArchivPfadPfad: TcxGridDBColumn
                     DataBinding.FieldName = 'Pfad'
                     DataBinding.IsNullValueType = True
-                    Width = 900
+                    Width = 800
                   end
                 end
                 object grdlvl_ArchivPfad: TcxGridLevel
@@ -218,30 +220,30 @@ object frm_Config: Tfrm_Config
               Align = alClient
               Caption = 'Hauptkategorien'
               TabOrder = 0
-              Height = 747
-              Width = 1276
+              Height = 727
+              Width = 1258
               object brdckctrl_MainKat: TdxBarDockControl
-                Left = 2
-                Top = 18
-                Width = 1272
-                Height = 58
+                Left = 3
+                Top = 15
+                Width = 1252
+                Height = 63
                 Align = dalTop
                 BarManager = brmgr_Config
               end
               object grpbx_MainKatDetail: TcxGroupBox
-                Left = 2
-                Top = 76
+                Left = 3
+                Top = 78
                 Align = alTop
                 PanelStyle.Active = True
                 StyleDisabled.BorderColor = clBtnShadow
                 StyleDisabled.BorderStyle = ebsNone
                 TabOrder = 1
                 Height = 27
-                Width = 1272
+                Width = 1252
                 object edt_MainKat: TcxDBTextEdit
                   AlignWithMargins = True
-                  Left = 82
-                  Top = 2
+                  Left = 83
+                  Top = 3
                   Margins.Left = 0
                   Margins.Top = 0
                   Margins.Right = 0
@@ -260,13 +262,12 @@ object frm_Config: Tfrm_Config
                   TabOrder = 0
                   OnExit = btn_MainKatSaveClick
                   OnKeyUp = edt_MainKatKeyUp
-                  ExplicitHeight = 21
-                  Width = 1188
+                  Width = 1166
                 end
                 object lbl_MainKat: TcxLabel
                   AlignWithMargins = True
-                  Left = 7
-                  Top = 4
+                  Left = 8
+                  Top = 5
                   Margins.Left = 5
                   Margins.Top = 2
                   Margins.Right = 5
@@ -282,15 +283,15 @@ object frm_Config: Tfrm_Config
                   Style.Font.Style = []
                   Style.IsFontAssigned = True
                   Transparent = True
-                  Height = 19
+                  Height = 17
                   Width = 70
                 end
               end
               object grd_MainKat: TcxGrid
-                Left = 2
-                Top = 103
-                Width = 1272
-                Height = 642
+                Left = 3
+                Top = 105
+                Width = 1252
+                Height = 613
                 Align = alClient
                 BorderStyle = cxcbsNone
                 Font.Charset = DEFAULT_CHARSET
@@ -357,30 +358,30 @@ object frm_Config: Tfrm_Config
               Align = alClient
               Caption = 'Unterkategorien'
               TabOrder = 0
-              Height = 747
-              Width = 1276
+              Height = 727
+              Width = 1258
               object brdckctrl_SubKat: TdxBarDockControl
-                Left = 2
-                Top = 18
-                Width = 1272
-                Height = 58
+                Left = 3
+                Top = 15
+                Width = 1252
+                Height = 63
                 Align = dalTop
                 BarManager = brmgr_Config
               end
               object grpbx_SubKatDetail: TcxGroupBox
-                Left = 2
-                Top = 76
+                Left = 3
+                Top = 78
                 Align = alTop
                 PanelStyle.Active = True
                 StyleDisabled.BorderColor = clBtnShadow
                 StyleDisabled.BorderStyle = ebsNone
                 TabOrder = 1
                 Height = 27
-                Width = 1272
+                Width = 1252
                 object edt_SubKat: TcxDBTextEdit
                   AlignWithMargins = True
-                  Left = 92
-                  Top = 2
+                  Left = 93
+                  Top = 3
                   Margins.Left = 0
                   Margins.Top = 0
                   Margins.Right = 0
@@ -399,13 +400,12 @@ object frm_Config: Tfrm_Config
                   TabOrder = 0
                   OnExit = btn_SubKatSaveClick
                   OnKeyUp = edt_SubKatKeyUp
-                  ExplicitHeight = 21
-                  Width = 1178
+                  Width = 1156
                 end
                 object lbl_SubKat: TcxLabel
                   AlignWithMargins = True
-                  Left = 7
-                  Top = 4
+                  Left = 8
+                  Top = 5
                   Margins.Left = 5
                   Margins.Top = 2
                   Margins.Right = 5
@@ -421,15 +421,15 @@ object frm_Config: Tfrm_Config
                   Style.Font.Style = []
                   Style.IsFontAssigned = True
                   Transparent = True
-                  Height = 19
+                  Height = 17
                   Width = 80
                 end
               end
               object grd_SubKat: TcxGrid
-                Left = 2
-                Top = 103
-                Width = 1272
-                Height = 642
+                Left = 3
+                Top = 105
+                Width = 1252
+                Height = 613
                 Align = alClient
                 BorderStyle = cxcbsNone
                 Font.Charset = DEFAULT_CHARSET
@@ -488,7 +488,7 @@ object frm_Config: Tfrm_Config
             end
           end
           object ts_4Index: TcxTabSheet
-            Caption = 'Indexe'
+            Caption = 'Indizies'
             ImageIndex = 3
             object grpbox_Index: TcxGroupBox
               Left = 0
@@ -496,30 +496,30 @@ object frm_Config: Tfrm_Config
               Align = alClient
               Caption = 'Unterkategorien'
               TabOrder = 0
-              Height = 747
-              Width = 1276
+              Height = 727
+              Width = 1258
               object brdckCtrl_Index: TdxBarDockControl
-                Left = 2
-                Top = 18
-                Width = 1272
-                Height = 58
+                Left = 3
+                Top = 15
+                Width = 1252
+                Height = 63
                 Align = dalTop
                 BarManager = brmgr_Config
               end
               object grpbox_IndexDetail: TcxGroupBox
-                Left = 2
-                Top = 76
+                Left = 3
+                Top = 78
                 Align = alTop
                 PanelStyle.Active = True
                 StyleDisabled.BorderColor = clBtnShadow
                 StyleDisabled.BorderStyle = ebsNone
                 TabOrder = 1
                 Height = 27
-                Width = 1272
+                Width = 1252
                 object edt_index: TcxDBTextEdit
                   AlignWithMargins = True
-                  Left = 92
-                  Top = 2
+                  Left = 93
+                  Top = 3
                   Margins.Left = 0
                   Margins.Top = 0
                   Margins.Right = 0
@@ -538,13 +538,12 @@ object frm_Config: Tfrm_Config
                   TabOrder = 0
                   OnExit = btn_MainKatSaveClick
                   OnKeyUp = edt_indexKeyUp
-                  ExplicitHeight = 21
                   Width = 400
                 end
                 object lbl_Datatyp: TcxLabel
                   AlignWithMargins = True
-                  Left = 497
-                  Top = 4
+                  Left = 498
+                  Top = 5
                   Margins.Left = 5
                   Margins.Top = 2
                   Margins.Right = 5
@@ -560,13 +559,13 @@ object frm_Config: Tfrm_Config
                   Style.Font.Style = []
                   Style.IsFontAssigned = True
                   Transparent = True
-                  Height = 19
+                  Height = 17
                   Width = 80
                 end
                 object lbl_index: TcxLabel
                   AlignWithMargins = True
-                  Left = 7
-                  Top = 4
+                  Left = 8
+                  Top = 5
                   Margins.Left = 5
                   Margins.Top = 2
                   Margins.Right = 5
@@ -582,13 +581,13 @@ object frm_Config: Tfrm_Config
                   Style.Font.Style = []
                   Style.IsFontAssigned = True
                   Transparent = True
-                  Height = 19
+                  Height = 17
                   Width = 80
                 end
                 object lucmbbx_Datatype: TcxDBLookupComboBox
                   AlignWithMargins = True
-                  Left = 582
-                  Top = 2
+                  Left = 583
+                  Top = 3
                   Margins.Left = 0
                   Margins.Top = 0
                   Margins.Right = 0
@@ -603,15 +602,14 @@ object frm_Config: Tfrm_Config
                     end>
                   Properties.ListSource = ds_indexType
                   TabOrder = 3
-                  ExplicitHeight = 21
                   Width = 200
                 end
               end
               object grd_Index: TcxGrid
-                Left = 2
-                Top = 103
-                Width = 1272
-                Height = 642
+                Left = 3
+                Top = 105
+                Width = 1252
+                Height = 613
                 Align = alClient
                 BorderStyle = cxcbsNone
                 Font.Charset = DEFAULT_CHARSET
@@ -696,12 +694,12 @@ object frm_Config: Tfrm_Config
               PanelStyle.Active = True
               Style.BorderStyle = ebsNone
               TabOrder = 0
-              Height = 747
+              Height = 727
               Width = 400
               object grpbx_1Main: TcxGroupBox
                 AlignWithMargins = True
-                Left = 2
-                Top = 2
+                Left = 3
+                Top = 3
                 Margins.Left = 0
                 Margins.Top = 0
                 Margins.Right = 0
@@ -711,13 +709,13 @@ object frm_Config: Tfrm_Config
                 Style.BorderStyle = ebsFlat
                 TabOrder = 0
                 Height = 300
-                Width = 396
+                Width = 394
                 object trlst_MainKat: TcxTreeList
                   AlignWithMargins = True
-                  Left = 5
-                  Top = 21
-                  Width = 386
-                  Height = 274
+                  Left = 6
+                  Top = 18
+                  Width = 382
+                  Height = 270
                   Align = alClient
                   Bands = <
                     item
@@ -778,20 +776,20 @@ object frm_Config: Tfrm_Config
                 end
               end
               object grpbx_2Sub: TcxGroupBox
-                Left = 2
-                Top = 302
+                Left = 3
+                Top = 303
                 Align = alTop
                 Caption = 'Unterkategorie'
                 Style.BorderStyle = ebsFlat
                 TabOrder = 1
                 Height = 300
-                Width = 396
+                Width = 394
                 object trlst_SubKat: TcxTreeList
                   AlignWithMargins = True
-                  Left = 5
-                  Top = 21
-                  Width = 386
-                  Height = 274
+                  Left = 6
+                  Top = 18
+                  Width = 382
+                  Height = 270
                   Align = alClient
                   Bands = <
                     item
@@ -852,20 +850,20 @@ object frm_Config: Tfrm_Config
                 end
               end
               object grpbx_3Ind: TcxGroupBox
-                Left = 2
-                Top = 602
+                Left = 3
+                Top = 603
                 Align = alTop
                 Caption = 'Indizies'
                 Style.BorderStyle = ebsFlat
                 TabOrder = 2
                 Height = 300
-                Width = 396
+                Width = 394
                 object trlst_Ind: TcxTreeList
                   AlignWithMargins = True
-                  Left = 5
-                  Top = 21
-                  Width = 386
-                  Height = 274
+                  Left = 6
+                  Top = 18
+                  Width = 382
+                  Height = 270
                   Align = alClient
                   Bands = <
                     item
@@ -938,23 +936,23 @@ object frm_Config: Tfrm_Config
               PanelStyle.Active = True
               Style.BorderStyle = ebsNone
               TabOrder = 1
-              Height = 747
-              Width = 876
+              Height = 727
+              Width = 858
               object grpbx_Zuweisung: TcxGroupBox
-                Left = 2
-                Top = 2
+                Left = 3
+                Top = 3
                 Align = alClient
                 Caption = 'Zuweisung'
                 Style.BorderStyle = ebsFlat
                 TabOrder = 0
-                Height = 743
-                Width = 872
+                Height = 721
+                Width = 852
                 object trlst_Zuweisung: TcxTreeList
                   AlignWithMargins = True
-                  Left = 5
-                  Top = 21
-                  Width = 862
-                  Height = 717
+                  Left = 6
+                  Top = 18
+                  Width = 840
+                  Height = 691
                   Align = alClient
                   Bands = <
                     item

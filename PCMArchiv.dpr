@@ -5,6 +5,7 @@ uses
   inifiles,
   NtTranslator,
   System.SysUtils,
+  uWVLoader,
   Vcl.Forms,
   Vcl.Themes,
   Vcl.Styles,
@@ -31,6 +32,9 @@ begin
   sStyle:=ifini.ReadString('PCMArchiv','Style','Windows');
   slocale:=ifini.ReadString('PCMArchiv','Language','de');
   ifini.Free;
+  GlobalWebView2Loader                := TWVLoader.Create(nil);
+  GlobalWebView2Loader.UserDataFolder := ExtractFileDir(Application.ExeName) + '\CustomCache\ID';
+  GlobalWebView2Loader.StartWebView2;
   Application.Initialize;
   TStyleManager.TrySetStyle(sStyle);
   {$IFDEF WIN64}

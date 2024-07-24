@@ -4,8 +4,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
   AlphaBlend = True
   BorderStyle = bsSingle
   Caption = 'PCM - Manager'
-  ClientHeight = 761
-  ClientWidth = 1264
+  ClientHeight = 800
+  ClientWidth = 1280
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -27,7 +27,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
     Left = 0
     Top = 35
     Width = 200
-    Height = 726
+    Height = 765
     Align = alLeft
     ActiveGroupIndex = 0
     TabOrder = 0
@@ -162,13 +162,13 @@ object frm_PCM_Main: Tfrm_PCM_Main
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 1
-    Height = 726
-    Width = 1064
+    Height = 765
+    Width = 1080
     object pc_main: TcxPageControl
       Left = 3
       Top = 3
-      Width = 1058
-      Height = 720
+      Width = 1074
+      Height = 759
       Margins.Left = 0
       Margins.Top = 0
       Margins.Right = 0
@@ -183,13 +183,166 @@ object frm_PCM_Main: Tfrm_PCM_Main
       Properties.Images = dm_PCM.imglst_16x16
       Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize, pcoSort]
       OnPageChanging = pc_mainPageChanging
-      ClientRectBottom = 714
+      ClientRectBottom = 753
       ClientRectLeft = 2
-      ClientRectRight = 1052
+      ClientRectRight = 1068
       ClientRectTop = 28
       object ts_Dashboard: TcxTabSheet
         Caption = 'Dashboard'
         ImageIndex = 79
+        object pnl_Dashboard: TcxGroupBox
+          Left = 0
+          Top = 0
+          Align = alClient
+          PanelStyle.Active = True
+          Style.BorderStyle = ebsNone
+          Style.Edges = [bLeft, bTop, bRight, bBottom]
+          TabOrder = 0
+          Height = 725
+          Width = 1066
+          object pnl_LicenceTop: TcxGroupBox
+            Left = 3
+            Top = 3
+            Align = alTop
+            Caption = 'Archivdateien'
+            Style.BorderStyle = ebsFlat
+            Style.Edges = [bLeft, bTop, bRight, bBottom]
+            TabOrder = 0
+            Height = 305
+            Width = 1060
+            object chartctrl_Customer: TdxChartControl
+              Left = 3
+              Top = 15
+              Width = 1054
+              Height = 281
+              Align = alClient
+              BorderStyle = cxcbsNone
+              Legend.Title.Visible = False
+              Titles = <>
+              object chartctrl_CustomerChart: TdxChartSimpleDiagram
+                Title.Visible = False
+                Layout = Horizontal
+                object chartctrl_CustomerSeries: TdxChartSimpleSeries
+                  Caption = 'Wert'
+                  DataBindingType = 'DB'
+                  DataBinding.DataSource = dm_PCM.ds_ChartFiles
+                  DataBinding.ArgumentField.FieldName = 'Bezeichnung'
+                  DataBinding.ValueField.FieldName = 'Wert'
+                  ViewType = 'Pie'
+                  View.SweepDirection = Counterclockwise
+                  View.ValueLabels.LineLength = 10.000000000000000000
+                  View.ValueLabels.Visible = True
+                  View.ValueLabels.Position = Outside
+                  SortBy = Value
+                  ColorSchemeIndex = 0
+                end
+              end
+            end
+          end
+          object spl_DashboardMain: TcxSplitter
+            Left = 3
+            Top = 308
+            Width = 1060
+            Height = 5
+            AlignSplitter = salBottom
+            Control = pnl_LicenceTop
+          end
+          object pnl_Licencemiddle: TcxGroupBox
+            Left = 3
+            Top = 313
+            Align = alLeft
+            Caption = 'Hauptkategorien'
+            Style.BorderStyle = ebsFlat
+            Style.Edges = [bLeft, bTop, bRight, bBottom]
+            TabOrder = 2
+            Height = 409
+            Width = 491
+            object chartctrl_Licence: TdxChartControl
+              Left = 3
+              Top = 15
+              Width = 485
+              Height = 385
+              Align = alClient
+              BorderStyle = cxcbsNone
+              Legend.Title.Visible = False
+              Titles = <>
+              object chartctrl_LicenceChart: TdxChartSimpleDiagram
+                Title.Visible = False
+                Layout = Horizontal
+                object chartctrl_LicenceSeries: TdxChartSimpleSeries
+                  Caption = 'Wert'
+                  DataBindingType = 'DB'
+                  DataBinding.DataSource = dm_PCM.ds_ChartMain
+                  DataBinding.ArgumentField.FieldName = 'Bezeichnung'
+                  DataBinding.ValueField.FieldName = 'Wert'
+                  ViewType = 'Pie'
+                  View.ExplodedValueOptions.Mode = Max
+                  View.SweepDirection = Counterclockwise
+                  View.ValueLabels.LineLength = 5.000000000000000000
+                  View.ValueLabels.TextAlignment = Far
+                  View.ValueLabels.Visible = True
+                  View.ValueLabels.Position = Outside
+                  SortBy = Value
+                  SortOrder = soAscending
+                  ColorSchemeIndex = 0
+                end
+              end
+            end
+          end
+          object pnl_Licenceright: TcxGroupBox
+            Left = 494
+            Top = 313
+            Align = alClient
+            Caption = 'Unterkategorien'
+            Style.BorderStyle = ebsFlat
+            Style.Edges = [bLeft, bTop, bRight, bBottom]
+            TabOrder = 3
+            Height = 409
+            Width = 569
+            object chartctrl_Programs: TdxChartControl
+              Left = 8
+              Top = 15
+              Width = 558
+              Height = 385
+              Align = alClient
+              BorderStyle = cxcbsNone
+              Legend.Title.Visible = False
+              Titles = <>
+              object chartctrl_ProgramsChart: TdxChartSimpleDiagram
+                Title.Visible = False
+                Layout = Horizontal
+                object chartctrl_ProgramsSeries: TdxChartSimpleSeries
+                  Caption = 'Wert'
+                  DataBindingType = 'DB'
+                  DataBinding.DataSource = dm_PCM.ds_ChartSub
+                  DataBinding.ArgumentField.FieldName = 'Bezeichnung'
+                  DataBinding.ValueField.FieldName = 'Wert'
+                  ViewType = 'Pie'
+                  View.ExplodedValueOptions.Mode = Max
+                  View.SweepDirection = Counterclockwise
+                  View.ValueLabels.Appearance.FontOptions.Bold = True
+                  View.ValueLabels.Appearance.FontOptions.Size = 9
+                  View.ValueLabels.Appearance.FillOptions.Mode = Clear
+                  View.ValueLabels.LineLength = 5.000000000000000000
+                  View.ValueLabels.LineVisible = bTrue
+                  View.ValueLabels.TextAlignment = Far
+                  View.ValueLabels.Visible = True
+                  View.ValueLabels.Position = Outside
+                  SortBy = Value
+                  SortOrder = soAscending
+                  ColorSchemeIndex = 0
+                end
+              end
+            end
+            object cxSplitter4: TcxSplitter
+              Left = 3
+              Top = 15
+              Width = 5
+              Height = 385
+              Control = pnl_Licencemiddle
+            end
+          end
+        end
       end
     end
   end
@@ -505,7 +658,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
     end
     object ppmbtn_Design: TMenuItem
       Caption = 'Design'
-      ImageIndex = 83
+      ImageIndex = 82
       OnClick = ppmbtn_DesignClick
     end
     object ppmbtn_Trenn1: TMenuItem
@@ -513,7 +666,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
     end
     object ppmbtn_Archiv: TMenuItem
       Caption = 'Archiv'
-      ImageIndex = 82
+      ImageIndex = 83
       OnClick = ppmbtn_ArchivClick
     end
     object ppmbtn_Trenn2: TMenuItem

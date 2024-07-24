@@ -115,6 +115,21 @@ type
     iDesign: TdxNavBarItem;
     ppmbtn_Design: TMenuItem;
     ts_Dashboard: TcxTabSheet;
+    pnl_Dashboard: TcxGroupBox;
+    pnl_LicenceTop: TcxGroupBox;
+    chartctrl_Customer: TdxChartControl;
+    chartctrl_CustomerChart: TdxChartSimpleDiagram;
+    chartctrl_CustomerSeries: TdxChartSimpleSeries;
+    spl_DashboardMain: TcxSplitter;
+    pnl_Licencemiddle: TcxGroupBox;
+    chartctrl_Licence: TdxChartControl;
+    chartctrl_LicenceChart: TdxChartSimpleDiagram;
+    chartctrl_LicenceSeries: TdxChartSimpleSeries;
+    pnl_Licenceright: TcxGroupBox;
+    chartctrl_Programs: TdxChartControl;
+    chartctrl_ProgramsChart: TdxChartSimpleDiagram;
+    chartctrl_ProgramsSeries: TdxChartSimpleSeries;
+    cxSplitter4: TcxSplitter;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormResize(Sender: TObject);
@@ -232,6 +247,30 @@ begin
   dm_PCM.qry_Work.Open;
   brstc_User.Caption:= dm_PCM.qry_Work.FieldByName('Benutzer').AsString;
   dm_PCM.qry_Work.Close;
+
+  if dm_pcm.qry_ChartMain.active then
+  begin
+    dm_pcm.qry_ChartMain.Refresh;
+  end
+  else begin
+    dm_pcm.qry_ChartMain.open;
+  end;
+
+  if dm_pcm.qry_ChartSub.active then
+  begin
+    dm_pcm.qry_ChartSub.Refresh;
+  end
+  else begin
+    dm_pcm.qry_ChartSub.open;
+  end;
+
+  if dm_pcm.qry_ChartFiles.active then
+  begin
+    dm_pcm.qry_ChartFiles.Refresh;
+  end
+  else begin
+    dm_pcm.qry_ChartFiles.open;
+  end;
 end;
 {$EndRegion Hilfsfunktionen}
 ////////////////////////////////////////////////////////////////////////////////
@@ -267,7 +306,7 @@ var
 begin
   btn_RefreshRights.Enabled := False;
   try
-    if pc_Main.PageCount > 0 then
+    if pc_Main.PageCount > 1 then
     begin
       mModule := TModule(Modules.FindItemID(pc_Main.ActivePage.Tag));
       if mModule.Typ = mtForm then
@@ -545,6 +584,11 @@ procedure Tfrm_PCM_Main.FormResize(Sender: TObject);
   end;
 begin
   BarResize;
+  pnl_LicenceTop.Height:= Trunc(ts_Dashboard.Height/2);
+  pnl_Licencemiddle.Height:= Trunc(ts_Dashboard.Height/2);
+  pnl_Licenceright.Height:= Trunc(ts_Dashboard.Height/2);
+  pnl_Licencemiddle.Width:= Trunc(ts_Dashboard.Width/2);
+  pnl_LicenceRight.Width:= Trunc(ts_Dashboard.Width/2);
 end;
 procedure Tfrm_PCM_Main.FormShow(Sender: TObject);
   procedure RegisterForm(SideBarItemName: string; FormClass: TFormClass; Instance: Pointer; Right: Integer);

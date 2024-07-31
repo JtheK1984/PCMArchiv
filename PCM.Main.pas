@@ -241,12 +241,23 @@ begin
   end;
 end;
 procedure Tfrm_PCM_Main.LoadData;
+var
+  ADataBinding: TdxChartSimpleSeriesDBDataBinding;
 begin
   dm_PCM.qry_Work.SQL.Text:= ASSQL_GetUsername[dm_PCM.iDBType];
   dm_PCM.qry_Work.ParamByName('ID').AsInteger:= dm_PCM.iIDBenutzerPCM;
   dm_PCM.qry_Work.Open;
   brstc_User.Caption:= dm_PCM.qry_Work.FieldByName('Benutzer').AsString;
   dm_PCM.qry_Work.Close;
+
+  ADataBinding := chartctrl_CustomerSeries.DataBinding as TdxChartSimpleSeriesDBDataBinding;
+  ADataBinding.DataSource := dm_pcm.ds_ChartFiles;
+
+  ADataBinding := chartctrl_LicenceSeries.DataBinding as TdxChartSimpleSeriesDBDataBinding;
+  ADataBinding.DataSource := dm_pcm.ds_ChartMain;
+
+  ADataBinding := chartctrl_ProgramsSeries.DataBinding as TdxChartSimpleSeriesDBDataBinding;
+  ADataBinding.DataSource := dm_PCM.ds_ChartSub;
 
   if dm_pcm.qry_ChartMain.active then
   begin

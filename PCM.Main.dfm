@@ -225,7 +225,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
                 object chartctrl_CustomerSeries: TdxChartSimpleSeries
                   Caption = 'Wert'
                   DataBindingType = 'DB'
-                  DataBinding.DataSource = dm_PCM.ds_ChartFiles
                   DataBinding.ArgumentField.FieldName = 'Bezeichnung'
                   DataBinding.ValueField.FieldName = 'Wert'
                   ViewType = 'Pie'
@@ -272,7 +271,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
                 object chartctrl_LicenceSeries: TdxChartSimpleSeries
                   Caption = 'Wert'
                   DataBindingType = 'DB'
-                  DataBinding.DataSource = dm_PCM.ds_ChartMain
                   DataBinding.ArgumentField.FieldName = 'Bezeichnung'
                   DataBinding.ValueField.FieldName = 'Wert'
                   ViewType = 'Pie'
@@ -314,7 +312,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
                 object chartctrl_ProgramsSeries: TdxChartSimpleSeries
                   Caption = 'Wert'
                   DataBindingType = 'DB'
-                  DataBinding.DataSource = dm_PCM.ds_ChartSub
                   DataBinding.ArgumentField.FieldName = 'Bezeichnung'
                   DataBinding.ValueField.FieldName = 'Wert'
                   ViewType = 'Pie'

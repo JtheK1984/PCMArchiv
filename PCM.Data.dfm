@@ -12,6 +12,7 @@ object dm_PCM: Tdm_PCM
       'DriverID=MySQL')
     ResourceOptions.AssignedValues = [rvAutoReconnect]
     ResourceOptions.AutoReconnect = True
+    Connected = True
     LoginPrompt = False
     BeforeConnect = con_PCMBeforeConnect
     Left = 32
@@ -21704,5 +21705,55 @@ object dm_PCM: Tdm_PCM
           E60882781B0E87570281C046565604319D4818B9E4520B67D97E9670CF7F5F7A
           1F7BFDFC5661775DFA05FBA04C8CD8076D8D0000000049454E44AE426082}
       end>
+  end
+  object qry_ChartMain: TFDQuery
+    Active = True
+    Connection = con_PCM
+    SQL.Strings = (
+      'SELECT COUNT(*) as Wert, Bezeichnung'
+      'FROM archiv_konfiguration_hauptkategorien'
+      'GROUP BY Bezeichnung'
+      'ORder BY Bezeichnung')
+    Left = 296
+    Top = 376
+  end
+  object qry_ChartSub: TFDQuery
+    Connection = con_PCM
+    SQL.Strings = (
+      'SELECT COUNT(*) as Wert, Bezeichnung'
+      'FROM archiv_konfiguration_unterkategorien'
+      'GROUP BY Bezeichnung'
+      'ORder BY Bezeichnung')
+    Left = 472
+    Top = 384
+  end
+  object qry_ChartFiles: TFDQuery
+    Active = True
+    Connection = con_PCM
+    SQL.Strings = (
+      'SELECT COUNT(*) as Wert, akhk.Bezeichnung'
+      'FROM archiv_files af'
+      
+        'LEFT OUTER JOIN archiv_konfiguration_hauptkategorien akhk ON akh' +
+        'k.ID = af.Mainkat'
+      'GROUP BY akhk.Bezeichnung'
+      'ORder BY akhk.Bezeichnung')
+    Left = 568
+    Top = 440
+  end
+  object ds_ChartMain: TDataSource
+    DataSet = qry_ChartMain
+    Left = 296
+    Top = 440
+  end
+  object ds_ChartSub: TDataSource
+    DataSet = qry_ChartSub
+    Left = 472
+    Top = 448
+  end
+  object ds_ChartFiles: TDataSource
+    DataSet = qry_ChartFiles
+    Left = 568
+    Top = 496
   end
 end

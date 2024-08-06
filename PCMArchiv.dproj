@@ -79,7 +79,7 @@
         <VerInfo_MinorVer>6</VerInfo_MinorVer>
         <VerInfo_Build>2</VerInfo_Build>
         <DCC_OutputDRCFile>true</DCC_OutputDRCFile>
-        <DCC_UnitSearchPath>PCM-Functions;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>PCM-Functions;PCM-Functions\WebView2;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <DCC_DynamicBase>false</DCC_DynamicBase>
         <DCC_NXCompat>false</DCC_NXCompat>
         <DCC_HighEntropyVa>false</DCC_HighEntropyVa>

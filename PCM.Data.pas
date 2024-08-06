@@ -25,6 +25,12 @@ type
     qry_work1: TFDQuery;
     qry_work2: TFDQuery;
     imglst_16x16: TcxImageList;
+    qry_ChartMain: TFDQuery;
+    qry_ChartSub: TFDQuery;
+    qry_ChartFiles: TFDQuery;
+    ds_ChartMain: TDataSource;
+    ds_ChartSub: TDataSource;
+    ds_ChartFiles: TDataSource;
     procedure con_PCMBeforeConnect(Sender: TObject);
     procedure DataModuleCreate(Sender: TObject);
   private

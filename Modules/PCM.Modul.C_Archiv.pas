@@ -69,7 +69,6 @@ type
     lbl_MainKat: TcxLabel;
     lbl_Subkat: TcxLabel;
     lbl_User: TcxLabel;
-    pnl_Design: TcxGroupBox;
     pnl_DocButtons: TcxGroupBox;
     qry_Benutzer: TFDQuery;
     qry_Doc: TFDQuery;
@@ -77,6 +76,9 @@ type
     qry_Subkat: TFDQuery;
     tb_dic: TdxBar;
     cxGridPopupMenu1: TcxGridPopupMenu;
+    pc_Options: TcxPageControl;
+    ts_A_Archiv: TcxTabSheet;
+    dxBarDockControl1: TdxBarDockControl;
     procedure FormShow(Sender: TObject);
     procedure btn_DocSearchDeleteClick(Sender: TObject);
     procedure btn_DocSearchClick(Sender: TObject);
@@ -105,7 +107,7 @@ implementation
 
 uses  PCM.Data,
       PCM.Functions.Synch.Wait,
-      PCM.Strings, PCM.Modul.C_Archiv.New;
+      PCM.Strings, PCM.Modul.C_Archiv.New, PCM.Main;
 
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
@@ -609,7 +611,7 @@ procedure Tfrm_Archiv.FormShow(Sender: TObject);
     lbl_New.Name := 'lbl_' + ACompName;
     lbl_New.Caption:= ACompName + ':';
     lbl_New.Transparent:= true;
-    lbl_New.Left:= 11 + (430 * AX);
+    lbl_New.Left:= 6 + (360 * AX);
     lbl_New.Top:= 24 + (27 * AY);
   end;
   procedure CreateNewEdit(ACompName: String; AX, AY: integer) ;
@@ -619,9 +621,9 @@ procedure Tfrm_Archiv.FormShow(Sender: TObject);
     edt_New:= TcxTextEdit.Create(grpbx_ArchivIndex);
     edt_New.Parent:= grpbx_ArchivIndex;
     edt_New.Name := 'edt_' + ACompName;
-    edt_New.Left:= 100 + (430 * AX);
+    edt_New.Left:= 95 + (360 * AX);
     edt_New.Top:= 23 + (27 * AY);
-    edt_New.Width:= 300;
+    edt_New.Width:= 234;
     edt_new.Text:= '';
     edt_new.OnKeyDown:= SearchKeyDown;
   end;
@@ -633,9 +635,9 @@ procedure Tfrm_Archiv.FormShow(Sender: TObject);
     cmbbx_New:= TcxComboBox.Create(grpbx_ArchivIndex);
     cmbbx_New.Parent:= grpbx_ArchivIndex;
     cmbbx_New.Name := 'cmbbx_' + ACompName;
-    cmbbx_New.Left:= 100 + (430 * AX);
+    cmbbx_New.Left:= 95 + (360 * AX);
     cmbbx_New.Top:= 23 + (27 * AY);
-    cmbbx_New.Width:= 300;
+    cmbbx_New.Width:= 234;
     cmbbx_New.Text:= '';
     cmbbx_New.OnKeyDown:= SearchKeyDown;
     case ATyp of
@@ -869,9 +871,9 @@ procedure Tfrm_Archiv.FormShow(Sender: TObject);
     dtedt_New:= TcxDateEdit.Create(grpbx_ArchivIndex);
     dtedt_New.Parent:= grpbx_ArchivIndex;
     dtedt_New.Name := 'dtedt_' + ACompName;
-    dtedt_New.Left:= 100 + (430 * AX);
+    dtedt_New.Left:= 95 + (360 * AX);
     dtedt_New.Top:= 23 + (27 * AY);
-    dtedt_New.Width:= 300;
+    dtedt_New.Width:= 234;
     dtedt_New.OnKeyDown:= SearchKeyDown;
     case ATyp of
       0:
@@ -893,9 +895,9 @@ procedure Tfrm_Archiv.FormShow(Sender: TObject);
     edt_New:= TcxMaskEdit.Create(grpbx_ArchivIndex);
     edt_New.Parent:= grpbx_ArchivIndex;
     edt_New.Name := 'medt_' + ACompName;
-    edt_New.Left:= 100 + (430 * AX);
+    edt_New.Left:= 95 + (360 * AX);
     edt_New.Top:= 23 + (27 * AY);
-    edt_New.Width:= 300;
+    edt_New.Width:= 234;
     edt_New.Properties.MaskKind:= emkRegExpr;
     edt_New.Properties.EditMask:= '\d+';
     edt_New.OnKeyDown:= SearchKeyDown;
@@ -907,9 +909,9 @@ procedure Tfrm_Archiv.FormShow(Sender: TObject);
     cedt_new:= TcxCurrencyEdit.Create(grpbx_ArchivIndex);
     cedt_new.Parent:= grpbx_ArchivIndex;
     cedt_new.Name := 'cedt_' + ACompName;
-    cedt_new.Left:= 100 + (430 * AX);
+    cedt_new.Left:= 95 + (360 * AX);
     cedt_new.Top:= 23 + (27 * AY);
-    cedt_new.Width:= 300;
+    cedt_new.Width:= 234;
     cedt_New.OnKeyDown:= SearchKeyDown;
     cedt_new.EditValue:= '';
   end;
@@ -920,9 +922,9 @@ procedure Tfrm_Archiv.FormShow(Sender: TObject);
     tedt_New:= TcxTimeEdit.Create(grpbx_ArchivIndex);
     tedt_New.Parent:= grpbx_ArchivIndex;
     tedt_New.Name := 'tedt_' + ACompName;
-    tedt_New.Left:= 100 + (430 * AX);
+    tedt_New.Left:= 95 + (360 * AX);
     tedt_New.Top:= 23 + (27 * AY);
-    tedt_New.Width:= 300;
+    tedt_New.Width:= 234;
     tedt_New.OnKeyDown:= SearchKeyDown;
   end;
   procedure CreateInizesComponents;

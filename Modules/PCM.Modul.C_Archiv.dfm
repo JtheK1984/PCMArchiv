@@ -1,10 +1,10 @@
 object frm_Archiv: Tfrm_Archiv
   Left = 0
   Top = 0
-  BorderStyle = bsNone
+  BorderStyle = bsSingle
   Caption = 'frm_Archiv'
-  ClientHeight = 786
-  ClientWidth = 1181
+  ClientHeight = 800
+  ClientWidth = 1280
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,306 +15,338 @@ object frm_Archiv: Tfrm_Archiv
   OnActivate = FormActivate
   OnShow = FormShow
   TextHeight = 13
-  object pnl_Design: TcxGroupBox
+  object pc_Options: TcxPageControl
     Left = 0
-    Top = 58
+    Top = 0
+    Width = 1280
+    Height = 800
     Align = alClient
-    PanelStyle.Active = True
-    Style.BorderStyle = ebsNone
-    TabOrder = 1
-    Height = 728
-    Width = 1181
-    object grd_DocSearch: TcxGrid
-      Left = 2
-      Top = 154
-      Width = 1177
-      Height = 572
-      Align = alClient
-      BevelInner = bvNone
-      BevelOuter = bvNone
-      BorderStyle = cxcbsNone
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 0
-      LockedStateImageOptions.Effect = lsieDark
-      LookAndFeel.ScrollbarMode = sbmDefault
-      object grdDBTblView_DocSearch: TcxGridDBTableView
-        Navigator.Buttons.CustomButtons = <>
-        ScrollbarAnnotations.CustomAnnotations = <>
-        OnCellDblClick = grdDBTblView_DocSearchCellDblClick
-        DataController.DataSource = ds_Doc
-        DataController.Filter.Options = [fcoCaseInsensitive]
-        DataController.Filter.PercentWildcard = '*'
-        DataController.Filter.UnderscoreWildcard = '?'
-        DataController.KeyFieldNames = 'ID'
-        DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
-        DataController.Summary.DefaultGroupSummaryItems = <>
-        DataController.Summary.FooterSummaryItems = <
-          item
-            Kind = skCount
-          end>
-        DataController.Summary.SummaryGroups = <
-          item
-            Links = <
-              item
-              end>
-            SummaryItems = <
-              item
-              end>
-          end>
-        OptionsBehavior.IncSearch = True
-        OptionsData.Deleting = False
-        OptionsData.Editing = False
-        OptionsData.Inserting = False
-        OptionsSelection.CellSelect = False
-        OptionsSelection.MultiSelect = True
-        OptionsView.CellEndEllipsis = True
-        OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
-        OptionsView.HeaderFilterButtonShowMode = fbmButton
-        OptionsView.IndicatorWidth = 14
-        object grdDBTblView_DocSearchID: TcxGridDBColumn
-          Tag = 1
-          DataBinding.FieldName = 'ID'
-          Visible = False
-          VisibleForExpressionEditor = bFalse
-          VisibleForCustomization = False
-          VisibleForEditForm = bFalse
-          VisibleForRowLayout = bFalse
-        end
-        object grdDBTblView_DocSearchFiles: TcxGridDBColumn
-          Tag = 1
-          DataBinding.FieldName = 'Files'
-          FixedKind = fkLeft
-          Width = 200
-        end
-        object grdDBTblView_DocSearchFullPath: TcxGridDBColumn
-          Tag = 1
-          DataBinding.FieldName = 'FullPath'
-          PropertiesClassName = 'TcxCalcEditProperties'
-          Width = 500
-        end
-        object grdDBTblView_DocSearchBenutzer: TcxGridDBColumn
-          Tag = 1
-          DataBinding.FieldName = 'Benutzer'
-          PropertiesClassName = 'TcxLookupComboBoxProperties'
-          Properties.KeyFieldNames = 'ID'
-          Properties.ListColumns = <
-            item
-              FieldName = 'Benutzer'
-            end>
-          Properties.ListSource = ds_benutzer
-          Visible = False
-          GroupIndex = 0
-          Width = 200
-        end
-        object grdDBTblView_DocSearchMainkat: TcxGridDBColumn
-          Tag = 1
-          Caption = 'Hauptkategorie'
-          DataBinding.FieldName = 'Mainkat'
-          PropertiesClassName = 'TcxLookupComboBoxProperties'
-          Properties.KeyFieldNames = 'ID'
-          Properties.ListColumns = <
-            item
-              FieldName = 'Bezeichnung'
-            end>
-          Properties.ListSource = ds_mainkat
-          Visible = False
-          GroupIndex = 1
-          Width = 200
-        end
-        object grdDBTblView_DocSearchSubkat: TcxGridDBColumn
-          Tag = 1
-          Caption = 'Unterkategorie'
-          DataBinding.FieldName = 'Subkat'
-          PropertiesClassName = 'TcxLookupComboBoxProperties'
-          Properties.KeyFieldNames = 'ID'
-          Properties.ListColumns = <
-            item
-              FieldName = 'Bezeichnung'
-            end>
-          Properties.ListSource = ds_Subkat
-          Visible = False
-          GroupIndex = 2
-          Width = 200
-        end
-        object grdDBTblView_DocSearchFileImage: TcxGridDBColumn
-          DataBinding.FieldName = 'FileImage'
-          Visible = False
-          VisibleForExpressionEditor = bFalse
-          VisibleForCustomization = False
-          VisibleForEditForm = bFalse
-          VisibleForRowLayout = bFalse
-        end
-      end
-      object grdLvl_DocSearch: TcxGridLevel
-        GridView = grdDBTblView_DocSearch
-      end
-    end
-    object grpbx_Archiv: TcxGroupBox
-      Left = 2
-      Top = 2
-      Align = alTop
-      Caption = 'Filterkriterien'
-      TabOrder = 1
-      Height = 113
-      Width = 1177
-      object lbl_User: TcxLabel
-        Left = 8
-        Top = 24
-        AutoSize = False
-        Caption = 'Benutzer'
-        ParentFont = False
-        Style.Font.Charset = DEFAULT_CHARSET
-        Style.Font.Color = clWindowText
-        Style.Font.Height = -11
-        Style.Font.Name = 'Tahoma'
-        Style.Font.Style = []
-        Style.IsFontAssigned = True
-        Transparent = True
-        Height = 17
-        Width = 90
-      end
-      object lbl_MainKat: TcxLabel
-        Left = 438
-        Top = 24
-        AutoSize = False
-        Caption = 'Hauptkategorie:'
-        ParentFont = False
-        Style.Font.Charset = DEFAULT_CHARSET
-        Style.Font.Color = clWindowText
-        Style.Font.Height = -11
-        Style.Font.Name = 'Tahoma'
-        Style.Font.Style = []
-        Style.IsFontAssigned = True
-        Transparent = True
-        Height = 17
-        Width = 90
-      end
-      object cmbbx_Subkat: TcxComboBox
-        Left = 960
-        Top = 23
-        Enabled = False
-        ParentFont = False
-        Style.BorderStyle = ebsFlat
-        Style.Font.Charset = DEFAULT_CHARSET
-        Style.Font.Color = clWindowText
-        Style.Font.Height = -11
-        Style.Font.Name = 'Tahoma'
-        Style.Font.Style = []
-        Style.IsFontAssigned = True
-        TabOrder = 2
-        OnKeyDown = SearchKeyDown
-        Width = 300
-      end
-      object lbl_Subkat: TcxLabel
-        Left = 868
-        Top = 24
-        AutoSize = False
-        Caption = 'Unterkategorie:'
-        ParentFont = False
-        Style.Font.Charset = DEFAULT_CHARSET
-        Style.Font.Color = clWindowText
-        Style.Font.Height = -11
-        Style.Font.Name = 'Tahoma'
-        Style.Font.Style = []
-        Style.IsFontAssigned = True
-        Transparent = True
-        Height = 17
-        Width = 90
-      end
-      object cmbbx_benutzer: TcxComboBox
-        Left = 100
-        Top = 23
-        ParentFont = False
-        Style.BorderStyle = ebsFlat
-        Style.Font.Charset = DEFAULT_CHARSET
-        Style.Font.Color = clWindowText
-        Style.Font.Height = -11
-        Style.Font.Name = 'Tahoma'
-        Style.Font.Style = []
-        Style.IsFontAssigned = True
-        TabOrder = 4
-        OnKeyDown = SearchKeyDown
-        Width = 300
-      end
-      object cmbbx_mainKat: TcxComboBox
-        Left = 530
-        Top = 23
-        ParentFont = False
-        Properties.OnChange = cmbbx_mainKatPropertiesChange
-        Style.BorderStyle = ebsFlat
-        Style.Font.Charset = DEFAULT_CHARSET
-        Style.Font.Color = clWindowText
-        Style.Font.Height = -11
-        Style.Font.Name = 'Tahoma'
-        Style.Font.Style = []
-        Style.IsFontAssigned = True
-        TabOrder = 5
-        OnKeyDown = SearchKeyDown
-        Width = 300
-      end
-      object grpbx_ArchivIndex: TcxGroupBox
-        AlignWithMargins = True
-        Left = 2
-        Top = 59
-        Margins.Left = 0
-        Margins.Top = 0
-        Margins.Right = 0
-        Margins.Bottom = 0
-        Align = alBottom
-        Caption = 'Indizes'
-        ParentBackground = False
-        TabOrder = 6
-        Height = 52
-        Width = 1173
-      end
-    end
-    object pnl_DocButtons: TcxGroupBox
-      Left = 2
-      Top = 115
-      Align = alTop
-      PanelStyle.Active = True
-      Style.BorderStyle = ebsNone
-      TabOrder = 2
-      Height = 39
-      Width = 1177
-      object btn_DocSearchDelete: TcxButton
-        Left = 151
-        Top = 6
-        Width = 137
-        Height = 27
-        Caption = '&Filter l'#246'schen'
-        OptionsImage.ImageIndex = 24
-        OptionsImage.Images = dm_PCM.imglst_16x16
-        TabOrder = 1
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'Tahoma'
-        Font.Style = []
-        ParentFont = False
-        OnClick = btn_DocSearchDeleteClick
-      end
-      object btn_DocSearch: TcxButton
-        Left = 8
-        Top = 6
-        Width = 137
-        Height = 27
-        Caption = 'Datei &suchen'
-        OptionsImage.ImageIndex = 25
-        OptionsImage.Images = dm_PCM.imglst_16x16
+    Color = clBtnFace
+    ParentBackground = False
+    ParentColor = False
+    TabOrder = 0
+    Properties.ActivePage = ts_A_Archiv
+    Properties.CustomButtons.Buttons = <>
+    Properties.Images = dm_PCM.imglst_16x16
+    Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea]
+    Properties.TabSlants.Kind = skCutCorner
+    Properties.TabWidth = 100
+    ExplicitWidth = 1165
+    ExplicitHeight = 747
+    ClientRectBottom = 800
+    ClientRectRight = 1280
+    ClientRectTop = 25
+    object ts_A_Archiv: TcxTabSheet
+      Caption = 'Archiv'
+      ImageIndex = 83
+      ExplicitWidth = 1181
+      ExplicitHeight = 761
+      object pnl_DocButtons: TcxGroupBox
+        Left = 0
+        Top = 58
+        Align = alTop
+        PanelStyle.Active = True
+        Style.BorderStyle = ebsNone
         TabOrder = 0
+        ExplicitWidth = 1181
+        Height = 39
+        Width = 1280
+        object btn_DocSearchDelete: TcxButton
+          Left = 151
+          Top = 6
+          Width = 137
+          Height = 27
+          Caption = '&Filter l'#246'schen'
+          OptionsImage.ImageIndex = 24
+          OptionsImage.Images = dm_PCM.imglst_16x16
+          TabOrder = 1
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          OnClick = btn_DocSearchDeleteClick
+        end
+        object btn_DocSearch: TcxButton
+          Left = 8
+          Top = 6
+          Width = 137
+          Height = 27
+          Caption = 'Datei &suchen'
+          OptionsImage.ImageIndex = 25
+          OptionsImage.Images = dm_PCM.imglst_16x16
+          TabOrder = 0
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          OnClick = btn_DocSearchClick
+        end
+      end
+      object grpbx_Archiv: TcxGroupBox
+        Left = 0
+        Top = 97
+        Align = alTop
+        Caption = 'Filterkriterien'
+        TabOrder = 1
+        ExplicitWidth = 1181
+        Height = 113
+        Width = 1280
+        object lbl_User: TcxLabel
+          Left = 8
+          Top = 24
+          AutoSize = False
+          Caption = 'Benutzer'
+          ParentFont = False
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -11
+          Style.Font.Name = 'Tahoma'
+          Style.Font.Style = []
+          Style.IsFontAssigned = True
+          Transparent = True
+          Height = 17
+          Width = 90
+        end
+        object lbl_MainKat: TcxLabel
+          Left = 368
+          Top = 24
+          AutoSize = False
+          Caption = 'Hauptkategorie:'
+          ParentFont = False
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -11
+          Style.Font.Name = 'Tahoma'
+          Style.Font.Style = []
+          Style.IsFontAssigned = True
+          Transparent = True
+          Height = 17
+          Width = 90
+        end
+        object cmbbx_Subkat: TcxComboBox
+          Left = 820
+          Top = 23
+          Enabled = False
+          ParentFont = False
+          Style.BorderStyle = ebsFlat
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -11
+          Style.Font.Name = 'Tahoma'
+          Style.Font.Style = []
+          Style.IsFontAssigned = True
+          TabOrder = 2
+          OnKeyDown = SearchKeyDown
+          Width = 234
+        end
+        object lbl_Subkat: TcxLabel
+          Left = 728
+          Top = 24
+          AutoSize = False
+          Caption = 'Unterkategorie:'
+          ParentFont = False
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -11
+          Style.Font.Name = 'Tahoma'
+          Style.Font.Style = []
+          Style.IsFontAssigned = True
+          Transparent = True
+          Height = 17
+          Width = 90
+        end
+        object cmbbx_benutzer: TcxComboBox
+          Left = 100
+          Top = 23
+          ParentFont = False
+          Style.BorderStyle = ebsFlat
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -11
+          Style.Font.Name = 'Tahoma'
+          Style.Font.Style = []
+          Style.IsFontAssigned = True
+          TabOrder = 4
+          OnKeyDown = SearchKeyDown
+          Width = 234
+        end
+        object cmbbx_mainKat: TcxComboBox
+          Left = 460
+          Top = 23
+          ParentFont = False
+          Properties.OnChange = cmbbx_mainKatPropertiesChange
+          Style.BorderStyle = ebsFlat
+          Style.Font.Charset = DEFAULT_CHARSET
+          Style.Font.Color = clWindowText
+          Style.Font.Height = -11
+          Style.Font.Name = 'Tahoma'
+          Style.Font.Style = []
+          Style.IsFontAssigned = True
+          TabOrder = 5
+          OnKeyDown = SearchKeyDown
+          Width = 234
+        end
+        object grpbx_ArchivIndex: TcxGroupBox
+          AlignWithMargins = True
+          Left = 2
+          Top = 59
+          Margins.Left = 0
+          Margins.Top = 0
+          Margins.Right = 0
+          Margins.Bottom = 0
+          Align = alBottom
+          Caption = 'Indizes'
+          ParentBackground = False
+          TabOrder = 6
+          ExplicitWidth = 1177
+          Height = 52
+          Width = 1276
+        end
+      end
+      object grd_DocSearch: TcxGrid
+        Left = 0
+        Top = 210
+        Width = 1280
+        Height = 565
+        Align = alClient
+        BevelInner = bvNone
+        BevelOuter = bvNone
+        BorderStyle = cxcbsNone
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
         Font.Height = -11
         Font.Name = 'Tahoma'
         Font.Style = []
         ParentFont = False
-        OnClick = btn_DocSearchClick
+        TabOrder = 2
+        LockedStateImageOptions.Effect = lsieDark
+        LookAndFeel.ScrollbarMode = sbmDefault
+        ExplicitWidth = 1181
+        ExplicitHeight = 551
+        object grdDBTblView_DocSearch: TcxGridDBTableView
+          Navigator.Buttons.CustomButtons = <>
+          ScrollbarAnnotations.CustomAnnotations = <>
+          OnCellDblClick = grdDBTblView_DocSearchCellDblClick
+          DataController.DataSource = ds_Doc
+          DataController.Filter.Options = [fcoCaseInsensitive]
+          DataController.Filter.PercentWildcard = '*'
+          DataController.Filter.UnderscoreWildcard = '?'
+          DataController.KeyFieldNames = 'ID'
+          DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
+          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <
+            item
+              Kind = skCount
+            end>
+          DataController.Summary.SummaryGroups = <
+            item
+              Links = <
+                item
+                end>
+              SummaryItems = <
+                item
+                end>
+            end>
+          OptionsBehavior.IncSearch = True
+          OptionsData.Deleting = False
+          OptionsData.Editing = False
+          OptionsData.Inserting = False
+          OptionsSelection.CellSelect = False
+          OptionsSelection.MultiSelect = True
+          OptionsView.CellEndEllipsis = True
+          OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
+          OptionsView.HeaderFilterButtonShowMode = fbmButton
+          OptionsView.IndicatorWidth = 14
+          object grdDBTblView_DocSearchID: TcxGridDBColumn
+            Tag = 1
+            DataBinding.FieldName = 'ID'
+            Visible = False
+            VisibleForExpressionEditor = bFalse
+            VisibleForCustomization = False
+            VisibleForEditForm = bFalse
+            VisibleForRowLayout = bFalse
+          end
+          object grdDBTblView_DocSearchFiles: TcxGridDBColumn
+            Tag = 1
+            DataBinding.FieldName = 'Files'
+            FixedKind = fkLeft
+            Width = 200
+          end
+          object grdDBTblView_DocSearchFullPath: TcxGridDBColumn
+            Tag = 1
+            DataBinding.FieldName = 'FullPath'
+            PropertiesClassName = 'TcxCalcEditProperties'
+            Width = 500
+          end
+          object grdDBTblView_DocSearchBenutzer: TcxGridDBColumn
+            Tag = 1
+            DataBinding.FieldName = 'Benutzer'
+            PropertiesClassName = 'TcxLookupComboBoxProperties'
+            Properties.KeyFieldNames = 'ID'
+            Properties.ListColumns = <
+              item
+                FieldName = 'Benutzer'
+              end>
+            Properties.ListSource = ds_benutzer
+            Visible = False
+            GroupIndex = 0
+            Width = 200
+          end
+          object grdDBTblView_DocSearchMainkat: TcxGridDBColumn
+            Tag = 1
+            Caption = 'Hauptkategorie'
+            DataBinding.FieldName = 'Mainkat'
+            PropertiesClassName = 'TcxLookupComboBoxProperties'
+            Properties.KeyFieldNames = 'ID'
+            Properties.ListColumns = <
+              item
+                FieldName = 'Bezeichnung'
+              end>
+            Properties.ListSource = ds_mainkat
+            Visible = False
+            GroupIndex = 1
+            Width = 200
+          end
+          object grdDBTblView_DocSearchSubkat: TcxGridDBColumn
+            Tag = 1
+            Caption = 'Unterkategorie'
+            DataBinding.FieldName = 'Subkat'
+            PropertiesClassName = 'TcxLookupComboBoxProperties'
+            Properties.KeyFieldNames = 'ID'
+            Properties.ListColumns = <
+              item
+                FieldName = 'Bezeichnung'
+              end>
+            Properties.ListSource = ds_Subkat
+            Visible = False
+            GroupIndex = 2
+            Width = 200
+          end
+          object grdDBTblView_DocSearchFileImage: TcxGridDBColumn
+            DataBinding.FieldName = 'FileImage'
+            Visible = False
+            VisibleForExpressionEditor = bFalse
+            VisibleForCustomization = False
+            VisibleForEditForm = bFalse
+            VisibleForRowLayout = bFalse
+          end
+        end
+        object grdLvl_DocSearch: TcxGridLevel
+          GridView = grdDBTblView_DocSearch
+        end
+      end
+      object dxBarDockControl1: TdxBarDockControl
+        Left = 0
+        Top = 0
+        Width = 1280
+        Height = 58
+        Align = dalTop
+        BarManager = brmgr_Contacts
+        ExplicitWidth = 1181
       end
     end
   end
@@ -355,18 +387,13 @@ object frm_Archiv: Tfrm_Archiv
     Left = 112
     Top = 488
     PixelsPerInch = 96
-    DockControlHeights = (
-      0
-      0
-      58
-      0)
     object tb_dic: TdxBar
       Caption = 'tb_Contacts'
       CaptionButtons = <>
-      DockedDockingStyle = dsTop
+      DockControl = dxBarDockControl1
+      DockedDockControl = dxBarDockControl1
       DockedLeft = 0
       DockedTop = 0
-      DockingStyle = dsTop
       FloatLeft = 1133
       FloatTop = 2
       FloatClientWidth = 0

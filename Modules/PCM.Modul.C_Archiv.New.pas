@@ -378,7 +378,6 @@ procedure Tfrm_NewFile.cmbbx_SubkatPropertiesChange(Sender: TObject);
   var
     cmbbx_New: TcxComboBox;
     wjahr,wMonat,wTag : word;
-    iValue: Integer;
   begin
     cmbbx_New:= TcxComboBox.Create(sclbx_Indizies);
     cmbbx_New.Parent:= sclbx_Indizies;

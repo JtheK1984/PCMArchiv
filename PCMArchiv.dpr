@@ -12,12 +12,19 @@ uses
   Windows,
   PCM.Main in 'PCM.Main.pas' {frm_PCM_Main},
   PCM.Data in 'PCM.Data.pas' {dm_PCM: TDataModule},
+  PCM.Helper,
   PCM.Modul.B_Config in 'Modules\PCM.Modul.B_Config.pas' {frm_Config},
   PCM.Modul.C_Archiv in 'Modules\PCM.Modul.C_Archiv.pas' {frm_Archiv},
   PCM.Modul.C_Archiv.New in 'Modules\PCM.Modul.C_Archiv.New.pas' {frm_NewFile};
   {$EndRegion Uses}
 
 {$R *.res}
+
+{$IFDEF WIN64}
+  {$R 'Versioninfo64.res'}
+{$else}
+  {$R 'Versioninfo32.res'}
+{$ENDIF}
 
 {$SetPEOptFlags IMAGE_DLLCHARACTERISTICS_TERMINAL_SERVER_AWARE}
 {$SetPEFlags IMAGE_FILE_REMOVABLE_RUN_FROM_SWAP or IMAGE_FILE_NET_RUN_FROM_SWAP or IMAGE_FILE_LARGE_ADDRESS_AWARE}
@@ -28,6 +35,7 @@ var
   slocale: String;
 
 begin
+  Checkinis;
   ifini:=TIniFile.create(GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\PCM.ini');
   sStyle:=ifini.ReadString('PCMArchiv','Style','Windows');
   slocale:=ifini.ReadString('PCMArchiv','Language','de');

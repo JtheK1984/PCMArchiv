@@ -73,3 +73,5 @@ modules/
 /Win64/Release/PCMArchiv.DE
 /Win64/Release/PCMArchiv.EN
 /Win64/Release/PCMArchiv.ntr
+/versioninfo32.rc
+/versioninfo64.rc

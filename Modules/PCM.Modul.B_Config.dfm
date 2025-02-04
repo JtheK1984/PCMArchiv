@@ -238,6 +238,7 @@ object frm_Config: Tfrm_Config
                 StyleDisabled.BorderColor = clBtnShadow
                 StyleDisabled.BorderStyle = ebsNone
                 TabOrder = 1
+                ExplicitTop = 59
                 Height = 27
                 Width = 1252
                 object edt_MainKat: TcxDBTextEdit
@@ -376,6 +377,7 @@ object frm_Config: Tfrm_Config
                 StyleDisabled.BorderColor = clBtnShadow
                 StyleDisabled.BorderStyle = ebsNone
                 TabOrder = 1
+                ExplicitTop = 59
                 Height = 27
                 Width = 1252
                 object edt_SubKat: TcxDBTextEdit
@@ -514,6 +516,7 @@ object frm_Config: Tfrm_Config
                 StyleDisabled.BorderColor = clBtnShadow
                 StyleDisabled.BorderStyle = ebsNone
                 TabOrder = 1
+                ExplicitTop = 59
                 Height = 27
                 Width = 1252
                 object edt_index: TcxDBTextEdit
@@ -682,6 +685,10 @@ object frm_Config: Tfrm_Config
           object ts_Zuweisung: TcxTabSheet
             Caption = 'Zuweisung'
             ImageIndex = 4
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object grpbx_Left: TcxGroupBox
               AlignWithMargins = True
               Left = 0

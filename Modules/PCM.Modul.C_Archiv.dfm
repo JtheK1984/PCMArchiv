@@ -31,26 +31,22 @@ object frm_Archiv: Tfrm_Archiv
     Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea]
     Properties.TabSlants.Kind = skCutCorner
     Properties.TabWidth = 100
-    ExplicitWidth = 1165
-    ExplicitHeight = 747
-    ClientRectBottom = 800
-    ClientRectRight = 1280
-    ClientRectTop = 25
+    ClientRectBottom = 794
+    ClientRectLeft = 2
+    ClientRectRight = 1274
+    ClientRectTop = 28
     object ts_A_Archiv: TcxTabSheet
       Caption = 'Archiv'
       ImageIndex = 83
-      ExplicitWidth = 1181
-      ExplicitHeight = 761
       object pnl_DocButtons: TcxGroupBox
         Left = 0
-        Top = 58
+        Top = 63
         Align = alTop
         PanelStyle.Active = True
         Style.BorderStyle = ebsNone
         TabOrder = 0
-        ExplicitWidth = 1181
         Height = 39
-        Width = 1280
+        Width = 1272
         object btn_DocSearchDelete: TcxButton
           Left = 151
           Top = 6
@@ -88,13 +84,12 @@ object frm_Archiv: Tfrm_Archiv
       end
       object grpbx_Archiv: TcxGroupBox
         Left = 0
-        Top = 97
+        Top = 102
         Align = alTop
         Caption = 'Filterkriterien'
         TabOrder = 1
-        ExplicitWidth = 1181
         Height = 113
-        Width = 1280
+        Width = 1272
         object lbl_User: TcxLabel
           Left = 8
           Top = 24
@@ -192,8 +187,8 @@ object frm_Archiv: Tfrm_Archiv
         end
         object grpbx_ArchivIndex: TcxGroupBox
           AlignWithMargins = True
-          Left = 2
-          Top = 59
+          Left = 3
+          Top = 52
           Margins.Left = 0
           Margins.Top = 0
           Margins.Right = 0
@@ -202,16 +197,15 @@ object frm_Archiv: Tfrm_Archiv
           Caption = 'Indizes'
           ParentBackground = False
           TabOrder = 6
-          ExplicitWidth = 1177
           Height = 52
-          Width = 1276
+          Width = 1266
         end
       end
       object grd_DocSearch: TcxGrid
         Left = 0
-        Top = 210
-        Width = 1280
-        Height = 565
+        Top = 215
+        Width = 1272
+        Height = 551
         Align = alClient
         BevelInner = bvNone
         BevelOuter = bvNone
@@ -225,8 +219,6 @@ object frm_Archiv: Tfrm_Archiv
         TabOrder = 2
         LockedStateImageOptions.Effect = lsieDark
         LookAndFeel.ScrollbarMode = sbmDefault
-        ExplicitWidth = 1181
-        ExplicitHeight = 551
         object grdDBTblView_DocSearch: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           ScrollbarAnnotations.CustomAnnotations = <>
@@ -342,11 +334,10 @@ object frm_Archiv: Tfrm_Archiv
       object dxBarDockControl1: TdxBarDockControl
         Left = 0
         Top = 0
-        Width = 1280
-        Height = 58
+        Width = 1272
+        Height = 63
         Align = dalTop
         BarManager = brmgr_Contacts
-        ExplicitWidth = 1181
       end
     end
   end

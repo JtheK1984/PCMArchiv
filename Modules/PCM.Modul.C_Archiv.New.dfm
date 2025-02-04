@@ -18,12 +18,12 @@ object frm_NewFile: Tfrm_NewFile
   TextHeight = 15
   object grpbx_Design: TcxGroupBox
     Left = 0
-    Top = 58
+    Top = 63
     Align = alClient
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 0
-    Height = 516
+    Height = 511
     Width = 812
     object lbl_File: TcxLabel
       Left = 8
@@ -97,10 +97,10 @@ object frm_NewFile: Tfrm_NewFile
       Height = 355
       Width = 796
       object sclbx_Indizies: TcxScrollBox
-        Left = 2
-        Top = 20
-        Width = 792
-        Height = 333
+        Left = 3
+        Top = 17
+        Width = 790
+        Height = 329
         Align = alClient
         TabOrder = 0
       end
@@ -141,7 +141,7 @@ object frm_NewFile: Tfrm_NewFile
     DockControlHeights = (
       0
       0
-      58
+      63
       0)
     object tb_archiv: TdxBar
       AllowClose = False

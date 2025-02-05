@@ -265,7 +265,7 @@ begin
   Timer5.Enabled := False;
   prgbr_Splash.Position:= prgbr_Splash.Position + 1;
   frm_pcm_Main.Caption:= PCM_Programmname;
-  trayIC_Main.PopupMenu:= ppm_main;
+  frm_pcm_Main.trayIC_Main.PopupMenu:= frm_pcm_Main.ppm_main;
   if dm_PCM.bDemo then
     frm_pcm_main.Caption:=PCM_Programmname + rs_PCM_Demolizenz + DateTostr(dm_PCM.dtGueltig);
   Application.ProcessMessages;

@@ -147,14 +147,15 @@ type
     procedure ppmbtn_DesignClick(Sender: TObject);
   private
     { Private-Deklarationen }
+  public
+    { Public-Deklarationen }
+    bAbmelden: Boolean;
     Modules: TCollection;
     function CurrentModule: TForm;
     procedure Abmelden;
     procedure CloseModules;
     procedure LoadData;
-  public
-    { Public-Deklarationen }
-    bAbmelden: Boolean;
+    procedure RegisterNavBarItems;
   end;
   {$EndRegion Type}
 var
@@ -180,7 +181,7 @@ uses
       PCM.SQL,
       PCM.Modul.B_Config,
       PCM.Modul.C_Archiv,
-			PCM.Strings;
+			PCM.Strings, PCM.splash;
 
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
@@ -273,6 +274,50 @@ begin
   else begin
     dm_pcm.qry_ChartFiles.open;
   end;
+end;
+procedure Tfrm_PCM_Main.RegisterNavBarItems;
+  procedure RegisterForm(SideBarItemName: string; FormClass: TFormClass; Instance: Pointer; Right: Integer);
+  var
+    NewModule: TModule;
+    Item: TdxNavBarItem;
+  begin
+    Item := navbr_main.Items.Items[navbr_main.Items.ItemByName(SideBarItemName).index];
+    if Assigned(Item) then
+    begin
+      NewModule := TModule(Modules.Add);
+      Item.Tag := NewModule.ID;
+      NewModule.FormClass := FormClass;
+      NewModule.Instance := Instance;
+      NewModule.Right := Right;
+      NewModule.ModuleName := SideBarItemName;
+      NewModule.ImageIndex := Item.SmallImageIndex;
+    end;
+  end;
+  procedure RegisterEvent(SideBarItemName: string; Event: TMethod);
+  var
+    NewModule: TModule;
+    Item: TdxNavBarItem;
+  begin
+    Item := navbr_main.Items.Items[navbr_main.Items.ItemByName(SideBarItemName).index];
+    if Assigned(Item) then
+    begin
+      NewModule := TModule(Modules.Add);
+      Item.Tag := NewModule.ID;
+      NewModule.Event := Event;
+      NewModule.ModuleName := SideBarItemName;
+    end
+  end;
+begin
+  Modules.Clear;
+  RegisterForm('iBenutzerverwaltung', Tfrm_User, @frm_User, 1);
+  RegisterForm('iKonfiguration', Tfrm_config, @frm_config, 1);
+  RegisterForm('iDesign', Tfrm_Design, @frm_Design, 1);
+  RegisterForm('iArchiv',Tfrm_Archiv, @frm_Archiv, 1);
+  RegisterForm('iSysteminfo',Tfrm_PCM_System, @frm_PCM_System, 1);
+  RegisterForm('iInfo',Tfrm_PCM_InfoApp, @frm_PCM_InfoApp, 1);
+  RegisterForm('iHandbuch',Tfrm_Handbuch, @frm_Handbuch, 1);
+  RegisterEvent('iAbmelden', Abmelden);
+  RegisterEvent('iBeenden', Close);
 end;
 {$EndRegion Hilfsfunktionen}
 ////////////////////////////////////////////////////////////////////////////////
@@ -461,11 +506,11 @@ begin
                                          '(SELECT COUNT(*) FROM archiv_konfiguration_zuweisung_hauptkategorien) as Anzahl ' +
                                          'FROM archiv_konfiguration_hauptkategorien';
               dm_PCM.qry_Work.Open;
-        	    ShowWaitForm(TForm(Self), PWideChar('Formular wird geladen'), dm_PCM.qry_Work.FieldByName('Anzahl').asinteger,ClientWidth, Height);
+        	    ShowWaitForm(TForm(Self), PWideChar('Formular wird geladen'), dm_PCM.qry_Work.FieldByName('Anzahl').asinteger,417, 65);
               dm_PCM.qry_Work.Close;
             end
             else begin
-        	    ShowWaitForm(TForm(Self), PWideChar('Formular wird geladen'), 1,ClientWidth, Height);
+        	    ShowWaitForm(TForm(Self), PWideChar('Formular wird geladen'), 1,417, 65);
             end;
             Application.ProcessMessages;
             WaitFormStep;
@@ -593,172 +638,6 @@ begin
   pnl_LicenceRight.Width:= Trunc(ts_Dashboard.Width/2);
 end;
 procedure Tfrm_PCM_Main.FormShow(Sender: TObject);
-  procedure RegisterForm(SideBarItemName: string; FormClass: TFormClass; Instance: Pointer; Right: Integer);
-  var
-    NewModule: TModule;
-    Item: TdxNavBarItem;
-  begin
-    Item := navbr_main.Items.Items[navbr_main.Items.ItemByName(SideBarItemName).index];
-    if Assigned(Item) then
-    begin
-      NewModule := TModule(Modules.Add);
-      Item.Tag := NewModule.ID;
-      NewModule.FormClass := FormClass;
-      NewModule.Instance := Instance;
-      NewModule.Right := Right;
-      NewModule.ModuleName := SideBarItemName;
-      NewModule.ImageIndex := Item.SmallImageIndex;
-    end;
-  end;
-  procedure RegisterEvent(SideBarItemName: string; Event: TMethod);
-  var
-    NewModule: TModule;
-    Item: TdxNavBarItem;
-  begin
-    Item := navbr_main.Items.Items[navbr_main.Items.ItemByName(SideBarItemName).index];
-    if Assigned(Item) then
-    begin
-      NewModule := TModule(Modules.Add);
-      Item.Tag := NewModule.ID;
-      NewModule.Event := Event;
-      NewModule.ModuleName := SideBarItemName;
-    end
-  end;
-  procedure RegisterNavBarItems;
-  begin
-    Modules.Clear;
-    RegisterForm('iBenutzerverwaltung', Tfrm_User, @frm_User, 1);
-    RegisterForm('iKonfiguration', Tfrm_config, @frm_config, 1);
-    RegisterForm('iDesign', Tfrm_Design, @frm_Design, 1);
-    RegisterForm('iArchiv',Tfrm_Archiv, @frm_Archiv, 1);
-    RegisterForm('iSysteminfo',Tfrm_PCM_System, @frm_PCM_System, 1);
-    RegisterForm('iInfo',Tfrm_PCM_InfoApp, @frm_PCM_InfoApp, 1);
-    RegisterForm('iHandbuch',Tfrm_Handbuch, @frm_Handbuch, 1);
-    RegisterEvent('iAbmelden', Abmelden);
-    RegisterEvent('iBeenden', Close);
-  end;
-  procedure InitializeRights;
-  begin
-    dm_PCM.qry_Work.SQL.Text:= ASSQL_GetAllRights[dm_PCM.iDBType];
-    dm_PCM.qry_Work.ParamByName('ID').AsInteger := dm_PCM.iIDBenutzerPCM;
-    dm_PCM.qry_Work.Open;
-    dm_PCM.iBenutzer:= dm_PCM.qry_Work.FieldByName('Benutzer').asInteger;
-    dm_PCM.iKonfiguration:= dm_PCM.qry_Work.FieldByName('Konfiguration').asInteger;
-    dm_PCM.iDesign:= dm_PCM.qry_Work.FieldByName('Design').asInteger;
-    dm_PCM.iArchiv:= dm_PCM.qry_Work.FieldByName('dm_archiv').asInteger;
-    dm_PCM.qry_Work.Close;
-    // Benutzerverwaltung / Kein Recht
-    if (dm_PCM.iBenutzer = 0) and (dm_PCM.iKonfiguration = 0) and (dm_PCM.iDesign = 0) then
-    begin
-      navbrgrp_Optionen.Visible:= false;
-      iBenutzerverwaltung.Visible:= false;
-      iKonfiguration.Visible:= false;
-      ppmbtn_Benutzer.Visible:= false;
-      ppmbtn_Konfiguration.Visible:= false;
-      ppmbtn_Design.Visible:= false;
-    end;
-    // Benutzerverwaltung / Lesen / Ändern / Vollzugriff
-    case dm_PCM.iBenutzer of
-    0:
-      begin
-        iBenutzerverwaltung.Visible:= false;
-        ppmbtn_Benutzer.Visible:= false;
-      end;
-    1,2,3:
-      begin
-        navbrgrp_Optionen.Visible:= true;
-        iBenutzerverwaltung.Visible:= true;
-        ppmbtn_Benutzer.Visible:= true;
-      end;
-    end;
-    // Optionen / Lesen / Ändern / Vollzugriff
-    case dm_PCM.iKonfiguration of
-    0:
-      begin
-        iKonfiguration.Visible:= false;
-        ppmbtn_Konfiguration.Visible:= false;
-      end;
-    1,2,3:
-      begin
-        navbrgrp_Optionen.Visible:= true;
-        iKonfiguration.Visible:= true;
-        ppmbtn_Konfiguration.Visible:= true;
-      end;
-    end;
-    // Design / Lesen / Ändern / Vollzugriff
-    case dm_PCM.iDesign of
-    0:
-      begin
-        iDesign.Visible:= false;
-        ppmbtn_Design.Visible:= false;
-      end;
-    1,2,3:
-      begin
-        navbrgrp_Optionen.Visible:= true;
-        iDesign.Visible:= true;
-        ppmbtn_Design.Visible:= true;
-      end;
-    end;
-    // Archiv / Lesen / Ändern / Vollzugriff
-    case dm_PCM.iArchiv of
-    0:
-      begin
-        navbrgrp_Kontake.Visible:= false;
-        ppmbtn_Archiv.Visible:= false;
-      end;
-    1,2,3:
-      begin
-        navbrgrp_Kontake.Visible:= true;
-        ppmbtn_Archiv.Visible:= true;
-      end;
-    end;
-  end;
-  procedure LoadLanguageIni;
-  begin
-    try
-      loc_lang.LoadFromFile(GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\cxLocalLang.ini');
-      loc_lang.LanguageIndex := 1;
-    except
-      on e:Exception do
-      begin
-        MessageDlg(rs_PCM_Sprachdatei, mtWarning, [mbOk], 0);
-      end
-    end;
-  end;
-  procedure CheckClientLicence;
-  begin
-    dm_PCM.bNewLiceneCheck:= false;
-    CheckLizenzNew;
-    if dm_PCm.bNewLiceneCheck = false then
-    begin
-      CheckLizenzNew;
-      if dm_PCm.bNewLiceneCheck = false then
-        Application.Terminate;
-    end;
-  end;
-  procedure CheckLogin;
-  begin
-    if not bAbmelden then
-      dm_PCM.bLogin := Autologin
-    else
-      dm_PCM.bLogin := false;
-    if not dm_PCM.bLogin then
-    begin
-      Application.CreateForm(Tfrm_PCM_Login, frm_PCM_Login);
-      dm_PCM.bLogin := frm_pcm_login.Login_User;
-      frm_PCM_Login.Free;
-    end;
-    if not dm_PCM.bLogin then
-      Application.Terminate;
-    bAbmelden:= False;
-  end;
-  procedure SetTrayMenu;
-  begin
-    Caption:= PCM_Programmname;
-    trayIC_Main.PopupMenu:= ppm_main;
-    if dm_PCM.bDemo then
-      Caption:=PCM_Programmname + rs_PCM_Demolizenz + DateTostr(dm_PCM.dtGueltig);
-  end;
 begin
   {$ifdef WIn32}
   iSprache.Visible:= false;
@@ -773,19 +652,15 @@ begin
   end
   else begin
   	lafCtrl_Main.SkinName:= dm_PCM.sDesign;
-    LoadLanguageIni;
+    SplashScreen := TSplashScreen.Create(nil);
+    SplashScreen.Update;
+    SplashScreen.Execute(dm_PCM.bStyle);
     if dm_PCM.bStyle then
     begin
       NavBarClick(iDesign);
     end
     else begin
-      CheckClientLicence;
-      CheckLogin;
-      InitializeRights;
-      LoadData;
       WriteLog(PCM_Logname,rs_PCM_Start,0);
-      SetTrayMenu;
-      RegisterNavBarItems;
     end;
   end;
 end;

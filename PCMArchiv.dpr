@@ -1,7 +1,7 @@
 program PCMArchiv;
 
 uses
-  {$Region Uses}
+  {$Region}
   inifiles,
   NtTranslator,
   System.SysUtils,
@@ -15,8 +15,10 @@ uses
   PCM.Helper,
   PCM.Modul.B_Config in 'Modules\PCM.Modul.B_Config.pas' {frm_Config},
   PCM.Modul.C_Archiv in 'Modules\PCM.Modul.C_Archiv.pas' {frm_Archiv},
-  PCM.Modul.C_Archiv.New in 'Modules\PCM.Modul.C_Archiv.New.pas' {frm_NewFile};
-  {$EndRegion Uses}
+  PCM.Modul.C_Archiv.New in 'Modules\PCM.Modul.C_Archiv.New.pas' {frm_NewFile},
+  PCM.splash in 'PCM.splash.pas' {SplashScreen};
+
+{$EndRegion Uses}
 
 {$R *.res}
 

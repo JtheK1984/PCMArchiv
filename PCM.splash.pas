@@ -143,12 +143,7 @@ begin
     CheckLizenzNew;
     if dm_PCm.bNewLiceneCheck = false then
       Application.Terminate;
-
-
-
-
-
-
+  end;
   prgbr_Splash.Properties.Text:= 'Benutzerlogin prüfen...';
   Timer2.enabled:= true;
 end;

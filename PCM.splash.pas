@@ -7,12 +7,11 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, cxControls, cxLookAndFeels,
   cxLookAndFeelPainters, Vcl.ExtCtrls,
   dxGDIPlusClasses, dxActivityIndicator, cxContainer, cxEdit, cxProgressBar,
-  cxImage, cxLabel, cxGroupBox, cxClasses, inifiles;
+  cxImage, cxLabel, cxGroupBox, cxClasses, inifiles, dxUIAClasses;
 
 type
   TSplashScreen = class(TForm)
     ActivityIndicator: TdxActivityIndicator;
-    grpbx_Design: TcxGroupBox;
     img_Splash: TImage;
     lbl_Progname: TcxLabel;
     lbl_ProgVersion: TcxLabel;
@@ -24,6 +23,7 @@ type
     Timer5: TTimer;
     Timer6: TTimer;
     Timer11: TTimer;
+    Panel1: TPanel;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Timer1Timer(Sender: TObject);
     procedure Timer2Timer(Sender: TObject);

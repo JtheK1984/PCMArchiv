@@ -16,1017 +16,1061 @@ object frm_Config: Tfrm_Config
   OnResize = FormResize
   OnShow = FormShow
   TextHeight = 13
-  object grpbx_Design: TcxGroupBox
+  object dxLayoutControl1: TdxLayoutControl
     Left = 0
     Top = 0
-    Align = alClient
-    PanelStyle.Active = True
-    Style.BorderStyle = ebsNone
-    TabOrder = 0
-    Height = 800
     Width = 1280
-    object pc_Options: TcxPageControl
-      Left = 3
-      Top = 3
-      Width = 1274
-      Height = 794
-      Align = alClient
-      Color = clBtnFace
-      ParentBackground = False
-      ParentColor = False
-      TabOrder = 0
-      Properties.ActivePage = ts_A_Archiv
-      Properties.CustomButtons.Buttons = <>
-      Properties.Images = dm_PCM.imglst_16x16
-      Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea]
-      Properties.TabSlants.Kind = skCutCorner
-      Properties.TabWidth = 100
-      ClientRectBottom = 788
-      ClientRectLeft = 2
-      ClientRectRight = 1268
-      ClientRectTop = 28
-      object ts_A_Archiv: TcxTabSheet
-        Caption = 'Archiv'
-        ImageIndex = 82
-        object pc_Config: TcxPageControl
-          Left = 0
-          Top = 0
-          Width = 1266
-          Height = 760
-          Align = alClient
-          Color = clBtnFace
-          ParentBackground = False
-          ParentColor = False
-          TabOrder = 0
-          Properties.ActivePage = ts_1ArchivPfad
-          Properties.CustomButtons.Buttons = <>
-          Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea]
-          Properties.TabSlants.Kind = skCutCorner
-          Properties.TabWidth = 150
-          OnClick = pc_ConfigClick
-          ClientRectBottom = 754
-          ClientRectLeft = 2
-          ClientRectRight = 1260
-          ClientRectTop = 27
-          object ts_1ArchivPfad: TcxTabSheet
-            Caption = 'Pfad f'#252'r Dokumente'
-            ImageIndex = 82
-            object grpbx_ArchivPfad: TcxGroupBox
-              Left = 0
-              Top = 0
-              Align = alClient
-              Caption = 'Verzeichnis zum Archiv'
-              TabOrder = 0
-              Height = 727
-              Width = 1258
-              object bardckctrl_ArchivPfad: TdxBarDockControl
-                Left = 3
-                Top = 15
-                Width = 1252
-                Height = 63
-                Align = dalTop
-                AllowDocking = False
-                BarManager = brmgr_Config
-              end
-              object grpbx_PathDetail: TcxGroupBox
-                Left = 3
-                Top = 78
-                Align = alTop
-                PanelStyle.Active = True
-                StyleDisabled.BorderColor = clBtnShadow
-                StyleDisabled.BorderStyle = ebsNone
-                TabOrder = 1
-                Height = 27
-                Width = 1252
-                object lbl_ArchivPfad: TcxLabel
-                  AlignWithMargins = True
-                  Left = 8
-                  Top = 5
-                  Margins.Left = 5
-                  Margins.Top = 2
-                  Margins.Right = 5
-                  Margins.Bottom = 2
-                  Align = alLeft
-                  AutoSize = False
-                  Caption = 'Verzeichnis:'
-                  ParentFont = False
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  Transparent = True
-                  Height = 17
-                  Width = 70
-                end
-                object edt_ArchivPfad: TcxDBButtonEdit
-                  AlignWithMargins = True
-                  Left = 83
-                  Top = 3
-                  Margins.Left = 0
-                  Margins.Top = 0
-                  Margins.Right = 0
-                  Margins.Bottom = 0
-                  Align = alClient
-                  DataBinding.DataField = 'Pfad'
-                  DataBinding.DataSource = ds_Pfad
-                  ParentFont = False
-                  Properties.Buttons = <
-                    item
-                      Default = True
-                      Kind = bkEllipsis
-                    end>
-                  Properties.OnButtonClick = edt_PfadPropertiesButtonClick
-                  Style.BorderStyle = ebsFlat
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  TabOrder = 1
-                  OnExit = btn_DirSaveClick
-                  Width = 1166
-                end
-              end
-              object grd_ArchivPfad: TcxGrid
-                Left = 3
-                Top = 105
-                Width = 1252
-                Height = 613
-                Align = alClient
-                BorderStyle = cxcbsNone
-                Font.Charset = DEFAULT_CHARSET
-                Font.Color = clWindowText
-                Font.Height = -11
-                Font.Name = 'Tahoma'
-                Font.Style = []
-                ParentFont = False
-                TabOrder = 2
-                LockedStateImageOptions.Effect = lsieDark
-                object grdDBTblView_ArchivPfad: TcxGridDBTableView
-                  Navigator.Buttons.CustomButtons = <>
-                  FilterBox.CustomizeDialog = False
-                  ScrollbarAnnotations.CustomAnnotations = <>
-                  DataController.DataSource = ds_Pfad
-                  DataController.Filter.PercentWildcard = '*'
-                  DataController.Filter.UnderscoreWildcard = '?'
-                  DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
-                  DataController.Summary.DefaultGroupSummaryItems = <>
-                  DataController.Summary.FooterSummaryItems = <
-                    item
-                      Kind = skCount
-                    end>
-                  DataController.Summary.SummaryGroups = <
-                    item
-                      Links = <
-                        item
-                        end>
-                      SummaryItems = <
-                        item
-                        end>
-                    end>
-                  OptionsBehavior.IncSearch = True
-                  OptionsBehavior.ShowHourglassCursor = False
-                  OptionsCustomize.ColumnsQuickCustomization = True
-                  OptionsData.Deleting = False
-                  OptionsData.Editing = False
-                  OptionsData.Inserting = False
-                  OptionsSelection.CellSelect = False
-                  OptionsView.CellEndEllipsis = True
-                  OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
-                  OptionsView.GroupByBox = False
-                  OptionsView.HeaderFilterButtonShowMode = fbmButton
-                  OptionsView.IndicatorWidth = 14
-                  object grdDBTblView_ArchivPfadPfad: TcxGridDBColumn
-                    DataBinding.FieldName = 'Pfad'
-                    DataBinding.IsNullValueType = True
-                    Width = 800
-                  end
-                end
-                object grdlvl_ArchivPfad: TcxGridLevel
-                  GridView = grdDBTblView_ArchivPfad
-                end
-              end
-            end
-          end
-          object ts_2MainKat: TcxTabSheet
-            Caption = 'Hauptkategorien'
-            ImageIndex = 1
-            object grpbx_MainKat: TcxGroupBox
-              Left = 0
-              Top = 0
-              Align = alClient
-              Caption = 'Hauptkategorien'
-              TabOrder = 0
-              Height = 727
-              Width = 1258
-              object brdckctrl_MainKat: TdxBarDockControl
-                Left = 3
-                Top = 15
-                Width = 1252
-                Height = 63
-                Align = dalTop
-                BarManager = brmgr_Config
-              end
-              object grpbx_MainKatDetail: TcxGroupBox
-                Left = 3
-                Top = 78
-                Align = alTop
-                PanelStyle.Active = True
-                StyleDisabled.BorderColor = clBtnShadow
-                StyleDisabled.BorderStyle = ebsNone
-                TabOrder = 1
-                ExplicitTop = 59
-                Height = 27
-                Width = 1252
-                object edt_MainKat: TcxDBTextEdit
-                  AlignWithMargins = True
-                  Left = 83
-                  Top = 3
-                  Margins.Left = 0
-                  Margins.Top = 0
-                  Margins.Right = 0
-                  Margins.Bottom = 0
-                  Align = alClient
-                  DataBinding.DataField = 'Bezeichnung'
-                  DataBinding.DataSource = ds_Mainkat
-                  ParentFont = False
-                  Style.BorderStyle = ebsFlat
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  TabOrder = 0
-                  OnExit = btn_MainKatSaveClick
-                  OnKeyUp = edt_MainKatKeyUp
-                  Width = 1166
-                end
-                object lbl_MainKat: TcxLabel
-                  AlignWithMargins = True
-                  Left = 8
-                  Top = 5
-                  Margins.Left = 5
-                  Margins.Top = 2
-                  Margins.Right = 5
-                  Margins.Bottom = 2
-                  Align = alLeft
-                  AutoSize = False
-                  Caption = 'Bezeichnung:'
-                  ParentFont = False
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  Transparent = True
-                  Height = 17
-                  Width = 70
-                end
-              end
-              object grd_MainKat: TcxGrid
-                Left = 3
-                Top = 105
-                Width = 1252
-                Height = 613
-                Align = alClient
-                BorderStyle = cxcbsNone
-                Font.Charset = DEFAULT_CHARSET
-                Font.Color = clWindowText
-                Font.Height = -11
-                Font.Name = 'Tahoma'
-                Font.Style = []
-                ParentFont = False
-                TabOrder = 2
-                LockedStateImageOptions.Effect = lsieDark
-                object grdDBTblView_MainKat: TcxGridDBTableView
-                  Navigator.Buttons.CustomButtons = <>
-                  FilterBox.CustomizeDialog = False
-                  ScrollbarAnnotations.CustomAnnotations = <>
-                  DataController.DataSource = ds_Mainkat
-                  DataController.Filter.PercentWildcard = '*'
-                  DataController.Filter.UnderscoreWildcard = '?'
-                  DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
-                  DataController.Summary.DefaultGroupSummaryItems = <>
-                  DataController.Summary.FooterSummaryItems = <
-                    item
-                      Kind = skCount
-                    end>
-                  DataController.Summary.SummaryGroups = <
-                    item
-                      Links = <
-                        item
-                        end>
-                      SummaryItems = <
-                        item
-                        end>
-                    end>
-                  OptionsBehavior.IncSearch = True
-                  OptionsBehavior.ShowHourglassCursor = False
-                  OptionsCustomize.ColumnsQuickCustomization = True
-                  OptionsData.Deleting = False
-                  OptionsData.Editing = False
-                  OptionsData.Inserting = False
-                  OptionsSelection.CellSelect = False
-                  OptionsView.CellEndEllipsis = True
-                  OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
-                  OptionsView.GroupByBox = False
-                  OptionsView.HeaderFilterButtonShowMode = fbmButton
-                  OptionsView.IndicatorWidth = 14
-                  object grdDBTblView_MainKatBezeichnung: TcxGridDBColumn
-                    DataBinding.FieldName = 'Bezeichnung'
-                    SortIndex = 0
-                    SortOrder = soAscending
-                    Width = 900
-                  end
-                end
-                object grdlvl_MainKat: TcxGridLevel
-                  GridView = grdDBTblView_MainKat
-                end
-              end
-            end
-          end
-          object ts_3SubKat: TcxTabSheet
-            Caption = 'Unterkategorien'
-            ImageIndex = 2
-            object grpbx_SubKat: TcxGroupBox
-              Left = 0
-              Top = 0
-              Align = alClient
-              Caption = 'Unterkategorien'
-              TabOrder = 0
-              Height = 727
-              Width = 1258
-              object brdckctrl_SubKat: TdxBarDockControl
-                Left = 3
-                Top = 15
-                Width = 1252
-                Height = 63
-                Align = dalTop
-                BarManager = brmgr_Config
-              end
-              object grpbx_SubKatDetail: TcxGroupBox
-                Left = 3
-                Top = 78
-                Align = alTop
-                PanelStyle.Active = True
-                StyleDisabled.BorderColor = clBtnShadow
-                StyleDisabled.BorderStyle = ebsNone
-                TabOrder = 1
-                ExplicitTop = 59
-                Height = 27
-                Width = 1252
-                object edt_SubKat: TcxDBTextEdit
-                  AlignWithMargins = True
-                  Left = 93
-                  Top = 3
-                  Margins.Left = 0
-                  Margins.Top = 0
-                  Margins.Right = 0
-                  Margins.Bottom = 0
-                  Align = alClient
-                  DataBinding.DataField = 'Bezeichnung'
-                  DataBinding.DataSource = ds_Subkat
-                  ParentFont = False
-                  Style.BorderStyle = ebsFlat
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  TabOrder = 0
-                  OnExit = btn_SubKatSaveClick
-                  OnKeyUp = edt_SubKatKeyUp
-                  Width = 1156
-                end
-                object lbl_SubKat: TcxLabel
-                  AlignWithMargins = True
-                  Left = 8
-                  Top = 5
-                  Margins.Left = 5
-                  Margins.Top = 2
-                  Margins.Right = 5
-                  Margins.Bottom = 2
-                  Align = alLeft
-                  AutoSize = False
-                  Caption = 'Unterkategorie:'
-                  ParentFont = False
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  Transparent = True
-                  Height = 17
-                  Width = 80
-                end
-              end
-              object grd_SubKat: TcxGrid
-                Left = 3
-                Top = 105
-                Width = 1252
-                Height = 613
-                Align = alClient
-                BorderStyle = cxcbsNone
-                Font.Charset = DEFAULT_CHARSET
-                Font.Color = clWindowText
-                Font.Height = -11
-                Font.Name = 'Tahoma'
-                Font.Style = []
-                ParentFont = False
-                TabOrder = 2
-                LockedStateImageOptions.Effect = lsieDark
-                object grdDBTblView_Subkat: TcxGridDBTableView
-                  Navigator.Buttons.CustomButtons = <>
-                  FilterBox.CustomizeDialog = False
-                  ScrollbarAnnotations.CustomAnnotations = <>
-                  DataController.DataSource = ds_Subkat
-                  DataController.Filter.PercentWildcard = '*'
-                  DataController.Filter.UnderscoreWildcard = '?'
-                  DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
-                  DataController.Summary.DefaultGroupSummaryItems = <>
-                  DataController.Summary.FooterSummaryItems = <
-                    item
-                      Kind = skCount
-                    end>
-                  DataController.Summary.SummaryGroups = <
-                    item
-                      Links = <
-                        item
-                        end>
-                      SummaryItems = <
-                        item
-                        end>
-                    end>
-                  OptionsBehavior.IncSearch = True
-                  OptionsBehavior.ShowHourglassCursor = False
-                  OptionsCustomize.ColumnsQuickCustomization = True
-                  OptionsData.Deleting = False
-                  OptionsData.Editing = False
-                  OptionsData.Inserting = False
-                  OptionsSelection.CellSelect = False
-                  OptionsView.CellEndEllipsis = True
-                  OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
-                  OptionsView.GroupByBox = False
-                  OptionsView.HeaderFilterButtonShowMode = fbmButton
-                  OptionsView.IndicatorWidth = 14
-                  object grdDBTblView_SubkatBezeichnung: TcxGridDBColumn
-                    DataBinding.FieldName = 'Bezeichnung'
-                    SortIndex = 0
-                    SortOrder = soAscending
-                    Width = 900
-                  end
-                end
-                object grdlvl_SubKat: TcxGridLevel
-                  GridView = grdDBTblView_Subkat
-                end
-              end
-            end
-          end
-          object ts_4Index: TcxTabSheet
-            Caption = 'Indizies'
-            ImageIndex = 3
-            object grpbox_Index: TcxGroupBox
-              Left = 0
-              Top = 0
-              Align = alClient
-              Caption = 'Unterkategorien'
-              TabOrder = 0
-              Height = 727
-              Width = 1258
-              object brdckCtrl_Index: TdxBarDockControl
-                Left = 3
-                Top = 15
-                Width = 1252
-                Height = 63
-                Align = dalTop
-                BarManager = brmgr_Config
-              end
-              object grpbox_IndexDetail: TcxGroupBox
-                Left = 3
-                Top = 78
-                Align = alTop
-                PanelStyle.Active = True
-                StyleDisabled.BorderColor = clBtnShadow
-                StyleDisabled.BorderStyle = ebsNone
-                TabOrder = 1
-                ExplicitTop = 59
-                Height = 27
-                Width = 1252
-                object edt_index: TcxDBTextEdit
-                  AlignWithMargins = True
-                  Left = 93
-                  Top = 3
-                  Margins.Left = 0
-                  Margins.Top = 0
-                  Margins.Right = 0
-                  Margins.Bottom = 0
-                  Align = alLeft
-                  DataBinding.DataField = 'Bezeichnung'
-                  DataBinding.DataSource = ds_index
-                  ParentFont = False
-                  Style.BorderStyle = ebsFlat
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  TabOrder = 0
-                  OnExit = btn_MainKatSaveClick
-                  OnKeyUp = edt_indexKeyUp
-                  Width = 400
-                end
-                object lbl_Datatyp: TcxLabel
-                  AlignWithMargins = True
-                  Left = 498
-                  Top = 5
-                  Margins.Left = 5
-                  Margins.Top = 2
-                  Margins.Right = 5
-                  Margins.Bottom = 2
-                  Align = alLeft
-                  AutoSize = False
-                  Caption = 'Datentyp:'
-                  ParentFont = False
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  Transparent = True
-                  Height = 17
-                  Width = 80
-                end
-                object lbl_index: TcxLabel
-                  AlignWithMargins = True
-                  Left = 8
-                  Top = 5
-                  Margins.Left = 5
-                  Margins.Top = 2
-                  Margins.Right = 5
-                  Margins.Bottom = 2
-                  Align = alLeft
-                  AutoSize = False
-                  Caption = 'Index:'
-                  ParentFont = False
-                  Style.Font.Charset = DEFAULT_CHARSET
-                  Style.Font.Color = clWindowText
-                  Style.Font.Height = -11
-                  Style.Font.Name = 'Tahoma'
-                  Style.Font.Style = []
-                  Style.IsFontAssigned = True
-                  Transparent = True
-                  Height = 17
-                  Width = 80
-                end
-                object lucmbbx_Datatype: TcxDBLookupComboBox
-                  AlignWithMargins = True
-                  Left = 583
-                  Top = 3
-                  Margins.Left = 0
-                  Margins.Top = 0
-                  Margins.Right = 0
-                  Margins.Bottom = 0
-                  Align = alLeft
-                  DataBinding.DataField = 'ID_archiv_konfiguration_index_typ'
-                  DataBinding.DataSource = ds_index
-                  Properties.KeyFieldNames = 'ID'
-                  Properties.ListColumns = <
-                    item
-                      FieldName = 'Bezeichnung'
-                    end>
-                  Properties.ListSource = ds_indexType
-                  TabOrder = 3
-                  Width = 200
-                end
-              end
-              object grd_Index: TcxGrid
-                Left = 3
-                Top = 105
-                Width = 1252
-                Height = 613
-                Align = alClient
-                BorderStyle = cxcbsNone
-                Font.Charset = DEFAULT_CHARSET
-                Font.Color = clWindowText
-                Font.Height = -11
-                Font.Name = 'Tahoma'
-                Font.Style = []
-                ParentFont = False
-                TabOrder = 2
-                LockedStateImageOptions.Effect = lsieDark
-                object grdDBTblView_Index: TcxGridDBTableView
-                  Navigator.Buttons.CustomButtons = <>
-                  FilterBox.CustomizeDialog = False
-                  ScrollbarAnnotations.CustomAnnotations = <>
-                  DataController.DataSource = ds_index
-                  DataController.Filter.PercentWildcard = '*'
-                  DataController.Filter.UnderscoreWildcard = '?'
-                  DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
-                  DataController.Summary.DefaultGroupSummaryItems = <>
-                  DataController.Summary.FooterSummaryItems = <
-                    item
-                      Kind = skCount
-                    end>
-                  DataController.Summary.SummaryGroups = <
-                    item
-                      Links = <
-                        item
-                        end>
-                      SummaryItems = <
-                        item
-                        end>
-                    end>
-                  OptionsBehavior.IncSearch = True
-                  OptionsBehavior.ShowHourglassCursor = False
-                  OptionsCustomize.ColumnsQuickCustomization = True
-                  OptionsData.Deleting = False
-                  OptionsData.Editing = False
-                  OptionsData.Inserting = False
-                  OptionsSelection.CellSelect = False
-                  OptionsView.CellEndEllipsis = True
-                  OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
-                  OptionsView.GroupByBox = False
-                  OptionsView.HeaderFilterButtonShowMode = fbmButton
-                  OptionsView.IndicatorWidth = 14
-                  object grdDBTblView_IndexBezeichnung: TcxGridDBColumn
-                    DataBinding.FieldName = 'Bezeichnung'
-                    SortIndex = 0
-                    SortOrder = soAscending
-                    Width = 900
-                  end
-                  object grdDBTblView_IndexID_archiv_konfiguration_index_typ: TcxGridDBColumn
-                    Caption = 'Typ'
-                    DataBinding.FieldName = 'ID_archiv_konfiguration_index_typ'
-                    PropertiesClassName = 'TcxLookupComboBoxProperties'
-                    Properties.KeyFieldNames = 'ID'
-                    Properties.ListColumns = <
-                      item
-                        FieldName = 'Bezeichnung'
-                      end>
-                    Properties.ListSource = ds_indexType
-                    Width = 200
-                  end
-                end
-                object grdLvl_Index: TcxGridLevel
-                  GridView = grdDBTblView_Index
-                end
-              end
-            end
-          end
-          object ts_Zuweisung: TcxTabSheet
-            Caption = 'Zuweisung'
-            ImageIndex = 4
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
-            object grpbx_Left: TcxGroupBox
-              AlignWithMargins = True
-              Left = 0
-              Top = 0
-              Margins.Left = 0
-              Margins.Top = 0
-              Margins.Right = 0
-              Margins.Bottom = 0
-              Align = alLeft
-              PanelStyle.Active = True
-              Style.BorderStyle = ebsNone
-              TabOrder = 0
-              Height = 727
-              Width = 400
-              object grpbx_1Main: TcxGroupBox
-                AlignWithMargins = True
-                Left = 3
-                Top = 3
-                Margins.Left = 0
-                Margins.Top = 0
-                Margins.Right = 0
-                Margins.Bottom = 0
-                Align = alTop
-                Caption = 'Hauptkategorie'
-                Style.BorderStyle = ebsFlat
-                TabOrder = 0
-                Height = 300
-                Width = 394
-                object trlst_MainKat: TcxTreeList
-                  AlignWithMargins = True
-                  Left = 6
-                  Top = 18
-                  Width = 382
-                  Height = 270
-                  Align = alClient
-                  Bands = <
-                    item
-                    end>
-                  DragCursor = crDrag
-                  DragMode = dmAutomatic
-                  Navigator.Buttons.CustomButtons = <>
-                  OptionsBehavior.ChangeDelay = 1000
-                  OptionsBehavior.CopyCaptionsToClipboard = False
-                  OptionsData.Editing = False
-                  OptionsData.MultiThreadedSorting = bTrue
-                  OptionsSelection.CellSelect = False
-                  OptionsView.ColumnAutoWidth = True
-                  OptionsView.Headers = False
-                  OptionsView.TreeLineStyle = tllsSolid
-                  ScrollbarAnnotations.CustomAnnotations = <>
-                  TabOrder = 0
-                  object trlstCol_MainKatBezeichnung: TcxTreeListColumn
-                    Caption.Text = 'Bezeichnung'
-                    Width = 100
-                    Position.ColIndex = 0
-                    Position.RowIndex = 0
-                    Position.BandIndex = 0
-                    SortOrder = soAscending
-                    SortIndex = 0
-                    Summary.FooterSummaryItems = <>
-                    Summary.GroupFooterSummaryItems = <>
-                  end
-                  object trlstCol_MainKatID: TcxTreeListColumn
-                    VisibleForExpressionEditor = bFalse
-                    Visible = False
-                    Caption.Text = 'Typ'
-                    Width = 100
-                    Position.ColIndex = 1
-                    Position.RowIndex = 0
-                    Position.BandIndex = 0
-                    Summary.FooterSummaryItems = <>
-                    Summary.GroupFooterSummaryItems = <>
-                  end
-                  object trlstCol_MainKatLVL: TcxTreeListColumn
-                    Visible = False
-                    Width = 100
-                    Position.ColIndex = 2
-                    Position.RowIndex = 0
-                    Position.BandIndex = 0
-                    Summary.FooterSummaryItems = <>
-                    Summary.GroupFooterSummaryItems = <>
-                  end
-                  object trlstCol_MainKatIDTable: TcxTreeListColumn
-                    Visible = False
-                    Width = 100
-                    Position.ColIndex = 3
-                    Position.RowIndex = 0
-                    Position.BandIndex = 0
-                    Summary.FooterSummaryItems = <>
-                    Summary.GroupFooterSummaryItems = <>
-                  end
-                end
-              end
-              object grpbx_2Sub: TcxGroupBox
-                Left = 3
-                Top = 303
-                Align = alTop
-                Caption = 'Unterkategorie'
-                Style.BorderStyle = ebsFlat
-                TabOrder = 1
-                Height = 300
-                Width = 394
-                object trlst_SubKat: TcxTreeList
-                  AlignWithMargins = True
-                  Left = 6
-                  Top = 18
-                  Width = 382
-                  Height = 270
-                  Align = alClient
-                  Bands = <
-                    item
-                    end>
-                  DragCursor = crDrag
-                  DragMode = dmAutomatic
-                  Navigator.Buttons.CustomButtons = <>
-                  OptionsBehavior.ChangeDelay = 1000
-                  OptionsBehavior.CopyCaptionsToClipboard = False
-                  OptionsData.Editing = False
-                  OptionsData.MultiThreadedSorting = bTrue
-                  OptionsSelection.CellSelect = False
-                  OptionsView.ColumnAutoWidth = True
-                  OptionsView.Headers = False
-                  OptionsView.TreeLineStyle = tllsSolid
-                  ScrollbarAnnotations.CustomAnnotations = <>
-                  TabOrder = 0
-                  object trlstCol_SubKatBezeichnung: TcxTreeListColumn
-                    Caption.Text = 'Bezeichnung'
-                    Width = 100
-                    Position.ColIndex = 0
-                    Position.RowIndex = 0
-                    Position.BandIndex = 0
-                    SortOrder = soAscending
-                    SortIndex = 0
-                    Summary.FooterSummaryItems = <>
-                    Summary.GroupFooterSummaryItems = <>
-                  end
-                  object trlstCol_SubKatID: TcxTreeListColumn
-                    VisibleForExpressionEditor = bFalse
-                    Visible = False
-                    Caption.Text = 'Typ'
-                    Width = 100
-                    Position.ColIndex = 1
-                    Position.RowIndex = 0
-                    Position.BandIndex = 0
-                    Summary.FooterSummaryItems = <>
-                    Summary.GroupFooterSummaryItems = <>
-                  end
-                  object trlstColt_SubKatLVL: TcxTreeListColumn
-                    Visible = False
-                    Width = 100
-                    Position.ColIndex = 2
-                    Position.RowIndex = 0
-                    Position.BandIndex = 0
-                    Summary.FooterSummaryItems = <>
-                    Summary.GroupFooterSummaryItems = <>
-                  end
-                  object trlstCol_SubKatIDTable: TcxTreeListColumn
-                    Visible = False
-                    Width = 100
-                    Position.ColIndex = 3
-                    Position.RowIndex = 0
-                    Position.BandIndex = 0
-                    Summary.FooterSummaryItems = <>
-                    Summary.GroupFooterSummaryItems = <>
-                  end
-                end
-              end
-              object grpbx_3Ind: TcxGroupBox
-                Left = 3
-                Top = 603
-                Align = alTop
-                Caption = 'Indizies'
-                Style.BorderStyle = ebsFlat
-                TabOrder = 2
-                Height = 300
-                Width = 394
-                object trlst_Ind: TcxTreeList
-                  AlignWithMargins = True
-                  Left = 6
-                  Top = 18
-                  Width = 382
-                  Height = 270
-                  Align = alClient
-                  Bands = <
-                    item
-                    end>
-                  DragCursor = crDrag
-                  DragMode = dmAutomatic
-                  Navigator.Buttons.CustomButtons = <>
-                  OptionsBehavior.ChangeDelay = 1000
-                  OptionsBehavior.CopyCaptionsToClipboard = False
-                  OptionsData.Editing = False
-                  OptionsData.MultiThreadedSorting = bTrue
-                  OptionsSelection.CellSelect = False
-                  OptionsView.ColumnAutoWidth = True
-                  OptionsView.Headers = False
-                  OptionsView.TreeLineStyle = tllsSolid
-                  ScrollbarAnnotations.CustomAnnotations = <>
-                  TabOrder = 0
-                  object trlstCol_IndBezeichnung: TcxTreeListColumn
-                    Caption.Text = 'Bezeichnung'
-                    Width = 100
-                    Position.ColIndex = 0
-                    Position.RowIndex = 0
-                    Position.BandIndex = 0
-                    SortOrder = soAscending
-                    SortIndex = 0
-                    Summary.FooterSummaryItems = <>
-                    Summary.GroupFooterSummaryItems = <>
-                  end
-                  object trlstCol_IndID: TcxTreeListColumn
-                    VisibleForExpressionEditor = bFalse
-                    Visible = False
-                    Caption.Text = 'Typ'
-                    Width = 100
-                    Position.ColIndex = 1
-                    Position.RowIndex = 0
-                    Position.BandIndex = 0
-                    Summary.FooterSummaryItems = <>
-                    Summary.GroupFooterSummaryItems = <>
-                  end
-                  object trlstCol_IndLVL: TcxTreeListColumn
-                    Visible = False
-                    Width = 100
-                    Position.ColIndex = 2
-                    Position.RowIndex = 0
-                    Position.BandIndex = 0
-                    Summary.FooterSummaryItems = <>
-                    Summary.GroupFooterSummaryItems = <>
-                  end
-                  object trlstCol_IndIDTable: TcxTreeListColumn
-                    Visible = False
-                    Width = 100
-                    Position.ColIndex = 3
-                    Position.RowIndex = 0
-                    Position.BandIndex = 0
-                    Summary.FooterSummaryItems = <>
-                    Summary.GroupFooterSummaryItems = <>
-                  end
-                end
-              end
-            end
-            object grpbx_right: TcxGroupBox
-              AlignWithMargins = True
-              Left = 400
-              Top = 0
-              Margins.Left = 0
-              Margins.Top = 0
-              Margins.Right = 0
-              Margins.Bottom = 0
-              Align = alClient
-              PanelStyle.Active = True
-              Style.BorderStyle = ebsNone
-              TabOrder = 1
-              Height = 727
-              Width = 858
-              object grpbx_Zuweisung: TcxGroupBox
-                Left = 3
-                Top = 3
-                Align = alClient
-                Caption = 'Zuweisung'
-                Style.BorderStyle = ebsFlat
-                TabOrder = 0
-                Height = 721
-                Width = 852
-                object trlst_Zuweisung: TcxTreeList
-                  AlignWithMargins = True
-                  Left = 6
-                  Top = 18
-                  Width = 840
-                  Height = 691
-                  Align = alClient
-                  Bands = <
-                    item
-                    end>
-                  DragCursor = crDrag
-                  DragMode = dmAutomatic
-                  Navigator.Buttons.CustomButtons = <>
-                  OptionsBehavior.ChangeDelay = 1000
-                  OptionsBehavior.CopyCaptionsToClipboard = False
-                  OptionsData.Editing = False
-                  OptionsData.MultiThreadedSorting = bTrue
-                  OptionsSelection.CellSelect = False
-                  OptionsView.ColumnAutoWidth = True
-                  OptionsView.Headers = False
-                  OptionsView.TreeLineStyle = tllsSolid
-                  PopupMenu = brpmm_Zuweisung
-                  ScrollbarAnnotations.CustomAnnotations = <>
-                  TabOrder = 0
-                  OnClick = trlst_ZuweisungClick
-                  OnDragDrop = trlst_ZuweisungDragDrop
-                  OnDragOver = trlst_ZuweisungDragOver
-                  object trlstCol_ZuweisungBezeichnung: TcxTreeListColumn
-                    Caption.Text = 'Bezeichnung'
-                    Width = 100
-                    Position.ColIndex = 0
-                    Position.RowIndex = 0
-                    Position.BandIndex = 0
-                    SortOrder = soAscending
-                    SortIndex = 0
-                    Summary.FooterSummaryItems = <>
-                    Summary.GroupFooterSummaryItems = <>
-                  end
-                  object trlstCol_ZuweisungID: TcxTreeListColumn
-                    VisibleForExpressionEditor = bFalse
-                    Visible = False
-                    Caption.Text = 'Typ'
-                    Width = 100
-                    Position.ColIndex = 1
-                    Position.RowIndex = 0
-                    Position.BandIndex = 0
-                    Summary.FooterSummaryItems = <>
-                    Summary.GroupFooterSummaryItems = <>
-                  end
-                  object trlstCol_ZuweisungLVL: TcxTreeListColumn
-                    Visible = False
-                    Width = 100
-                    Position.ColIndex = 2
-                    Position.RowIndex = 0
-                    Position.BandIndex = 0
-                    Summary.FooterSummaryItems = <>
-                    Summary.GroupFooterSummaryItems = <>
-                  end
-                  object trlstCol_ZuweisungIDTable: TcxTreeListColumn
-                    Visible = False
-                    Width = 100
-                    Position.ColIndex = 3
-                    Position.RowIndex = 0
-                    Position.BandIndex = 0
-                    Summary.FooterSummaryItems = <>
-                    Summary.GroupFooterSummaryItems = <>
-                  end
-                end
-              end
-            end
-          end
+    Height = 800
+    Align = alClient
+    TabOrder = 0
+    AutoSize = True
+    LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
+    ExplicitLeft = 488
+    ExplicitTop = 272
+    ExplicitWidth = 300
+    ExplicitHeight = 250
+    object bardckctrl_ArchivPfad: TdxBarDockControl
+      Left = 10000
+      Top = 10000
+      Width = 1228
+      Height = 58
+      Align = dalNone
+      AllowDocking = False
+      BarManager = brmgr_Config
+      Visible = False
+    end
+    object edt_ArchivPfad: TcxDBButtonEdit
+      AlignWithMargins = True
+      Left = 10000
+      Top = 10000
+      Margins.Left = 0
+      Margins.Top = 0
+      Margins.Right = 0
+      Margins.Bottom = 0
+      AutoSize = False
+      DataBinding.DataField = 'Pfad'
+      DataBinding.DataSource = ds_Pfad
+      ParentFont = False
+      Properties.Buttons = <
+        item
+          Default = True
+          Kind = bkEllipsis
+        end>
+      Properties.OnButtonClick = edt_PfadPropertiesButtonClick
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 1
+      Visible = False
+      OnExit = btn_DirSaveClick
+      Height = 19
+      Width = 1166
+    end
+    object grd_ArchivPfad: TcxGrid
+      Left = 10000
+      Top = 10000
+      Width = 1228
+      Height = 629
+      BorderStyle = cxcbsNone
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 2
+      Visible = False
+      LockedStateImageOptions.Effect = lsieDark
+      object grdDBTblView_ArchivPfad: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        FilterBox.CustomizeDialog = False
+        ScrollbarAnnotations.CustomAnnotations = <>
+        DataController.DataSource = ds_Pfad
+        DataController.Filter.PercentWildcard = '*'
+        DataController.Filter.UnderscoreWildcard = '?'
+        DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <
+          item
+            Kind = skCount
+          end>
+        DataController.Summary.SummaryGroups = <
+          item
+            Links = <
+              item
+              end>
+            SummaryItems = <
+              item
+              end>
+          end>
+        OptionsBehavior.IncSearch = True
+        OptionsBehavior.ShowHourglassCursor = False
+        OptionsCustomize.ColumnsQuickCustomization = True
+        OptionsData.Deleting = False
+        OptionsData.Editing = False
+        OptionsData.Inserting = False
+        OptionsSelection.CellSelect = False
+        OptionsView.CellEndEllipsis = True
+        OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
+        OptionsView.GroupByBox = False
+        OptionsView.HeaderFilterButtonShowMode = fbmButton
+        OptionsView.IndicatorWidth = 14
+        object grdDBTblView_ArchivPfadPfad: TcxGridDBColumn
+          DataBinding.FieldName = 'Pfad'
+          DataBinding.IsNullValueType = True
+          Width = 800
         end
       end
+      object grdlvl_ArchivPfad: TcxGridLevel
+        GridView = grdDBTblView_ArchivPfad
+      end
+    end
+    object brdckctrl_MainKat: TdxBarDockControl
+      Left = 10000
+      Top = 10000
+      Width = 1228
+      Height = 58
+      Align = dalNone
+      BarManager = brmgr_Config
+      Visible = False
+    end
+    object edt_MainKat: TcxDBTextEdit
+      AlignWithMargins = True
+      Left = 10000
+      Top = 10000
+      Margins.Left = 0
+      Margins.Top = 0
+      Margins.Right = 0
+      Margins.Bottom = 0
+      AutoSize = False
+      DataBinding.DataField = 'Bezeichnung'
+      DataBinding.DataSource = ds_Mainkat
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 4
+      Visible = False
+      OnExit = btn_MainKatSaveClick
+      OnKeyUp = edt_MainKatKeyUp
+      Height = 19
+      Width = 1159
+    end
+    object grd_MainKat: TcxGrid
+      Left = 10000
+      Top = 10000
+      Width = 1228
+      Height = 629
+      BorderStyle = cxcbsNone
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 5
+      Visible = False
+      LockedStateImageOptions.Effect = lsieDark
+      object grdDBTblView_MainKat: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        FilterBox.CustomizeDialog = False
+        ScrollbarAnnotations.CustomAnnotations = <>
+        DataController.DataSource = ds_Mainkat
+        DataController.Filter.PercentWildcard = '*'
+        DataController.Filter.UnderscoreWildcard = '?'
+        DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <
+          item
+            Kind = skCount
+          end>
+        DataController.Summary.SummaryGroups = <
+          item
+            Links = <
+              item
+              end>
+            SummaryItems = <
+              item
+              end>
+          end>
+        OptionsBehavior.IncSearch = True
+        OptionsBehavior.ShowHourglassCursor = False
+        OptionsCustomize.ColumnsQuickCustomization = True
+        OptionsData.Deleting = False
+        OptionsData.Editing = False
+        OptionsData.Inserting = False
+        OptionsSelection.CellSelect = False
+        OptionsView.CellEndEllipsis = True
+        OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
+        OptionsView.GroupByBox = False
+        OptionsView.HeaderFilterButtonShowMode = fbmButton
+        OptionsView.IndicatorWidth = 14
+        object grdDBTblView_MainKatBezeichnung: TcxGridDBColumn
+          DataBinding.FieldName = 'Bezeichnung'
+          SortIndex = 0
+          SortOrder = soAscending
+          Width = 900
+        end
+      end
+      object grdlvl_MainKat: TcxGridLevel
+        GridView = grdDBTblView_MainKat
+      end
+    end
+    object brdckctrl_SubKat: TdxBarDockControl
+      Left = 10000
+      Top = 10000
+      Width = 1228
+      Height = 58
+      Align = dalNone
+      BarManager = brmgr_Config
+      Visible = False
+    end
+    object edt_SubKat: TcxDBTextEdit
+      AlignWithMargins = True
+      Left = 10000
+      Top = 10000
+      Margins.Left = 0
+      Margins.Top = 0
+      Margins.Right = 0
+      Margins.Bottom = 0
+      AutoSize = False
+      DataBinding.DataField = 'Bezeichnung'
+      DataBinding.DataSource = ds_Subkat
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 7
+      Visible = False
+      OnExit = btn_SubKatSaveClick
+      OnKeyUp = edt_SubKatKeyUp
+      Height = 19
+      Width = 1147
+    end
+    object grd_SubKat: TcxGrid
+      Left = 10000
+      Top = 10000
+      Width = 1228
+      Height = 629
+      BorderStyle = cxcbsNone
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 8
+      Visible = False
+      LockedStateImageOptions.Effect = lsieDark
+      object grdDBTblView_Subkat: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        FilterBox.CustomizeDialog = False
+        ScrollbarAnnotations.CustomAnnotations = <>
+        DataController.DataSource = ds_Subkat
+        DataController.Filter.PercentWildcard = '*'
+        DataController.Filter.UnderscoreWildcard = '?'
+        DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <
+          item
+            Kind = skCount
+          end>
+        DataController.Summary.SummaryGroups = <
+          item
+            Links = <
+              item
+              end>
+            SummaryItems = <
+              item
+              end>
+          end>
+        OptionsBehavior.IncSearch = True
+        OptionsBehavior.ShowHourglassCursor = False
+        OptionsCustomize.ColumnsQuickCustomization = True
+        OptionsData.Deleting = False
+        OptionsData.Editing = False
+        OptionsData.Inserting = False
+        OptionsSelection.CellSelect = False
+        OptionsView.CellEndEllipsis = True
+        OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
+        OptionsView.GroupByBox = False
+        OptionsView.HeaderFilterButtonShowMode = fbmButton
+        OptionsView.IndicatorWidth = 14
+        object grdDBTblView_SubkatBezeichnung: TcxGridDBColumn
+          DataBinding.FieldName = 'Bezeichnung'
+          SortIndex = 0
+          SortOrder = soAscending
+          Width = 900
+        end
+      end
+      object grdlvl_SubKat: TcxGridLevel
+        GridView = grdDBTblView_Subkat
+      end
+    end
+    object brdckCtrl_Index: TdxBarDockControl
+      Left = 10000
+      Top = 10000
+      Width = 1228
+      Height = 58
+      Align = dalNone
+      BarManager = brmgr_Config
+      Visible = False
+    end
+    object edt_index: TcxDBTextEdit
+      AlignWithMargins = True
+      Left = 10000
+      Top = 10000
+      Margins.Left = 0
+      Margins.Top = 0
+      Margins.Right = 0
+      Margins.Bottom = 0
+      AutoSize = False
+      DataBinding.DataField = 'Bezeichnung'
+      DataBinding.DataSource = ds_index
+      ParentFont = False
+      Style.Font.Charset = DEFAULT_CHARSET
+      Style.Font.Color = clWindowText
+      Style.Font.Height = -11
+      Style.Font.Name = 'Tahoma'
+      Style.Font.Style = []
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      Style.IsFontAssigned = True
+      TabOrder = 10
+      Visible = False
+      OnExit = btn_MainKatSaveClick
+      OnKeyUp = edt_indexKeyUp
+      Height = 19
+      Width = 736
+    end
+    object lucmbbx_Datatype: TcxDBLookupComboBox
+      AlignWithMargins = True
+      Left = 10000
+      Top = 10000
+      Margins.Left = 0
+      Margins.Top = 0
+      Margins.Right = 0
+      Margins.Bottom = 0
+      AutoSize = False
+      DataBinding.DataField = 'ID_archiv_konfiguration_index_typ'
+      DataBinding.DataSource = ds_index
+      Properties.KeyFieldNames = 'ID'
+      Properties.ListColumns = <
+        item
+          FieldName = 'Bezeichnung'
+        end>
+      Properties.ListSource = ds_indexType
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 11
+      Visible = False
+      Height = 19
+      Width = 395
+    end
+    object grd_Index: TcxGrid
+      Left = 10000
+      Top = 10000
+      Width = 1228
+      Height = 629
+      BorderStyle = cxcbsNone
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 12
+      Visible = False
+      LockedStateImageOptions.Effect = lsieDark
+      object grdDBTblView_Index: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        FilterBox.CustomizeDialog = False
+        ScrollbarAnnotations.CustomAnnotations = <>
+        DataController.DataSource = ds_index
+        DataController.Filter.PercentWildcard = '*'
+        DataController.Filter.UnderscoreWildcard = '?'
+        DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <
+          item
+            Kind = skCount
+          end>
+        DataController.Summary.SummaryGroups = <
+          item
+            Links = <
+              item
+              end>
+            SummaryItems = <
+              item
+              end>
+          end>
+        OptionsBehavior.IncSearch = True
+        OptionsBehavior.ShowHourglassCursor = False
+        OptionsCustomize.ColumnsQuickCustomization = True
+        OptionsData.Deleting = False
+        OptionsData.Editing = False
+        OptionsData.Inserting = False
+        OptionsSelection.CellSelect = False
+        OptionsView.CellEndEllipsis = True
+        OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
+        OptionsView.GroupByBox = False
+        OptionsView.HeaderFilterButtonShowMode = fbmButton
+        OptionsView.IndicatorWidth = 14
+        object grdDBTblView_IndexBezeichnung: TcxGridDBColumn
+          DataBinding.FieldName = 'Bezeichnung'
+          SortIndex = 0
+          SortOrder = soAscending
+          Width = 900
+        end
+        object grdDBTblView_IndexID_archiv_konfiguration_index_typ: TcxGridDBColumn
+          Caption = 'Typ'
+          DataBinding.FieldName = 'ID_archiv_konfiguration_index_typ'
+          PropertiesClassName = 'TcxLookupComboBoxProperties'
+          Properties.KeyFieldNames = 'ID'
+          Properties.ListColumns = <
+            item
+              FieldName = 'Bezeichnung'
+            end>
+          Properties.ListSource = ds_indexType
+          Width = 200
+        end
+      end
+      object grdLvl_Index: TcxGridLevel
+        GridView = grdDBTblView_Index
+      end
+    end
+    object trlst_MainKat: TcxTreeList
+      AlignWithMargins = True
+      Left = 26
+      Top = 58
+      Width = 386
+      Height = 217
+      Bands = <
+        item
+        end>
+      DragCursor = crDrag
+      DragMode = dmAutomatic
+      Navigator.Buttons.CustomButtons = <>
+      OptionsBehavior.ChangeDelay = 1000
+      OptionsBehavior.CopyCaptionsToClipboard = False
+      OptionsData.Editing = False
+      OptionsData.MultiThreadedSorting = bTrue
+      OptionsSelection.CellSelect = False
+      OptionsView.ColumnAutoWidth = True
+      OptionsView.Headers = False
+      OptionsView.TreeLineStyle = tllsSolid
+      ScrollbarAnnotations.CustomAnnotations = <>
+      TabOrder = 13
+      object trlstCol_MainKatBezeichnung: TcxTreeListColumn
+        Caption.Text = 'Bezeichnung'
+        Width = 100
+        Position.ColIndex = 0
+        Position.RowIndex = 0
+        Position.BandIndex = 0
+        SortOrder = soAscending
+        SortIndex = 0
+        Summary.FooterSummaryItems = <>
+        Summary.GroupFooterSummaryItems = <>
+      end
+      object trlstCol_MainKatID: TcxTreeListColumn
+        VisibleForExpressionEditor = bFalse
+        Visible = False
+        Caption.Text = 'Typ'
+        Width = 100
+        Position.ColIndex = 1
+        Position.RowIndex = 0
+        Position.BandIndex = 0
+        Summary.FooterSummaryItems = <>
+        Summary.GroupFooterSummaryItems = <>
+      end
+      object trlstCol_MainKatLVL: TcxTreeListColumn
+        Visible = False
+        Width = 100
+        Position.ColIndex = 2
+        Position.RowIndex = 0
+        Position.BandIndex = 0
+        Summary.FooterSummaryItems = <>
+        Summary.GroupFooterSummaryItems = <>
+      end
+      object trlstCol_MainKatIDTable: TcxTreeListColumn
+        Visible = False
+        Width = 100
+        Position.ColIndex = 3
+        Position.RowIndex = 0
+        Position.BandIndex = 0
+        Summary.FooterSummaryItems = <>
+        Summary.GroupFooterSummaryItems = <>
+      end
+    end
+    object trlst_SubKat: TcxTreeList
+      AlignWithMargins = True
+      Left = 26
+      Top = 307
+      Width = 386
+      Height = 218
+      Bands = <
+        item
+        end>
+      DragCursor = crDrag
+      DragMode = dmAutomatic
+      Navigator.Buttons.CustomButtons = <>
+      OptionsBehavior.ChangeDelay = 1000
+      OptionsBehavior.CopyCaptionsToClipboard = False
+      OptionsData.Editing = False
+      OptionsData.MultiThreadedSorting = bTrue
+      OptionsSelection.CellSelect = False
+      OptionsView.ColumnAutoWidth = True
+      OptionsView.Headers = False
+      OptionsView.TreeLineStyle = tllsSolid
+      ScrollbarAnnotations.CustomAnnotations = <>
+      TabOrder = 14
+      object trlstCol_SubKatBezeichnung: TcxTreeListColumn
+        Caption.Text = 'Bezeichnung'
+        Width = 100
+        Position.ColIndex = 0
+        Position.RowIndex = 0
+        Position.BandIndex = 0
+        SortOrder = soAscending
+        SortIndex = 0
+        Summary.FooterSummaryItems = <>
+        Summary.GroupFooterSummaryItems = <>
+      end
+      object trlstCol_SubKatID: TcxTreeListColumn
+        VisibleForExpressionEditor = bFalse
+        Visible = False
+        Caption.Text = 'Typ'
+        Width = 100
+        Position.ColIndex = 1
+        Position.RowIndex = 0
+        Position.BandIndex = 0
+        Summary.FooterSummaryItems = <>
+        Summary.GroupFooterSummaryItems = <>
+      end
+      object trlstColt_SubKatLVL: TcxTreeListColumn
+        Visible = False
+        Width = 100
+        Position.ColIndex = 2
+        Position.RowIndex = 0
+        Position.BandIndex = 0
+        Summary.FooterSummaryItems = <>
+        Summary.GroupFooterSummaryItems = <>
+      end
+      object trlstCol_SubKatIDTable: TcxTreeListColumn
+        Visible = False
+        Width = 100
+        Position.ColIndex = 3
+        Position.RowIndex = 0
+        Position.BandIndex = 0
+        Summary.FooterSummaryItems = <>
+        Summary.GroupFooterSummaryItems = <>
+      end
+    end
+    object trlst_Ind: TcxTreeList
+      AlignWithMargins = True
+      Left = 26
+      Top = 557
+      Width = 386
+      Height = 217
+      Bands = <
+        item
+        end>
+      DragCursor = crDrag
+      DragMode = dmAutomatic
+      Navigator.Buttons.CustomButtons = <>
+      OptionsBehavior.ChangeDelay = 1000
+      OptionsBehavior.CopyCaptionsToClipboard = False
+      OptionsData.Editing = False
+      OptionsData.MultiThreadedSorting = bTrue
+      OptionsSelection.CellSelect = False
+      OptionsView.ColumnAutoWidth = True
+      OptionsView.Headers = False
+      OptionsView.TreeLineStyle = tllsSolid
+      ScrollbarAnnotations.CustomAnnotations = <>
+      TabOrder = 15
+      object trlstCol_IndBezeichnung: TcxTreeListColumn
+        Caption.Text = 'Bezeichnung'
+        Width = 100
+        Position.ColIndex = 0
+        Position.RowIndex = 0
+        Position.BandIndex = 0
+        SortOrder = soAscending
+        SortIndex = 0
+        Summary.FooterSummaryItems = <>
+        Summary.GroupFooterSummaryItems = <>
+      end
+      object trlstCol_IndID: TcxTreeListColumn
+        VisibleForExpressionEditor = bFalse
+        Visible = False
+        Caption.Text = 'Typ'
+        Width = 100
+        Position.ColIndex = 1
+        Position.RowIndex = 0
+        Position.BandIndex = 0
+        Summary.FooterSummaryItems = <>
+        Summary.GroupFooterSummaryItems = <>
+      end
+      object trlstCol_IndLVL: TcxTreeListColumn
+        Visible = False
+        Width = 100
+        Position.ColIndex = 2
+        Position.RowIndex = 0
+        Position.BandIndex = 0
+        Summary.FooterSummaryItems = <>
+        Summary.GroupFooterSummaryItems = <>
+      end
+      object trlstCol_IndIDTable: TcxTreeListColumn
+        Visible = False
+        Width = 100
+        Position.ColIndex = 3
+        Position.RowIndex = 0
+        Position.BandIndex = 0
+        Summary.FooterSummaryItems = <>
+        Summary.GroupFooterSummaryItems = <>
+      end
+    end
+    object trlst_Zuweisung: TcxTreeList
+      AlignWithMargins = True
+      Left = 436
+      Top = 56
+      Width = 818
+      Height = 718
+      Bands = <
+        item
+        end>
+      DragCursor = crDrag
+      DragMode = dmAutomatic
+      Navigator.Buttons.CustomButtons = <>
+      OptionsBehavior.ChangeDelay = 1000
+      OptionsBehavior.CopyCaptionsToClipboard = False
+      OptionsData.Editing = False
+      OptionsData.MultiThreadedSorting = bTrue
+      OptionsSelection.CellSelect = False
+      OptionsView.ColumnAutoWidth = True
+      OptionsView.Headers = False
+      OptionsView.TreeLineStyle = tllsSolid
+      PopupMenu = brpmm_Zuweisung
+      ScrollbarAnnotations.CustomAnnotations = <>
+      TabOrder = 16
+      OnClick = trlst_ZuweisungClick
+      OnDragDrop = trlst_ZuweisungDragDrop
+      OnDragOver = trlst_ZuweisungDragOver
+      object trlstCol_ZuweisungBezeichnung: TcxTreeListColumn
+        Caption.Text = 'Bezeichnung'
+        Width = 100
+        Position.ColIndex = 0
+        Position.RowIndex = 0
+        Position.BandIndex = 0
+        SortOrder = soAscending
+        SortIndex = 0
+        Summary.FooterSummaryItems = <>
+        Summary.GroupFooterSummaryItems = <>
+      end
+      object trlstCol_ZuweisungID: TcxTreeListColumn
+        VisibleForExpressionEditor = bFalse
+        Visible = False
+        Caption.Text = 'Typ'
+        Width = 100
+        Position.ColIndex = 1
+        Position.RowIndex = 0
+        Position.BandIndex = 0
+        Summary.FooterSummaryItems = <>
+        Summary.GroupFooterSummaryItems = <>
+      end
+      object trlstCol_ZuweisungLVL: TcxTreeListColumn
+        Visible = False
+        Width = 100
+        Position.ColIndex = 2
+        Position.RowIndex = 0
+        Position.BandIndex = 0
+        Summary.FooterSummaryItems = <>
+        Summary.GroupFooterSummaryItems = <>
+      end
+      object trlstCol_ZuweisungIDTable: TcxTreeListColumn
+        Visible = False
+        Width = 100
+        Position.ColIndex = 3
+        Position.RowIndex = 0
+        Position.BandIndex = 0
+        Summary.FooterSummaryItems = <>
+        Summary.GroupFooterSummaryItems = <>
+      end
+    end
+    object dxLayoutControl1Group_Root: TdxLayoutGroup
+      AlignHorz = ahClient
+      AlignVert = avClient
+      Hidden = True
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = -1
+    end
+    object lagrp_ConfigTab: TdxLayoutGroup
+      Parent = dxLayoutControl1Group_Root
+      AlignHorz = ahClient
+      AlignVert = avClient
+      ItemIndex = 4
+      LayoutDirection = ldTabbed
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup5: TdxLayoutGroup
+      Parent = lagrp_ConfigTab
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'Pfad f'#252'r Dokumente'
+      LayoutDirection = ldHorizontal
+      Index = 0
+    end
+    object dxLayoutGroup6: TdxLayoutGroup
+      Parent = dxLayoutGroup5
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'Verzeichnis zum Archiv'
+      Index = 0
+    end
+    object dxLayoutItem1: TdxLayoutItem
+      Parent = dxLayoutGroup6
+      AlignHorz = ahClient
+      CaptionOptions.Text = 'bardckctrl_ArchivPfad'
+      CaptionOptions.Visible = False
+      Control = bardckctrl_ArchivPfad
+      ControlOptions.AutoColor = True
+      ControlOptions.OriginalHeight = 58
+      ControlOptions.OriginalWidth = 1256
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup7: TdxLayoutGroup
+      Parent = dxLayoutGroup6
+      AlignHorz = ahClient
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem2: TdxLayoutItem
+      Parent = dxLayoutGroup7
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'Verzeichnis:'
+      Control = edt_ArchivPfad
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 1172
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem3: TdxLayoutItem
+      Parent = dxLayoutGroup6
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'grd_ArchivPfad'
+      CaptionOptions.Visible = False
+      Control = grd_ArchivPfad
+      ControlOptions.OriginalHeight = 634
+      ControlOptions.OriginalWidth = 1256
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutGroup9: TdxLayoutGroup
+      Parent = lagrp_ConfigTab
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'Hauptkategorien'
+      LayoutDirection = ldHorizontal
+      Index = 1
+    end
+    object dxLayoutGroup10: TdxLayoutGroup
+      Parent = dxLayoutGroup9
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'Hauptkategorien'
+      ItemIndex = 2
+      Index = 0
+    end
+    object dxLayoutItem4: TdxLayoutItem
+      Parent = dxLayoutGroup10
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'brdckctrl_MainKat'
+      CaptionOptions.Visible = False
+      Control = brdckctrl_MainKat
+      ControlOptions.AutoColor = True
+      ControlOptions.OriginalHeight = 58
+      ControlOptions.OriginalWidth = 1256
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup11: TdxLayoutGroup
+      Parent = dxLayoutGroup10
+      AlignHorz = ahClient
+      AlignVert = avTop
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem5: TdxLayoutItem
+      Parent = dxLayoutGroup11
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'Bezeichnung:'
+      Control = edt_MainKat
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 1172
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem6: TdxLayoutItem
+      Parent = dxLayoutGroup10
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'grd_MainKat'
+      CaptionOptions.Visible = False
+      Control = grd_MainKat
+      ControlOptions.OriginalHeight = 634
+      ControlOptions.OriginalWidth = 1256
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutGroup13: TdxLayoutGroup
+      Parent = lagrp_ConfigTab
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'Unterkategorien'
+      LayoutDirection = ldHorizontal
+      Index = 2
+    end
+    object dxLayoutGroup14: TdxLayoutGroup
+      Parent = dxLayoutGroup13
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'Unterkategorien'
+      Index = 0
+    end
+    object dxLayoutItem7: TdxLayoutItem
+      Parent = dxLayoutGroup14
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'brdckctrl_SubKat'
+      CaptionOptions.Visible = False
+      Control = brdckctrl_SubKat
+      ControlOptions.AutoColor = True
+      ControlOptions.OriginalHeight = 58
+      ControlOptions.OriginalWidth = 1256
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup15: TdxLayoutGroup
+      Parent = dxLayoutGroup14
+      AlignHorz = ahClient
+      AlignVert = avTop
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem8: TdxLayoutItem
+      Parent = dxLayoutGroup15
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Unterkategorie:'
+      Control = edt_SubKat
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 1162
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem9: TdxLayoutItem
+      Parent = dxLayoutGroup14
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'grd_SubKat'
+      CaptionOptions.Visible = False
+      Control = grd_SubKat
+      ControlOptions.OriginalHeight = 634
+      ControlOptions.OriginalWidth = 1256
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutGroup17: TdxLayoutGroup
+      Parent = lagrp_ConfigTab
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'Indizies'
+      LayoutDirection = ldHorizontal
+      Index = 3
+    end
+    object dxLayoutGroup18: TdxLayoutGroup
+      Parent = dxLayoutGroup17
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'Unterkategorien'
+      ItemIndex = 2
+      Index = 0
+    end
+    object dxLayoutItem10: TdxLayoutItem
+      Parent = dxLayoutGroup18
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'brdckCtrl_Index'
+      CaptionOptions.Visible = False
+      Control = brdckCtrl_Index
+      ControlOptions.AutoColor = True
+      ControlOptions.OriginalHeight = 58
+      ControlOptions.OriginalWidth = 1256
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup19: TdxLayoutGroup
+      Parent = dxLayoutGroup18
+      AlignHorz = ahClient
+      AlignVert = avTop
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem11: TdxLayoutItem
+      Parent = dxLayoutGroup19
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'Index:'
+      Control = edt_index
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 400
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem12: TdxLayoutItem
+      Parent = dxLayoutGroup19
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'Datentyp:'
+      Control = lucmbbx_Datatype
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 200
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem13: TdxLayoutItem
+      Parent = dxLayoutGroup18
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'grd_Index'
+      CaptionOptions.Visible = False
+      Control = grd_Index
+      ControlOptions.OriginalHeight = 634
+      ControlOptions.OriginalWidth = 1256
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutGroup22: TdxLayoutGroup
+      Parent = lagrp_ConfigTab
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'Zuweisung'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      Index = 4
+    end
+    object dxLayoutGroup24: TdxLayoutGroup
+      Parent = dxLayoutGroup1
+      AlignHorz = ahLeft
+      AlignVert = avClient
+      CaptionOptions.Text = 'Hauptkategorie'
+      ButtonOptions.ShowExpandButton = True
+      LayoutDirection = ldHorizontal
+      Index = 0
+    end
+    object dxLayoutItem14: TdxLayoutItem
+      Parent = dxLayoutGroup24
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'trlst_MainKat'
+      CaptionOptions.Visible = False
+      Control = trlst_MainKat
+      ControlOptions.OriginalHeight = 274
+      ControlOptions.OriginalWidth = 386
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup25: TdxLayoutGroup
+      Parent = dxLayoutGroup1
+      AlignHorz = ahLeft
+      AlignVert = avClient
+      CaptionOptions.Text = 'Unterkategorie'
+      ButtonOptions.ShowExpandButton = True
+      LayoutDirection = ldHorizontal
+      Index = 1
+    end
+    object dxLayoutItem15: TdxLayoutItem
+      Parent = dxLayoutGroup25
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'trlst_SubKat'
+      CaptionOptions.Visible = False
+      Control = trlst_SubKat
+      ControlOptions.OriginalHeight = 274
+      ControlOptions.OriginalWidth = 386
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup26: TdxLayoutGroup
+      Parent = dxLayoutGroup1
+      AlignHorz = ahLeft
+      AlignVert = avClient
+      CaptionOptions.Text = 'Indizies'
+      ButtonOptions.ShowExpandButton = True
+      LayoutDirection = ldHorizontal
+      Index = 2
+    end
+    object dxLayoutItem16: TdxLayoutItem
+      Parent = dxLayoutGroup26
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'trlst_Ind'
+      CaptionOptions.Visible = False
+      Control = trlst_Ind
+      ControlOptions.OriginalHeight = 274
+      ControlOptions.OriginalWidth = 386
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup30: TdxLayoutGroup
+      Parent = dxLayoutGroup22
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'Zuweisung'
+      LayoutDirection = ldHorizontal
+      Index = 1
+    end
+    object dxLayoutItem17: TdxLayoutItem
+      Parent = dxLayoutGroup30
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'trlst_Zuweisung'
+      CaptionOptions.Visible = False
+      Control = trlst_Zuweisung
+      ControlOptions.OriginalHeight = 709
+      ControlOptions.OriginalWidth = 846
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup1: TdxLayoutGroup
+      Parent = dxLayoutGroup22
+      CaptionOptions.Text = 'New Group'
+      ShowBorder = False
+      Index = 0
     end
   end
   object brmgr_Config: TdxBarManager

@@ -26,7 +26,8 @@ uses
   IdSMTPBase, cxCurrencyEdit, Vcl.OleServer, OutlookXP,PCM.Functions,
   Vcl.VirtualImage, Vcl.BaseImageCollection, Vcl.ImageCollection, dxBarExtItems,
   cxButtonEdit,Vcl.FileCtrl, cxTL, cxTLdxBarBuiltInMenu, cxInplaceContainer,
-  cxTLData, cxDBTL;
+  cxTLData, cxDBTL, dxUIAClasses, dxLayoutContainer, dxLayoutcxEditAdapters,
+  dxLayoutControl;
   {$EndRegion uses}
 type
   {$Region type}
@@ -76,29 +77,7 @@ type
     grdLvl_Index: TcxGridLevel;
     grdlvl_MainKat: TcxGridLevel;
     grdlvl_SubKat: TcxGridLevel;
-    grpbox_Index: TcxGroupBox;
-    grpbox_IndexDetail: TcxGroupBox;
-    grpbx_1Main: TcxGroupBox;
-    grpbx_2Sub: TcxGroupBox;
-    grpbx_3Ind: TcxGroupBox;
-    grpbx_ArchivPfad: TcxGroupBox;
-    grpbx_Design: TcxGroupBox;
-    grpbx_Left: TcxGroupBox;
-    grpbx_MainKat: TcxGroupBox;
-    grpbx_MainKatDetail: TcxGroupBox;
-    grpbx_PathDetail: TcxGroupBox;
-    grpbx_right: TcxGroupBox;
-    grpbx_SubKat: TcxGroupBox;
-    grpbx_SubKatDetail: TcxGroupBox;
-    grpbx_Zuweisung: TcxGroupBox;
-    lbl_ArchivPfad: TcxLabel;
-    lbl_Datatyp: TcxLabel;
-    lbl_index: TcxLabel;
-    lbl_MainKat: TcxLabel;
-    lbl_SubKat: TcxLabel;
     lucmbbx_Datatype: TcxDBLookupComboBox;
-    pc_Config: TcxPageControl;
-    pc_Options: TcxPageControl;
     ppmbtn_Collapse: TdxBarButton;
     ppmbtn_Delete: TdxBarButton;
     ppmbtn_Expand: TdxBarButton;
@@ -131,12 +110,44 @@ type
     trlstCol_ZuweisungIDTable: TcxTreeListColumn;
     trlstCol_ZuweisungLVL: TcxTreeListColumn;
     trlstColt_SubKatLVL: TcxTreeListColumn;
-    ts_1ArchivPfad: TcxTabSheet;
-    ts_2MainKat: TcxTabSheet;
-    ts_3SubKat: TcxTabSheet;
-    ts_4Index: TcxTabSheet;
-    ts_A_Archiv: TcxTabSheet;
-    ts_Zuweisung: TcxTabSheet;
+    dxLayoutControl1Group_Root: TdxLayoutGroup;
+    dxLayoutControl1: TdxLayoutControl;
+    lagrp_ConfigTab: TdxLayoutGroup;
+    dxLayoutGroup5: TdxLayoutGroup;
+    dxLayoutGroup6: TdxLayoutGroup;
+    dxLayoutItem1: TdxLayoutItem;
+    dxLayoutGroup7: TdxLayoutGroup;
+    dxLayoutItem2: TdxLayoutItem;
+    dxLayoutItem3: TdxLayoutItem;
+    dxLayoutGroup9: TdxLayoutGroup;
+    dxLayoutGroup10: TdxLayoutGroup;
+    dxLayoutItem4: TdxLayoutItem;
+    dxLayoutGroup11: TdxLayoutGroup;
+    dxLayoutItem5: TdxLayoutItem;
+    dxLayoutItem6: TdxLayoutItem;
+    dxLayoutGroup13: TdxLayoutGroup;
+    dxLayoutGroup14: TdxLayoutGroup;
+    dxLayoutItem7: TdxLayoutItem;
+    dxLayoutGroup15: TdxLayoutGroup;
+    dxLayoutItem8: TdxLayoutItem;
+    dxLayoutItem9: TdxLayoutItem;
+    dxLayoutGroup17: TdxLayoutGroup;
+    dxLayoutGroup18: TdxLayoutGroup;
+    dxLayoutItem10: TdxLayoutItem;
+    dxLayoutGroup19: TdxLayoutGroup;
+    dxLayoutItem11: TdxLayoutItem;
+    dxLayoutItem12: TdxLayoutItem;
+    dxLayoutItem13: TdxLayoutItem;
+    dxLayoutGroup22: TdxLayoutGroup;
+    dxLayoutGroup24: TdxLayoutGroup;
+    dxLayoutItem14: TdxLayoutItem;
+    dxLayoutGroup25: TdxLayoutGroup;
+    dxLayoutItem15: TdxLayoutItem;
+    dxLayoutGroup26: TdxLayoutGroup;
+    dxLayoutItem16: TdxLayoutItem;
+    dxLayoutGroup30: TdxLayoutGroup;
+    dxLayoutItem17: TdxLayoutItem;
+    dxLayoutGroup1: TdxLayoutGroup;
     procedure brpmm_ZuweisungPopup(Sender: TObject);
     procedure btn_DirSaveClick(Sender: TObject);
     procedure btn_IndexCancelClick(Sender: TObject);
@@ -760,7 +771,7 @@ begin
 end;
 procedure Tfrm_Config.pc_ConfigClick(Sender: TObject);
 begin
-  if pc_Config.ActivePage = ts_Zuweisung then
+  if lagrp_ConfigTab.itemindex = 4 then
   begin
     LoadData;
   end;
@@ -1015,9 +1026,6 @@ begin
 end;
 procedure Tfrm_Config.FormResize(Sender: TObject);
 begin
-  grpbx_1Main.Height:= Trunc(grpbx_Left.Height / 3)-1;
-  grpbx_2Sub.Height:= Trunc(grpbx_Left.Height / 3)-1;
-  grpbx_3Ind.Height:= Trunc(grpbx_Left.Height / 3)-1;
   trlstCol_MainKatBezeichnung.Width:= trlst_MainKat.Width - 8;
   trlstCol_SubKatBezeichnung.Width:= trlst_SubKat.Width - 8;
   trlstCol_IndBezeichnung.Width:= trlst_SubKat.Width - 8;

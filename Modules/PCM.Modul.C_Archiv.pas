@@ -19,7 +19,9 @@ uses
   dxBar, cxGridCustomPopupMenu, cxGridPopupMenu,cxGridExportLink, System.UITypes, strutils,
   IdBaseComponent, IdCoder, IdCoder3to4, IdCoderMIME, IdCoderQuotedPrintable,Soap.EncdDecd,System.netencoding,
   Vcl.ExtCtrls, dxShellDialogs,PCM.Functions,cxSchedulerStorage,
-  Vcl.ComCtrls, dxCore, cxCalc, cxSpinEdit, cxTimeEdit;
+  Vcl.ComCtrls, dxCore, cxCalc, cxSpinEdit, cxTimeEdit, dxUIAClasses,
+  dxLayoutContainer, dxLayoutcxEditAdapters, dxLayoutControlAdapters,
+  dxLayoutControl;
   {$EndRegion Uses}
 type
   {$Region Type}
@@ -47,21 +49,28 @@ type
     grdDBTblView_DocSearchMainkat: TcxGridDBColumn;
     grdDBTblView_DocSearchSubkat: TcxGridDBColumn;
     grdLvl_DocSearch: TcxGridLevel;
-    grpbx_Archiv: TcxGroupBox;
-    grpbx_ArchivIndex: TcxGroupBox;
-    lbl_MainKat: TcxLabel;
-    lbl_Subkat: TcxLabel;
-    lbl_User: TcxLabel;
-    pnl_DocButtons: TcxGroupBox;
     qry_Benutzer: TFDQuery;
     qry_Doc: TFDQuery;
     qry_mainkat: TFDQuery;
     qry_Subkat: TFDQuery;
     tb_dic: TdxBar;
     cxGridPopupMenu1: TcxGridPopupMenu;
-    pc_Options: TcxPageControl;
-    ts_A_Archiv: TcxTabSheet;
     dxBarDockControl1: TdxBarDockControl;
+    dxLayoutControl1Group_Root: TdxLayoutGroup;
+    dxLayoutControl1: TdxLayoutControl;
+    dxLayoutGroup1: TdxLayoutGroup;
+    dxLayoutItem1: TdxLayoutItem;
+    dxLayoutGroup2: TdxLayoutGroup;
+    dxLayoutGroup3: TdxLayoutGroup;
+    dxLayoutItem2: TdxLayoutItem;
+    dxLayoutItem3: TdxLayoutItem;
+    dxLayoutItem4: TdxLayoutItem;
+    dxLayoutGroup5: TdxLayoutGroup;
+    dxLayoutItem5: TdxLayoutItem;
+    dxLayoutItem6: TdxLayoutItem;
+    dxLayoutItem7: TdxLayoutItem;
+    grpbx_ArchivIndex: TcxGroupBox;
+    dxLayoutItem8: TdxLayoutItem;
     procedure FormShow(Sender: TObject);
     procedure btn_DocSearchDeleteClick(Sender: TObject);
     procedure btn_DocSearchClick(Sender: TObject);
@@ -961,7 +970,6 @@ procedure Tfrm_Archiv.FormShow(Sender: TObject);
     end;
     dm_PCM.qry_Work.Close;
     grpbx_ArchivIndex.Height:= 24 + (33 * (iCountUpDown + 1));
-    grpbx_Archiv.Height:= 24 + 36 + grpbx_ArchivIndex.Height;
   end;
 begin
   OpenData;

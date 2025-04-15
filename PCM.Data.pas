@@ -12,7 +12,8 @@ uses
   FireDAC.DApt, FireDAC.Phys.ADSDef, FireDAC.Phys.MSSQLDef,
   FireDAC.Phys.ODBCBase, FireDAC.Phys.MSSQL, FireDAC.Phys.ADS,
   FireDAC.Comp.DataSet,Vcl.Dialogs, System.ImageList, Vcl.ImgList, Vcl.Controls,
-  cxImageList, cxGraphics, winapi.Windows,System.UITypes,Vcl.Forms;
+  cxImageList, cxGraphics, winapi.Windows,System.UITypes,Vcl.Forms, cxClasses,
+  dxLayoutLookAndFeels;
   {$endRegion Uses}
 type
   {$Region Type}
@@ -31,6 +32,9 @@ type
     ds_ChartMain: TDataSource;
     ds_ChartSub: TDataSource;
     ds_ChartFiles: TDataSource;
+    dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList;
+    dxLayoutSkinLookAndFeel1: TdxLayoutSkinLookAndFeel;
+    dxLayoutSkinLookAndFeel2: TdxLayoutSkinLookAndFeel;
     procedure con_PCMBeforeConnect(Sender: TObject);
     procedure DataModuleCreate(Sender: TObject);
   private

@@ -1,7 +1,8 @@
 object dm_PCM: Tdm_PCM
   OnCreate = DataModuleCreate
-  Height = 797
-  Width = 1135
+  Height = 1196
+  Width = 1703
+  PixelsPerInch = 144
   object con_PCM: TFDConnection
     Params.Strings = (
       'Database=pcm'
@@ -15,26 +16,26 @@ object dm_PCM: Tdm_PCM
     Connected = True
     LoginPrompt = False
     BeforeConnect = con_PCMBeforeConnect
-    Left = 32
-    Top = 8
+    Left = 48
+    Top = 12
   end
   object physdvrLnk_Mysql: TFDPhysMSSQLDriverLink
-    Left = 840
-    Top = 168
+    Left = 1260
+    Top = 252
   end
   object qry_work: TFDQuery
     Connection = con_PCM
     SQL.Strings = (
       '')
-    Left = 959
-    Top = 560
+    Left = 1439
+    Top = 840
   end
   object imglst_24x24: TcxImageList
     SourceDPI = 96
     Height = 24
     Width = 24
     FormatVersion = 1
-    DesignInfo = 20448184
+    DesignInfo = 30672276
     ImageInfo = <
       item
         ImageClass = 'TBitmap'
@@ -1134,7 +1135,7 @@ object dm_PCM: Tdm_PCM
     Height = 32
     Width = 32
     FormatVersion = 1
-    DesignInfo = 24118200
+    DesignInfo = 36177300
     ImageInfo = <
       item
         ImageClass = 'TBitmap'
@@ -18503,20 +18504,20 @@ object dm_PCM: Tdm_PCM
     Connection = con_PCM
     SQL.Strings = (
       '')
-    Left = 959
-    Top = 616
+    Left = 1439
+    Top = 924
   end
   object qry_work2: TFDQuery
     Connection = con_PCM
     SQL.Strings = (
       '')
-    Left = 959
-    Top = 672
+    Left = 1439
+    Top = 1008
   end
   object imglst_16x16: TcxImageList
     SourceDPI = 96
     FormatVersion = 1
-    DesignInfo = 16253880
+    DesignInfo = 24380820
     ImageInfo = <
       item
         ImageClass = 'TBitmap'
@@ -21714,8 +21715,8 @@ object dm_PCM: Tdm_PCM
       'FROM archiv_konfiguration_hauptkategorien'
       'GROUP BY Bezeichnung'
       'ORder BY Bezeichnung')
-    Left = 296
-    Top = 376
+    Left = 444
+    Top = 564
   end
   object qry_ChartSub: TFDQuery
     Connection = con_PCM
@@ -21724,8 +21725,8 @@ object dm_PCM: Tdm_PCM
       'FROM archiv_konfiguration_unterkategorien'
       'GROUP BY Bezeichnung'
       'ORder BY Bezeichnung')
-    Left = 472
-    Top = 384
+    Left = 708
+    Top = 576
   end
   object qry_ChartFiles: TFDQuery
     Active = True
@@ -21738,22 +21739,41 @@ object dm_PCM: Tdm_PCM
         'k.ID = af.Mainkat'
       'GROUP BY akhk.Bezeichnung'
       'ORder BY akhk.Bezeichnung')
-    Left = 568
-    Top = 440
+    Left = 852
+    Top = 660
   end
   object ds_ChartMain: TDataSource
     DataSet = qry_ChartMain
-    Left = 296
-    Top = 440
+    Left = 444
+    Top = 660
   end
   object ds_ChartSub: TDataSource
     DataSet = qry_ChartSub
-    Left = 472
-    Top = 448
+    Left = 708
+    Top = 672
   end
   object ds_ChartFiles: TDataSource
     DataSet = qry_ChartFiles
-    Left = 568
-    Top = 496
+    Left = 852
+    Top = 744
+  end
+  object dxLayoutLookAndFeelList1: TdxLayoutLookAndFeelList
+    object dxLayoutSkinLookAndFeel1: TdxLayoutSkinLookAndFeel
+      Offsets.ControlOffsetHorz = 5
+      Offsets.ControlOffsetVert = 5
+      Offsets.ItemOffset = 6
+      Offsets.RootItemsAreaOffsetHorz = 11
+      Offsets.RootItemsAreaOffsetVert = 11
+      LookAndFeel.NativeStyle = False
+      PixelsPerInch = 144
+    end
+    object dxLayoutSkinLookAndFeel2: TdxLayoutSkinLookAndFeel
+      Offsets.ControlOffsetHorz = 5
+      Offsets.ControlOffsetVert = 5
+      Offsets.ItemOffset = 6
+      Offsets.RootItemsAreaOffsetHorz = 11
+      Offsets.RootItemsAreaOffsetVert = 11
+      PixelsPerInch = 144
+    end
   end
 end

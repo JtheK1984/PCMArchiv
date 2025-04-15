@@ -10,4 +10,4 @@ copy /y /v PCMArchiv.pdf "e:\Inno\Setupfiles\Programme\PCMArchiv"
 copy /y /v PCMArchiv.htm "e:\Inno\Setupfiles\Programme\PCMArchiv"
 
 echo "Demolizenz erstellen"
-call "E:\Inno\Setupfiles\Programme\PCMLizenzgenerator\PCMLizenzgenerator.exe" /PCM-Archiv /1.6 /E:\Inno\Setupfiles\Programme\PCMArchiv
+call "E:\Inno\Setupfiles\Programme\PCMLizenzgenerator\PCMLizenzgenerator.exe" /PCM-Archiv /1.0 /E:\Inno\Setupfiles\Programme\PCMArchiv

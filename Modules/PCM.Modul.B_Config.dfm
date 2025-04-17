@@ -25,24 +25,19 @@ object frm_Config: Tfrm_Config
     TabOrder = 0
     AutoSize = True
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
-    ExplicitLeft = 488
-    ExplicitTop = 272
-    ExplicitWidth = 300
-    ExplicitHeight = 250
     object bardckctrl_ArchivPfad: TdxBarDockControl
-      Left = 10000
-      Top = 10000
+      Left = 26
+      Top = 56
       Width = 1228
       Height = 58
       Align = dalNone
       AllowDocking = False
       BarManager = brmgr_Config
-      Visible = False
     end
     object edt_ArchivPfad: TcxDBButtonEdit
       AlignWithMargins = True
-      Left = 10000
-      Top = 10000
+      Left = 88
+      Top = 120
       Margins.Left = 0
       Margins.Top = 0
       Margins.Right = 0
@@ -66,14 +61,13 @@ object frm_Config: Tfrm_Config
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
       TabOrder = 1
-      Visible = False
       OnExit = btn_DirSaveClick
       Height = 19
       Width = 1166
     end
     object grd_ArchivPfad: TcxGrid
-      Left = 10000
-      Top = 10000
+      Left = 26
+      Top = 145
       Width = 1228
       Height = 629
       BorderStyle = cxcbsNone
@@ -84,7 +78,6 @@ object frm_Config: Tfrm_Config
       Font.Style = []
       ParentFont = False
       TabOrder = 2
-      Visible = False
       LockedStateImageOptions.Effect = lsieDark
       object grdDBTblView_ArchivPfad: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
@@ -456,8 +449,8 @@ object frm_Config: Tfrm_Config
     end
     object trlst_MainKat: TcxTreeList
       AlignWithMargins = True
-      Left = 26
-      Top = 58
+      Left = 10000
+      Top = 10000
       Width = 386
       Height = 217
       Bands = <
@@ -476,6 +469,7 @@ object frm_Config: Tfrm_Config
       OptionsView.TreeLineStyle = tllsSolid
       ScrollbarAnnotations.CustomAnnotations = <>
       TabOrder = 13
+      Visible = False
       object trlstCol_MainKatBezeichnung: TcxTreeListColumn
         Caption.Text = 'Bezeichnung'
         Width = 100
@@ -519,8 +513,8 @@ object frm_Config: Tfrm_Config
     end
     object trlst_SubKat: TcxTreeList
       AlignWithMargins = True
-      Left = 26
-      Top = 307
+      Left = 10000
+      Top = 10000
       Width = 386
       Height = 218
       Bands = <
@@ -539,6 +533,7 @@ object frm_Config: Tfrm_Config
       OptionsView.TreeLineStyle = tllsSolid
       ScrollbarAnnotations.CustomAnnotations = <>
       TabOrder = 14
+      Visible = False
       object trlstCol_SubKatBezeichnung: TcxTreeListColumn
         Caption.Text = 'Bezeichnung'
         Width = 100
@@ -582,8 +577,8 @@ object frm_Config: Tfrm_Config
     end
     object trlst_Ind: TcxTreeList
       AlignWithMargins = True
-      Left = 26
-      Top = 557
+      Left = 10000
+      Top = 10000
       Width = 386
       Height = 217
       Bands = <
@@ -602,6 +597,7 @@ object frm_Config: Tfrm_Config
       OptionsView.TreeLineStyle = tllsSolid
       ScrollbarAnnotations.CustomAnnotations = <>
       TabOrder = 15
+      Visible = False
       object trlstCol_IndBezeichnung: TcxTreeListColumn
         Caption.Text = 'Bezeichnung'
         Width = 100
@@ -645,8 +641,8 @@ object frm_Config: Tfrm_Config
     end
     object trlst_Zuweisung: TcxTreeList
       AlignWithMargins = True
-      Left = 436
-      Top = 56
+      Left = 10000
+      Top = 10000
       Width = 818
       Height = 718
       Bands = <
@@ -666,6 +662,7 @@ object frm_Config: Tfrm_Config
       PopupMenu = brpmm_Zuweisung
       ScrollbarAnnotations.CustomAnnotations = <>
       TabOrder = 16
+      Visible = False
       OnClick = trlst_ZuweisungClick
       OnDragDrop = trlst_ZuweisungDragDrop
       OnDragOver = trlst_ZuweisungDragOver
@@ -722,7 +719,6 @@ object frm_Config: Tfrm_Config
       Parent = dxLayoutControl1Group_Root
       AlignHorz = ahClient
       AlignVert = avClient
-      ItemIndex = 4
       LayoutDirection = ldTabbed
       ShowBorder = False
       Index = 0

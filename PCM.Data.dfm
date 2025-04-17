@@ -13,7 +13,6 @@ object dm_PCM: Tdm_PCM
       'DriverID=MySQL')
     ResourceOptions.AssignedValues = [rvAutoReconnect]
     ResourceOptions.AutoReconnect = True
-    Connected = True
     LoginPrompt = False
     BeforeConnect = con_PCMBeforeConnect
     Left = 48
@@ -21708,7 +21707,6 @@ object dm_PCM: Tdm_PCM
       end>
   end
   object qry_ChartMain: TFDQuery
-    Active = True
     Connection = con_PCM
     SQL.Strings = (
       'SELECT COUNT(*) as Wert, Bezeichnung'
@@ -21729,7 +21727,6 @@ object dm_PCM: Tdm_PCM
     Top = 576
   end
   object qry_ChartFiles: TFDQuery
-    Active = True
     Connection = con_PCM
     SQL.Strings = (
       'SELECT COUNT(*) as Wert, akhk.Bezeichnung'

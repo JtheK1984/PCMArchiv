@@ -28,7 +28,7 @@ uses
   cxEdit, cxClasses, System.ImageList, cxContainer, dxBarBuiltInMenu,
   Vcl.ExtCtrls, cxPC, dxNavBarCollns, dxNavBarBase, dxNavBar, dxSkinsCore,
   dxBar, cxLocalization, cxLabel, cxGroupBox, dxNavBarStyles,inifiles,
-  dxUIAClasses, dxChartPalette;
+  dxUIAClasses, dxChartPalette, dxLayoutContainer, dxLayoutControl;
   {$EndRegion Uses}
 type
   {$Region Type}
@@ -107,21 +107,27 @@ type
     iDesign: TdxNavBarItem;
     ppmbtn_Design: TMenuItem;
     ts_Dashboard: TcxTabSheet;
-    pnl_Dashboard: TcxGroupBox;
-    pnl_LicenceTop: TcxGroupBox;
     chartctrl_Customer: TdxChartControl;
     chartctrl_CustomerChart: TdxChartSimpleDiagram;
     chartctrl_CustomerSeries: TdxChartSimpleSeries;
-    spl_DashboardMain: TcxSplitter;
-    pnl_Licencemiddle: TcxGroupBox;
     chartctrl_Licence: TdxChartControl;
     chartctrl_LicenceChart: TdxChartSimpleDiagram;
     chartctrl_LicenceSeries: TdxChartSimpleSeries;
-    pnl_Licenceright: TcxGroupBox;
     chartctrl_Programs: TdxChartControl;
     chartctrl_ProgramsChart: TdxChartSimpleDiagram;
     chartctrl_ProgramsSeries: TdxChartSimpleSeries;
-    cxSplitter4: TcxSplitter;
+    dxLayoutControl1Group_Root: TdxLayoutGroup;
+    dxLayoutControl1: TdxLayoutControl;
+    dxLayoutGroup1: TdxLayoutGroup;
+    dxLayoutGroup2: TdxLayoutGroup;
+    dxLayoutGroup3: TdxLayoutGroup;
+    dxLayoutGroup4: TdxLayoutGroup;
+    dxLayoutGroup5: TdxLayoutGroup;
+    dxLayoutItem1: TdxLayoutItem;
+    dxLayoutItem2: TdxLayoutItem;
+    dxLayoutItem3: TdxLayoutItem;
+    dxLayoutSplitterItem1: TdxLayoutSplitterItem;
+    dxLayoutSplitterItem2: TdxLayoutSplitterItem;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormResize(Sender: TObject);
@@ -632,11 +638,6 @@ procedure Tfrm_PCM_Main.FormResize(Sender: TObject);
   end;
 begin
   BarResize;
-  pnl_LicenceTop.Height:= Trunc(ts_Dashboard.Height/2);
-  pnl_Licencemiddle.Height:= Trunc(ts_Dashboard.Height/2);
-  pnl_Licenceright.Height:= Trunc(ts_Dashboard.Height/2);
-  pnl_Licencemiddle.Width:= Trunc(ts_Dashboard.Width/2);
-  pnl_LicenceRight.Width:= Trunc(ts_Dashboard.Width/2);
 end;
 procedure Tfrm_PCM_Main.FormShow(Sender: TObject);
 begin

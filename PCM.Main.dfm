@@ -196,166 +196,209 @@ object frm_PCM_Main: Tfrm_PCM_Main
         ImageIndex = 79
         ExplicitWidth = 1062
         ExplicitHeight = 720
-        object pnl_Dashboard: TcxGroupBox
+        object dxLayoutControl1: TdxLayoutControl
           Left = 0
           Top = 0
-          Align = alClient
-          PanelStyle.Active = True
-          Style.BorderStyle = ebsNone
-          Style.Edges = [bLeft, bTop, bRight, bBottom]
-          TabOrder = 0
-          ExplicitWidth = 1062
-          ExplicitHeight = 720
-          Height = 737
           Width = 1068
-          object pnl_LicenceTop: TcxGroupBox
-            Left = 2
-            Top = 2
-            Align = alTop
-            Caption = 'Archivdateien'
-            Style.BorderStyle = ebsFlat
-            Style.Edges = [bLeft, bTop, bRight, bBottom]
-            TabOrder = 0
-            ExplicitWidth = 1058
-            Height = 305
-            Width = 1064
-            object chartctrl_Customer: TdxChartControl
-              Left = 2
-              Top = 18
-              Width = 1060
-              Height = 285
-              Align = alClient
-              BorderStyle = cxcbsNone
-              Legend.Title.Visible = False
-              Titles = <>
-              ExplicitWidth = 1054
-              object chartctrl_CustomerChart: TdxChartSimpleDiagram
-                Title.Visible = False
-                Layout = Horizontal
-                object chartctrl_CustomerSeries: TdxChartSimpleSeries
-                  Caption = 'Wert'
-                  DataBindingType = 'DB'
-                  DataBinding.ArgumentField.FieldName = 'Bezeichnung'
-                  DataBinding.ValueField.FieldName = 'Wert'
-                  ViewType = 'Pie'
-                  View.SweepDirection = Counterclockwise
-                  View.ValueLabels.LineLength = 10.000000000000000000
-                  View.ValueLabels.Visible = True
-                  View.ValueLabels.Position = Outside
-                  SortBy = Value
-                  ColorSchemeIndex = 0
-                end
+          Height = 737
+          Align = alClient
+          TabOrder = 0
+          LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
+          ExplicitLeft = 384
+          ExplicitTop = 24
+          ExplicitWidth = 300
+          ExplicitHeight = 250
+          object chartctrl_Customer: TdxChartControl
+            Left = 19
+            Top = 25
+            Width = 1030
+            Height = 328
+            BorderStyle = cxcbsNone
+            Legend.Title.Visible = False
+            Titles = <>
+            object chartctrl_CustomerChart: TdxChartSimpleDiagram
+              Title.Visible = False
+              Layout = Horizontal
+              object chartctrl_CustomerSeries: TdxChartSimpleSeries
+                Caption = 'Wert'
+                DataBindingType = 'DB'
+                DataBinding.ArgumentField.FieldName = 'Bezeichnung'
+                DataBinding.ValueField.FieldName = 'Wert'
+                ViewType = 'Pie'
+                View.SweepDirection = Counterclockwise
+                View.ValueLabels.LineLength = 10.000000000000000000
+                View.ValueLabels.Visible = True
+                View.ValueLabels.Position = Outside
+                SortBy = Value
+                ColorSchemeIndex = 0
               end
             end
           end
-          object spl_DashboardMain: TcxSplitter
-            Left = 2
-            Top = 307
-            Width = 1064
-            Height = 5
-            AlignSplitter = salBottom
-            Control = pnl_LicenceTop
-            ExplicitWidth = 1058
-          end
-          object pnl_Licencemiddle: TcxGroupBox
-            Left = 2
-            Top = 312
-            Align = alLeft
-            Caption = 'Hauptkategorien'
-            Style.BorderStyle = ebsFlat
-            Style.Edges = [bLeft, bTop, bRight, bBottom]
-            TabOrder = 2
-            ExplicitHeight = 406
-            Height = 423
-            Width = 491
-            object chartctrl_Licence: TdxChartControl
-              Left = 2
-              Top = 18
-              Width = 487
-              Height = 403
-              Align = alClient
-              BorderStyle = cxcbsNone
-              Legend.Title.Visible = False
-              Titles = <>
-              ExplicitHeight = 386
-              object chartctrl_LicenceChart: TdxChartSimpleDiagram
-                Title.Visible = False
-                Layout = Horizontal
-                object chartctrl_LicenceSeries: TdxChartSimpleSeries
-                  Caption = 'Wert'
-                  DataBindingType = 'DB'
-                  DataBinding.ArgumentField.FieldName = 'Bezeichnung'
-                  DataBinding.ValueField.FieldName = 'Wert'
-                  ViewType = 'Pie'
-                  View.ExplodedValueOptions.Mode = Max
-                  View.SweepDirection = Counterclockwise
-                  View.ValueLabels.LineLength = 5.000000000000000000
-                  View.ValueLabels.TextAlignment = Far
-                  View.ValueLabels.Visible = True
-                  View.ValueLabels.Position = Outside
-                  SortBy = Value
-                  SortOrder = soAscending
-                  ColorSchemeIndex = 0
-                end
+          object chartctrl_Licence: TdxChartControl
+            Left = 19
+            Top = 390
+            Width = 500
+            Height = 328
+            BorderStyle = cxcbsNone
+            Legend.Title.Visible = False
+            Titles = <>
+            object chartctrl_LicenceChart: TdxChartSimpleDiagram
+              Title.Visible = False
+              Layout = Horizontal
+              object chartctrl_LicenceSeries: TdxChartSimpleSeries
+                Caption = 'Wert'
+                DataBindingType = 'DB'
+                DataBinding.ArgumentField.FieldName = 'Bezeichnung'
+                DataBinding.ValueField.FieldName = 'Wert'
+                ViewType = 'Pie'
+                View.ExplodedValueOptions.Mode = Max
+                View.SweepDirection = Counterclockwise
+                View.ValueLabels.LineLength = 5.000000000000000000
+                View.ValueLabels.TextAlignment = Far
+                View.ValueLabels.Visible = True
+                View.ValueLabels.Position = Outside
+                SortBy = Value
+                SortOrder = soAscending
+                ColorSchemeIndex = 0
               end
             end
           end
-          object pnl_Licenceright: TcxGroupBox
-            Left = 493
-            Top = 312
-            Align = alClient
-            Caption = 'Unterkategorien'
-            Style.BorderStyle = ebsFlat
-            Style.Edges = [bLeft, bTop, bRight, bBottom]
-            TabOrder = 3
-            ExplicitWidth = 567
-            ExplicitHeight = 406
-            Height = 423
-            Width = 573
-            object chartctrl_Programs: TdxChartControl
-              Left = 7
-              Top = 18
-              Width = 564
-              Height = 403
-              Align = alClient
-              BorderStyle = cxcbsNone
-              Legend.Title.Visible = False
-              Titles = <>
-              ExplicitWidth = 558
-              ExplicitHeight = 386
-              object chartctrl_ProgramsChart: TdxChartSimpleDiagram
-                Title.Visible = False
-                Layout = Horizontal
-                object chartctrl_ProgramsSeries: TdxChartSimpleSeries
-                  Caption = 'Wert'
-                  DataBindingType = 'DB'
-                  DataBinding.ArgumentField.FieldName = 'Bezeichnung'
-                  DataBinding.ValueField.FieldName = 'Wert'
-                  ViewType = 'Pie'
-                  View.ExplodedValueOptions.Mode = Max
-                  View.SweepDirection = Counterclockwise
-                  View.ValueLabels.Appearance.FontOptions.Bold = True
-                  View.ValueLabels.Appearance.FontOptions.Size = 9
-                  View.ValueLabels.Appearance.FillOptions.Mode = Clear
-                  View.ValueLabels.LineLength = 5.000000000000000000
-                  View.ValueLabels.LineVisible = bTrue
-                  View.ValueLabels.TextAlignment = Far
-                  View.ValueLabels.Visible = True
-                  View.ValueLabels.Position = Outside
-                  SortBy = Value
-                  SortOrder = soAscending
-                  ColorSchemeIndex = 0
-                end
+          object chartctrl_Programs: TdxChartControl
+            Left = 550
+            Top = 390
+            Width = 499
+            Height = 328
+            BorderStyle = cxcbsNone
+            Legend.Title.Visible = False
+            Titles = <>
+            object chartctrl_ProgramsChart: TdxChartSimpleDiagram
+              Title.Visible = False
+              Layout = Horizontal
+              object chartctrl_ProgramsSeries: TdxChartSimpleSeries
+                Caption = 'Wert'
+                DataBindingType = 'DB'
+                DataBinding.ArgumentField.FieldName = 'Bezeichnung'
+                DataBinding.ValueField.FieldName = 'Wert'
+                ViewType = 'Pie'
+                View.ExplodedValueOptions.Mode = Max
+                View.SweepDirection = Counterclockwise
+                View.ValueLabels.Appearance.FontOptions.Bold = True
+                View.ValueLabels.Appearance.FontOptions.Size = 9
+                View.ValueLabels.Appearance.FillOptions.Mode = Clear
+                View.ValueLabels.LineLength = 5.000000000000000000
+                View.ValueLabels.LineVisible = bTrue
+                View.ValueLabels.TextAlignment = Far
+                View.ValueLabels.Visible = True
+                View.ValueLabels.Position = Outside
+                SortBy = Value
+                SortOrder = soAscending
+                ColorSchemeIndex = 0
               end
             end
-            object cxSplitter4: TcxSplitter
-              Left = 2
-              Top = 18
-              Width = 5
-              Height = 403
-              Control = pnl_Licencemiddle
-              ExplicitHeight = 386
-            end
+          end
+          object dxLayoutControl1Group_Root: TdxLayoutGroup
+            AlignHorz = ahClient
+            AlignVert = avClient
+            Hidden = True
+            ShowBorder = False
+            Index = -1
+          end
+          object dxLayoutGroup1: TdxLayoutGroup
+            Parent = dxLayoutControl1Group_Root
+            AlignHorz = ahClient
+            AlignVert = avClient
+            CaptionOptions.Text = 'New Group'
+            ItemIndex = 2
+            ShowBorder = False
+            Index = 0
+          end
+          object dxLayoutGroup2: TdxLayoutGroup
+            Parent = dxLayoutGroup1
+            AlignHorz = ahClient
+            AlignVert = avClient
+            CaptionOptions.Text = 'Archivdateien'
+            Index = 0
+          end
+          object dxLayoutGroup3: TdxLayoutGroup
+            Parent = dxLayoutGroup1
+            AlignHorz = ahClient
+            AlignVert = avClient
+            CaptionOptions.Text = 'New Group'
+            ItemIndex = 1
+            LayoutDirection = ldHorizontal
+            ShowBorder = False
+            Index = 2
+          end
+          object dxLayoutGroup4: TdxLayoutGroup
+            Parent = dxLayoutGroup3
+            AlignHorz = ahClient
+            AlignVert = avClient
+            CaptionOptions.Text = 'Hauptkategorien'
+            Index = 0
+          end
+          object dxLayoutGroup5: TdxLayoutGroup
+            Parent = dxLayoutGroup3
+            AlignHorz = ahClient
+            AlignVert = avClient
+            CaptionOptions.Text = 'Unterkategorien'
+            Index = 2
+          end
+          object dxLayoutItem1: TdxLayoutItem
+            Parent = dxLayoutGroup2
+            AlignHorz = ahClient
+            AlignVert = avClient
+            CaptionOptions.Text = 'New Item'
+            CaptionOptions.Visible = False
+            Control = chartctrl_Customer
+            ControlOptions.OriginalHeight = 100
+            ControlOptions.OriginalWidth = 100
+            ControlOptions.ShowBorder = False
+            Index = 0
+          end
+          object dxLayoutItem2: TdxLayoutItem
+            Parent = dxLayoutGroup5
+            AlignHorz = ahClient
+            AlignVert = avClient
+            CaptionOptions.Text = 'New Item'
+            CaptionOptions.Visible = False
+            Control = chartctrl_Programs
+            ControlOptions.OriginalHeight = 100
+            ControlOptions.OriginalWidth = 100
+            ControlOptions.ShowBorder = False
+            Index = 0
+          end
+          object dxLayoutItem3: TdxLayoutItem
+            Parent = dxLayoutGroup4
+            AlignHorz = ahClient
+            AlignVert = avClient
+            CaptionOptions.Text = 'New Item'
+            CaptionOptions.Visible = False
+            Control = chartctrl_Licence
+            ControlOptions.OriginalHeight = 100
+            ControlOptions.OriginalWidth = 100
+            ControlOptions.ShowBorder = False
+            Index = 0
+          end
+          object dxLayoutSplitterItem1: TdxLayoutSplitterItem
+            Parent = dxLayoutGroup1
+            AlignHorz = ahClient
+            AlignVert = avTop
+            SizeOptions.AssignedValues = [sovSizableHorz, sovSizableVert]
+            SizeOptions.SizableHorz = False
+            SizeOptions.SizableVert = False
+            CaptionOptions.Text = 'Splitter'
+            AllowCloseOnClick = True
+            Index = 1
+          end
+          object dxLayoutSplitterItem2: TdxLayoutSplitterItem
+            Parent = dxLayoutGroup3
+            AlignHorz = ahLeft
+            AlignVert = avClient
+            SizeOptions.AssignedValues = [sovSizableHorz, sovSizableVert]
+            SizeOptions.SizableHorz = False
+            SizeOptions.SizableVert = False
+            CaptionOptions.Text = 'Splitter'
+            Index = 1
           end
         end
       end

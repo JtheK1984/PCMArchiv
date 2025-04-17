@@ -2,7 +2,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
   Left = 0
   Top = 0
   AlphaBlend = True
-  BorderStyle = bsSingle
   Caption = 'PCM - Manager'
   ClientHeight = 800
   ClientWidth = 1280
@@ -25,9 +24,9 @@ object frm_PCM_Main: Tfrm_PCM_Main
   TextHeight = 13
   object navbr_main: TdxNavBar
     Left = 0
-    Top = 35
+    Top = 30
     Width = 200
-    Height = 765
+    Height = 770
     Align = alLeft
     ActiveGroupIndex = 0
     TabOrder = 0
@@ -35,6 +34,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
     View = 14
     OptionsImage.SmallImages = dm_PCM.imglst_16x16
     OptionsStyle.CustomStyles.Background = navbrStyleIt_main
+    ExplicitHeight = 753
     object navbrgrp_Optionen: TdxNavBarGroup
       Caption = 'Optionen'
       SelectedLinkIndex = -1
@@ -157,18 +157,20 @@ object frm_PCM_Main: Tfrm_PCM_Main
   end
   object grpbx_Design: TcxGroupBox
     Left = 200
-    Top = 35
+    Top = 30
     Align = alClient
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 1
-    Height = 765
+    ExplicitWidth = 1074
+    ExplicitHeight = 753
+    Height = 770
     Width = 1080
     object pc_main: TcxPageControl
-      Left = 3
-      Top = 3
-      Width = 1074
-      Height = 759
+      Left = 2
+      Top = 2
+      Width = 1076
+      Height = 766
       Margins.Left = 0
       Margins.Top = 0
       Margins.Right = 0
@@ -183,13 +185,17 @@ object frm_PCM_Main: Tfrm_PCM_Main
       Properties.Images = dm_PCM.imglst_16x16
       Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize, pcoSort]
       OnPageChanging = pc_mainPageChanging
-      ClientRectBottom = 753
-      ClientRectLeft = 2
-      ClientRectRight = 1068
-      ClientRectTop = 28
+      ExplicitWidth = 1070
+      ExplicitHeight = 749
+      ClientRectBottom = 762
+      ClientRectLeft = 4
+      ClientRectRight = 1072
+      ClientRectTop = 25
       object ts_Dashboard: TcxTabSheet
         Caption = 'Dashboard'
         ImageIndex = 79
+        ExplicitWidth = 1062
+        ExplicitHeight = 720
         object pnl_Dashboard: TcxGroupBox
           Left = 0
           Top = 0
@@ -198,27 +204,31 @@ object frm_PCM_Main: Tfrm_PCM_Main
           Style.BorderStyle = ebsNone
           Style.Edges = [bLeft, bTop, bRight, bBottom]
           TabOrder = 0
-          Height = 725
-          Width = 1066
+          ExplicitWidth = 1062
+          ExplicitHeight = 720
+          Height = 737
+          Width = 1068
           object pnl_LicenceTop: TcxGroupBox
-            Left = 3
-            Top = 3
+            Left = 2
+            Top = 2
             Align = alTop
             Caption = 'Archivdateien'
             Style.BorderStyle = ebsFlat
             Style.Edges = [bLeft, bTop, bRight, bBottom]
             TabOrder = 0
+            ExplicitWidth = 1058
             Height = 305
-            Width = 1060
+            Width = 1064
             object chartctrl_Customer: TdxChartControl
-              Left = 3
-              Top = 15
-              Width = 1054
-              Height = 281
+              Left = 2
+              Top = 18
+              Width = 1060
+              Height = 285
               Align = alClient
               BorderStyle = cxcbsNone
               Legend.Title.Visible = False
               Titles = <>
+              ExplicitWidth = 1054
               object chartctrl_CustomerChart: TdxChartSimpleDiagram
                 Title.Visible = False
                 Layout = Horizontal
@@ -239,32 +249,35 @@ object frm_PCM_Main: Tfrm_PCM_Main
             end
           end
           object spl_DashboardMain: TcxSplitter
-            Left = 3
-            Top = 308
-            Width = 1060
+            Left = 2
+            Top = 307
+            Width = 1064
             Height = 5
             AlignSplitter = salBottom
             Control = pnl_LicenceTop
+            ExplicitWidth = 1058
           end
           object pnl_Licencemiddle: TcxGroupBox
-            Left = 3
-            Top = 313
+            Left = 2
+            Top = 312
             Align = alLeft
             Caption = 'Hauptkategorien'
             Style.BorderStyle = ebsFlat
             Style.Edges = [bLeft, bTop, bRight, bBottom]
             TabOrder = 2
-            Height = 409
+            ExplicitHeight = 406
+            Height = 423
             Width = 491
             object chartctrl_Licence: TdxChartControl
-              Left = 3
-              Top = 15
-              Width = 485
-              Height = 385
+              Left = 2
+              Top = 18
+              Width = 487
+              Height = 403
               Align = alClient
               BorderStyle = cxcbsNone
               Legend.Title.Visible = False
               Titles = <>
+              ExplicitHeight = 386
               object chartctrl_LicenceChart: TdxChartSimpleDiagram
                 Title.Visible = False
                 Layout = Horizontal
@@ -288,24 +301,28 @@ object frm_PCM_Main: Tfrm_PCM_Main
             end
           end
           object pnl_Licenceright: TcxGroupBox
-            Left = 494
-            Top = 313
+            Left = 493
+            Top = 312
             Align = alClient
             Caption = 'Unterkategorien'
             Style.BorderStyle = ebsFlat
             Style.Edges = [bLeft, bTop, bRight, bBottom]
             TabOrder = 3
-            Height = 409
-            Width = 569
+            ExplicitWidth = 567
+            ExplicitHeight = 406
+            Height = 423
+            Width = 573
             object chartctrl_Programs: TdxChartControl
-              Left = 8
-              Top = 15
-              Width = 558
-              Height = 385
+              Left = 7
+              Top = 18
+              Width = 564
+              Height = 403
               Align = alClient
               BorderStyle = cxcbsNone
               Legend.Title.Visible = False
               Titles = <>
+              ExplicitWidth = 558
+              ExplicitHeight = 386
               object chartctrl_ProgramsChart: TdxChartSimpleDiagram
                 Title.Visible = False
                 Layout = Horizontal
@@ -332,11 +349,12 @@ object frm_PCM_Main: Tfrm_PCM_Main
               end
             end
             object cxSplitter4: TcxSplitter
-              Left = 3
-              Top = 15
+              Left = 2
+              Top = 18
               Width = 5
-              Height = 385
+              Height = 403
               Control = pnl_Licencemiddle
+              ExplicitHeight = 386
             end
           end
         end
@@ -624,11 +642,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
     Top = 232
   end
   object lafCtrl_Main: TcxLookAndFeelController
-    Kind = lfFlat
-    ScrollbarMode = sbmClassic
-    ScrollMode = scmClassic
-    SkinName = 'DevExpressDarkStyle'
-    RenderMode = rmGDIPlus
+    NativeStyle = True
     Left = 248
     Top = 80
   end
@@ -738,7 +752,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
     DockControlHeights = (
       0
       0
-      35
+      30
       0)
     object tb_Main: TdxBar
       AllowClose = False

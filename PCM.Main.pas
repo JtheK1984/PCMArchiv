@@ -391,21 +391,20 @@ var
 begin
   Application.CreateForm(Tfrm_Language,frm_Language);
   frm_Language.Position:= poScreenCenter;
-  frm_Language.ClientHeight:= 135;
   frm_Language.ShowModal;
-  TNtTranslator.SetNew(dm_PCM.slocale,[],'de');
-  TNtTranslator.TranslateForms;
+//  TNtTranslator.SetNew(dm_PCM.slocale,[],'de');
+//  TNtTranslator.TranslateForms;
   ifINI := TIniFile.Create(GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\PCM.ini');
   try
     ifINI.WriteString(PCM_Logname, 'Language', dm_PCm.sLocale);
   finally
     ifINI.Free;
   end;
-  Caption:= PCM_Programmname;
-  trayic_Main.popupmenu:= ppm_Main;
-  LoadData;
-  btn_RefreshRightsClick(Self);
-  lafCtrl_Main.SkinName:= dm_PCM.sDesign;
+//  Caption:= PCM_Programmname;
+//  trayic_Main.popupmenu:= ppm_Main;
+//  LoadData;
+//  btn_RefreshRightsClick(Self);
+//  lafCtrl_Main.SkinName:= dm_PCM.sDesign;
 end;
 procedure Tfrm_PCM_Main.NavBarClick(Sender: TObject);
 var

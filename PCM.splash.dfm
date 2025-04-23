@@ -2352,9 +2352,6 @@ object SplashScreen: TSplashScreen
       Properties.Alignment.Horz = taCenter
       TabOrder = 1
       Transparent = True
-      ExplicitLeft = 462
-      ExplicitTop = 10
-      ExplicitWidth = 83
       AnchorX = 500
     end
     object lbl_ProgVersion: TcxLabel

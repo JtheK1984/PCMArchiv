@@ -204,10 +204,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
           Align = alClient
           TabOrder = 0
           LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
-          ExplicitLeft = 384
-          ExplicitTop = 24
-          ExplicitWidth = 300
-          ExplicitHeight = 250
+          ExplicitWidth = 1062
+          ExplicitHeight = 720
           object chartctrl_Customer: TdxChartControl
             Left = 19
             Top = 25

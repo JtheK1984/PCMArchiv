@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, cxControls, cxLookAndFeels,
-  cxLookAndFeelPainters, Vcl.ExtCtrls,
+  cxLookAndFeelPainters, Vcl.ExtCtrls,FireDAC.Stan.Param,
   dxGDIPlusClasses, dxActivityIndicator, cxContainer, cxEdit, cxProgressBar,
   cxImage, cxLabel, cxGroupBox, cxClasses, inifiles, dxUIAClasses;
 
@@ -65,7 +65,6 @@ var
   ffiVerValue: PVSFixedFileInfo;
   dwdDummy: DWord;
   Result: String;
-  itest: integer;
 begin
   dwVerInfoSize := GetFileVersionInfoSize(PChar(ParamStr(0)), dwdDummy);
   if dwVerInfoSize = 0 then
@@ -93,11 +92,7 @@ begin
     prgbr_Splash.Properties.Max:= 1
   else
     prgbr_Splash.Properties.Max:= 7;
-
-
-
-
-  prgbr_Splash.Properties.Text:= 'Sprachdatei laden...';
+  prgbr_Splash.Properties.Text:= rs_Splash_Sprache;
   timer1.Enabled:= true;
   if ShowModal = mrOk then
   begin
@@ -112,8 +107,6 @@ procedure TSplashScreen.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Action := caFree;
 end;
-
-
 procedure TSplashScreen.Timer1Timer(Sender: TObject);
 begin
   Timer1.Enabled := False;
@@ -123,7 +116,7 @@ begin
   frm_PCm_Main.loc_lang.LanguageIndex := 1;
   if not bRestart then
   begin
-    prgbr_Splash.Properties.Text:= 'Lizenz prüfen...';
+    prgbr_Splash.Properties.Text:= rs_Splash_Lizenz;
     Timer11.enabled:= true;
   end
   else begin
@@ -131,8 +124,6 @@ begin
   end;
   Application.ProcessMessages;
 end;
-
-
 procedure TSplashScreen.Timer11Timer(Sender: TObject);
 begin
   Timer11.enabled:= false;
@@ -144,10 +135,9 @@ begin
     if dm_PCm.bNewLiceneCheck = false then
       Application.Terminate;
   end;
-  prgbr_Splash.Properties.Text:= 'Benutzerlogin prüfen...';
+  prgbr_Splash.Properties.Text:= rs_Splash_Login;
   Timer2.enabled:= true;
 end;
-
 procedure TSplashScreen.Timer2Timer(Sender: TObject);
 begin
   Timer2.Enabled := False;
@@ -167,7 +157,7 @@ begin
     Application.Terminate;
   frm_PCm_Main.bAbmelden:= False;
   Application.ProcessMessages;
-  prgbr_Splash.Properties.Text:= 'Benutzerechte prüfen...';
+  prgbr_Splash.Properties.Text:= rs_Splash_Rechte;
   Timer3.Enabled:= true;
 end;
 procedure TSplashScreen.Timer3Timer(Sender: TObject);
@@ -248,7 +238,7 @@ begin
     end;
   end;
   Application.ProcessMessages;
-  prgbr_Splash.Properties.Text:= 'Konfiguration laden...';
+  prgbr_Splash.Properties.Text:= rs_Splash_Konfig;
   Timer4.Enabled:= true;
 end;
 procedure TSplashScreen.Timer4Timer(Sender: TObject);
@@ -257,7 +247,7 @@ begin
   prgbr_Splash.Position:= prgbr_Splash.Position + 1;
   frm_pcm_main.LoadData;
   Application.ProcessMessages;
-  prgbr_Splash.Properties.Text:= 'Menüs laden...';
+  prgbr_Splash.Properties.Text:= rs_Splash_MenuLaden;
   Timer5.Enabled:= true;
 end;
 procedure TSplashScreen.Timer5Timer(Sender: TObject);
@@ -269,7 +259,7 @@ begin
   if dm_PCM.bDemo then
     frm_pcm_main.Caption:=PCM_Programmname + rs_PCM_Demolizenz + DateTostr(dm_PCM.dtGueltig);
   Application.ProcessMessages;
-  prgbr_Splash.Properties.Text:= 'Menüs registrieren...';
+  prgbr_Splash.Properties.Text:= rs_Splash_MenuReg;
   Timer6.Enabled:= true;
 end;
 procedure TSplashScreen.Timer6Timer(Sender: TObject);

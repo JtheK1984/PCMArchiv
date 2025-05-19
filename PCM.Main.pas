@@ -4,13 +4,6 @@ interface
 
 uses
   {$Region Uses}
-  {$IFDEF WIN64}
-    {$I Skins.inc}
-    dxSkinsForm, dxSkinsdxBarPainter, dxSkinscxPCPainter,
-  {$ELSE}
-    {$I Skins.inc}
-    dxSkinsForm, dxSkinsdxBarPainter, dxSkinscxPCPainter,
-  {$ENDIF}
   SYSTEM.uitypes, Winapi.Windows, Winapi.Messages, System.SysUtils,
   System.Variants, System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs,
   Vcl.ImgList, Vcl.Menus, NTTranslator, Strutils, DateUtils,shellapi, Vcl.Themes,
@@ -166,30 +159,30 @@ type
   end;
   {$EndRegion Type}
 var
+  {$Region var}
   frm_PCM_Main: Tfrm_PCM_Main;
-
+  {$EndRegion var}
 implementation
-
 {$R *.dfm}
-
 uses
-      PCM.Benutzerverwaltung,
-      PCM.Data,
-      PCM.Design,
-      PCM.Functions,
-      PCM.Functions.Appinfo,
-      PCM.Functions.ChangePW,
-      PCM.Functions.Languages,
-      PCM.Functions.Lizenz,
-      PCM.Functions.Login,
-      PCM.Functions.Synch.Wait,
-      PCM.Handbuch,
-      PCM.Helper,
-      PCM.SQL,
-      PCM.Modul.B_Config,
-      PCM.Modul.C_Archiv,
-			PCM.Strings, PCM.splash;
-
+  {$Region uses}
+  PCM.Benutzerverwaltung,
+  PCM.Data,
+  PCM.Design,
+  PCM.Functions,
+  PCM.Functions.Appinfo,
+  PCM.Functions.ChangePW,
+  PCM.Functions.Languages,
+  PCM.Functions.Lizenz,
+  PCM.Functions.Login,
+  PCM.Functions.Synch.Wait,
+  PCM.Handbuch,
+  PCM.Helper,
+  PCM.SQL,
+  PCM.Modul.B_Config,
+  PCM.Modul.C_Archiv,
+  PCM.Strings, PCM.splash;
+  {$EndRegion uses}
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
 ////////////////////////////////////////////////////////////////////////////////
@@ -316,13 +309,13 @@ procedure Tfrm_PCM_Main.RegisterNavBarItems;
   end;
 begin
   Modules.Clear;
-  RegisterForm('iBenutzerverwaltung', Tfrm_User, @frm_User, 1);
+  RegisterForm('iBenutzerverwaltung', Tfrm_PCM_User, @frm_PCM_User, 1);
   RegisterForm('iKonfiguration', Tfrm_config, @frm_config, 1);
-  RegisterForm('iDesign', Tfrm_Design, @frm_Design, 1);
+  RegisterForm('iDesign', Tfrm_PCM_Design, @frm_PCM_Design, 1);
   RegisterForm('iArchiv',Tfrm_Archiv, @frm_Archiv, 1);
   RegisterForm('iSysteminfo',Tfrm_PCM_System, @frm_PCM_System, 1);
   RegisterForm('iInfo',Tfrm_PCM_InfoApp, @frm_PCM_InfoApp, 1);
-  RegisterForm('iHandbuch',Tfrm_Handbuch, @frm_Handbuch, 1);
+  RegisterForm('iHandbuch',Tfrm_PCM_Handbuch, @frm_PCM_Handbuch, 1);
   RegisterEvent('iAbmelden', Abmelden);
   RegisterEvent('iBeenden', Close);
 end;
@@ -336,7 +329,7 @@ begin
   if pc_Main.PageCount > 1 then
   begin
     if pc_Main.PageCount = 2 then
-      brstc_OpenModule.Caption := 'Dashboard';
+      brstc_OpenModule.Caption := rs_General_Dashboard;
     if pc_Main.ActivePage <> ts_Dashboard  then
     begin
       TForm(pc_Main.ActivePage.Controls[0]).Close;
@@ -389,22 +382,15 @@ procedure Tfrm_PCM_Main.iSpracheClick(Sender: TObject);
 var
   ifINI: TIniFile;
 begin
-  Application.CreateForm(Tfrm_Language,frm_Language);
-  frm_Language.Position:= poScreenCenter;
-  frm_Language.ShowModal;
-//  TNtTranslator.SetNew(dm_PCM.slocale,[],'de');
-//  TNtTranslator.TranslateForms;
+  Application.CreateForm(Tfrm_PCM_Language,frm_PCM_Language);
+  frm_PCM_Language.Position:= poScreenCenter;
+  frm_PCM_Language.ShowModal;
   ifINI := TIniFile.Create(GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\PCM.ini');
   try
     ifINI.WriteString(PCM_Logname, 'Language', dm_PCm.sLocale);
   finally
     ifINI.Free;
   end;
-//  Caption:= PCM_Programmname;
-//  trayic_Main.popupmenu:= ppm_Main;
-//  LoadData;
-//  btn_RefreshRightsClick(Self);
-//  lafCtrl_Main.SkinName:= dm_PCM.sDesign;
 end;
 procedure Tfrm_PCM_Main.NavBarClick(Sender: TObject);
 var
@@ -466,7 +452,7 @@ begin
           end;
         3:
           begin
-            sModulCaption := 'i'  + rs_PCMArchiv_Archiv;
+            sModulCaption := 'i'  + rs_PCM_Archiv;
             dm_PCM.iModulTab:= 1;
           end;
         4:
@@ -512,11 +498,11 @@ begin
                                          '(SELECT COUNT(*) FROM archiv_konfiguration_zuweisung_hauptkategorien) as Anzahl ' +
                                          'FROM archiv_konfiguration_hauptkategorien';
               dm_PCM.qry_Work.Open;
-        	    ShowWaitForm(TForm(Self), PWideChar('Formular wird geladen'), dm_PCM.qry_Work.FieldByName('Anzahl').asinteger,417, 65);
+        	    ShowWaitForm(TForm(Self), PWideChar(rs_General_Formload), dm_PCM.qry_Work.FieldByName('Anzahl').asinteger,417, 65);
               dm_PCM.qry_Work.Close;
             end
             else begin
-        	    ShowWaitForm(TForm(Self), PWideChar('Formular wird geladen'), 1,417, 65);
+        	    ShowWaitForm(TForm(Self), PWideChar(rs_General_Formload), 1,417, 65);
             end;
             Application.ProcessMessages;
             WaitFormStep;

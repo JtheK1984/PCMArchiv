@@ -13,6 +13,7 @@ object dm_PCM: Tdm_PCM
       'DriverID=MySQL')
     ResourceOptions.AssignedValues = [rvAutoReconnect]
     ResourceOptions.AutoReconnect = True
+    Connected = True
     LoginPrompt = False
     BeforeConnect = con_PCMBeforeConnect
     Left = 48

@@ -162,8 +162,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 1
-    ExplicitWidth = 1074
-    ExplicitHeight = 753
     Height = 770
     Width = 1080
     object pc_main: TcxPageControl
@@ -194,6 +192,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
       object ts_Dashboard: TcxTabSheet
         Caption = 'Dashboard'
         ImageIndex = 79
+        ExplicitLeft = 0
+        ExplicitTop = 0
         ExplicitWidth = 1062
         ExplicitHeight = 720
         object dxLayoutControl1: TdxLayoutControl
@@ -306,7 +306,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
             AlignHorz = ahClient
             AlignVert = avClient
             CaptionOptions.Text = 'New Group'
-            ItemIndex = 2
             ShowBorder = False
             Index = 0
           end
@@ -322,7 +321,6 @@ object frm_PCM_Main: Tfrm_PCM_Main
             AlignHorz = ahClient
             AlignVert = avClient
             CaptionOptions.Text = 'New Group'
-            ItemIndex = 1
             LayoutDirection = ldHorizontal
             ShowBorder = False
             Index = 2

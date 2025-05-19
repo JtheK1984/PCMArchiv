@@ -3,13 +3,15 @@ unit PCM.splash;
 interface
 
 uses
+  {$Region uses}
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, cxGraphics, cxControls, cxLookAndFeels,
   cxLookAndFeelPainters, Vcl.ExtCtrls,FireDAC.Stan.Param,
   dxGDIPlusClasses, dxActivityIndicator, cxContainer, cxEdit, cxProgressBar,
   cxImage, cxLabel, cxGroupBox, cxClasses, inifiles, dxUIAClasses;
-
+  {$EndRegion uses}
 type
+  {$Region type}
   TSplashScreen = class(TForm)
     ActivityIndicator: TdxActivityIndicator;
     img_Splash: TImage;
@@ -40,15 +42,15 @@ type
     function Execute(ARestart: boolean): boolean;
     procedure SetAppVersion;
   end;
-
+  {$EndRegion type}
 var
+  {$Region var}
   SplashScreen: TSplashScreen;
-
+  {$EndRegion var}
 implementation
-
 {$R *.dfm}
-
 uses
+  {$Region uses}
   PCM.Main,
   PCM.Data,
   PCM.Functions,
@@ -56,7 +58,30 @@ uses
   PCM.Helper,
   PCM.SQL,
   PCM.Strings;
-
+  {$EndRegion uses}
+////////////////////////////////////////////////////////////////////////////////
+// Hilfsfunktionen                                                            //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Hilfsfunktionen}
+function TSplashScreen.Execute(ARestart: boolean): boolean;
+begin
+  SetAppVersion;
+  bRestart:= ARestart;
+  if bRestart then
+    prgbr_Splash.Properties.Max:= 1
+  else
+    prgbr_Splash.Properties.Max:= 7;
+  prgbr_Splash.Properties.Text:= rs_Splash_Sprache;
+  timer1.Enabled:= true;
+  if ShowModal = mrOk then
+  begin
+    Result := True;
+  end
+  else begin
+    Result := False;
+  end;
+  Release;
+end;
 procedure TSplashScreen.SetAppVersion;
 var
   dwVerInfoSize: DWord;
@@ -84,29 +109,11 @@ begin
   lbl_Progname.Caption := PCM_Programmname;
   lbl_Progname.Left:= Round((1000 - 340) /2);
 end;
-function TSplashScreen.Execute(ARestart: boolean): boolean;
-begin
-  SetAppVersion;
-  bRestart:= ARestart;
-  if bRestart then
-    prgbr_Splash.Properties.Max:= 1
-  else
-    prgbr_Splash.Properties.Max:= 7;
-  prgbr_Splash.Properties.Text:= rs_Splash_Sprache;
-  timer1.Enabled:= true;
-  if ShowModal = mrOk then
-  begin
-    Result := True;
-  end
-  else begin
-    Result := False;
-  end;
-  Release;
-end;
-procedure TSplashScreen.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-  Action := caFree;
-end;
+{$EndRegion Hilfsfunktionen}
+////////////////////////////////////////////////////////////////////////////////
+// Hilfsfunktionen                                                            //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Hilfsfunktionen}
 procedure TSplashScreen.Timer1Timer(Sender: TObject);
 begin
   Timer1.Enabled := False;
@@ -257,7 +264,7 @@ begin
   frm_pcm_Main.Caption:= PCM_Programmname;
   frm_pcm_Main.trayIC_Main.PopupMenu:= frm_pcm_Main.ppm_main;
   if dm_PCM.bDemo then
-    frm_pcm_main.Caption:=PCM_Programmname + rs_PCM_Demolizenz + DateTostr(dm_PCM.dtGueltig);
+    frm_pcm_main.Caption:=PCM_Programmname + rs_Function_APPInfo_Demolizenz + DateTostr(dm_PCM.dtGueltig);
   Application.ProcessMessages;
   prgbr_Splash.Properties.Text:= rs_Splash_MenuReg;
   Timer6.Enabled:= true;
@@ -270,5 +277,14 @@ begin
   Application.ProcessMessages;
   ModalResult := mrOk;
 end;
-
+{$EndRegion Timer}
+////////////////////////////////////////////////////////////////////////////////
+// Formfunktionen                                                             //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Formfunktionen}
+procedure TSplashScreen.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Action := caFree;
+end;
+{$EndRegion Formfunktionen}
 end.

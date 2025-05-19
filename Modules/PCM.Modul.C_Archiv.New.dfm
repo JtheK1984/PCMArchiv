@@ -18,17 +18,19 @@ object frm_NewFile: Tfrm_NewFile
   TextHeight = 15
   object grpbx_Design: TcxGroupBox
     Left = 0
-    Top = 63
+    Top = 58
     Align = alClient
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 0
-    Height = 511
+    ExplicitWidth = 818
+    Height = 516
     Width = 812
     object lbl_File: TcxLabel
       Left = 8
       Top = 8
       Caption = 'Datei:'
+      TabOrder = 5
       Transparent = True
     end
     object edt_File: TcxButtonEdit
@@ -69,18 +71,21 @@ object frm_NewFile: Tfrm_NewFile
       Left = 8
       Top = 66
       Caption = 'Benutzer:'
+      TabOrder = 6
       Transparent = True
     end
     object lbl_MainKat: TcxLabel
       Left = 8
       Top = 95
       Caption = 'Hauptkategorie:'
+      TabOrder = 7
       Transparent = True
     end
     object lbl_Subkat: TcxLabel
       Left = 8
       Top = 124
       Caption = 'Unterkategorie:'
+      TabOrder = 8
       Transparent = True
     end
     object grpbx_Indizies: TcxGroupBox
@@ -97,10 +102,10 @@ object frm_NewFile: Tfrm_NewFile
       Height = 355
       Width = 796
       object sclbx_Indizies: TcxScrollBox
-        Left = 3
-        Top = 17
-        Width = 790
-        Height = 329
+        Left = 2
+        Top = 20
+        Width = 792
+        Height = 333
         Align = alClient
         TabOrder = 0
       end
@@ -109,6 +114,7 @@ object frm_NewFile: Tfrm_NewFile
       Left = 8
       Top = 37
       Caption = 'Dateiname:'
+      TabOrder = 10
       Transparent = True
     end
     object edt_filename: TcxTextEdit
@@ -141,7 +147,7 @@ object frm_NewFile: Tfrm_NewFile
     DockControlHeights = (
       0
       0
-      63
+      58
       0)
     object tb_archiv: TdxBar
       AllowClose = False

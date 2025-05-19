@@ -67,9 +67,11 @@ type
   end;
   {$EndRegion Type}
 var
+  {$Region var}
   dm_PCM: Tdm_PCM;
-
+  {$EndRegion var}
 const
+  {$Region const}
   DB_MYSQL = 0;
   DB_MSSQL = 1;
   DB_ADS = 2;
@@ -78,22 +80,28 @@ const
   PCM_Logname = 'PCMArchiv';
   PCM_Connectionname =  'archiv';
   PCM_Alias = 'archiv';
-
+  {$EndRegion const}
 resourcestring
+  {$Region resourcestring}
   {$IFDEF WIN64}
   PCM_Programmname = 'PCM - Archiv 64-Bit';
   {$else}
   PCM_Programmname = 'PCM - Archiv 32-Bit';
   {$ENDIF}
-
+  rs_ArchivNew_ChooseFile = 'Bitte Datei auswählen!';
+  rs_ArchivNew_ChooseUSer = 'Bitte Benutzer auswählen!';
+  rs_ArchivNew_ChooseMainCat = 'Bitte Hauptkategorie auswählen!';
+  rs_ArchivNew_DocExists = 'Dokument existiert schon. Wenn das Dokument geändert werden soll, klicken Sie auf Dokument bearbeiten!';
+  rs_ArchivNew_DeleteDocOrg = 'Soll die Originaldatei gelöscht werden?';
+	rs_Config_ZielVerzeichnis = 'Bitte Ziel-Verzeichnis wählen';
+  {$EndRegion resourcestring}
 implementation
-
 {%CLASSGROUP 'Vcl.Controls.TControl'}
-
-uses PCM.Main;
-
+uses
+  {$Region uses}
+  PCM.Main;
+  {$EndRegion uses}
 {$R *.dfm}
-
 ////////////////////////////////////////////////////////////////////////////////
 // Datamodul                                                                  //
 ////////////////////////////////////////////////////////////////////////////////

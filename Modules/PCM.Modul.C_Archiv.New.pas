@@ -9,7 +9,8 @@ uses
   cxLookAndFeelPainters, cxContainer, cxEdit, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit,
   cxDBLookupComboBox, cxTextEdit, cxMaskEdit, cxButtonEdit, cxLabel, cxGroupBox,
   dxBar, cxClasses, cxDateUtils, cxCalendar,System.StrUtils, cxScrollBox, cxCurrencyEdit,
-  cxCheckBox,cxTimeEdit,System.DateUtils, dxShellDialogs,ioutils,shlobj,FireDAC.Stan.Param,System.UITypes;
+  cxCheckBox,cxTimeEdit,System.DateUtils, dxShellDialogs,ioutils,shlobj,FireDAC.Stan.Param,System.UITypes,
+  dxUIAClasses, dxCoreGraphics;
   {$EndRegion Uses}
 type
   {$Region type}
@@ -51,14 +52,17 @@ type
   end;
   {$EndRegion type}
 var
+  {$Region var}
   frm_NewFile: Tfrm_NewFile;
-
+  {$EndRegion var}
 implementation
-
 {$R *.dfm}
-
-uses  PCM.Data, PCM.Modul.C_Archiv;
-
+uses
+  {$Region Uses}
+  PCM.Data,
+  PCM.Modul.C_Archiv,
+  PCM.Strings;
+  {$EndRegion Uses}
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
 ////////////////////////////////////////////////////////////////////////////////
@@ -190,19 +194,19 @@ var
 begin
   if edt_File.Text = '' then
   begin
-    MessageDlg('Bitte Datei auswählen!', mtWarning, [mbOk], 0);
+    MessageDlg(rs_ArchivNew_ChooseFile, mtWarning, [mbOk], 0);
     exit;
   end;
 
   if cmbbx_Benutzer.ItemIndex < 0 then
   begin
-    MessageDlg('Bitte Benutzer auswählen!', mtWarning, [mbOk], 0);
+    MessageDlg(rs_ArchivNew_ChooseUSer, mtWarning, [mbOk], 0);
     exit;
   end;
 
   if cmbbx_Mainkat.ItemIndex < 0 then
   begin
-    MessageDlg('Bitte Hauptkategorie auswählen!', mtWarning, [mbOk], 0);
+    MessageDlg(rs_ArchivNew_ChooseMainCat, mtWarning, [mbOk], 0);
     exit;
   end;
   dm_PCM.qry_work.SQL.Text:= 'Select Pfad From archiv_konfiguration';
@@ -230,7 +234,7 @@ begin
   begin
     if FileExists(sPathTo) then
     begin
-      MessageDlg('Dokument existiert schon. Wenn das Dokument geändert werden soll, klicken Sie auf Dokument bearbeiten ',mtWarning,[mbOk], 0);
+      MessageDlg(rs_ArchivNew_DocExists,mtWarning,[mbOk], 0);
       exit;
     end;
     if not CopyFileEx(PChar(sPathfrom), PChar(sPathTo), nil, Pointer(Handle), nil, 0) then
@@ -238,7 +242,7 @@ begin
       ShowMessage(SysErrorMessage(GetLastError));
       exit;
     end;
-    iSelected := MessageDlg('Soll die Originaldatei gelöscht werden?',TMsgDlgType.mtConfirmation,[mbYes,mbNo,mbCancel], 0);
+    iSelected := MessageDlg(rs_ArchivNew_DeleteDocOrg,TMsgDlgType.mtConfirmation,[mbYes,mbNo,mbCancel], 0);
     if (iSelected = 6) then
     begin
       DeleteFile(sPathfrom);

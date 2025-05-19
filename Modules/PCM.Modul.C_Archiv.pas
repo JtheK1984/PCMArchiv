@@ -90,21 +90,21 @@ type
   end;
   {$EndRegion Type}
 var
+  {$Region var}
   frm_Archiv: Tfrm_Archiv;
-
-
+  {$EndRegion var}
 implementation
-
 {$R *.dfm}
-
-uses  PCM.Data,
-      PCM.Functions.Synch.Wait,
-      PCM.Strings, PCM.Modul.C_Archiv.New, PCM.Main;
-
+uses
+  {$Region Uses}
+  PCM.Data,
+  PCM.Functions.Synch.Wait,
+  PCM.Strings, PCM.Modul.C_Archiv.New, PCM.Main;
+  {$EndRegion Uses}
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
 ////////////////////////////////////////////////////////////////////////////////
-{$Region Hilfsfunktionen }
+{$Region Hilfsfunktionen}
 procedure Tfrm_Archiv.FillMainKat;
 begin
   cmbbx_Mainkat.clear;

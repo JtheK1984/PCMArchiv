@@ -21,12 +21,8 @@ object frm_Archiv: Tfrm_Archiv
     Width = 1280
     Height = 800
     Align = alClient
-    TabOrder = 4
+    TabOrder = 0
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
-    ExplicitLeft = 192
-    ExplicitTop = 216
-    ExplicitWidth = 964
-    ExplicitHeight = 584
     object btn_DocSearchDelete: TcxButton
       Left = 153
       Top = 74

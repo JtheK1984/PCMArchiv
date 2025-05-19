@@ -195,15 +195,17 @@ type
   end;
   {$EndRegion type}
 var
+  {$Region var}
   frm_Config: Tfrm_Config;
-
+  {$EndRegion var}
 implementation
-
 {$R *.dfm}
-
-uses PCM.Main,
-     PCM.Functions.Synch.Wait, PCM.Data, PCM.Strings;
-
+uses
+  {$Region uses}
+  PCM.Main,
+  PCM.Functions.Synch.Wait,
+  PCM.Data;
+  {$EndRegion uses}
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
 ////////////////////////////////////////////////////////////////////////////////
@@ -757,7 +759,7 @@ var
   sDir: String;
 begin
   qry_Pfad.Edit;
-  if SelectDirectory(rs_PCMService_ZielVerzeichnis, GetEnvironmentVariable('ONEDRIVE'), sDir) then
+  if SelectDirectory(rs_Config_ZielVerzeichnis, GetEnvironmentVariable('ONEDRIVE'), sDir) then
   begin
     edt_ArchivPfad.Text := sDir;
   end;

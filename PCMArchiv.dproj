@@ -7,7 +7,7 @@
         <Program_Soluling>E:\Solu\SoluMake.exe</Program_Soluling>
         <MainSource>PCMArchiv.dpr</MainSource>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Release</Config>
+        <Config Condition="'$(Config)'==''">Debug</Config>
         <Platform Condition="'$(Platform)'==''">Win64</Platform>
         <TargetedPlatforms>3</TargetedPlatforms>
         <AppType>Application</AppType>

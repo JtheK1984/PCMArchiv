@@ -10,7 +10,9 @@ uses
   cxDBLookupComboBox, cxTextEdit, cxMaskEdit, cxButtonEdit, cxLabel, cxGroupBox,
   dxBar, cxClasses, cxDateUtils, cxCalendar,System.StrUtils, cxScrollBox, cxCurrencyEdit,
   cxCheckBox,cxTimeEdit,System.DateUtils, dxShellDialogs,ioutils,shlobj,FireDAC.Stan.Param,System.UITypes,
-  dxUIAClasses, dxCoreGraphics;
+  dxUIAClasses, dxCoreGraphics, dxLayoutContainer, dxLayoutControl,
+  dxLayoutcxEditAdapters, dxLayoutControlAdapters, Vcl.Menus, Vcl.StdCtrls,
+  cxButtons, shellapi, Vcl.ExtCtrls;
   {$EndRegion Uses}
 type
   {$Region type}
@@ -23,16 +25,29 @@ type
     cmbbx_Subkat: TcxComboBox;
     edt_File: TcxButtonEdit;
     edt_filename: TcxTextEdit;
-    grpbx_Design: TcxGroupBox;
-    grpbx_Indizies: TcxGroupBox;
-    lbl_File: TcxLabel;
-    lbl_Filename: TcxLabel;
-    lbl_MainKat: TcxLabel;
-    lbl_Subkat: TcxLabel;
-    lbl_user: TcxLabel;
     odlg_Doc: TdxOpenFileDialog;
     sclbx_Indizies: TcxScrollBox;
     tb_archiv: TdxBar;
+    dxLayoutControl1Group_Root: TdxLayoutGroup;
+    dxLayoutControl1: TdxLayoutControl;
+    dxLayoutGroup1: TdxLayoutGroup;
+    dxLayoutItem1: TdxLayoutItem;
+    dxBarDockControl1: TdxBarDockControl;
+    dxLayoutGroup2: TdxLayoutGroup;
+    dxLayoutGroup3: TdxLayoutGroup;
+    dxLayoutItem2: TdxLayoutItem;
+    dxLayoutItem3: TdxLayoutItem;
+    dxLayoutItem4: TdxLayoutItem;
+    dxLayoutItem5: TdxLayoutItem;
+    dxLayoutItem6: TdxLayoutItem;
+    dxLayoutItem7: TdxLayoutItem;
+    dxLayoutItem8: TdxLayoutItem;
+    cxComboBox1: TcxComboBox;
+    dxLayoutItem9: TdxLayoutItem;
+    cxButton1: TcxButton;
+    Timer1: TTimer;
+    dxLayoutItem10: TdxLayoutItem;
+    cxComboBox2: TcxComboBox;
     procedure btn_archivsCancelClick(Sender: TObject);
     procedure btn_archivsaveClick(Sender: TObject);
     procedure cmbbx_MainkatPropertiesChange(Sender: TObject);
@@ -40,6 +55,9 @@ type
     procedure edt_FilePropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormShow(Sender: TObject);
+    procedure cxComboBox1PropertiesChange(Sender: TObject);
+    procedure cxButton1Click(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
   private
     { Private-Deklarationen }
     bNew: boolean;
@@ -169,6 +187,11 @@ begin
     end;
   end;
 end;
+procedure Tfrm_NewFile.Timer1Timer(Sender: TObject);
+begin
+
+end;
+
 {$EndRegion Hilfsfunktionen}
 ////////////////////////////////////////////////////////////////////////////////
 // {$Region Button Functions}                                                 //
@@ -192,7 +215,7 @@ var
   sPathTo: string;
   sFile: string;
 begin
-  if edt_File.Text = '' then
+  if (edt_File.Text = '') and (cxComboBox1.ItemIndex < 1) then
   begin
     MessageDlg(rs_ArchivNew_ChooseFile, mtWarning, [mbOk], 0);
     exit;
@@ -211,13 +234,23 @@ begin
   end;
   dm_PCM.qry_work.SQL.Text:= 'Select Pfad From archiv_konfiguration';
   dm_PCM.qry_work.Open;
-  sPathfrom:= edt_File.Text;
+  if cxComboBox1.itemindex > 0 then
+  begin
+    sPathfrom:= ExtractFilePath(Paramstr(0)) + edt_filename.text + '.pdf';
+  end
+  else begin
+    sPathfrom:= edt_File.Text;
+  end;
   if edt_filename.Text <> '' then
   begin
     sFile:= edt_filename.Text + ExtractFileExt(edt_File.Text);
   end
   else begin
     sFile:= ExtractFileName(sPathfrom);
+    if ExtractFileExt(sFile) = '' then
+    begin
+      sFile:= sFile + '.pdf';
+    end;
   end;
   sPathTo:= dm_PCM.qry_work.FieldByName('Pfad').AsString + '\' + cmbbx_Benutzer.Properties.Items[cmbbx_Benutzer.ItemIndex] + '\' + cmbbx_Mainkat.Properties.Items[cmbbx_Mainkat.ItemIndex];
   if Pos(lowercase('Onedrive'),lowercase(sPathTo) ) > 0 then
@@ -739,6 +772,75 @@ procedure Tfrm_NewFile.cmbbx_SubkatPropertiesChange(Sender: TObject);
 begin
   CreateInizesComponents;
 end;
+procedure Tfrm_NewFile.cxButton1Click(Sender: TObject);
+  procedure RunScannerAndWait(const FileName, Params: string);
+  var
+    SEI: TShellExecuteInfo;
+  begin
+    ZeroMemory(@SEI, SizeOf(SEI));
+    SEI.cbSize := SizeOf(SEI);
+    SEI.fMask := SEE_MASK_NOCLOSEPROCESS;
+    SEI.Wnd := 0;
+    SEI.lpVerb := 'open';
+    SEI.lpFile := PChar(FileName);
+    SEI.lpParameters := PChar(Params);
+    SEI.lpDirectory := nil;
+    SEI.nShow := SW_SHOWNORMAL;
+
+    if ShellExecuteEx(@SEI) then
+    begin
+      if SEI.hProcess <> 0 then
+      begin
+        // Wait until the external process finishes
+        WaitForSingleObject(SEI.hProcess, INFINITE);
+        CloseHandle(SEI.hProcess);
+      end
+      else
+        raise Exception.Create('Failed to get process handle.');
+    end
+    else
+      raise Exception.CreateFmt('Failed to execute %s', [FileName]);
+  end;
+var
+  ExecResult: integer;
+  sExePath,sParams: string;
+begin
+  if edt_filename.Text = '' then
+  begin
+    MessageDlg('Bitte geben Sie eine Bezeichnung für den Dateinamen an!', mtWarning, [mbOk], 0);
+    exit;
+  end;
+  if cxCombobox2.ItemIndex = -1 then
+  begin
+    MessageDlg('Bitte wählen Sie die Scannerart aus!', mtWarning, [mbOk], 0);
+    exit;
+  end;
+  btn_archivsave.Enabled:= false;
+  sExePath := ExtractFilePath(Paramstr(0)) +'Scanner\naps2.console.exe';
+  sParams := Format('-o "%s" -n 1 -f -v --progress --profile "%s" --enableocr',[ExtractFilePath(ParamStr(0)) + edt_filename.Text + '.pdf',cxComboBox2.Properties.Items[cxComboBox2.ItemIndex]]);
+  RunScannerAndWait(sExePath, sParams);
+  if FileExists(ExtractFilePath(paramstr(0)) + edt_filename.text + '.pdf') then
+  begin
+    btn_archivsave.Enabled:= true;
+  end
+  else begin
+    MessageDlg('Fehler beim Scannen',TMsgDlgType.mtWarning,[mbOK],0)
+  end;
+end;
+
+procedure Tfrm_NewFile.cxComboBox1PropertiesChange(Sender: TObject);
+begin
+  if cxComboBox1.ItemIndex > 0  then
+  begin
+    dxLayoutItem3.Visible:= false;
+    dxLayoutItem9.Visible:= true;
+  end
+  else begin
+    dxLayoutItem3.Visible:= true;
+    dxLayoutItem9.Visible:= false;
+  end;
+end;
+
 procedure Tfrm_NewFile.edt_FilePropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
 begin
   if odlg_Doc.Execute then
@@ -786,11 +888,28 @@ procedure Tfrm_NewFile.FormShow(Sender: TObject);
       dm_PCM.qry_Work.Next;
     end;
   end;
+  procedure FillScannertype;
   begin
+    cxComboBox2.clear;
+    dm_PCM.qry_Work.SQL.Text:= 'SELECT Scanprofile, Type ' +
+                               'From archiv_konfiguration_scanner ' +
+                               'order by type';
+    dm_PCM.qry_Work.open;
+    dm_PCM.qry_Work.First;
+    while not dm_PCM.qry_Work.EOF do begin
+      cxComboBox2.Properties.Items.AddObject(dm_PCM.qry_Work.FieldByName('Scanprofile').AsString, TObject(dm_PCM.qry_Work.FieldByName('Type').AsInteger));
+      dm_PCM.qry_Work.Next;
+    end;
+  end;
+begin
   FillBenutzer;
   FillMainKat;
+  FillScannertype;
   if not bNew then
   begin
+    dxLayoutItem3.Visible:= true;
+    dxLayoutItem9.Visible:= false;
+    btn_archivsave.Enabled:= true;
     dm_pcm.qry_work.SQL.Text:=  'SELECT af.Files, af.FullPath, b.Benutzer, akhk.Bezeichnung AS Mainkat, akuk.Bezeichnung as Subkat ' +
                                 'FROM archiv_files af ' +
                                 'LEFT OUTER JOIN benutzer b ON b.id = af.Benutzer ' +
@@ -805,6 +924,19 @@ procedure Tfrm_NewFile.FormShow(Sender: TObject);
     cmbbx_Benutzer.ItemIndex:= cmbbx_Benutzer.Properties.Items.IndexOf(dm_pcm.qry_work.FieldByName('Benutzer').asString);
     cmbbx_Mainkat.ItemIndex:= cmbbx_Mainkat.Properties.Items.IndexOf(dm_pcm.qry_work.FieldByName('Mainkat').asString);
     dm_pcm.qry_work.Close;
+  end
+  else begin
+    if cxComboBox1.ItemIndex > 0  then
+    begin
+      dxLayoutItem3.Visible:= false;
+      dxLayoutItem9.Visible:= true;
+      btn_archivsave.Enabled:= false;
+    end
+    else begin
+      dxLayoutItem3.Visible:= true;
+      dxLayoutItem9.Visible:= false;
+      btn_archivsave.Enabled:= true;
+    end;
   end;
 end;
 {$EndRegion Formfunktionen}

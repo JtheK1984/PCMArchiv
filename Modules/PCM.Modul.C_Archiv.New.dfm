@@ -16,112 +16,257 @@ object frm_NewFile: Tfrm_NewFile
   OnKeyDown = FormKeyDown
   OnShow = FormShow
   TextHeight = 15
-  object grpbx_Design: TcxGroupBox
+  object dxLayoutControl1: TdxLayoutControl
     Left = 0
-    Top = 58
-    Align = alClient
-    PanelStyle.Active = True
-    Style.BorderStyle = ebsNone
-    TabOrder = 0
-    ExplicitWidth = 818
-    Height = 516
+    Top = 0
     Width = 812
-    object lbl_File: TcxLabel
-      Left = 8
-      Top = 8
-      Caption = 'Datei:'
-      TabOrder = 5
-      Transparent = True
-    end
+    Height = 574
+    Align = alClient
+    TabOrder = 4
+    LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
+    ExplicitLeft = 8
+    ExplicitTop = 136
+    ExplicitWidth = 548
+    ExplicitHeight = 374
     object edt_File: TcxButtonEdit
-      Left = 104
-      Top = 7
+      Left = 103
+      Top = 193
       Properties.Buttons = <
         item
           Default = True
           Kind = bkEllipsis
         end>
       Properties.OnButtonClick = edt_FilePropertiesButtonClick
-      TabOrder = 0
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 5
       OnKeyDown = FormKeyDown
-      Width = 700
+      Width = 697
     end
     object cmbbx_Benutzer: TcxComboBox
-      Left = 104
-      Top = 65
-      TabOrder = 2
-      Width = 700
+      Left = 103
+      Top = 221
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 6
+      Width = 697
     end
     object cmbbx_Mainkat: TcxComboBox
-      Left = 104
-      Top = 94
+      Left = 103
+      Top = 249
       Properties.OnChange = cmbbx_MainkatPropertiesChange
-      TabOrder = 3
-      Width = 700
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 7
+      Width = 697
     end
     object cmbbx_Subkat: TcxComboBox
-      Left = 104
-      Top = 123
-      Enabled = False
+      Left = 103
+      Top = 277
       Properties.OnChange = cmbbx_SubkatPropertiesChange
-      TabOrder = 4
-      Width = 700
-    end
-    object lbl_user: TcxLabel
-      Left = 8
-      Top = 66
-      Caption = 'Benutzer:'
-      TabOrder = 6
-      Transparent = True
-    end
-    object lbl_MainKat: TcxLabel
-      Left = 8
-      Top = 95
-      Caption = 'Hauptkategorie:'
-      TabOrder = 7
-      Transparent = True
-    end
-    object lbl_Subkat: TcxLabel
-      Left = 8
-      Top = 124
-      Caption = 'Unterkategorie:'
+      Style.HotTrack = False
+      Style.TransparentBorder = False
       TabOrder = 8
-      Transparent = True
+      Width = 697
     end
-    object grpbx_Indizies: TcxGroupBox
-      AlignWithMargins = True
-      Left = 8
-      Top = 155
-      Margins.Left = 6
-      Margins.Top = 6
-      Margins.Right = 6
-      Margins.Bottom = 6
-      Caption = 'Indizes'
-      ParentBackground = False
+    object sclbx_Indizies: TcxScrollBox
+      Left = 12
+      Top = 305
+      Width = 788
+      Height = 257
       TabOrder = 9
-      Height = 355
-      Width = 796
-      object sclbx_Indizies: TcxScrollBox
-        Left = 2
-        Top = 20
-        Width = 792
-        Height = 333
-        Align = alClient
-        TabOrder = 0
-      end
-    end
-    object lbl_Filename: TcxLabel
-      Left = 8
-      Top = 37
-      Caption = 'Dateiname:'
-      TabOrder = 10
-      Transparent = True
     end
     object edt_filename: TcxTextEdit
-      Left = 104
-      Top = 36
+      Left = 103
+      Top = 133
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 3
+      Width = 697
+    end
+    object dxBarDockControl1: TdxBarDockControl
+      Left = 12
+      Top = 12
+      Width = 788
+      Height = 58
+      Align = dalNone
+      BarManager = brmgr_Archiv
+    end
+    object cxComboBox1: TcxComboBox
+      Left = 103
+      Top = 77
+      Properties.Items.Strings = (
+        'Datei'
+        'Scanner')
+      Properties.OnChange = cxComboBox1PropertiesChange
+      Style.HotTrack = False
+      Style.TransparentBorder = False
       TabOrder = 1
-      Width = 700
+      Text = 'Scanner'
+      Width = 697
+    end
+    object cxButton1: TcxButton
+      Left = 12
+      Top = 161
+      Width = 788
+      Height = 25
+      Caption = 'Dokument scannen'
+      TabOrder = 4
+      OnClick = cxButton1Click
+    end
+    object cxComboBox2: TcxComboBox
+      Left = 103
+      Top = 105
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 2
+      Text = 'cxComboBox2'
+      Width = 697
+    end
+    object dxLayoutControl1Group_Root: TdxLayoutGroup
+      AlignHorz = ahClient
+      AlignVert = avClient
+      Hidden = True
+      ItemIndex = 1
+      ShowBorder = False
+      Index = -1
+    end
+    object dxLayoutGroup1: TdxLayoutGroup
+      Parent = dxLayoutControl1Group_Root
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem1: TdxLayoutItem
+      Parent = dxLayoutGroup1
+      AlignHorz = ahClient
+      AlignVert = avTop
+      LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = dxBarDockControl1
+      ControlOptions.AutoColor = True
+      ControlOptions.OriginalHeight = 58
+      ControlOptions.OriginalWidth = 790
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup2: TdxLayoutGroup
+      Parent = dxLayoutControl1Group_Root
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutGroup3: TdxLayoutGroup
+      Parent = dxLayoutControl1Group_Root
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'New Group'
+      ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem2: TdxLayoutItem
+      Parent = dxLayoutGroup3
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = sclbx_Indizies
+      ControlOptions.AutoColor = True
+      ControlOptions.OriginalHeight = 333
+      ControlOptions.OriginalWidth = 792
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem3: TdxLayoutItem
+      Parent = dxLayoutGroup2
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Datei:'
+      Control = edt_File
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 700
+      ControlOptions.ShowBorder = False
+      Index = 4
+    end
+    object dxLayoutItem4: TdxLayoutItem
+      Parent = dxLayoutGroup2
+      CaptionOptions.Text = 'Dateiname:'
+      Control = edt_filename
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 700
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem5: TdxLayoutItem
+      Parent = dxLayoutGroup2
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Benutzer:'
+      Control = cmbbx_Benutzer
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 700
+      ControlOptions.ShowBorder = False
+      Index = 5
+    end
+    object dxLayoutItem6: TdxLayoutItem
+      Parent = dxLayoutGroup2
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Hauptkategorie:'
+      Control = cmbbx_Mainkat
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 700
+      ControlOptions.ShowBorder = False
+      Index = 6
+    end
+    object dxLayoutItem7: TdxLayoutItem
+      Parent = dxLayoutGroup2
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Unterkategorie:'
+      Control = cmbbx_Subkat
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 700
+      ControlOptions.ShowBorder = False
+      Index = 7
+    end
+    object dxLayoutItem8: TdxLayoutItem
+      Parent = dxLayoutGroup2
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Quelle:'
+      Control = cxComboBox1
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 121
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutItem9: TdxLayoutItem
+      Parent = dxLayoutGroup2
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = cxButton1
+      ControlOptions.OriginalHeight = 25
+      ControlOptions.OriginalWidth = 75
+      ControlOptions.ShowBorder = False
+      Index = 3
+    end
+    object dxLayoutItem10: TdxLayoutItem
+      Parent = dxLayoutGroup2
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'Scantyp:'
+      Control = cxComboBox2
+      ControlOptions.OriginalHeight = 21
+      ControlOptions.OriginalWidth = 121
+      ControlOptions.ShowBorder = False
+      Index = 1
     end
   end
   object brmgr_Archiv: TdxBarManager
@@ -144,11 +289,6 @@ object frm_NewFile: Tfrm_NewFile
     Left = 440
     Top = 104
     PixelsPerInch = 96
-    DockControlHeights = (
-      0
-      0
-      58
-      0)
     object tb_archiv: TdxBar
       AllowClose = False
       AllowCustomizing = False
@@ -156,10 +296,10 @@ object frm_NewFile: Tfrm_NewFile
       AllowReset = False
       Caption = 'Custom 1'
       CaptionButtons = <>
-      DockedDockingStyle = dsTop
+      DockControl = dxBarDockControl1
+      DockedDockControl = dxBarDockControl1
       DockedLeft = 0
       DockedTop = 0
-      DockingStyle = dsTop
       FloatLeft = 652
       FloatTop = 2
       FloatClientWidth = 0
@@ -206,5 +346,10 @@ object frm_NewFile: Tfrm_NewFile
   object odlg_Doc: TdxOpenFileDialog
     Left = 304
     Top = 216
+  end
+  object Timer1: TTimer
+    OnTimer = Timer1Timer
+    Left = 400
+    Top = 296
   end
 end

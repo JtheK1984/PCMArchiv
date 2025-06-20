@@ -36,7 +36,7 @@ object frm_Config: Tfrm_Config
     end
     object edt_ArchivPfad: TcxDBButtonEdit
       AlignWithMargins = True
-      Left = 88
+      Left = 95
       Top = 120
       Margins.Left = 0
       Margins.Top = 0
@@ -63,13 +63,13 @@ object frm_Config: Tfrm_Config
       TabOrder = 1
       OnExit = btn_DirSaveClick
       Height = 19
-      Width = 1166
+      Width = 1159
     end
     object grd_ArchivPfad: TcxGrid
       Left = 26
       Top = 145
       Width = 1228
-      Height = 629
+      Height = 251
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -115,7 +115,6 @@ object frm_Config: Tfrm_Config
         OptionsView.IndicatorWidth = 14
         object grdDBTblView_ArchivPfadPfad: TcxGridDBColumn
           DataBinding.FieldName = 'Pfad'
-          DataBinding.IsNullValueType = True
           Width = 800
         end
       end
@@ -152,7 +151,7 @@ object frm_Config: Tfrm_Config
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 4
+      TabOrder = 9
       Visible = False
       OnExit = btn_MainKatSaveClick
       OnKeyUp = edt_MainKatKeyUp
@@ -171,7 +170,7 @@ object frm_Config: Tfrm_Config
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabOrder = 5
+      TabOrder = 10
       Visible = False
       LockedStateImageOptions.Effect = lsieDark
       object grdDBTblView_MainKat: TcxGridDBTableView
@@ -210,6 +209,7 @@ object frm_Config: Tfrm_Config
         OptionsView.IndicatorWidth = 14
         object grdDBTblView_MainKatBezeichnung: TcxGridDBColumn
           DataBinding.FieldName = 'Bezeichnung'
+          DataBinding.IsNullValueType = True
           SortIndex = 0
           SortOrder = soAscending
           Width = 900
@@ -248,7 +248,7 @@ object frm_Config: Tfrm_Config
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 7
+      TabOrder = 12
       Visible = False
       OnExit = btn_SubKatSaveClick
       OnKeyUp = edt_SubKatKeyUp
@@ -267,7 +267,7 @@ object frm_Config: Tfrm_Config
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabOrder = 8
+      TabOrder = 13
       Visible = False
       LockedStateImageOptions.Effect = lsieDark
       object grdDBTblView_Subkat: TcxGridDBTableView
@@ -306,6 +306,7 @@ object frm_Config: Tfrm_Config
         OptionsView.IndicatorWidth = 14
         object grdDBTblView_SubkatBezeichnung: TcxGridDBColumn
           DataBinding.FieldName = 'Bezeichnung'
+          DataBinding.IsNullValueType = True
           SortIndex = 0
           SortOrder = soAscending
           Width = 900
@@ -317,8 +318,8 @@ object frm_Config: Tfrm_Config
     end
     object brdckCtrl_Index: TdxBarDockControl
       Left = 10000
-      Top = 10000
-      Width = 1228
+      Top = 10041
+      Width = 1211
       Height = 58
       Align = dalNone
       BarManager = brmgr_Config
@@ -327,7 +328,7 @@ object frm_Config: Tfrm_Config
     object edt_index: TcxDBTextEdit
       AlignWithMargins = True
       Left = 10000
-      Top = 10000
+      Top = 10041
       Margins.Left = 0
       Margins.Top = 0
       Margins.Right = 0
@@ -344,17 +345,17 @@ object frm_Config: Tfrm_Config
       Style.HotTrack = False
       Style.TransparentBorder = False
       Style.IsFontAssigned = True
-      TabOrder = 10
+      TabOrder = 15
       Visible = False
       OnExit = btn_MainKatSaveClick
       OnKeyUp = edt_indexKeyUp
       Height = 19
-      Width = 736
+      Width = 725
     end
     object lucmbbx_Datatype: TcxDBLookupComboBox
       AlignWithMargins = True
       Left = 10000
-      Top = 10000
+      Top = 10041
       Margins.Left = 0
       Margins.Top = 0
       Margins.Right = 0
@@ -370,16 +371,16 @@ object frm_Config: Tfrm_Config
       Properties.ListSource = ds_indexType
       Style.HotTrack = False
       Style.TransparentBorder = False
-      TabOrder = 11
+      TabOrder = 16
       Visible = False
       Height = 19
-      Width = 395
+      Width = 389
     end
     object grd_Index: TcxGrid
       Left = 10000
-      Top = 10000
-      Width = 1228
-      Height = 629
+      Top = 10041
+      Width = 1211
+      Height = 886
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -387,7 +388,7 @@ object frm_Config: Tfrm_Config
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
-      TabOrder = 12
+      TabOrder = 17
       Visible = False
       LockedStateImageOptions.Effect = lsieDark
       object grdDBTblView_Index: TcxGridDBTableView
@@ -426,6 +427,7 @@ object frm_Config: Tfrm_Config
         OptionsView.IndicatorWidth = 14
         object grdDBTblView_IndexBezeichnung: TcxGridDBColumn
           DataBinding.FieldName = 'Bezeichnung'
+          DataBinding.IsNullValueType = True
           SortIndex = 0
           SortOrder = soAscending
           Width = 900
@@ -433,6 +435,7 @@ object frm_Config: Tfrm_Config
         object grdDBTblView_IndexID_archiv_konfiguration_index_typ: TcxGridDBColumn
           Caption = 'Typ'
           DataBinding.FieldName = 'ID_archiv_konfiguration_index_typ'
+          DataBinding.IsNullValueType = True
           PropertiesClassName = 'TcxLookupComboBoxProperties'
           Properties.KeyFieldNames = 'ID'
           Properties.ListColumns = <
@@ -450,9 +453,9 @@ object frm_Config: Tfrm_Config
     object trlst_MainKat: TcxTreeList
       AlignWithMargins = True
       Left = 10000
-      Top = 10000
+      Top = 10041
       Width = 386
-      Height = 217
+      Height = 303
       Bands = <
         item
         end>
@@ -468,7 +471,7 @@ object frm_Config: Tfrm_Config
       OptionsView.Headers = False
       OptionsView.TreeLineStyle = tllsSolid
       ScrollbarAnnotations.CustomAnnotations = <>
-      TabOrder = 13
+      TabOrder = 18
       Visible = False
       object trlstCol_MainKatBezeichnung: TcxTreeListColumn
         Caption.Text = 'Bezeichnung'
@@ -514,9 +517,9 @@ object frm_Config: Tfrm_Config
     object trlst_SubKat: TcxTreeList
       AlignWithMargins = True
       Left = 10000
-      Top = 10000
+      Top = 10041
       Width = 386
-      Height = 218
+      Height = 303
       Bands = <
         item
         end>
@@ -532,7 +535,7 @@ object frm_Config: Tfrm_Config
       OptionsView.Headers = False
       OptionsView.TreeLineStyle = tllsSolid
       ScrollbarAnnotations.CustomAnnotations = <>
-      TabOrder = 14
+      TabOrder = 19
       Visible = False
       object trlstCol_SubKatBezeichnung: TcxTreeListColumn
         Caption.Text = 'Bezeichnung'
@@ -578,9 +581,9 @@ object frm_Config: Tfrm_Config
     object trlst_Ind: TcxTreeList
       AlignWithMargins = True
       Left = 10000
-      Top = 10000
+      Top = 10041
       Width = 386
-      Height = 217
+      Height = 303
       Bands = <
         item
         end>
@@ -596,7 +599,7 @@ object frm_Config: Tfrm_Config
       OptionsView.Headers = False
       OptionsView.TreeLineStyle = tllsSolid
       ScrollbarAnnotations.CustomAnnotations = <>
-      TabOrder = 15
+      TabOrder = 20
       Visible = False
       object trlstCol_IndBezeichnung: TcxTreeListColumn
         Caption.Text = 'Bezeichnung'
@@ -642,9 +645,9 @@ object frm_Config: Tfrm_Config
     object trlst_Zuweisung: TcxTreeList
       AlignWithMargins = True
       Left = 10000
-      Top = 10000
-      Width = 818
-      Height = 718
+      Top = 10041
+      Width = 801
+      Height = 975
       Bands = <
         item
         end>
@@ -661,7 +664,7 @@ object frm_Config: Tfrm_Config
       OptionsView.TreeLineStyle = tllsSolid
       PopupMenu = brpmm_Zuweisung
       ScrollbarAnnotations.CustomAnnotations = <>
-      TabOrder = 16
+      TabOrder = 21
       Visible = False
       OnClick = trlst_ZuweisungClick
       OnDragDrop = trlst_ZuweisungDragDrop
@@ -707,6 +710,128 @@ object frm_Config: Tfrm_Config
         Summary.GroupFooterSummaryItems = <>
       end
     end
+    object cxGrid1: TcxGrid
+      Left = 26
+      Top = 521
+      Width = 1228
+      Height = 253
+      BorderStyle = cxcbsNone
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 7
+      LockedStateImageOptions.Effect = lsieDark
+      object cxGridDBTableView1: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        FilterBox.CustomizeDialog = False
+        ScrollbarAnnotations.CustomAnnotations = <>
+        DataController.DataSource = ds_Scan
+        DataController.Filter.PercentWildcard = '*'
+        DataController.Filter.UnderscoreWildcard = '?'
+        DataController.Options = [dcoAnsiSort, dcoCaseInsensitive, dcoAssignGroupingValues, dcoAssignMasterDetailKeys, dcoSaveExpanding]
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <
+          item
+            Kind = skCount
+          end>
+        DataController.Summary.SummaryGroups = <
+          item
+            Links = <
+              item
+              end>
+            SummaryItems = <
+              item
+              end>
+          end>
+        OptionsBehavior.IncSearch = True
+        OptionsBehavior.ShowHourglassCursor = False
+        OptionsCustomize.ColumnsQuickCustomization = True
+        OptionsData.Deleting = False
+        OptionsData.Editing = False
+        OptionsData.Inserting = False
+        OptionsSelection.CellSelect = False
+        OptionsView.CellEndEllipsis = True
+        OptionsView.NoDataToDisplayInfoText = '<Keine Daten Vorhanden>'
+        OptionsView.GroupByBox = False
+        OptionsView.HeaderFilterButtonShowMode = fbmButton
+        OptionsView.IndicatorWidth = 14
+        object cxGridDBTableView1Scanprofile: TcxGridDBColumn
+          DataBinding.FieldName = 'Scanprofile'
+          Width = 300
+        end
+        object cxGridDBTableView1Type: TcxGridDBColumn
+          Caption = 'Typ'
+          DataBinding.FieldName = 'Type'
+          PropertiesClassName = 'TcxImageComboBoxProperties'
+          Properties.Items = <
+            item
+              Description = 'Flachbett'
+              ImageIndex = 0
+              Value = '0'
+            end
+            item
+              Description = 'Dokumenteneinzug'
+              Value = '1'
+            end>
+          Width = 200
+        end
+      end
+      object cxGridLevel1: TcxGridLevel
+        GridView = cxGridDBTableView1
+      end
+    end
+    object cxDBTextEdit1: TcxDBTextEdit
+      Left = 95
+      Top = 490
+      AutoSize = False
+      DataBinding.DataField = 'Scanprofile'
+      DataBinding.DataSource = ds_Scan
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 4
+      Height = 25
+      Width = 547
+    end
+    object Button1: TButton
+      Left = 1134
+      Top = 490
+      Width = 120
+      Height = 25
+      Caption = 'Scanprofil anlegen'
+      TabOrder = 6
+      OnClick = Button1Click
+    end
+    object cxDBImageComboBox1: TcxDBImageComboBox
+      Left = 675
+      Top = 490
+      DataBinding.DataField = 'Type'
+      DataBinding.DataSource = ds_Scan
+      Properties.Items = <
+        item
+          Description = 'Flachbett'
+          ImageIndex = 0
+          Value = 0
+        end
+        item
+          Description = 'Dokumenteneinzug'
+          Value = 1
+        end>
+      Style.HotTrack = False
+      Style.TransparentBorder = False
+      TabOrder = 5
+      Width = 453
+    end
+    object dxBarDockControl1: TdxBarDockControl
+      Left = 26
+      Top = 426
+      Width = 1228
+      Height = 58
+      Align = dalNone
+      BarManager = brmgr_Config
+    end
     object dxLayoutControl1Group_Root: TdxLayoutGroup
       AlignHorz = ahClient
       AlignVert = avClient
@@ -727,8 +852,8 @@ object frm_Config: Tfrm_Config
       Parent = lagrp_ConfigTab
       AlignHorz = ahClient
       AlignVert = avClient
-      CaptionOptions.Text = 'Pfad f'#252'r Dokumente'
-      LayoutDirection = ldHorizontal
+      CaptionOptions.Text = 'Pfad f'#252'r Dokumente / Scannerprofile'
+      ItemIndex = 1
       Index = 0
     end
     object dxLayoutGroup6: TdxLayoutGroup
@@ -740,7 +865,6 @@ object frm_Config: Tfrm_Config
     end
     object dxLayoutItem1: TdxLayoutItem
       Parent = dxLayoutGroup6
-      AlignHorz = ahClient
       CaptionOptions.Text = 'bardckctrl_ArchivPfad'
       CaptionOptions.Visible = False
       Control = bardckctrl_ArchivPfad
@@ -750,23 +874,16 @@ object frm_Config: Tfrm_Config
       ControlOptions.ShowBorder = False
       Index = 0
     end
-    object dxLayoutGroup7: TdxLayoutGroup
+    object dxLayoutItem2: TdxLayoutItem
       Parent = dxLayoutGroup6
       AlignHorz = ahClient
-      LayoutDirection = ldHorizontal
-      ShowBorder = False
-      Index = 1
-    end
-    object dxLayoutItem2: TdxLayoutItem
-      Parent = dxLayoutGroup7
-      AlignHorz = ahClient
-      AlignVert = avClient
+      AlignVert = avTop
       CaptionOptions.Text = 'Verzeichnis:'
       Control = edt_ArchivPfad
       ControlOptions.OriginalHeight = 19
       ControlOptions.OriginalWidth = 1172
       ControlOptions.ShowBorder = False
-      Index = 0
+      Index = 1
     end
     object dxLayoutItem3: TdxLayoutItem
       Parent = dxLayoutGroup6
@@ -775,7 +892,7 @@ object frm_Config: Tfrm_Config
       CaptionOptions.Text = 'grd_ArchivPfad'
       CaptionOptions.Visible = False
       Control = grd_ArchivPfad
-      ControlOptions.OriginalHeight = 634
+      ControlOptions.OriginalHeight = 150
       ControlOptions.OriginalWidth = 1256
       ControlOptions.ShowBorder = False
       Index = 2
@@ -1068,6 +1185,80 @@ object frm_Config: Tfrm_Config
       ShowBorder = False
       Index = 0
     end
+    object dxLayoutGroup2: TdxLayoutGroup
+      Parent = dxLayoutGroup5
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'Scan-Profile'
+      Index = 1
+    end
+    object dxLayoutItem20: TdxLayoutItem
+      Parent = dxLayoutGroup2
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = cxGrid1
+      ControlOptions.OriginalHeight = 150
+      ControlOptions.OriginalWidth = 1228
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem21: TdxLayoutItem
+      Parent = dxLayoutGroup3
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'Bezeichnung:'
+      Control = cxDBTextEdit1
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 121
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
+    object dxLayoutGroup3: TdxLayoutGroup
+      Parent = dxLayoutGroup2
+      AlignHorz = ahClient
+      AlignVert = avTop
+      CaptionOptions.Text = 'New Group'
+      ItemIndex = 1
+      LayoutDirection = ldHorizontal
+      ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem19: TdxLayoutItem
+      Parent = dxLayoutGroup3
+      AlignHorz = ahRight
+      AlignVert = avClient
+      CaptionOptions.Text = 'Button1'
+      CaptionOptions.Visible = False
+      Control = Button1
+      ControlOptions.OriginalHeight = 25
+      ControlOptions.OriginalWidth = 120
+      ControlOptions.ShowBorder = False
+      Index = 2
+    end
+    object dxLayoutItem18: TdxLayoutItem
+      Parent = dxLayoutGroup3
+      AlignHorz = ahClient
+      AlignVert = avClient
+      CaptionOptions.Text = 'Typ:'
+      Control = cxDBImageComboBox1
+      ControlOptions.OriginalHeight = 19
+      ControlOptions.OriginalWidth = 121
+      ControlOptions.ShowBorder = False
+      Index = 1
+    end
+    object dxLayoutItem22: TdxLayoutItem
+      Parent = dxLayoutGroup2
+      CaptionOptions.Text = 'New Item'
+      CaptionOptions.Visible = False
+      Control = dxBarDockControl1
+      ControlOptions.AutoColor = True
+      ControlOptions.OriginalHeight = 58
+      ControlOptions.OriginalWidth = 1280
+      ControlOptions.ShowBorder = False
+      Index = 0
+    end
   end
   object brmgr_Config: TdxBarManager
     Font.Charset = DEFAULT_CHARSET
@@ -1237,6 +1428,43 @@ object frm_Config: Tfrm_Config
       Visible = True
       WholeRow = False
     end
+    object brmgr_ConfigBar1: TdxBar
+      Caption = 'Custom 3'
+      CaptionButtons = <>
+      DockControl = dxBarDockControl1
+      DockedDockControl = dxBarDockControl1
+      DockedLeft = 0
+      DockedTop = 0
+      FloatLeft = 1292
+      FloatTop = 2
+      FloatClientWidth = 0
+      FloatClientHeight = 0
+      ItemLinks = <
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton2'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton3'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton4'
+        end
+        item
+          Visible = True
+          ItemName = 'dxBarLargeButton5'
+        end>
+      OneOnRow = True
+      Row = 0
+      ShowMark = False
+      SizeGrip = False
+      UseOwnFont = False
+      UseRestSpace = True
+      Visible = True
+      WholeRow = False
+    end
     object btn_DirSave: TdxBarLargeButton
       Caption = 'Verzeichnis speichern'
       Category = 0
@@ -1381,6 +1609,55 @@ object frm_Config: Tfrm_Config
       Visible = ivAlways
       OnClick = ppmbtn_ExpandClick
     end
+    object dxBarLargeButton1: TdxBarLargeButton
+      Caption = 'New Button'
+      Category = 0
+      Hint = 'New Button'
+      Visible = ivAlways
+      AutoGrayScale = False
+      LargeImageIndex = 12
+      Width = 125
+    end
+    object dxBarLargeButton2: TdxBarLargeButton
+      Caption = 'Scanprofil anlegen'
+      Category = 0
+      Hint = 'Scanprofil anlegen'
+      Visible = ivAlways
+      OnClick = dxBarLargeButton2Click
+      AutoGrayScale = False
+      LargeImageIndex = 27
+      Width = 125
+    end
+    object dxBarLargeButton3: TdxBarLargeButton
+      Caption = 'Scanprofil speichern'
+      Category = 0
+      Hint = 'Scanprofil speichern'
+      Visible = ivAlways
+      OnClick = dxBarLargeButton3Click
+      AutoGrayScale = False
+      LargeImageIndex = 12
+      Width = 125
+    end
+    object dxBarLargeButton4: TdxBarLargeButton
+      Caption = 'Abbrechen'
+      Category = 0
+      Hint = 'Abbrechen'
+      Visible = ivAlways
+      OnClick = dxBarLargeButton4Click
+      AutoGrayScale = False
+      LargeImageIndex = 0
+      Width = 125
+    end
+    object dxBarLargeButton5: TdxBarLargeButton
+      Caption = 'Scanprofil l'#246'schen'
+      Category = 0
+      Hint = 'Scanprofil l'#246'schen'
+      Visible = ivAlways
+      OnClick = dxBarLargeButton5Click
+      AutoGrayScale = False
+      LargeImageIndex = 24
+      Width = 125
+    end
     object ppmbtn_Delete: TdxBarButton
       Caption = 'L'#246'schen'
       Category = 1
@@ -1389,6 +1666,7 @@ object frm_Config: Tfrm_Config
     end
   end
   object qry_Pfad: TFDQuery
+    Active = True
     AfterOpen = SetButtonsEnableVisible
     AfterInsert = SetButtonsEnableVisible
     AfterEdit = SetButtonsEnableVisible
@@ -1398,7 +1676,7 @@ object frm_Config: Tfrm_Config
     AfterScroll = SetButtonsEnableVisible
     Connection = dm_PCM.con_PCM
     SQL.Strings = (
-      'SELECT Pfad From archiv_konfiguration')
+      'SELECT * From archiv_konfiguration')
     Left = 187
     Top = 63
   end
@@ -1413,7 +1691,6 @@ object frm_Config: Tfrm_Config
     Top = 119
   end
   object qry_Mainkat: TFDQuery
-    Active = True
     AfterOpen = SetButtonsEnableVisible
     AfterInsert = SetButtonsEnableVisible
     AfterEdit = SetButtonsEnableVisible
@@ -1430,7 +1707,6 @@ object frm_Config: Tfrm_Config
     Top = 119
   end
   object qry_Subkat: TFDQuery
-    Active = True
     AfterOpen = SetButtonsEnableVisible
     AfterInsert = SetButtonsEnableVisible
     AfterEdit = SetButtonsEnableVisible
@@ -1451,7 +1727,6 @@ object frm_Config: Tfrm_Config
     Top = 175
   end
   object qry_Index: TFDQuery
-    Active = True
     AfterOpen = SetButtonsEnableVisible
     AfterInsert = SetButtonsEnableVisible
     AfterEdit = SetButtonsEnableVisible
@@ -1511,5 +1786,24 @@ object frm_Config: Tfrm_Config
       'order by Bezeichnung')
     Left = 187
     Top = 303
+  end
+  object qry_Scan: TFDQuery
+    AfterOpen = SetButtonsEnableVisible
+    AfterInsert = SetButtonsEnableVisible
+    AfterEdit = SetButtonsEnableVisible
+    AfterPost = SetButtonsEnableVisible
+    AfterCancel = SetButtonsEnableVisible
+    AfterDelete = SetButtonsEnableVisible
+    AfterScroll = SetButtonsEnableVisible
+    Connection = dm_PCM.con_PCM
+    SQL.Strings = (
+      'SELECT * From archiv_konfiguration_scanner')
+    Left = 187
+    Top = 375
+  end
+  object ds_Scan: TDataSource
+    DataSet = qry_Scan
+    Left = 243
+    Top = 367
   end
 end

@@ -27,7 +27,7 @@ uses
   Vcl.VirtualImage, Vcl.BaseImageCollection, Vcl.ImageCollection, dxBarExtItems,
   cxButtonEdit,Vcl.FileCtrl, cxTL, cxTLdxBarBuiltInMenu, cxInplaceContainer,
   cxTLData, cxDBTL, dxUIAClasses, dxLayoutContainer, dxLayoutcxEditAdapters,
-  dxLayoutControl;
+  dxLayoutControl,shellapi, dxLayoutControlAdapters;
   {$EndRegion uses}
 type
   {$Region type}
@@ -116,7 +116,6 @@ type
     dxLayoutGroup5: TdxLayoutGroup;
     dxLayoutGroup6: TdxLayoutGroup;
     dxLayoutItem1: TdxLayoutItem;
-    dxLayoutGroup7: TdxLayoutGroup;
     dxLayoutItem2: TdxLayoutItem;
     dxLayoutItem3: TdxLayoutItem;
     dxLayoutGroup9: TdxLayoutGroup;
@@ -148,6 +147,30 @@ type
     dxLayoutGroup30: TdxLayoutGroup;
     dxLayoutItem17: TdxLayoutItem;
     dxLayoutGroup1: TdxLayoutGroup;
+    dxLayoutGroup2: TdxLayoutGroup;
+    dxBarLargeButton1: TdxBarLargeButton;
+    dxLayoutItem20: TdxLayoutItem;
+    cxGrid1: TcxGrid;
+    cxGridDBTableView1: TcxGridDBTableView;
+    cxGridLevel1: TcxGridLevel;
+    dxLayoutItem21: TdxLayoutItem;
+    dxLayoutGroup3: TdxLayoutGroup;
+    cxDBTextEdit1: TcxDBTextEdit;
+    Button1: TButton;
+    dxLayoutItem19: TdxLayoutItem;
+    cxGridDBTableView1Scanprofile: TcxGridDBColumn;
+    dxLayoutItem18: TdxLayoutItem;
+    cxDBImageComboBox1: TcxDBImageComboBox;
+    cxGridDBTableView1Type: TcxGridDBColumn;
+    dxLayoutItem22: TdxLayoutItem;
+    qry_Scan: TFDQuery;
+    ds_Scan: TDataSource;
+    dxBarDockControl1: TdxBarDockControl;
+    brmgr_ConfigBar1: TdxBar;
+    dxBarLargeButton2: TdxBarLargeButton;
+    dxBarLargeButton3: TdxBarLargeButton;
+    dxBarLargeButton4: TdxBarLargeButton;
+    dxBarLargeButton5: TdxBarLargeButton;
     procedure brpmm_ZuweisungPopup(Sender: TObject);
     procedure btn_DirSaveClick(Sender: TObject);
     procedure btn_IndexCancelClick(Sender: TObject);
@@ -178,6 +201,11 @@ type
     procedure trlst_ZuweisungClick(Sender: TObject);
     procedure trlst_ZuweisungDragDrop(Sender, Source: TObject; X, Y: Integer);
     procedure trlst_ZuweisungDragOver(Sender, Source: TObject; X, Y: Integer; State: TDragState; var Accept: Boolean);
+    procedure Button1Click(Sender: TObject);
+    procedure dxBarLargeButton2Click(Sender: TObject);
+    procedure dxBarLargeButton3Click(Sender: TObject);
+    procedure dxBarLargeButton4Click(Sender: TObject);
+    procedure dxBarLargeButton5Click(Sender: TObject);
   private
     { Private-Deklarationen }
     iID: integer;
@@ -740,6 +768,53 @@ begin
     qry_Subkat.Post;
   end;
 end;
+procedure Tfrm_Config.Button1Click(Sender: TObject);
+begin
+  ShellExecute(0, nil, PChar(ExtractFilePath(Paramstr(0)) +'\Scanner\NAPS2.exe'), nil, nil, SW_SHOWNORMAL);
+end;
+
+procedure Tfrm_Config.dxBarLargeButton2Click(Sender: TObject);
+begin
+   if qry_Scan.State in [dsInsert, dsedit] then
+    qry_Scan.Post;
+  qry_Scan.Append;
+  qry_Scan.Insert;
+  cxDBTextEdit1.SetFocus;
+end;
+
+procedure Tfrm_Config.dxBarLargeButton3Click(Sender: TObject);
+begin
+ if qry_Scan.State in [dsInsert, dsEdit] then
+  begin
+    cxDBTextEdit1.PostEditValue;
+    cxDBImageComboBox1.PostEditValue;
+    if cxDBTextEdit1.EditingText = '' then
+    begin
+      MessageDlg('Bitte Bezeichnung angeben!',mtwarning,[mbok],0);
+      exit;
+    end;
+    if cxDBImageComboBox1.ItemIndex = -1 then
+    begin
+      MessageDlg('Bitte Typ auswählen!',mtwarning,[mbok],0);
+      exit;
+    end;
+    qry_Scan.Post;
+  end;
+end;
+
+procedure Tfrm_Config.dxBarLargeButton4Click(Sender: TObject);
+begin
+  qry_Scan.Cancel;
+end;
+
+procedure Tfrm_Config.dxBarLargeButton5Click(Sender: TObject);
+begin
+  if qry_Scan.FieldByName('ID').asInteger > 0 then
+  begin
+    qry_Scan.Delete;
+  end;
+end;
+
 procedure Tfrm_Config.edt_indexKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   if (Key = 13) and (Length(edt_MainKat.Text) > 0) then
@@ -1035,8 +1110,9 @@ end;
 procedure Tfrm_Config.FormShow(Sender: TObject);
   procedure OpenData;
   begin
-    qry_Pfad.Sql.Text:= 'Select Pfad From archiv_konfiguration';
+    qry_Pfad.Sql.Text:= 'Select * From archiv_konfiguration';
     qry_Pfad.Open;
+    qry_Scan.Open;
     qry_Mainkat.open;
     qry_Subkat.open;
     qry_Indextype.open;

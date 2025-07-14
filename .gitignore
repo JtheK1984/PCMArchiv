@@ -75,3 +75,10 @@ modules/
 /Win64/Release/PCMArchiv.ntr
 /versioninfo32.rc
 /versioninfo64.rc
+/Win64/Debug/Scanner/NAPS2.Console.exe.config
+/Win64/Debug/Scanner/NAPS2.Worker.exe.config
+/Win64/Debug/Scanner/NAPS2.exe.config
+/Win64/Debug/Scanner/appsettings.xml
+/Win64/Debug/Scanner/contributors.txt
+/Win64/Debug/Scanner/license.txt
+/Win64/Release/1PCMArchiv.ntr

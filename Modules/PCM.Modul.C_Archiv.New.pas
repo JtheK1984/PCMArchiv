@@ -802,7 +802,6 @@ procedure Tfrm_NewFile.cxButton1Click(Sender: TObject);
       raise Exception.CreateFmt('Failed to execute %s', [FileName]);
   end;
 var
-  ExecResult: integer;
   sExePath,sParams: string;
 begin
   if edt_filename.Text = '' then

@@ -22,12 +22,8 @@ object frm_NewFile: Tfrm_NewFile
     Width = 812
     Height = 574
     Align = alClient
-    TabOrder = 4
+    TabOrder = 0
     LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
-    ExplicitLeft = 8
-    ExplicitTop = 136
-    ExplicitWidth = 548
-    ExplicitHeight = 374
     object edt_File: TcxButtonEdit
       Left = 103
       Top = 193

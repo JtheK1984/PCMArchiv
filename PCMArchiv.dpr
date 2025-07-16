@@ -39,7 +39,6 @@ var
 begin
   Checkinis;
   ifini:=TIniFile.create(GetEnvironmentVariable('LOCALAPPDATA') + '\PCM\PCM.ini');
-  sStyle:=ifini.ReadString('PCMArchiv','Style','Windows');
   slocale:=ifini.ReadString('PCMArchiv','Language','de');
   ifini.Free;
   GlobalWebView2Loader                := TWVLoader.Create(nil);

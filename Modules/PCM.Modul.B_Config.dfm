@@ -318,8 +318,8 @@ object frm_Config: Tfrm_Config
     end
     object brdckCtrl_Index: TdxBarDockControl
       Left = 10000
-      Top = 10041
-      Width = 1211
+      Top = 10000
+      Width = 1228
       Height = 58
       Align = dalNone
       BarManager = brmgr_Config
@@ -328,7 +328,7 @@ object frm_Config: Tfrm_Config
     object edt_index: TcxDBTextEdit
       AlignWithMargins = True
       Left = 10000
-      Top = 10041
+      Top = 10000
       Margins.Left = 0
       Margins.Top = 0
       Margins.Right = 0
@@ -350,12 +350,12 @@ object frm_Config: Tfrm_Config
       OnExit = btn_MainKatSaveClick
       OnKeyUp = edt_indexKeyUp
       Height = 19
-      Width = 725
+      Width = 736
     end
     object lucmbbx_Datatype: TcxDBLookupComboBox
       AlignWithMargins = True
       Left = 10000
-      Top = 10041
+      Top = 10000
       Margins.Left = 0
       Margins.Top = 0
       Margins.Right = 0
@@ -374,13 +374,13 @@ object frm_Config: Tfrm_Config
       TabOrder = 16
       Visible = False
       Height = 19
-      Width = 389
+      Width = 395
     end
     object grd_Index: TcxGrid
       Left = 10000
-      Top = 10041
-      Width = 1211
-      Height = 886
+      Top = 10000
+      Width = 1228
+      Height = 629
       BorderStyle = cxcbsNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -453,9 +453,9 @@ object frm_Config: Tfrm_Config
     object trlst_MainKat: TcxTreeList
       AlignWithMargins = True
       Left = 10000
-      Top = 10041
+      Top = 10000
       Width = 386
-      Height = 303
+      Height = 217
       Bands = <
         item
         end>
@@ -517,9 +517,9 @@ object frm_Config: Tfrm_Config
     object trlst_SubKat: TcxTreeList
       AlignWithMargins = True
       Left = 10000
-      Top = 10041
+      Top = 10000
       Width = 386
-      Height = 303
+      Height = 218
       Bands = <
         item
         end>
@@ -581,9 +581,9 @@ object frm_Config: Tfrm_Config
     object trlst_Ind: TcxTreeList
       AlignWithMargins = True
       Left = 10000
-      Top = 10041
+      Top = 10000
       Width = 386
-      Height = 303
+      Height = 217
       Bands = <
         item
         end>
@@ -645,9 +645,9 @@ object frm_Config: Tfrm_Config
     object trlst_Zuweisung: TcxTreeList
       AlignWithMargins = True
       Left = 10000
-      Top = 10041
-      Width = 801
-      Height = 975
+      Top = 10000
+      Width = 818
+      Height = 718
       Bands = <
         item
         end>
@@ -760,11 +760,13 @@ object frm_Config: Tfrm_Config
         OptionsView.IndicatorWidth = 14
         object cxGridDBTableView1Scanprofile: TcxGridDBColumn
           DataBinding.FieldName = 'Scanprofile'
+          DataBinding.IsNullValueType = True
           Width = 300
         end
         object cxGridDBTableView1Type: TcxGridDBColumn
           Caption = 'Typ'
           DataBinding.FieldName = 'Type'
+          DataBinding.IsNullValueType = True
           PropertiesClassName = 'TcxImageComboBoxProperties'
           Properties.Items = <
             item
@@ -807,6 +809,7 @@ object frm_Config: Tfrm_Config
     object cxDBImageComboBox1: TcxDBImageComboBox
       Left = 675
       Top = 490
+      AutoSize = False
       DataBinding.DataField = 'Type'
       DataBinding.DataSource = ds_Scan
       Properties.Items = <
@@ -822,6 +825,7 @@ object frm_Config: Tfrm_Config
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 5
+      Height = 25
       Width = 453
     end
     object dxBarDockControl1: TdxBarDockControl

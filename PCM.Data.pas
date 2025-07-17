@@ -88,12 +88,6 @@ resourcestring
   {$else}
   PCM_Programmname = 'PCM - Archiv 32-Bit';
   {$ENDIF}
-  rs_ArchivNew_ChooseFile = 'Bitte Datei auswählen!';
-  rs_ArchivNew_ChooseUSer = 'Bitte Benutzer auswählen!';
-  rs_ArchivNew_ChooseMainCat = 'Bitte Hauptkategorie auswählen!';
-  rs_ArchivNew_DocExists = 'Dokument existiert schon. Wenn das Dokument geändert werden soll, klicken Sie auf Dokument bearbeiten!';
-  rs_ArchivNew_DeleteDocOrg = 'Soll die Originaldatei gelöscht werden?';
-	rs_Config_ZielVerzeichnis = 'Bitte Ziel-Verzeichnis wählen';
   {$EndRegion resourcestring}
 implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}

@@ -226,13 +226,20 @@ var
   {$Region var}
   frm_Config: Tfrm_Config;
   {$EndRegion var}
+resourcestring
+  {$Region resourcestring}
+  rs_Config_Pfad = 'Pfad';
+  rs_Config_Bezeichnung = 'Bezeichnung';
+  rs_Config_Typ = 'Typ';
+  {$EndRegion resourcestring}
 implementation
 {$R *.dfm}
 uses
   {$Region uses}
   PCM.Main,
   PCM.Functions.Synch.Wait,
-  PCM.Data;
+  PCM.Data,
+  PCM.Strings;
   {$EndRegion uses}
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
@@ -790,12 +797,12 @@ begin
     cxDBImageComboBox1.PostEditValue;
     if cxDBTextEdit1.EditingText = '' then
     begin
-      MessageDlg('Bitte Bezeichnung angeben!',mtwarning,[mbok],0);
+      MessageDlg(rs_Archiv_MSGSetDesc,mtwarning,[mbok],0);
       exit;
     end;
     if cxDBImageComboBox1.ItemIndex = -1 then
     begin
-      MessageDlg('Bitte Typ auswählen!',mtwarning,[mbok],0);
+      MessageDlg(rs_Archiv_MSGChooseType,mtwarning,[mbok],0);
       exit;
     end;
     qry_Scan.Post;
@@ -1108,6 +1115,16 @@ begin
   trlstCol_IndBezeichnung.Width:= trlst_SubKat.Width - 8;
 end;
 procedure Tfrm_Config.FormShow(Sender: TObject);
+  procedure LoadResourceString;
+  begin
+    grdDBTblView_ArchivPfadPfad.Caption:= rs_Config_Pfad;
+    cxGridDBTableView1Type.Caption:= rs_Config_Typ;
+    cxGridDBTableView1Type.Caption:= rs_Config_Typ;
+    grdDBTblView_MainKatBezeichnung.Caption:= rs_Config_Bezeichnung;
+    grdDBTblView_SubkatBezeichnung.Caption:= rs_Config_Bezeichnung;
+    grdDBTblView_IndexID_archiv_konfiguration_index_typ.Caption:= rs_Config_Typ;
+    grdDBTblView_IndexBezeichnung.Caption:= rs_Config_Bezeichnung;
+  end;
   procedure OpenData;
   begin
     qry_Pfad.Sql.Text:= 'Select * From archiv_konfiguration';
@@ -1165,6 +1182,7 @@ procedure Tfrm_Config.FormShow(Sender: TObject);
 begin
   OpenData;
   LoadData;
+  LoadResourceString;
   InitializeRights;
   SetButtons;
   SetGridViews(True);

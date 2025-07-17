@@ -217,19 +217,19 @@ var
 begin
   if (edt_File.Text = '') and (cxComboBox1.ItemIndex < 1) then
   begin
-    MessageDlg(rs_ArchivNew_ChooseFile, mtWarning, [mbOk], 0);
+    MessageDlg(rs_Archiv_ChooseFile, mtWarning, [mbOk], 0);
     exit;
   end;
 
   if cmbbx_Benutzer.ItemIndex < 0 then
   begin
-    MessageDlg(rs_ArchivNew_ChooseUSer, mtWarning, [mbOk], 0);
+    MessageDlg(rs_Archiv_ChooseUSer, mtWarning, [mbOk], 0);
     exit;
   end;
 
   if cmbbx_Mainkat.ItemIndex < 0 then
   begin
-    MessageDlg(rs_ArchivNew_ChooseMainCat, mtWarning, [mbOk], 0);
+    MessageDlg(rs_Archiv_ChooseMainCat, mtWarning, [mbOk], 0);
     exit;
   end;
   dm_PCM.qry_work.SQL.Text:= 'Select Pfad From archiv_konfiguration';
@@ -267,7 +267,7 @@ begin
   begin
     if FileExists(sPathTo) then
     begin
-      MessageDlg(rs_ArchivNew_DocExists,mtWarning,[mbOk], 0);
+      MessageDlg(rs_Archiv_DocExists,mtWarning,[mbOk], 0);
       exit;
     end;
     if not CopyFileEx(PChar(sPathfrom), PChar(sPathTo), nil, Pointer(Handle), nil, 0) then
@@ -275,7 +275,7 @@ begin
       ShowMessage(SysErrorMessage(GetLastError));
       exit;
     end;
-    iSelected := MessageDlg(rs_ArchivNew_DeleteDocOrg,TMsgDlgType.mtConfirmation,[mbYes,mbNo,mbCancel], 0);
+    iSelected := MessageDlg(rs_Archiv_DeleteDocOrg,TMsgDlgType.mtConfirmation,[mbYes,mbNo,mbCancel], 0);
     if (iSelected = 6) then
     begin
       DeleteFile(sPathfrom);
@@ -806,12 +806,12 @@ var
 begin
   if edt_filename.Text = '' then
   begin
-    MessageDlg('Bitte geben Sie eine Bezeichnung für den Dateinamen an!', mtWarning, [mbOk], 0);
+    MessageDlg(rs_Archiv_MSGSetDescforFileType, mtWarning, [mbOk], 0);
     exit;
   end;
   if cxCombobox2.ItemIndex = -1 then
   begin
-    MessageDlg('Bitte wählen Sie die Scannerart aus!', mtWarning, [mbOk], 0);
+    MessageDlg(rs_Archiv_MSGScanart, mtWarning, [mbOk], 0);
     exit;
   end;
   btn_archivsave.Enabled:= false;
@@ -823,7 +823,7 @@ begin
     btn_archivsave.Enabled:= true;
   end
   else begin
-    MessageDlg('Fehler beim Scannen',TMsgDlgType.mtWarning,[mbOK],0)
+    MessageDlg(rs_Archiv_MSGScanError,mtWarning,[mbOK],0)
   end;
 end;
 

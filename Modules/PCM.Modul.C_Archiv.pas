@@ -516,6 +516,12 @@ begin
   FormShow(Self);
 end;
 procedure Tfrm_Archiv.FormShow(Sender: TObject);
+  procedure LoadResourceString;
+  begin
+    grdDBTblView_DocSearchBenutzer.Caption:= rs_Archiv_Benutzer;
+    grdDBTblView_DocSearchMainkat.Caption:= rs_Archiv_Hauptkategorie;
+    grdDBTblView_DocSearchSubkat.Caption:= rs_Archiv_Unterkategorie;
+  end;
   procedure InitializeRights;
   begin
   // Kontakte / Lesen
@@ -973,6 +979,7 @@ procedure Tfrm_Archiv.FormShow(Sender: TObject);
   end;
 begin
   OpenData;
+  LoadResourceString;
   InitializeRights;
   FillBenutzer;
   FillMainKat;
@@ -981,3 +988,4 @@ begin
 end;
 {$EndRegion Formfunktionen}
 end.
+

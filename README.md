@@ -36,4 +36,4 @@
   - PrepareCopy.cmd (erzeugte Versionen werden in das Inno-Setupverzeichnis abgelgt)
 
 # Stand:
-  01.07.2025
+  01.06.2025

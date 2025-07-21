@@ -26,7 +26,7 @@ BEGIN
       VALUE "InternalName", "PCMArchiv.exe \0"
       VALUE "LegalCopyright", "PCM (Jens Henske)\0"
       VALUE "ProductName", "PCM-Archiv 64-Bit\0"
-      VALUE "ProductVersion",VERSION_STRING_SMALL "\0"
+      VALUE "ProductVersion",VERSION_STRING_SMALL"\0"
       VALUE "CompanyName", "PCM\0"
       VALUE "OriginalFilename", "PCMArchiv.exe (64-Bit)\0"
       VALUE "Comments", "\0"

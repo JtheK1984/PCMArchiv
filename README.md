@@ -29,11 +29,11 @@
     - WebView2Loader.dll (DLL für Edgebrowser)
 	
 # Erforderliche Komponenten (DELPHI-IDE):
-  - Devexpress
+  - Devexpress 24.2.4
 	
 # Erforderliche Scripte (nur für die Buildpipelines in Azure DevOps): 
   - PrepareBuild.cmd (Umgebungsvariablen für Delphi anpassen, wird für den Build benötigt)
   - PrepareCopy.cmd (erzeugte Versionen werden in das Inno-Setupverzeichnis abgelgt)
 
 # Stand:
-  01.06.2025
+  21.07.2025

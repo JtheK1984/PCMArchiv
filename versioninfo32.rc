@@ -21,11 +21,11 @@ BEGIN
   BEGIN
     BLOCK "040704B0"
     BEGIN
-      VALUE "FileDescription", "Verwaltung von Dokumenten\0"
+      VALUE "FileDescription", "Applikation zum Archivierung und Verwaltung von Dokumenten\0"
       VALUE "FileVersion", VERSION_STRING_FULL "\0"
-      VALUE "InternalName", "PCM-Archiv.exe \0"
+      VALUE "InternalName", "PCMArchiv.exe \0"
       VALUE "LegalCopyright", "PCM (Jens Henske)\0"
-      VALUE "ProductName", "PCMArchiv 32-Bit\0"
+      VALUE "ProductName", "PCM-Archiv 32-Bit\0"
       VALUE "ProductVersion",VERSION_STRING_SMALL "\0"
       VALUE "CompanyName", "PCM\0"
       VALUE "OriginalFilename", "PCMArchiv.exe (32-Bit)\0"

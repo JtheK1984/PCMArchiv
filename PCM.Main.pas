@@ -626,10 +626,6 @@ begin
 end;
 procedure Tfrm_PCM_Main.FormShow(Sender: TObject);
 begin
-  {$ifdef WIn32}
-  iSprache.Visible:= false;
-  ppmbtn_Sprache.Visible:= false;
-  {$endif}
   lafCtrl_Main.NativeStyle:= false;
   trayIC_Main.Hint:= PCM_Programmname;
   dm_PCM.iDBType:= 0;

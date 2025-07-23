@@ -2,6 +2,8 @@ echo "Kopiere Datei ins Setupverzeichnis"
 copy /y /v Win32\Release\PCMArchiv.exe "e:\Inno\Setupfiles\Programme\PCMArchiv"
 copy /y /v Win64\Release\PCMArchiv.exe "e:\Inno\Setupfiles\Programme\PCMArchiv_x64"
 
+copy /y /v Win32\Release\PCMArchiv.DE "e:\Inno\Setupfiles\Programme\PCMArchiv"
+copy /y /v Win32\Release\PCMArchiv.EN "e:\Inno\Setupfiles\Programme\PCMArchiv"
 copy /y /v Win64\Release\PCMArchiv.DE "e:\Inno\Setupfiles\Programme\PCMArchiv_x64"
 copy /y /v Win64\Release\PCMArchiv.EN "e:\Inno\Setupfiles\Programme\PCMArchiv_x64"
 

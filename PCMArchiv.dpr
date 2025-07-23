@@ -47,10 +47,10 @@ begin
   Application.Initialize;
   {$IFDEF WIN64}
   Application.Title:= 'PCM - Archiv 64-Bit';
-  TNtTranslator.SetNew(slocale,[],'de');
   {$else}
   Application.Title:= 'PCM - Archiv 32-Bit';
   {$ENDIF}
+  TNtTranslator.SetNew(slocale,[],'de');
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(Tdm_PCM,dm_PCM);
   Application.CreateForm(Tfrm_PCM_Main,frm_PCM_Main);

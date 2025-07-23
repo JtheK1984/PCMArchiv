@@ -36,7 +36,7 @@ steps:
   inputs:
     solution: PCMArchiv.dproj
     platform: Win32
-    msbuildArguments: '/t:Clean;Build;CompressWin32 /p:config=Release /p:platform=Win32'
+    msbuildArguments: '/t:Clean;Build;Localize;CompressWin32 /p:config=Release /p:platform=Win32'
 - task: MSBuild@1
   displayName: 'Erzeuge Version 64-Bit'
   inputs:

@@ -83,3 +83,4 @@ modules/
 /Win64/Debug/Scanner/license.txt
 /Win64/Release/1PCMArchiv.ntr
 /Win32/Release/*.nds
+/Win32/Release/*.ntr

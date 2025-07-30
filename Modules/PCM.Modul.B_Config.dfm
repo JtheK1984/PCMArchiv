@@ -1490,9 +1490,9 @@ object frm_Config: Tfrm_Config
       Width = 145
     end
     object btn_MainKatDelete: TdxBarLargeButton
-      Caption = 'Kategorie l'#246'schen'
+      Caption = 'Hauptkategorie l'#246'schen'
       Category = 0
-      Hint = 'Kategorie l'#246'schen'
+      Hint = 'Hauptkategorie l'#246'schen'
       Visible = ivAlways
       OnClick = btn_MainKatDeleteClick
       AutoGrayScale = False

@@ -78,6 +78,7 @@ implementation
 uses
   {$Region Uses}
   PCM.Data,
+  PCM.Helper,
   PCM.Modul.C_Archiv,
   PCM.Archiv.Strings;
   {$EndRegion Uses}
@@ -217,19 +218,19 @@ var
 begin
   if (edt_File.Text = '') and (cxComboBox1.ItemIndex < 1) then
   begin
-    dm_PCM.SetMessageDialog(2,rs_Archiv_MSG_ChooseFile,[rs_Archiv_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
+    SetMessageDialog(2,rs_Archiv_MSG_ChooseFile,[rs_Archiv_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
     exit;
   end;
 
   if cmbbx_Benutzer.ItemIndex < 0 then
   begin
-    dm_PCM.SetMessageDialog(2,rs_Archiv_MSG_ChooseUSer,[rs_Archiv_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
+    SetMessageDialog(2,rs_Archiv_MSG_ChooseUSer,[rs_Archiv_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
     exit;
   end;
 
   if cmbbx_Mainkat.ItemIndex < 0 then
   begin
-    dm_PCM.SetMessageDialog(2,rs_Archiv_MSG_ChooseMainCat,[rs_Archiv_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
+    SetMessageDialog(2,rs_Archiv_MSG_ChooseMainCat,[rs_Archiv_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
     exit;
   end;
   dm_PCM.qry_work.SQL.Text:= 'Select Pfad From archiv_konfiguration';
@@ -267,7 +268,7 @@ begin
   begin
     if FileExists(sPathTo) then
     begin
-      dm_PCM.SetMessageDialog(2,rs_Archiv_MSG_DocExists,[rs_Archiv_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
+      SetMessageDialog(2,rs_Archiv_MSG_DocExists,[rs_Archiv_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
       exit;
     end;
     if not CopyFileEx(PChar(sPathfrom), PChar(sPathTo), nil, Pointer(Handle), nil, 0) then
@@ -275,7 +276,7 @@ begin
       ShowMessage(SysErrorMessage(GetLastError));
       exit;
     end;
-    if dm_PCM.SetMessageDialog(2,rs_Archiv_MSG_DeleteDocOrg,[rs_Archiv_BTN_Yes,rs_Archiv_BTN_No,rs_Archiv_BTN_Cancel],[mryes,mrNo,mrCancel]) = mrYes then
+    if SetMessageDialog(2,rs_Archiv_MSG_DeleteDocOrg,[rs_Archiv_BTN_Yes,rs_Archiv_BTN_No,rs_Archiv_BTN_Cancel],[mryes,mrNo,mrCancel]) = mrYes then
     begin
       DeleteFile(sPathfrom);
     end;
@@ -805,12 +806,12 @@ var
 begin
   if edt_filename.Text = '' then
   begin
-    dm_PCM.SetMessageDialog(2,rs_Archiv_MSG_SetDescforFileType,[rs_Archiv_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
+    SetMessageDialog(2,rs_Archiv_MSG_SetDescforFileType,[rs_Archiv_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
     exit;
   end;
   if cxCombobox2.ItemIndex = -1 then
   begin
-    dm_PCM.SetMessageDialog(2,rs_Archiv_MSG_Scanart,[rs_Archiv_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
+    SetMessageDialog(2,rs_Archiv_MSG_Scanart,[rs_Archiv_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
     exit;
   end;
   btn_archivsave.Enabled:= false;
@@ -822,7 +823,7 @@ begin
     btn_archivsave.Enabled:= true;
   end
   else begin
-    dm_PCM.SetMessageDialog(2,rs_Archiv_MSG_ScanError,[rs_Archiv_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
+    SetMessageDialog(2,rs_Archiv_MSG_ScanError,[rs_Archiv_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
   end;
 end;
 

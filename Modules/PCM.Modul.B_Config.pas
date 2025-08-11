@@ -239,6 +239,7 @@ uses
   PCM.Main,
   PCM.Functions.Synch.Wait,
   PCM.Data,
+  PCM.Helper,
   PCM.Archiv.Strings;
   {$EndRegion uses}
 ////////////////////////////////////////////////////////////////////////////////
@@ -797,12 +798,12 @@ begin
     cxDBImageComboBox1.PostEditValue;
     if cxDBTextEdit1.EditingText = '' then
     begin
-      dm_PCM.SetMessageDialog(2,rs_Archiv_MSG_SetDesc,[rs_Archiv_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
+      SetMessageDialog(2,rs_Archiv_MSG_SetDesc,[rs_Archiv_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
       exit;
     end;
     if cxDBImageComboBox1.ItemIndex = -1 then
     begin
-      dm_PCM.SetMessageDialog(2,rs_Archiv_MSG_ChooseType,[rs_Archiv_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
+      SetMessageDialog(2,rs_Archiv_MSG_ChooseType,[rs_Archiv_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
       exit;
     end;
     qry_Scan.Post;

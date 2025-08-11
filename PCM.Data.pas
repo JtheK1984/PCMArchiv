@@ -64,6 +64,7 @@ type
     sUserAutologin: string;
     Firma: string;
     Nummer: string;
+    function SetMessageDialog(AType: integer;AText: String; AButtons: array of string; AButtonsMR: array of Integer) : integer;
   end;
   {$EndRegion Type}
 var
@@ -80,6 +81,7 @@ const
   PCM_Logname = 'PCMArchiv';
   PCM_Connectionname =  'archiv';
   PCM_Alias = 'archiv';
+  PCM_Lizenz = True;
   {$EndRegion const}
 resourcestring
   {$Region resourcestring}
@@ -93,9 +95,61 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 uses
   {$Region uses}
+  PCM.Dialog,
   PCM.Main;
   {$EndRegion uses}
 {$R *.dfm}
+
+////////////////////////////////////////////////////////////////////////////////
+// Hilfsfunktion                                                              //
+////////////////////////////////////////////////////////////////////////////////
+{$Region Hilfsfunktion}
+function Tdm_PCM.SetMessageDialog(AType: integer;AText: String; AButtons: array of string; AButtonsMR: array of Integer) : integer;
+var
+  Dialog: Tfrm_Dialog;
+  ResultCode: Integer;
+begin
+  Dialog:= Tfrm_Dialog.Create(Self);
+  Dialog.Caption:= PCM_Programmname;
+  case AType of
+  1:
+    begin
+      Dialog.laitm_DialogimageInfo.visible:= true;
+      Dialog.laitm_DialogimageWarn.visible:= false;
+      Dialog.laitm_DialogimageError.visible:= false;
+    end;
+  2:
+    begin
+      Dialog.laitm_DialogimageInfo.visible:= false;
+      Dialog.laitm_DialogimageWarn.visible:= true;
+      Dialog.laitm_DialogimageError.visible:= false;
+    end;
+  3:
+    begin
+      Dialog.laitm_DialogimageInfo.visible:= false;
+      Dialog.laitm_DialogimageWarn.visible:= false;
+      Dialog.laitm_DialogimageError.visible:= true;
+    end;
+  end;
+  Dialog.lalbl_DialogText.CaptionOptions.Text:= AText;
+  Dialog.btn_yes.Caption:= AButtons[0];
+  Dialog.btn_no.Caption:= AButtons[1];
+  Dialog.btn_Cancel.Caption:= AButtons[2];
+
+  Dialog.btn_yes.ModalResult := AButtonsMR[0];
+  Dialog.btn_no.ModalResult := AButtonsMR[1];
+  Dialog.btn_Cancel.ModalResult := AButtonsMR[2];
+
+  Dialog.laitm_DialogYes.Visible := AButtons[0] <> '';
+  Dialog.laitm_DialogNo.Visible := AButtons[1] <> '';
+  Dialog.laitm_DialogCancel.Visible := AButtons[2] <> '';
+  Dialog.ClientWidth:= Dialog.lactrl_Dialog.Width;
+  Dialog.ClientHeight:= Dialog.lactrl_Dialog.Height ;
+
+  ResultCode := Dialog.ShowModal;
+  Dialog.free;
+end;
+{$EndRegion Hilfsfunktion}
 ////////////////////////////////////////////////////////////////////////////////
 // Datamodul                                                                  //
 ////////////////////////////////////////////////////////////////////////////////
@@ -139,3 +193,4 @@ begin
 end;
 {$EndRegion Datamodul}
 end.
+

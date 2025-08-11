@@ -115,6 +115,7 @@ object frm_Config: Tfrm_Config
         OptionsView.IndicatorWidth = 14
         object grdDBTblView_ArchivPfadPfad: TcxGridDBColumn
           DataBinding.FieldName = 'Pfad'
+          DataBinding.IsNullValueType = True
           Width = 800
         end
       end
@@ -1670,7 +1671,6 @@ object frm_Config: Tfrm_Config
     end
   end
   object qry_Pfad: TFDQuery
-    Active = True
     AfterOpen = SetButtonsEnableVisible
     AfterInsert = SetButtonsEnableVisible
     AfterEdit = SetButtonsEnableVisible

@@ -174,6 +174,7 @@ $(PreBuildEvent)]]></PreBuildEvent>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="PCMArchiv.dxSettings.pas"/>
+        <DCCReference Include="Modules\PCM.Archiv.Strings.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -203,15 +204,15 @@ $(PreBuildEvent)]]></PreBuildEvent>
                 <DeployFile LocalName="E:\Inno\Setupfiles\Programme\PCMManager\PCMManager.exe" Configuration="Release" Class="ProjectOutput"/>
                 <DeployFile LocalName="Win32\Debug\PCMArchiv.exe" Configuration="Debug" Class="ProjectOutput"/>
                 <DeployFile LocalName="Win32\Debug\PCMManager.exe" Configuration="Debug" Class="ProjectOutput"/>
-                <DeployFile LocalName="Win64\Debug\PCMArchiv.exe" Configuration="Debug" Class="ProjectOutput">
-                    <Platform Name="Win64">
+                <DeployFile LocalName="Win32\Release\PCMArchiv.exe" Configuration="Release" Class="ProjectOutput">
+                    <Platform Name="Win32">
                         <RemoteName>PCMArchiv.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="Win64\Debug\PCMArchiv.rsm" Configuration="Debug" Class="DebugSymbols">
+                <DeployFile LocalName="Win64\Debug\PCMArchiv.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win64">
-                        <RemoteName>PCMArchiv.rsm</RemoteName>
+                        <RemoteName>PCMArchiv.exe</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

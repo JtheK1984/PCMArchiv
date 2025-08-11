@@ -3,8 +3,8 @@ object frm_PCM_Main: Tfrm_PCM_Main
   Top = 0
   AlphaBlend = True
   Caption = 'PCM - Manager'
-  ClientHeight = 800
-  ClientWidth = 1280
+  ClientHeight = 783
+  ClientWidth = 1274
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -26,7 +26,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
     Left = 0
     Top = 30
     Width = 200
-    Height = 770
+    Height = 753
     Align = alLeft
     ActiveGroupIndex = 0
     TabOrder = 0
@@ -34,7 +34,7 @@ object frm_PCM_Main: Tfrm_PCM_Main
     View = 14
     OptionsImage.SmallImages = dm_PCM.imglst_16x16
     OptionsStyle.CustomStyles.Background = navbrStyleIt_main
-    ExplicitHeight = 753
+    ExplicitHeight = 736
     object navbrgrp_Optionen: TdxNavBarGroup
       Caption = 'Optionen'
       SelectedLinkIndex = -1
@@ -162,15 +162,15 @@ object frm_PCM_Main: Tfrm_PCM_Main
     PanelStyle.Active = True
     Style.BorderStyle = ebsNone
     TabOrder = 1
-    ExplicitWidth = 1074
-    ExplicitHeight = 753
-    Height = 770
-    Width = 1080
+    ExplicitWidth = 1068
+    ExplicitHeight = 736
+    Height = 753
+    Width = 1074
     object pc_main: TcxPageControl
       Left = 2
       Top = 2
-      Width = 1076
-      Height = 766
+      Width = 1070
+      Height = 749
       Margins.Left = 0
       Margins.Top = 0
       Margins.Right = 0
@@ -185,32 +185,32 @@ object frm_PCM_Main: Tfrm_PCM_Main
       Properties.Images = dm_PCM.imglst_16x16
       Properties.Options = [pcoAlwaysShowGoDialogButton, pcoGradient, pcoGradientClientArea, pcoRedrawOnResize, pcoSort]
       OnPageChanging = pc_mainPageChanging
-      ExplicitWidth = 1070
-      ExplicitHeight = 749
-      ClientRectBottom = 762
+      ExplicitWidth = 1064
+      ExplicitHeight = 732
+      ClientRectBottom = 745
       ClientRectLeft = 4
-      ClientRectRight = 1072
+      ClientRectRight = 1066
       ClientRectTop = 25
       object ts_Dashboard: TcxTabSheet
         Caption = 'Dashboard'
         ImageIndex = 79
-        ExplicitWidth = 1062
-        ExplicitHeight = 720
+        ExplicitWidth = 1056
+        ExplicitHeight = 703
         object dxLayoutControl1: TdxLayoutControl
           Left = 0
           Top = 0
-          Width = 1068
-          Height = 737
+          Width = 1062
+          Height = 720
           Align = alClient
           TabOrder = 0
           LayoutLookAndFeel = dm_PCM.dxLayoutSkinLookAndFeel1
-          ExplicitWidth = 1062
-          ExplicitHeight = 720
+          ExplicitWidth = 1056
+          ExplicitHeight = 703
           object chartctrl_Customer: TdxChartControl
             Left = 19
             Top = 25
-            Width = 1030
-            Height = 328
+            Width = 1024
+            Height = 320
             BorderStyle = cxcbsNone
             Legend.Title.Visible = False
             Titles = <>
@@ -234,9 +234,9 @@ object frm_PCM_Main: Tfrm_PCM_Main
           end
           object chartctrl_Licence: TdxChartControl
             Left = 19
-            Top = 390
-            Width = 500
-            Height = 328
+            Top = 382
+            Width = 497
+            Height = 319
             BorderStyle = cxcbsNone
             Legend.Title.Visible = False
             Titles = <>
@@ -262,10 +262,10 @@ object frm_PCM_Main: Tfrm_PCM_Main
             end
           end
           object chartctrl_Programs: TdxChartControl
-            Left = 550
-            Top = 390
-            Width = 499
-            Height = 328
+            Left = 547
+            Top = 382
+            Width = 496
+            Height = 319
             BorderStyle = cxcbsNone
             Legend.Title.Visible = False
             Titles = <>

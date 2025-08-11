@@ -8,12 +8,11 @@ object dm_PCM: Tdm_PCM
       'Database=pcm'
       'User_Name=root'
       'Password=pcm'
-      'Server=pcm-dev'
+      'Server=192.168.178.10'
       'Port=3307'
       'DriverID=MySQL')
     ResourceOptions.AssignedValues = [rvAutoReconnect]
     ResourceOptions.AutoReconnect = True
-    Connected = True
     LoginPrompt = False
     BeforeConnect = con_PCMBeforeConnect
     Left = 48

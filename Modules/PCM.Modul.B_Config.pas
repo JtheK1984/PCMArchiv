@@ -239,7 +239,7 @@ uses
   PCM.Main,
   PCM.Functions.Synch.Wait,
   PCM.Data,
-  PCM.Strings;
+  PCM.Archiv.Strings;
   {$EndRegion uses}
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
@@ -797,12 +797,12 @@ begin
     cxDBImageComboBox1.PostEditValue;
     if cxDBTextEdit1.EditingText = '' then
     begin
-      MessageDlg(rs_Archiv_MSGSetDesc,mtwarning,[mbok],0);
+      dm_PCM.SetMessageDialog(2,rs_Archiv_MSG_SetDesc,[rs_Archiv_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
       exit;
     end;
     if cxDBImageComboBox1.ItemIndex = -1 then
     begin
-      MessageDlg(rs_Archiv_MSGChooseType,mtwarning,[mbok],0);
+      dm_PCM.SetMessageDialog(2,rs_Archiv_MSG_ChooseType,[rs_Archiv_BTN_Ok,'',''],[mrOk,mrNone,mrNone]);
       exit;
     end;
     qry_Scan.Post;
@@ -841,7 +841,7 @@ var
   sDir: String;
 begin
   qry_Pfad.Edit;
-  if SelectDirectory(rs_Config_ZielVerzeichnis, GetEnvironmentVariable('ONEDRIVE'), sDir) then
+  if SelectDirectory(rs_Archiv_DIC_ZielVerzeichnis, GetEnvironmentVariable('ONEDRIVE'), sDir) then
   begin
     edt_ArchivPfad.Text := sDir;
   end;

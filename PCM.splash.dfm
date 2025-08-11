@@ -30,7 +30,7 @@ object SplashScreen: TSplashScreen
       Left = 0
       Top = 41
       Width = 1000
-      Height = 426
+      Height = 424
       Align = alClient
       Picture.Data = {
         0D546478536D617274496D61676589504E470D0A1A0A0000000D494844520000
@@ -2372,7 +2372,7 @@ object SplashScreen: TSplashScreen
     end
     object prgbr_Splash: TcxProgressBar
       Left = 0
-      Top = 467
+      Top = 465
       Align = alBottom
       ParentFont = False
       Position = 1.000000000000000000
@@ -2400,7 +2400,6 @@ object SplashScreen: TSplashScreen
       StyleHot.LookAndFeel.NativeStyle = False
       TabOrder = 3
       Transparent = True
-      ExplicitTop = 465
       Width = 1000
     end
   end

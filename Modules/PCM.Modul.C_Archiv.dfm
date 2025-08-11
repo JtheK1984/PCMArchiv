@@ -160,6 +160,7 @@ object frm_Archiv: Tfrm_Archiv
         object grdDBTblView_DocSearchID: TcxGridDBColumn
           Tag = 1
           DataBinding.FieldName = 'ID'
+          DataBinding.IsNullValueType = True
           Visible = False
           VisibleForExpressionEditor = bFalse
           VisibleForCustomization = False
@@ -169,18 +170,21 @@ object frm_Archiv: Tfrm_Archiv
         object grdDBTblView_DocSearchFiles: TcxGridDBColumn
           Tag = 1
           DataBinding.FieldName = 'Files'
+          DataBinding.IsNullValueType = True
           FixedKind = fkLeft
           Width = 200
         end
         object grdDBTblView_DocSearchFullPath: TcxGridDBColumn
           Tag = 1
           DataBinding.FieldName = 'FullPath'
+          DataBinding.IsNullValueType = True
           PropertiesClassName = 'TcxCalcEditProperties'
           Width = 500
         end
         object grdDBTblView_DocSearchBenutzer: TcxGridDBColumn
           Tag = 1
           DataBinding.FieldName = 'Benutzer'
+          DataBinding.IsNullValueType = True
           PropertiesClassName = 'TcxLookupComboBoxProperties'
           Properties.KeyFieldNames = 'ID'
           Properties.ListColumns = <
@@ -196,6 +200,7 @@ object frm_Archiv: Tfrm_Archiv
           Tag = 1
           Caption = 'Hauptkategorie'
           DataBinding.FieldName = 'Mainkat'
+          DataBinding.IsNullValueType = True
           PropertiesClassName = 'TcxLookupComboBoxProperties'
           Properties.KeyFieldNames = 'ID'
           Properties.ListColumns = <
@@ -211,6 +216,7 @@ object frm_Archiv: Tfrm_Archiv
           Tag = 1
           Caption = 'Unterkategorie'
           DataBinding.FieldName = 'Subkat'
+          DataBinding.IsNullValueType = True
           PropertiesClassName = 'TcxLookupComboBoxProperties'
           Properties.KeyFieldNames = 'ID'
           Properties.ListColumns = <
@@ -224,6 +230,7 @@ object frm_Archiv: Tfrm_Archiv
         end
         object grdDBTblView_DocSearchFileImage: TcxGridDBColumn
           DataBinding.FieldName = 'FileImage'
+          DataBinding.IsNullValueType = True
           Visible = False
           VisibleForExpressionEditor = bFalse
           VisibleForCustomization = False
@@ -503,7 +510,6 @@ object frm_Archiv: Tfrm_Archiv
     end
   end
   object qry_Doc: TFDQuery
-    Active = True
     Connection = dm_PCM.con_PCM
     SQL.Strings = (
       'SELECT *'
@@ -514,7 +520,6 @@ object frm_Archiv: Tfrm_Archiv
     Top = 288
   end
   object qry_Benutzer: TFDQuery
-    Active = True
     Connection = dm_PCM.con_PCM
     SQL.Strings = (
       'SELECT * '
@@ -529,7 +534,6 @@ object frm_Archiv: Tfrm_Archiv
     Top = 360
   end
   object qry_mainkat: TFDQuery
-    Active = True
     Connection = dm_PCM.con_PCM
     SQL.Strings = (
       'SELECT akzhk.ID, akhk.Bezeichnung '
@@ -552,7 +556,6 @@ object frm_Archiv: Tfrm_Archiv
     Top = 368
   end
   object qry_Subkat: TFDQuery
-    Active = True
     Connection = dm_PCM.con_PCM
     SQL.Strings = (
       'SELECT akzhk.ID, akhk.Bezeichnung '

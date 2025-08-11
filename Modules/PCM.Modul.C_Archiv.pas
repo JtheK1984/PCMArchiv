@@ -99,7 +99,7 @@ uses
   {$Region Uses}
   PCM.Data,
   PCM.Functions.Synch.Wait,
-  PCM.Strings, PCM.Modul.C_Archiv.New, PCM.Main;
+  PCM.Archiv.Strings, PCM.Modul.C_Archiv.New, PCM.Main;
   {$EndRegion Uses}
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //

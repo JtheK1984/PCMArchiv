@@ -17,7 +17,8 @@ uses
   PCM.Modul.C_Archiv in 'Modules\PCM.Modul.C_Archiv.pas' {frm_Archiv},
   PCM.Modul.C_Archiv.New in 'Modules\PCM.Modul.C_Archiv.New.pas' {frm_NewFile},
   PCM.splash in 'PCM.splash.pas' {SplashScreen},
-  PCMArchiv.dxSettings in 'PCMArchiv.dxSettings.pas';
+  PCMArchiv.dxSettings in 'PCMArchiv.dxSettings.pas',
+  PCM.Archiv.Strings in 'Modules\PCM.Archiv.Strings.pas';
 
 {$EndRegion Uses}
 
@@ -52,7 +53,7 @@ begin
   {$ENDIF}
   TNtTranslator.SetNew(slocale,[],'de');
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(Tdm_PCM,dm_PCM);
-  Application.CreateForm(Tfrm_PCM_Main,frm_PCM_Main);
+  Application.CreateForm(Tdm_PCM, dm_PCM);
+  Application.CreateForm(Tfrm_PCM_Main, frm_PCM_Main);
   Application.Run;
 end.

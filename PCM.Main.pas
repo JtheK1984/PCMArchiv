@@ -181,7 +181,7 @@ uses
   PCM.SQL,
   PCM.Modul.B_Config,
   PCM.Modul.C_Archiv,
-  PCM.Strings, PCM.splash;
+  PCM.Archiv.Strings, PCM.splash;
   {$EndRegion uses}
 ////////////////////////////////////////////////////////////////////////////////
 // Hilfsfunktionen                                                            //
@@ -329,7 +329,7 @@ begin
   if pc_Main.PageCount > 1 then
   begin
     if pc_Main.PageCount = 2 then
-      brstc_OpenModule.Caption := rs_General_Dashboard;
+      brstc_OpenModule.Caption := rs_Archiv_CAP_Dashboard;
     if pc_Main.ActivePage <> ts_Dashboard  then
     begin
       TForm(pc_Main.ActivePage.Controls[0]).Close;
@@ -342,9 +342,9 @@ procedure Tfrm_PCM_Main.btn_ModulleisteClick(Sender: TObject);
 begin
   navbr_main.Visible := not navbr_main.Visible;
   if navbr_main.Visible then
-    btn_Modulleiste.Caption := rs_PCM_Modulliste_verstecken
+    btn_Modulleiste.Caption := rs_Archiv_CAP_Modulliste_verstecken
   else
-    btn_Modulleiste.Caption := rs_PCM_Modulliste_anzeigen;
+    btn_Modulleiste.Caption := rs_Archiv_CAP_Modulliste_anzeigen;
 end;
 procedure Tfrm_PCM_Main.btn_RefreshRightsClick(Sender: TObject);
 var
@@ -437,37 +437,37 @@ begin
         case AnsiIndexStr(sModul, ['iBenutzerverwaltung','iKonfiguration','iDesign','iArchiv','iSysteminfo','iInfo','iHandbuch']) of
         0:
           begin
-            sModulCaption := 'i'  + rs_PCM_Benutzerverwaltung;
+            sModulCaption := 'i'  + rs_Archiv_MOD_Benutzerverwaltung;
             dm_PCM.iModulTab:= 1;
           end;
         1:
           begin
-            sModulCaption := 'i'  + rs_PCM_Konfiguration ;
+            sModulCaption := 'i'  + rs_Archiv_MOD_Konfiguration ;
             dm_PCM.iModulTab:= 1;
           end;
         2:
           begin
-            sModulCaption := 'i'  + rs_PCM_Design;
+            sModulCaption := 'i'  + rs_Archiv_MOD_Design;
             dm_PCM.iModulTab:= 1;
           end;
         3:
           begin
-            sModulCaption := 'i'  + rs_PCM_Archiv;
+            sModulCaption := 'i'  + rs_Archiv_MOD_Archiv;
             dm_PCM.iModulTab:= 1;
           end;
         4:
           begin
-            sModulCaption := 'i'  + rs_PCM_Systeminformation;
+            sModulCaption := 'i'  + rs_Archiv_MOD_Systeminformation;
             dm_PCM.iModulTab:= 3;
           end;
         5:
           begin
-            sModulCaption := 'i'  + rs_PCM_Programminfo;
+            sModulCaption := 'i'  + rs_Archiv_MOD_Programminfo;
             dm_PCM.iModulTab:= 3;
           end;
         6:
           begin
-            sModulCaption := 'i'  + rs_PCM_Handbuch;
+            sModulCaption := 'i'  + rs_Archiv_MOD_Handbuch;
             dm_PCM.iModulTab:= 3;
           end;
         end;
@@ -490,7 +490,7 @@ begin
           Screen.Cursor := crHourglass;
           try
 
-            if sModulCaption = 'i'+ rs_PCM_Konfiguration then
+            if sModulCaption = 'i'+ rs_Archiv_MOD_Konfiguration then
             begin
               dm_PCM.qry_Work.SQL.Text:= 'SELECT COUNT(*) + ' +
                                          '(SELECT COUNT(*) FROM archiv_konfiguration_unterkategorien) + ' +
@@ -498,11 +498,11 @@ begin
                                          '(SELECT COUNT(*) FROM archiv_konfiguration_zuweisung_hauptkategorien) as Anzahl ' +
                                          'FROM archiv_konfiguration_hauptkategorien';
               dm_PCM.qry_Work.Open;
-        	    ShowWaitForm(TForm(Self), PWideChar(rs_General_Formload), dm_PCM.qry_Work.FieldByName('Anzahl').asinteger,417, 65);
+        	    ShowWaitForm(TForm(Self), PWideChar(rs_Archiv_WAIT_Formload), dm_PCM.qry_Work.FieldByName('Anzahl').asinteger,417, 65);
               dm_PCM.qry_Work.Close;
             end
             else begin
-        	    ShowWaitForm(TForm(Self), PWideChar(rs_General_Formload), 1,417, 65);
+        	    ShowWaitForm(TForm(Self), PWideChar(rs_Archiv_WAIT_Formload), 1,417, 65);
             end;
             Application.ProcessMessages;
             WaitFormStep;
@@ -544,7 +544,7 @@ end;
 procedure Tfrm_PCM_Main.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   CloseModules;
-  WriteLog(PCM_Logname,rs_PCM_Beenden,0);
+  WriteLog(PCM_Logname,rs_Archiv_LOG_Beenden,0);
 end;
 procedure Tfrm_PCM_Main.FormCreate(Sender: TObject);
 begin
@@ -643,7 +643,7 @@ begin
       NavBarClick(iDesign);
     end
     else begin
-      WriteLog(PCM_Logname,rs_PCM_Start,0);
+      WriteLog(PCM_Logname,rs_Archiv_LOG_Start,0);
     end;
   end;
 end;

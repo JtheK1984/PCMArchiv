@@ -84,3 +84,11 @@ modules/
 /Win64/Release/1PCMArchiv.ntr
 /Win32/Release/*.nds
 /Win32/Release/*.ntr
+/Win32/Release/PCMArchiv.DE
+/Win32/Release/PCMArchiv.EN
+/Win32/Release/Scanner/NAPS2.Console.exe.config
+/Win32/Release/Scanner/NAPS2.Worker.exe.config
+/Win32/Release/Scanner/NAPS2.exe.config
+/Win32/Release/Scanner/appsettings.xml
+/Win32/Release/Scanner/contributors.txt
+/Win32/Release/Scanner/license.txt

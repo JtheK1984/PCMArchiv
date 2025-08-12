@@ -94,7 +94,6 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 uses
   {$Region uses}
-  PCM.Dialog,
   PCM.Main;
   {$EndRegion uses}
 {$R *.dfm}

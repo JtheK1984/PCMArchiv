@@ -4,6 +4,9 @@
 # Kurzbeschreibung:
   PCM - Archiv
 
+# Beschreibung:
+  Tool zum Archivieren und Verschlagwortung von Dokumenten inklusive Suchfunktion
+
 # Entwicklungsumgebung:
   DELPHI 12.3 Athens
 

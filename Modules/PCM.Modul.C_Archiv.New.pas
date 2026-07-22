@@ -211,7 +211,6 @@ procedure Tfrm_NewFile.btn_archivsaveClick(Sender: TObject);
   end;
 var
   iIDFiles: integer;
-  iSelected: integer;
   sPathFrom: string;
   sPathTo: string;
   sFile: string;

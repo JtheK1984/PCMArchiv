@@ -78,6 +78,7 @@ object frm_NewFile: Tfrm_NewFile
       Style.HotTrack = False
       Style.TransparentBorder = False
       TabOrder = 3
+      OnKeyDown = edt_filenameKeyDown
       Width = 697
     end
     object dxBarDockControl1: TdxBarDockControl

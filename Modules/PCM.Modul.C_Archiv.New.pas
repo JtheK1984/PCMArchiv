@@ -58,6 +58,8 @@ type
     procedure cxComboBox1PropertiesChange(Sender: TObject);
     procedure cxButton1Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
+    procedure edt_filenameKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     { Private-Deklarationen }
     bNew: boolean;
@@ -211,6 +213,7 @@ procedure Tfrm_NewFile.btn_archivsaveClick(Sender: TObject);
   end;
 var
   iIDFiles: integer;
+  iSelected: integer;
   sPathFrom: string;
   sPathTo: string;
   sFile: string;
@@ -832,17 +835,29 @@ begin
   begin
     dxLayoutItem3.Visible:= false;
     dxLayoutItem9.Visible:= true;
+    dxLayoutItem10.Visible:= true;
   end
   else begin
     dxLayoutItem3.Visible:= true;
     dxLayoutItem9.Visible:= false;
+    dxLayoutItem10.Visible:= false;
+    btn_archivsave.Enabled:= true;
   end;
+end;
+
+procedure Tfrm_NewFile.edt_filenameKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if (ssAlt in Shift) and (Key = Ord('N')) then
+    begin
+      if odlg_Doc.Execute then
+        edt_File.text:= odlg_Doc.FileName;
+    end;
 end;
 
 procedure Tfrm_NewFile.edt_FilePropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
 begin
-  if odlg_Doc.Execute then
-    edt_File.text:= odlg_Doc.FileName;
+
 end;
 {$EndRegion Button Functions}
 ////////////////////////////////////////////////////////////////////////////////
@@ -929,11 +944,13 @@ begin
       dxLayoutItem3.Visible:= false;
       dxLayoutItem9.Visible:= true;
       btn_archivsave.Enabled:= false;
+      dxLayoutItem10.Visible:= true;
     end
     else begin
       dxLayoutItem3.Visible:= true;
       dxLayoutItem9.Visible:= false;
       btn_archivsave.Enabled:= true;
+      dxLayoutItem10.Visible:= false;
     end;
   end;
 end;
